@@ -59,7 +59,7 @@ const CountdownTimer = ({ targetDate }) => {
 
 const Hero = () => {
     // Set the target date and time for IST (Indian Standard Time)
-    const targetDate = new Date("2024-11-08T10:30:00Z"); // This is 4:00 PM IST on November 8, 2024
+    const targetDate = new Date("2025-10-24T10:30:00Z"); // This is 4:00 PM IST on October 24th , 2025
 
     return (
         <div>
@@ -68,8 +68,11 @@ const Hero = () => {
                 <div className="absolute h-full w-full top-0 left-0 spotlight opacity-95"></div>
 
                 <div className='heading1 flex flex-col justify-center items-center' style={{ 'background': 'transparent' }}>
-                    <div className="main-logo"> 
-                        <img src={tzlogo_with_date} alt="TZ Logo" />
+                    <div className="main-logo">
+
+                  <span className="text-5xl font-bold mb-4 uppercase animate-pulse cursor-pointer">
+          Coming Soon...
+        </span>
                     </div>
                     {/* Countdown Clock */}
                     <CountdownTimer targetDate={targetDate} />
