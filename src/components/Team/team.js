@@ -90,7 +90,7 @@ export const Team = () => {
           <React.Fragment key={rowIndex}>
             <div className={`grid-row ${row.length === 1 ? 'one-item' : rowIndex % 2 === 0 ? 'two-item-even' : 'two-item-odd'}`}>
               {row.map((person, personIndex) =>
-                person ? (
+                person?.name ? (
                   <div
                     className="person"
                     key={personIndex}
@@ -100,13 +100,13 @@ export const Team = () => {
                   >
                     <motion.div 
                       className="personImage"
-                      animate={hoverStates[rowIndex * 2 + personIndex] ? { y: '-52%', x: '5%',scale:1.7 } : { y: '0%', x: '0%',scale:1 }}
+                      animate={hoverStates[rowIndex * 2 + personIndex] ? { y: '-52%', x: '0%',scale:1.2 } : { y: '0%', x: '0%',scale:1 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
                       <img 
                         src={`/teamImages/${person.image}`} 
                         alt="" 
-                        style={{ borderRadius: '50%', width: '100%', height: '100%', objectFit: 'cover' }} 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', margin: '0', borderRadius: '50%' }} 
                       />
                     </motion.div>
 
@@ -117,18 +117,18 @@ export const Team = () => {
                         transition={{ type: "spring", stiffness: 300 }}
                       >
                         {person.position && <h1>{person.position}</h1>}
-                        <h2>{person.name}</h2>
+                        <h2 className="font-bold">{person.name}</h2>
                         <p className="person-contact">{person.contact}</p>
                       </motion.div>
                     ) : (
                       <motion.div
                         className="person-info"
-                        animate={hoverStates[rowIndex * 2 + personIndex] ? { y: '5%', x: '0%',opacity:1 } : { y: '-0%', x: '0%',opacity:1 }}
+                        animate={hoverStates[rowIndex * 2 + personIndex] ? { y: '0%', x: '0%',opacity:1 } : { y: '-0%', x: '0%',opacity:1 }}
                         transition={{ type: "spring", stiffness:300 }}
                       >
                         {person.position && <p><strong>{person.position}</strong></p>}
                         <p><strong>Name:</strong> {person.name}</p>
-                        <p><strong>Contact:</strong> {person.contactNo}</p>
+                        {/* <p><strong>Contact:</strong> {person.contactNo}</p> */}
                         {person.email && <p>  <strong>Email:</strong> 
   <a 
     href={`https://mail.google.com/mail/?view=cm&fs=1&to=${person.email}`} 
