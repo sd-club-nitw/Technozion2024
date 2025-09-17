@@ -41,7 +41,7 @@ const RoutesManager = () => {
 			{/* <Route path="/sponsors" element={<Sponsors />} /> */}
 			{/* <Route path="/events" element={<Events />} /> */}
 			{/* <Route path="/displayevents" element={<Displayevents />} /> */}
-			{/* <Route path="/team" element={<Team />} /> */}
+			<Route path="/team" element={<Team />} />
 			{/* <Route path="/register" element={<Register />} /> */}
 			{/* <Route path="/gallery" element={<Gallery />} /> */}
 			{/* <Route path="/index" element={<Index />} /> */}
