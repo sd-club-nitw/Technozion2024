@@ -50,7 +50,7 @@
     justify-content: center; /* Center the content */
     align-items: center; /* Vertically align the paragraphs */
     gap: 2rem; /* Space between the paragraphs */
-    margin: 20px 0; /* Vertical margin */
+    margin-bottom: 5rem; /* Vertical margin */
 
   }
   .row-container p{
@@ -69,24 +69,22 @@
 .grid-row {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-bottom: 40px;
     position: relative;
     z-index: 3;
+    width: 100%;
 }
 
 .grid-row.one-item {
     justify-content: center; /* Center the single item */
-    width: 50%; /* Adjust width for centering */
+    /* width: 50%; Adjust width for centering */
     margin: 5% auto; /* Center the entire row */
-    margin-bottom: 9%;
-    margin-top: 9%;
+    
 }
 
 /* Add spacing between person cards in grid-row.two-items */
 .grid-row.two-item-even {
     justify-content: space-between; /* Spread cards evenly */
-    width: 50%; 
+    width: 70%; 
     margin: 5% auto; 
     gap: 5%; 
     margin-bottom: 4%;
@@ -94,11 +92,9 @@
 }
 .grid-row.two-item-odd {
     justify-content: space-between; /* Spread cards evenly */
-    width: 60%; 
+    width: 80%; 
     margin: 5% auto; 
     gap: 5%; 
-    margin-bottom: 4%;
-    margin-top: 4%;
 }
 .additional-image-container{
     display: flex;
@@ -122,15 +118,14 @@
 
 /* Person card styling */
 .person {
-    width: 20vw;
+    width: 30vw;
     height: fit-content;
-    padding: 15px;
+    padding: .8rem;
     border-radius: 20px;
-    
     display: flex;
     align-items: center;
     cursor: pointer;
-   
+    
     color: white;
     position: relative;
     z-index: 4;
@@ -146,7 +141,7 @@
 
 /* Hover effect */
 .person:hover {
-     transition: 0.5s ease-in;
+     /* transition: 0.5s ease-in;
     flex-direction: column;
     align-items: center; 
     justify-content: center;
@@ -156,14 +151,15 @@
    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.1); 
    backdrop-filter: blur(5px); 
    border-radius: 15px;
-   box-shadow: 0 20px 30px #16f6f3, inset 0 0 10px rgba(255, 255, 255, 0.3); 
+   box-shadow: 0 20px 30px #16f6f3, inset 0 0 10px rgba(255, 255, 255, 0.3);  */
+   
 }
 
 
 .personImage {
-    width: 6rem; 
-    height: 6rem;
-    border-radius: 50%; /* Make it a circle */
+  
+    width: 8rem; 
+    height: 8rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -175,16 +171,14 @@
 
 /* Person details */
 .personDetails {
-    flex: 1;
+    
     padding: 10px; 
     box-sizing: border-box; 
     display: flex; 
-    
     flex-direction: column;
     align-items: start; 
     justify-content: center; 
- 
-    border-radius: 40%;
+
 }
 
 .personDetails h1,
@@ -195,18 +189,18 @@
     font-size: 1rem;
 }
 .person-info{
-    width: fit-content;
+    width: 100%;
     height:100%;
- 
+ padding: .5rem;
+
      display: flex;
-     align-items: center;
+     align-items: start;
      flex-direction: column;
     
 }
 .person-info p{
     margin-top: 5%;
   font-size: 1rem;
-  border: 30%;
       
 }
 
@@ -214,7 +208,7 @@
     display: block; /* Show the contact on hover */
     font-size: 1.2rem; /* Adjust size of contact info */
     color: lightblue;
-    margin-top: 10px; /* Add some spacing */
+    /* margin-top: 10px; Add some spacing */
 }
 
 /* Media queries for responsiveness */
@@ -302,7 +296,7 @@
     .person {
         display: flex;
         flex-direction: row; /* Ensure that personImage and personDetails are side by side */
-        width: 55vw;
+        width: 100%;
         height: fit-content; /* Adjust height to auto for better responsiveness */
         padding: 15px;
         background:  rgba(0, 0, 0, 0.1); 
@@ -321,7 +315,6 @@
         height: 50%; /* Adjust height to auto */
         background-size: cover;
         aspect-ratio: 1/1; /* Enforce a square aspect ratio */
-        margin-right: 10px;
         margin-bottom: 8%;
     }
 
@@ -352,7 +345,7 @@
     .grid-row.one-item,
     .grid-row.two-items {
         flex-direction: column;
-        width:  60%;
+        width:  90%;
         height: auto;
         align-items: center;
     } 
@@ -381,15 +374,16 @@
                     inset 0 0 15px rgba(255, 255, 255, 0.1); 
         backdrop-filter: blur(5px); 
         border-radius: 15px;
-        box-shadow: 0 20px 30px #16f6f3, inset 0 0 10px rgba(255, 255, 255, 0.3); 
+        box-shadow: 0 0px 3px #000000, inset 0 0 10px rgba(255, 255, 255, 0.3); 
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         align-items: center;
         justify-content: center;
     }
 
     .personImage {
-        width: 20vw; /* Ensure personImage takes 50% of the parent width */
-        height: 20vw; /* Adjust height to auto */
+        width: 100%; /* Ensure personImage takes 50% of the parent width */
+        /* height: auto; Adjust height to auto */
+        max-height: 15rem;
         /* margin-right: 10px; */
     }
 
@@ -403,9 +397,7 @@
         padding: 0;
         /* font-size: 170%; Adjust font size for smaller screens */
     }
-    .person-info p{
-        font-size: 70%;
-    }
+   
     .row-container p {
         font-size: 0.9rem; /* Smaller font size for small screens */
         padding: 6px 8px; /* Reduced padding */

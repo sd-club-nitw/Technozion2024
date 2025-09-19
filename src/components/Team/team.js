@@ -3,6 +3,7 @@ import './team.css';
 import { WebCanvas } from "../bg_animation/bg_animate";
 import Teams from './Teams.png';
 import { motion } from 'framer-motion';
+import { MdEmail } from "react-icons/md";
 
 export const Team = () => {
   const [data, setData] = useState([]);
@@ -43,19 +44,19 @@ export const Team = () => {
   const gridTemplate = getGridTemplate(data);
 
   const handleMouseEnter = (index) => {
-    setHoverStates((prev) => {
-      const newHoverStates = [...prev];
-      newHoverStates[index] = true;
-      return newHoverStates;
-    });
+    // setHoverStates((prev) => {
+    //   const newHoverStates = [...prev];
+    //   newHoverStates[index] = true;
+    //   return newHoverStates;
+    // });
   };
   
   const handleMouseLeave = (index) => {
-    setHoverStates((prev) => {
-      const newHoverStates = [...prev];
-      newHoverStates[index] = false;
-      return newHoverStates;
-    });
+    // setHoverStates((prev) => {
+    //   const newHoverStates = [...prev];
+    //   newHoverStates[index] = false;
+    //   return newHoverStates;
+    // });
   };
 
   return (
@@ -83,63 +84,78 @@ export const Team = () => {
 </a>
         </div>
         <div className="additional-image-container">
-          <p className='sacimg'>SECRETARY</p>
+          <p className='sacimg'>SECRETARIES</p>
         </div>
 
         {gridTemplate.map((row, rowIndex) => (
           <React.Fragment key={rowIndex}>
-            <div className={`grid-row ${row.length === 1 ? 'one-item' : rowIndex % 2 === 0 ? 'two-item-even' : 'two-item-odd'}`}>
+            <div className={`grid-row  ${row.length === 1 ? 'one-item' : rowIndex % 2 === 0 ? 'two-item-even' : 'two-item-odd'}`}>
               {row.map((person, personIndex) =>
                 person?.name ? (
                   <div
-                    className="person"
+                    className="person relative gap-x-1 group rounded-lg border transition duration-300 hover:border-cyan-400 hover:[box-shadow:0_0_2px_#22d3ee,inset_0_0_3px_#22d3ee]"
                     key={personIndex}
                     id={`person-${rowIndex}-${personIndex}`}
-                    onMouseEnter={() => handleMouseEnter(rowIndex * 2 + personIndex)}
-                    onMouseLeave={() => handleMouseLeave(rowIndex * 2 + personIndex)}
+                    // onMouseEnter={() => handleMouseEnter(rowIndex * 2 + personIndex)}
+                    // onMouseLeave={() => handleMouseLeave(rowIndex * 2 + personIndex)}
                   >
+          
+      
                     <motion.div 
-                      className="personImage"
-                      animate={hoverStates[rowIndex * 2 + personIndex] ? { y: '-52%', x: '0%',scale:1.2 } : { y: '0%', x: '0%',scale:1 }}
+                      className="personImage flex-shrink-0"
+                      // animate={hoverStates[rowIndex * 2 + personIndex] ? { y: '-52%', x: '0%',scale:1.2 } : { y: '0%', x: '0%',scale:1 }}
                       transition={{ type: "spring", stiffness: 300 }}
-                    >
+                      >
                       <img 
                         src={`/teamImages/${person.image}`} 
+                        className="rounded-lg "
                         alt="" 
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', margin: '0', borderRadius: '50%' }} 
-                      />
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                        />
                     </motion.div>
 
                     {!hoverStates[rowIndex * 2 + personIndex] && windowWidth > 510 ? (
                       <motion.div
-                        className="personDetails"
-                        animate={{ y: '0%', x: '0%' }} // No motion needed for the initial state
-                        transition={{ type: "spring", stiffness: 300 }}
+                      className="personDetails"
+                      // animate={{ y: '0%', x: '0%' }} // No motion needed for the initial state
+                      transition={{ type: "spring", stiffness: 300 }}
                       >
-                        {person.position && <h1>{person.position}</h1>}
-                        <h2 className="font-bold">{person.name}</h2>
-                        <p className="person-contact">{person.contact}</p>
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        className="person-info"
-                        animate={hoverStates[rowIndex * 2 + personIndex] ? { y: '0%', x: '0%',opacity:1 } : { y: '-0%', x: '0%',opacity:1 }}
-                        transition={{ type: "spring", stiffness:300 }}
-                      >
-                        {person.position && <p><strong>{person.position}</strong></p>}
-                        <p><strong>Name:</strong> {person.name}</p>
-                        {/* <p><strong>Contact:</strong> {person.contactNo}</p> */}
-                        {person.email && <p>  <strong>Email:</strong> 
+                        {person.position && <h1 className="font-bold">{person.position}</h1>}
+                        <h2>{person.name}</h2>
+                           
+                       
+                        {person.email && <p className="flex items-center justify-start gap-x-2 mt-2"> <MdEmail className="scale-150" />
   <a 
     href={`https://mail.google.com/mail/?view=cm&fs=1&to=${person.email}`} 
     target="_blank" 
     rel="noopener noreferrer"
-
-  >
+    
+    >
+    {person.email}
+  </a></p>}
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                      className="person-info"
+                      animate={hoverStates[rowIndex * 2 + personIndex] ? { y: '0%', x: '0%',opacity:1 } : { y: '-0%', x: '0%',opacity:1 }}
+                      transition={{ type: "spring", stiffness:300 }}
+                      >
+                        {person.position && <p><strong>{person.position}</strong></p>}
+                        <p><strong>Name:</strong> {person.name}</p>
+                        {/* <p><strong>Contact:</strong> {person.contactNo}</p> */}
+                        {person.email && <p className="flex items-center gap-x-2 mt-2">
+                          <MdEmail className="scale-150" />
+  <a 
+    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${person.email}`} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    
+    >
     {person.email}
   </a></p>}
                       </motion.div>
                     )}
+                 
                   </div>
                 ) : null
               )}
