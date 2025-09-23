@@ -1,70 +1,60 @@
 [
   {
-    "name": "Ishaan Sharma",
-    "contactNo": "9817809166",
+    "name": "G. V. Sai Vamsi",
     "position": "SAC Secretary Technical",
     "email": "sec_technical@nitw.ac.in",
-     "image":"Ishan.png"
+     "image":"technical_secretary.jpg"
     
   },
   {
-    "name": "Atharva Deshpande",
+    "name": "R. Karthikeya Reddy",
     "email": "sec_sports@nitw.ac.in",
     "position": "SAC Secretary Sports",
-     "contactNo": "9923822196",
-     "image":"Atharva.jpg"
+     "image":"sports_secretary.jpg"
    
   },
  
   {
-    "name": "G.Yaswanth",
+    "name": "B Y S Harsha",
     "email": "sec_fms@nitw.ac.in",
     "position": "SAC Secretary Film and Music",
-    "contactNo": "9989257407",
-    "image":"Yaswanth.jpg"
+    "image":"films_secretary.jpg"
     
   },
   {
-    "name": "Randheer",
-    "contactNo": "7569743332",
+    "name": "Samanvith Reddy",
+    "contactNo": "",
     "position": "SAC Secretary Cultural",
    "email": "sec_cultural@nitw.ac.in",
-   "image":"Randheer.jpg"
+   "image":"cultural_secretary.jpg"
     
   },
   {
-    "name":"Samanvith Reddy ",
-      "contactNo": "7702268442",
+    "name":"Sai Pavan Godasu",
     "position": "Joint Secretary Cultural",
    "email": "",
-   "image":"cultural.jpg"
+   "image":"cultural_joint.jpg"
    
   },
   {
-    "name":"Dhairyesh Pande ",
-      "contactNo": "9545892828",
+    "name":"Abhiram Gudivenuka",
+     
     "position": "Joint Secretary Film and music",
    "email": "",
-   "image":"dharish.jpg"
+   "image":"fms_joint_secretary.jpg"
     
   },
   
   {
-    "name":"Shubhangi Thakur ",
+    "name":"Dheeraj Bhasaru",
       "contactNo": "9826078917",
     "position": "Joint Secretary Sports",
    "email": "",
-   "image":"shubhangi.jpg"
+   "image":"technical_joint_secretary.jpg"
     
   },
-  {
-    "name":"Ramachandra Reddy",
-      "contactNo": "9346617822",
-    "position": "Joint Secretary Technical",
-   "email": "",
-   "image":"tech.jpg"
-    
-  },
+  {},
+
   {
     "name":"Manikanta Reddy Sama",
     "contactNo":"7032716998",
