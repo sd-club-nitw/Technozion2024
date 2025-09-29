@@ -1,64 +1,83 @@
-import React, { createContext, useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-
-import { Loader } from '../components/Loader';
+import React, { createContext, useContext, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Loader } from '../components/Loader'
 
 const AuthContext = createContext()
-const useAuth = () => {
-  return useContext(AuthContext)
-}
+export const useAuth = () => useContext(AuthContext)
+
 const AuthProvider = ({ children }) => {
-  const url = process.env.REACT_APP_BACKEND_URL;
+  const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
-
-  const user = localStorage.getItem('user_info')
-
   const navigate = useNavigate()
-  const authGoogle = async (accessToken) => {
+  const url = process.env.REACT_APP_BACKEND_URL
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user_info')
+    if (storedUser) setUser(JSON.parse(storedUser))
+  }, [])
+
+  const login = async (email, password) => {
     setLoading(true)
     try {
-      const response = await fetch(`${url}/oauth`, {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ googleAccessToken: accessToken })
+      const res = await fetch(`${url}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
       })
-      const data = await response.json()
-
-      console.log(data, "data")
-      if (!data.Errmessage) {
-        localStorage.setItem('user_info', JSON.stringify(data));
+      const data = await res.json()
+      if (res.ok) {
+        localStorage.setItem('user_info', JSON.stringify(data.user))
+        localStorage.setItem('token', data.token)
+        setUser(data.user)
+        if (data.user.needsPayment) navigate('/payment')
+        else navigate('/')
+      } else {
+        alert(data.message)
       }
-
-      navigate('/')
-
     } catch (err) {
-      console.log(err?.message)
-      alert("SomeThing Went Wrong please try after some time")
+      console.log(err)
+      alert("Something went wrong")
+    }
+    finally { setLoading(false) }
+  }
+
+  const register = async (name, email, password) => {
+    setLoading(true)
+    try {
+      const res = await fetch(`${url}/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+      })
+      const data = await res.json()
+      if (res.ok) {
+        localStorage.setItem('user_info', JSON.stringify(data.user))
+        localStorage.setItem('token', data.token)
+        setUser(data.user)
+        if (data.user.needsPayment) navigate('/payment')
+        else navigate('/')
+      } else {
+        alert(data.message)
+      }
+    } catch (err) {
+      console.log(err)
+      alert("Something went wrong")
     }
     setLoading(false)
   }
+
   const logout = () => {
-    localStorage.clear()
-    // window.location.reload(false)
-    navigate('/');
-  }
-  const value = {
-    authGoogle,
-    user,
-    logout,
-    setLoading
+    localStorage.removeItem('user_info')
+    localStorage.removeItem('token')
+    setUser(null)
+    navigate('/login')
   }
 
   return (
-    <AuthContext.Provider value={value}>
-      {
-        loading ? (<Loader />) : children
-      }
+    <AuthContext.Provider value={{ user, login, register, logout, loading, setLoading }}>
+      {loading ? <Loader /> : children}
     </AuthContext.Provider>
   )
 }
+
 export default AuthProvider
-export { useAuth }
