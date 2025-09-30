@@ -56,18 +56,19 @@ const AuthProvider = ({ children }) => {
         setUser(data.user)
         if (data.user.needsPayment) navigate('/payment')
         else navigate('/')
-      } else {
-        console.log(data)
-        console.log(data.message)
+      } 
+      else{
+        alert(data.message);
       }
     } catch (err) {
-      console.log(err)
-      alert("Something went wrong")
+      alert(err);
     }
     setLoading(false)
   }
 
   const logout = () => {
+    const ok = window.confirm("Logout?");
+    if(!ok) return;
     localStorage.removeItem('user_info')
     localStorage.removeItem('token')
     setUser(null)

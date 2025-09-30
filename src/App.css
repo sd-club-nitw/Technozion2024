@@ -16,6 +16,7 @@ body {
   padding: 0 !important;
   overflow-x: clip;
   background-color: #020928;
+  color:black
 }
 
 ::-webkit-scrollbar {

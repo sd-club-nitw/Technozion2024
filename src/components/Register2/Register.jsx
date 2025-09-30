@@ -19,9 +19,9 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 ">
       {" "}
-      <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+      <div className="bg-gray p-8 rounded-2xl shadow-lg w-full max-w-md">
         {" "}
         <h2 className="text-2xl font-bold mb-6 text-center">
           Create Account
@@ -32,16 +32,16 @@ const Register = () => {
             type="text"
             placeholder="Full Name"
             {...reactRegister("name", { required: "Name is required" })}
-            className="w-full px-4 py-2 border rounded-md"
+            className="w-full px-4 py-2 border rounded-md outline-none focus:outline-none text-ssblue"
           />{" "}
           {errors.name && (
-            <p className="text-red-500 text-sm">{errors.name.message}</p>
+            <p className="text-ssred text-sm">{errors.name.message}</p>
           )}{" "}
           <input
             type="email"
             placeholder="Email"
             {...reactRegister("email", { required: "Email is required" })}
-            className="w-full px-4 py-2 border rounded-md"
+            className="w-full px-4 py-2 border rounded-md outline-none focus:outline-none"
           />{" "}
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -50,7 +50,7 @@ const Register = () => {
             type="password"
             placeholder="Password"
             {...reactRegister("password", { required: "Password is required" })}
-            className="w-full px-4 py-2 border rounded-md"
+            className="w-full px-4 py-2 border rounded-md outline-none focus:outline-none"
           />{" "}
           {errors.password && (
             <p className="text-red-500 text-sm">{errors.password.message}</p>
