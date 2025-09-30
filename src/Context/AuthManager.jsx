@@ -57,7 +57,8 @@ const AuthProvider = ({ children }) => {
         if (data.user.needsPayment) navigate('/payment')
         else navigate('/')
       } else {
-        alert(data.message)
+        console.log(data)
+        console.log(data.message)
       }
     } catch (err) {
       console.log(err)

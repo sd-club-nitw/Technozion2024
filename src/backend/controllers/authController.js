@@ -1,10 +1,18 @@
 const User = require('../models/User')
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 
 const register = async(req,res)=>{
     try{
-        const {name,email,password} = req.body;
+        console.log("FULL REGISTER REQ BODY:", req.body);
+        const {name,email,password} = req.body.name;
+
+        console.log("REGISTER REQ BODY:", req.body);
+        console.log("PASSWORD:", password);
+
+        if (!password) {
+            return res.status(400).json({ message: "Name, email and password are required" });
+        }
 
         const exist = await User.findOne({email})
         if(exist){
@@ -40,12 +48,12 @@ const login = async(req,res)=>{
         const user = await User.findOne({email});
         
         if(!user){
-            res.status(400).json({message: "User not found"})
+            return res.status(400).json({message: "User not found"})
         }
         
         const match = await bcrypt.compare(password,user.password);
         if(!match){
-            res.status(400).json({message: "Incorrect Password"});
+            return res.status(400).json({message: "Incorrect Password"});
         }
         
         const token = jwt.sign({id:user._id},process.env.jwt_key,{expiresIn:'1h'});

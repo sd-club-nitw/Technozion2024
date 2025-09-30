@@ -6,12 +6,13 @@ dotenv.config();
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors())
-app.use(express.json())
 
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>console.log("done kathpal"))
-.catch(err => console.err(err))
+.catch(err => console.log(err))
 
 const authRoutes = require('./routes/auth')
 app.use('/auth',authRoutes)
