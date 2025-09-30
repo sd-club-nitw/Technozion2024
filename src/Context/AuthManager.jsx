@@ -40,38 +40,27 @@ const AuthProvider = ({ children }) => {
     finally { setLoading(false) }
   }
 
-  // register accepts a single object with fields used by the frontend form.
-  // It supports File, FileList or array for idDocument and paymentScreenshot.
-  const register = async (registrationData) => {
-  setLoading(true);
-  try {
-    // Helper: upload a file to Cloudinary and return the URL
-    const uploadToCloudinary = async (file) => {
-      const cloudName = "dpjrslhwg"; // replace with your Cloudinary cloud name
-      const uploadPreset = "technozian_upload"; // replace with your preset
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", uploadPreset);
-
-      const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/upload`, {
-        method: "POST",
-        body: formData,
-      });
-      const data = await res.json();
-      return data.secure_url; // return the uploaded file URL
-    };
-
-    // Upload ID Document
-    let idDocumentUrl = null;
-    if (registrationData.idDocument) {
-      const idFile = Array.isArray(registrationData.idDocument)
-        ? registrationData.idDocument[0]
-        : registrationData.idDocument;
-      idDocumentUrl = await uploadToCloudinary(idFile);
-    } else {
-      alert("Please upload your College ID/Aadhar.");
-      setLoading(false);
-      return;
+  const register = async (name, email, password) => {
+    setLoading(true)
+    try {
+      const res = await fetch(`${url}/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+      })
+      const data = await res.json()
+      if (res.ok) {
+        localStorage.setItem('user_info', JSON.stringify(data.user))
+        localStorage.setItem('token', data.token)
+        setUser(data.user)
+        if (data.user.needsPayment) navigate('/payment')
+        else navigate('/')
+      } 
+      else{
+        alert(data.message);
+      }
+    } catch (err) {
+      alert(err);
     }
 
     // Upload Payment Screenshot if needed
@@ -130,6 +119,8 @@ const AuthProvider = ({ children }) => {
 
 
   const logout = () => {
+    const ok = window.confirm("Logout?");
+    if(!ok) return;
     localStorage.removeItem('user_info')
     localStorage.removeItem('token')
     setUser(null)
