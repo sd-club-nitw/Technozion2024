@@ -41,14 +41,46 @@ const AuthProvider = ({ children }) => {
     finally { setLoading(false) }
   }
 
-  const register = async (name, email, password) => {
+  // register accepts a single object with fields:
+  // { name, email, password, collegeName, accommodation, idDocument }
+  const register = async (registrationData) => {
     setLoading(true)
     try {
-      const res = await fetch(`${url}/auth/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password })
-      })
+      let res
+
+      // If idDocument is a File, send multipart/form-data
+      if (registrationData && registrationData.idDocument && registrationData.idDocument instanceof File) {
+        const form = new FormData()
+        form.append('name', registrationData.name || '')
+        form.append('email', registrationData.email || '')
+        form.append('password', registrationData.password || '')
+        if (registrationData.collegeName) form.append('collegeName', registrationData.collegeName)
+        if (typeof registrationData.accommodation !== 'undefined') form.append('accommodation', String(registrationData.accommodation))
+        form.append('idDocument', registrationData.idDocument)
+
+        res = await fetch(`${url}/auth/register`, {
+          method: 'POST',
+          body: form
+        })
+      } else {
+        // Fallback: send JSON (no file)
+        const payload = {
+          name: registrationData?.name,
+          email: registrationData?.email,
+          password: registrationData?.password,
+          collegeName: registrationData?.collegeName,
+          accommodation: registrationData?.accommodation,
+          // include idDocument object if provided (not a File)
+          ...(registrationData && registrationData.idDocument && !(registrationData.idDocument instanceof File) ? { idDocument: registrationData.idDocument } : {})
+        }
+
+        res = await fetch(`${url}/auth/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+      }
+
       const data = await res.json()
       if (res.ok) {
         localStorage.setItem('user_info', JSON.stringify(data.user))
