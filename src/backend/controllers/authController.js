@@ -1,55 +1,47 @@
 const User = require('../models/User')
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-const register = async(req,res)=>{
-    try{
-        // Accept registration fields from req.body. If file was uploaded via middleware it may appear on req.file - we will destructure but not process file content here.
-        console.log("FULL REGISTER REQ BODY:", req.body);
-        const { name, email, password, collegeName, accommodation, idDocument } = req.body || {};
-
-        let events = [];
-        if (req.body && req.body.events) {
-            try {
-                events = typeof req.body.events === 'string' ? JSON.parse(req.body.events) : req.body.events;
-            } catch (e) {
-                console.log('Failed to parse events:', e.message);
-            }
-        }
-
-        if (req.file) {
-            console.log('Received file in request (will not be processed here):', req.file.originalname);
-        }
+// Register
+const register = async (req, res) => {
+    try {
+        const {
+            name,
+            email,
+            password,
+            collegeName,
+            accommodation,
+            events = [],
+            idDocumentUrl = null,
+            paymentScreenshotUrl = null
+        } = req.body || {}
 
         if (!name || !email || !password) {
-            return res.status(400).json({ message: "Name, email and password are required" });
+            return res.status(400).json({ message: "Name, email and password are required" })
         }
 
         const exist = await User.findOne({ email })
         if (exist) {
-            return res.status(400).json({ message: "Email already registered" });
+            return res.status(400).json({ message: "Email already registered" })
         }
 
-        const hashed = await bcrypt.hash(password, 10);
-        const isCollege = typeof email === 'string' && email.endsWith('nitw.ac.in');
-
-        // normalize accommodation to boolean when possible
-        const accommodationBool = accommodation === true || accommodation === 'true' || accommodation === '1' || accommodation === 1;
+        const hashedPassword = await bcrypt.hash(password, 10)
+        const accommodationBool = accommodation === true || accommodation === 'true' || accommodation === '1' || accommodation === 1
 
         const userPayload = {
             name,
             email,
-            password: hashed,
+            password: hashedPassword,
+            collegeName: collegeName || undefined,
+            accommodation: accommodationBool,
+            events,
+            idDocumentUrl,
+            paymentScreenshotUrl
         }
-
-        if (collegeName) userPayload.collegeName = collegeName;
-        if (typeof accommodation !== 'undefined') userPayload.accommodation = accommodationBool;
-    if (events && events.length) userPayload.events = events;
-
 
         const user = await User.create(userPayload)
 
-        const token = jwt.sign({ id: user._id }, process.env.jwt_key, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user._id }, process.env.jwt_key, { expiresIn: '1h' })
 
         res.json({
             user: {
@@ -57,41 +49,49 @@ const register = async(req,res)=>{
                 email: user.email,
                 collegeName: user.collegeName || null,
                 accommodation: !!user.accommodation,
-                events: user.events || []
+                events: user.events || [],
+                idDocumentUrl: user.idDocumentUrl,
+                paymentScreenshotUrl: user.paymentScreenshotUrl
             },
             token
         })
 
-    }catch(err){
-        res.status(500).json({message:err.message});
+    } catch (err) {
+        console.error('Register error:', err)
+        res.status(500).json({ message: err.message })
     }
 }
 
-const login = async(req,res)=>{
+// Login
+const login = async (req, res) => {
     try {
-        const {email,password} = req.body;
-        
-        const user = await User.findOne({email});
-        
-        if(!user){
-            return res.status(400).json({message: "User not found"})
-        }
-        
-        const match = await bcrypt.compare(password,user.password);
-        if(!match){
-            return res.status(400).json({message: "Incorrect Password"});
-        }
-        
-        const token = jwt.sign({id:user._id},process.env.jwt_key,{expiresIn:'1h'});
-        
+        const { email, password } = req.body
+
+        const user = await User.findOne({ email })
+        if (!user) return res.status(400).json({ message: "User not found" })
+
+        const match = await bcrypt.compare(password, user.password)
+        if (!match) return res.status(400).json({ message: "Incorrect Password" })
+
+        const token = jwt.sign({ id: user._id }, process.env.jwt_key, { expiresIn: '1h' })
+
         res.json({
-            user : {name : user.name , email: user.email,needsPayment: user.needsPayment},
+            user: {
+                name: user.name,
+                email: user.email,
+                collegeName: user.collegeName || null,
+                accommodation: !!user.accommodation,
+                events: user.events || [],
+                idDocumentUrl: user.idDocumentUrl,
+                paymentScreenshotUrl: user.paymentScreenshotUrl
+            },
             token
         })
 
-    } catch (error) {
-        console.log('Error', error)
+    } catch (err) {
+        console.error('Login error:', err)
+        res.status(500).json({ message: err.message })
     }
 }
 
-module.exports = {register,login};
+module.exports = { register, login }

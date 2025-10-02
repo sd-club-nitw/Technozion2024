@@ -6,7 +6,9 @@ const userSchema = new mongoose.Schema({
     password: String,
     collegeName: { type: String },
     accommodation: { type: Boolean, default: false },
-    events: { type: [String], default: [] }
+    events: { type: [String], default: [] },
+    idDocumentUrl: { type: String, default: null },
+    paymentScreenshotUrl: { type: String, default: null }
 })
 
 module.exports = mongoose.model('User',userSchema);

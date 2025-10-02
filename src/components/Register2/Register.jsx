@@ -57,7 +57,9 @@ const Register = () => {
 
   const isValidGmail = (email) => {
     if (!email || typeof email !== "string") return false;
-    return email.toLowerCase().includes("@gmail.com");
+    const trimmed = email.trim().toLowerCase();
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(trimmed);
   };
 
   const computeAmount = () => {
@@ -128,25 +130,15 @@ const Register = () => {
       clearErrors("idDocument");
     }
 
-    // Validate id file size
-    const max = 512000; // 500 KB
-    if (idFile && idFile.size > max) {
-      setError("idDocument", { type: "size", message: "ID file must be 500 KB or smaller." });
-      return;
-    }
-
-    if (isValidGmail(watchedEmail)) {
+    if (watchedEmail && !watchedEmail.includes("niw.ac.in")) {
       if (!paymentScreenshot) {
         setPaymentError(
           "Please upload a payment screenshot before registering."
         );
         setPayModalOpen(true);
         return;
-      }
-      if (paymentScreenshot && paymentScreenshot.size > max) {
-        setPaymentError("Payment screenshot must be 500 KB or smaller.");
-        setPayModalOpen(true);
-        return;
+      } else {
+        setPaymentError("");
       }
     }
 
@@ -434,7 +426,9 @@ const Register = () => {
                             const max = 512000; // 500 KB
                             if (f.size > max) {
                               setPaymentScreenshot(null);
-                              setPaymentError("Payment screenshot must be 500 KB or smaller.");
+                              setPaymentError(
+                                "Payment screenshot must be 500 KB or smaller."
+                              );
                               return;
                             }
                             setPaymentScreenshot(f);
