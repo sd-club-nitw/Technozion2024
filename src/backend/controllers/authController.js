@@ -8,13 +8,11 @@ const register = async(req,res)=>{
         console.log("FULL REGISTER REQ BODY:", req.body);
         const { name, email, password, collegeName, accommodation, idDocument } = req.body || {};
 
-        // events may be sent as JSON array in JSON body, or as a stringified JSON in form-data
         let events = [];
         if (req.body && req.body.events) {
             try {
                 events = typeof req.body.events === 'string' ? JSON.parse(req.body.events) : req.body.events;
             } catch (e) {
-                // ignore parse errors and keep events as empty
                 console.log('Failed to parse events:', e.message);
             }
         }

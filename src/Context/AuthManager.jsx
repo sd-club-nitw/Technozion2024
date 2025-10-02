@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const url = process.env.REACT_APP_BACKEND_URL
+  const url = "http://localhost:5000"
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user_info')
@@ -40,45 +40,59 @@ const AuthProvider = ({ children }) => {
     finally { setLoading(false) }
   }
 
-  // register accepts a single object with fields:
-  // { name, email, password, collegeName, accommodation, idDocument }
+  // register accepts a single object with fields used by the frontend form.
+  // It supports File, FileList or array for idDocument and paymentScreenshot.
   const register = async (registrationData) => {
     setLoading(true)
     try {
-      let res
+      let res;
+      const normalizeFirstFile = (maybeFile) => {
+        if (!maybeFile) return undefined
+        if (typeof File !== 'undefined' && maybeFile instanceof File) return maybeFile
+        if (maybeFile && maybeFile.length && maybeFile[0]) return maybeFile[0]
+        if (Array.isArray(maybeFile) && maybeFile.length) return maybeFile[0]
+        return undefined
+      }
 
-      // If idDocument is a File, send multipart/form-data
-      if (registrationData && registrationData.idDocument && registrationData.idDocument instanceof File) {
-        const form = new FormData()
-        form.append('name', registrationData.name || '')
-        form.append('email', registrationData.email || '')
-        form.append('password', registrationData.password || '')
-        if (registrationData.collegeName) form.append('collegeName', registrationData.collegeName)
-        if (typeof registrationData.accommodation !== 'undefined') form.append('accommodation', String(registrationData.accommodation))
-        if (registrationData.events) form.append('events', JSON.stringify(registrationData.events))
-        form.append('idDocument', registrationData.idDocument)
+      const idFile = normalizeFirstFile(registrationData && registrationData.idDocument)
+      const paymentFile = normalizeFirstFile(registrationData && registrationData.paymentScreenshot)
+      const hasFiles = !!(idFile || paymentFile)
+
+      if (hasFiles) {
+        // Temporarily do NOT send actual files. Send JSON metadata only so backend
+        // continues to receive req.body (express.json()). Files will be uploaded to
+        // Cloudinary later and you can update backend accordingly.
+        const payload = {
+          name: registrationData.name || '',
+          email: registrationData.email || '',
+          password: registrationData.password || '',
+          collegeName: registrationData.collegeName || '',
+          accommodation: registrationData.accommodation,
+          events: registrationData.events,
+          idDocumentName: idFile ? idFile.name : undefined,
+          paymentScreenshotName: paymentFile ? paymentFile.name : undefined,
+        }
 
         res = await fetch(`${url}/auth/register`, {
           method: 'POST',
-          body: form
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
         })
       } else {
-        // Fallback: send JSON (no file)
         const payload = {
           name: registrationData?.name,
           email: registrationData?.email,
           password: registrationData?.password,
           collegeName: registrationData?.collegeName,
           accommodation: registrationData?.accommodation,
-          // include idDocument object if provided (not a File)
-          ...(registrationData && registrationData.idDocument && !(registrationData.idDocument instanceof File) ? { idDocument: registrationData.idDocument } : {}),
           events: registrationData?.events,
         }
+        if (registrationData && registrationData.idDocument && !(registrationData.idDocument instanceof File)) payload.idDocument = registrationData.idDocument
 
         res = await fetch(`${url}/auth/register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: JSON.stringify(payload),
         })
       }
 
@@ -89,14 +103,13 @@ const AuthProvider = ({ children }) => {
         setUser(data.user)
         navigate('/')
       } else {
-        console.log(data)
-        console.log(data.message)
+        console.log('register error', data)
       }
     } catch (err) {
       console.log(err)
-      // alert("Something went wrong")
+    } finally {
+      setLoading(false)
     }
-    setLoading(false)
   }
 
   const logout = () => {
