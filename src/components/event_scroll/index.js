@@ -77,7 +77,7 @@ function Index() {
       <div key={society.societyName}>
         <h2 className="society-heading">{society.societyName}</h2>
         <div className="poster-container">
-          {society.events.map((event, index) => (
+          {society.events?.map((event, index) => (
             <Poster
               key={index}
               imageSrc={event.imgsrc} // Pass the event's imgsrc

@@ -4,6 +4,7 @@ import './card.css';
 import ResizeObserver from 'resize-observer-polyfill';
 import { WebCanvas } from '../bg_animation/bg_animate'; 
 import fallbackImg from './tzcomingsoon.png'; // Fallback image
+import PosterSkeleton from "../Skeleton/PosterSkeleton";
 
 const Card = () => {
     const location = useLocation(); // Extract data from navigation
@@ -87,7 +88,8 @@ const Card = () => {
                 <div className="text">
                     <div className="logo-cardnav-container"> 
                         <div className="logo-container">
-                            <img src={imageSrc} alt="Logo" className="cnt-logo" onError={handleImageError} />
+                            <PosterSkeleton src={imageSrc} alt="Logo" className="cnt-logo" onError={handleImageError} />
+                           
                         </div>
                         <div className="content-container">
                             <div className="cardnav">
@@ -118,9 +120,9 @@ const Card = () => {
                             <div className="content" ref={contentRef} key={activeTab}> {/* Key ensures content re-renders on tab change */}
                                 {renderContent()}
                             </div>
-                            <div className="register">
+                            {/* <div className="register">
                                 <button className="register-button" onClick={handleRegister}>Register</button>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

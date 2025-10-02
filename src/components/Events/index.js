@@ -106,7 +106,7 @@ const Events = () => {
           </div>
 
           {/* portal + flame remain at the bottom */}
-          <div className="Portal">
+          {/* <div className="Portal">
             <img src={Portal} alt="Portal" className="portal-img" />
             <motion.img
               src={Flame}
@@ -116,7 +116,7 @@ const Events = () => {
               animate={{ opacity: flame ? 1 : 0 }}
               transition={{ duration: 0.35 }}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </>
