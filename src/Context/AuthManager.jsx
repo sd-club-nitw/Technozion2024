@@ -29,8 +29,7 @@ const AuthProvider = ({ children }) => {
         localStorage.setItem('user_info', JSON.stringify(data.user))
         localStorage.setItem('token', data.token)
         setUser(data.user)
-        if (data.user.needsPayment) navigate('/payment')
-        else navigate('/')
+        navigate('/')
       } else {
         alert(data.message)
       }
@@ -56,6 +55,7 @@ const AuthProvider = ({ children }) => {
         form.append('password', registrationData.password || '')
         if (registrationData.collegeName) form.append('collegeName', registrationData.collegeName)
         if (typeof registrationData.accommodation !== 'undefined') form.append('accommodation', String(registrationData.accommodation))
+        if (registrationData.events) form.append('events', JSON.stringify(registrationData.events))
         form.append('idDocument', registrationData.idDocument)
 
         res = await fetch(`${url}/auth/register`, {
@@ -71,7 +71,8 @@ const AuthProvider = ({ children }) => {
           collegeName: registrationData?.collegeName,
           accommodation: registrationData?.accommodation,
           // include idDocument object if provided (not a File)
-          ...(registrationData && registrationData.idDocument && !(registrationData.idDocument instanceof File) ? { idDocument: registrationData.idDocument } : {})
+          ...(registrationData && registrationData.idDocument && !(registrationData.idDocument instanceof File) ? { idDocument: registrationData.idDocument } : {}),
+          events: registrationData?.events,
         }
 
         res = await fetch(`${url}/auth/register`, {
@@ -86,15 +87,14 @@ const AuthProvider = ({ children }) => {
         localStorage.setItem('user_info', JSON.stringify(data.user))
         localStorage.setItem('token', data.token)
         setUser(data.user)
-        if (data.user.needsPayment) navigate('/payment')
-        else navigate('/')
+        navigate('/')
       } else {
         console.log(data)
         console.log(data.message)
       }
     } catch (err) {
       console.log(err)
-      alert("Something went wrong")
+      // alert("Something went wrong")
     }
     setLoading(false)
   }

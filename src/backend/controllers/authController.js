@@ -8,12 +8,21 @@ const register = async(req,res)=>{
         console.log("FULL REGISTER REQ BODY:", req.body);
         const { name, email, password, collegeName, accommodation, idDocument } = req.body || {};
 
-        // If middleware attached a file (e.g. multer), note it but do not process here per instruction
+        // events may be sent as JSON array in JSON body, or as a stringified JSON in form-data
+        let events = [];
+        if (req.body && req.body.events) {
+            try {
+                events = typeof req.body.events === 'string' ? JSON.parse(req.body.events) : req.body.events;
+            } catch (e) {
+                // ignore parse errors and keep events as empty
+                console.log('Failed to parse events:', e.message);
+            }
+        }
+
         if (req.file) {
             console.log('Received file in request (will not be processed here):', req.file.originalname);
         }
 
-        // Basic validation
         if (!name || !email || !password) {
             return res.status(400).json({ message: "Name, email and password are required" });
         }
@@ -33,20 +42,25 @@ const register = async(req,res)=>{
             name,
             email,
             password: hashed,
-            needsPayment: !isCollege,
         }
 
         if (collegeName) userPayload.collegeName = collegeName;
         if (typeof accommodation !== 'undefined') userPayload.accommodation = accommodationBool;
+    if (events && events.length) userPayload.events = events;
 
-        // Do not store idDocument here per instruction. If you want to store metadata, pass idDocument when it's not a file.
 
         const user = await User.create(userPayload)
 
         const token = jwt.sign({ id: user._id }, process.env.jwt_key, { expiresIn: '1h' });
 
         res.json({
-            user: { name: user.name, email: user.email, needsPayment: user.needsPayment },
+            user: {
+                name: user.name,
+                email: user.email,
+                collegeName: user.collegeName || null,
+                accommodation: !!user.accommodation,
+                events: user.events || []
+            },
             token
         })
 
