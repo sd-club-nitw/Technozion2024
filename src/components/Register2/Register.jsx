@@ -25,7 +25,6 @@ const Register = () => {
       );
   }, [watchedEvents]);
 
-  // ensure 'events' field is registered with react-hook-form so setValue works
   useEffect(() => {
     try {
       reactRegister && reactRegister("events");
@@ -34,7 +33,6 @@ const Register = () => {
     }
   }, [reactRegister]);
 
-  // sample events - replace with real events as needed
   const sampleEvents = [
     "Robo Race",
     "Coding Marathon",
@@ -62,23 +60,23 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center md:items-start min-h-screen p-4 md:pt-24 overflow-auto">
+    <div className="flex justify-center items-center md:items-start min-h-screen p-2 sm:p-4 md:pt-24 overflow-auto">
       <div
-        className="bg-gray p-8 rounded-2xl shadow-lg w-full max-w-md"
+        className="bg-gray p-6 md:p-8 rounded-2xl shadow-lg w-full max-w-md"
         style={{ maxHeight: "calc(100vh - 4rem)", overflow: "auto" }}
       >
         {/* scoped override: hide the animated ::after glow for elements we mark with .no-glow */}
         <style>{`.no-glow::after { display: none !important; }`}</style>
-        <h2 className="text-xl font-bold mb-2 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">
           Registration for technozion 2025
         </h2>
-        <div className="mb-4 text-center">
-          <div className="inline-block px-3 py-2 bg-gray-100 rounded-md text-sm text-gray-700">
-            <div>
+        <div className="mb-6 text-center">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4">
+            <div className="px-3 py-2 bg-gray-100 rounded-md text-sm text-gray-700 w-full sm:w-auto">
               Registration fee of TZ:{" "}
               <span className="font-semibold">₹500</span>
             </div>
-            <div>
+            <div className="px-3 py-2 bg-gray-100 rounded-md text-sm text-gray-700 w-full sm:w-auto">
               Accommodation: <span className="font-semibold">₹100 / day</span>
             </div>
           </div>
@@ -230,50 +228,48 @@ const Register = () => {
             <label className="text-sm font-medium mb-1">
               Upload Aadhar / College ID (optional)
             </label>
-            <div className="flex items-center space-x-3">
-              <div className="flex items-center space-x-3">
-                <input
-                  id="idDocument"
-                  type="file"
-                  accept="image/*,.pdf"
-                  {...reactRegister("idDocument", {
-                    validate: (v) => {
-                      if (!v || v.length === 0) return true;
-                      const file = v[0];
-                      if (file.size > 512000)
-                        return "File must be 500 KB or smaller";
-                      return true;
-                    },
-                  })}
-                  className="sr-only"
-                />
+            <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3 space-y-2 sm:space-y-0 mt-1">
+              <input
+                id="idDocument"
+                type="file"
+                accept="image/*,.pdf"
+                {...reactRegister("idDocument", {
+                  validate: (v) => {
+                    if (!v || v.length === 0) return true;
+                    const file = v[0];
+                    if (file.size > 512000)
+                      return "File must be 500 KB or smaller";
+                    return true;
+                  },
+                })}
+                className="sr-only"
+              />
 
-                <label
-                  htmlFor="idDocument"
-                  tabIndex={0}
-                  onKeyDown={handleFileLabelKey}
-                  role="button"
-                  aria-label="Choose ID file"
-                  className="px-4 py-2 bg-gray text-white rounded-md cursor-pointer text-sm font-medium"
-                  style={{ transition: "none", animation: "none" }}
-                >
-                  Choose file
-                </label>
+              <label
+                htmlFor="idDocument"
+                tabIndex={0}
+                onKeyDown={handleFileLabelKey}
+                role="button"
+                aria-label="Choose ID file"
+                className="px-4 py-2 bg-gray text-white rounded-md cursor-pointer text-sm font-medium text-center"
+                style={{ transition: "none", animation: "none" }}
+              >
+                Choose file
+              </label>
 
-                <div className="text-sm text-gray-600">
-                  {watchedIdDocument && watchedIdDocument.length ? (
-                    <>
-                      <span className="font-medium">
-                        {watchedIdDocument[0].name}
-                      </span>
-                      <span className="ml-2 text-xs text-gray-500">
-                        ({(watchedIdDocument[0].size / 1024).toFixed(1)} KB)
-                      </span>
-                    </>
-                  ) : (
-                    "No file chosen"
-                  )}
-                </div>
+              <div className="text-sm text-gray-600 truncate">
+                {watchedIdDocument && watchedIdDocument.length ? (
+                  <>
+                    <span className="font-medium">
+                      {watchedIdDocument[0].name}
+                    </span>
+                    <span className="ml-2 text-xs text-gray-500">
+                      ({(watchedIdDocument[0].size / 1024).toFixed(1)} KB)
+                    </span>
+                  </>
+                ) : (
+                  "No file chosen"
+                )}
               </div>
             </div>
             {errors.idDocument && (
