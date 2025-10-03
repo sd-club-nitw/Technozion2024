@@ -9,28 +9,46 @@ import dept from './dept_poster_page.png';
 import club from './club_event_page.png';
 import spotlight from './spot_event_page.png';
 
+const TABS = [
+  { key: 'societies', label: 'DEPARTMENT' },
+  { key: 'spotlight', label: 'SPOTLIGHT' },
+  { key: 'clubevents', label: 'CLUB' },
+];
+
 function Index() {
   const location = useLocation();
   const navigate = useNavigate();
   const { state } = location || {};
+
+  const initialTab = state?.dataSource || 'spotlight';
+  const [selectedTab, setSelectedTab] = useState(initialTab);
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [headingImage, setHeadingImage] = useState(null); 
+  const [headingImage, setHeadingImage] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchData = async () => {
+      setIsLoading(true);
+      setError(null);
+
       try {
         let response;
-        if (state && state.dataSource === 'societies') {
+        if (selectedTab === 'societies') {
           response = await fetch('/dataJSON/societyx.json');
-          setHeadingImage(dept); 
-        } else if (state && state.dataSource === 'spotlight') {
+          setHeadingImage(dept);
+        } else if (selectedTab === 'spotlight') {
           response = await fetch('/dataJSON/spotlight.json');
-          setHeadingImage(spotlight); // Set heading image to spotlight
-        } else if (state && state.dataSource === 'clubevents') {
+          setHeadingImage(spotlight);
+        } else if (selectedTab === 'clubevents') {
           response = await fetch('/dataJSON/club.json');
-          setHeadingImage(club); // Set heading image to club
+          setHeadingImage(club);
+        } else {
+          // fallback (shouldn't happen)
+          response = await fetch('/dataJSON/spotlight.json');
+          setHeadingImage(spotlight);
         }
 
         if (!response.ok) {
@@ -38,41 +56,32 @@ function Index() {
         }
 
         const result = await response.json();
+        if (!isMounted) return;
         setData(result);
-        setIsLoading(false); // Set loading to false after successful fetch
-      } catch (error) {
-        console.error('Error loading data:', error);
-        setError(error.message); // Set error message if fetching fails
-        setIsLoading(false); // Still stop the loader after error
+      } catch (err) {
+        console.error('Error loading data:', err);
+        if (!isMounted) return;
+        setError(err.message || 'Unknown error');
+        setData([]);
+      } finally {
+        if (!isMounted) return;
+        setIsLoading(false);
       }
     };
 
     fetchData();
-  }, [state]);
+    return () => {
+      isMounted = false;
+    };
+  }, [selectedTab]);
 
-  // Display loader while fetching
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  // Display error message if fetching failed
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
-
-  // Display when no data is available
-  if (!data.length) {
-    return <p>No data available</p>;
-  }
-
-  // Function to handle poster click
+  // click to card page
   const handlePosterClick = (item) => {
-    // Always pass the original image src and glink
     navigate('/card', { state: { ...item, imgsrc: item.imgsrc || imgsrc, glink: item.glink } });
   };
 
-  // Render society posters
   const renderSocieties = () => {
+    // Expecting data to be an array of societies with events
     return data.map((society) => (
       <div key={society.societyName}>
         <h2 className="society-heading">{society.societyName}</h2>
@@ -80,8 +89,8 @@ function Index() {
           {society.events?.map((event, index) => (
             <Poster
               key={index}
-              imageSrc={event.imgsrc} // Pass the event's imgsrc
-              fallbackSrc={imgsrc} // Pass fallback image in case of error
+              imageSrc={event.imgsrc}
+              fallbackSrc={imgsrc}
               title={event.title}
               content={event.name}
               onClick={() => handlePosterClick(event)}
@@ -92,24 +101,49 @@ function Index() {
     ));
   };
 
+  // UI states
+  if (isLoading) return <Loader />;
+  if (error) return <div className="fetch-error">Error: {error}</div>;
+  if (!data || (Array.isArray(data) && data.length === 0)) return <div className="fetch-error">No data available</div>;
+
   return (
     <div className="outer-container">
       <div className="poster-canvas">
         <WebCanvas />
       </div>
-      <div className="heading">
+
+      {/* Tabs row */}
+      <div className="tabs-wrapper">
+        <div className="tabs">
+          {TABS.map((tab) => (
+            <button
+              key={tab.key}
+              type="button"
+              className={`tab-button ${selectedTab === tab.key ? 'active' : ''}`}
+              onClick={() => setSelectedTab(tab.key)}
+              aria-pressed={selectedTab === tab.key}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Heading image */}
+      {/* <div className="heading">
         {headingImage && (
           <img src={headingImage} alt="eventtype" className="heading-image" />
         )}
-      </div>
+      </div> */}
+
       <div className="inner-container">
-        {state && state.dataSource === 'societies' ? renderSocieties() : (
+        {selectedTab === 'societies' ? renderSocieties() : (
           <div className="poster-container">
             {data.map((item, index) => (
               <Poster
                 key={index}
-                imageSrc={item.imgsrc} 
-                fallbackSrc={imgsrc} 
+                imageSrc={item.imgsrc}
+                fallbackSrc={imgsrc}
                 title={item.title}
                 content={item.name}
                 onClick={() => handlePosterClick(item)}
