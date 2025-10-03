@@ -86,17 +86,17 @@
   },
   "web_team":[
 {
-    "name":"Sahil",
-    "contactNo":"8168298651",
-    "image":"sahil.jpg",
-    "position":"Designer",
-    "email":"sy22csb0b20@student.nitw.ac.in"
+    "name":"Nitin Bhandari",
+    "contactNo":"",
+    "image":"nitin.png",
+    "position":"Developer",
+    "email":""
 
   },
   {
     "name":"Shivang",
     "contactNo":"7651935316",
-    "position":"Lead Developer",
+    "position":"Developer",
     "image":"shivang.jpg",
      "email":"sk22eeb0a24@student.nitw.ac.in"
   },
