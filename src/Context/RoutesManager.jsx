@@ -10,7 +10,7 @@ import { useAuth } from './AuthManager';
 // import { Register } from '../components/Register';
 import { Register } from '../components/Register1/register.js';
 import { Gallery } from '../components/Gallery/gallery.js';
-import { Team } from '../components/Team/team.js';
+import { Team } from '../components/Team/team.jsx';
 import { useLocation } from 'react-router-dom';
 import Card from '../components/card/card.jsx';
 
