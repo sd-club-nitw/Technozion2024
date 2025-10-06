@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* Global reset */
 * {
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
+/* -------------------------
+   Heading / heading image
+   ------------------------- */
 .heading-image-container {
   text-align: center;
 }
@@ -15,7 +19,9 @@
   height: 300px;
 }
 
-
+/* -------------------------
+   Layout containers
+   ------------------------- */
 .outer-container {
   position: relative;
   display: flex;
@@ -39,41 +45,97 @@
   overflow: visible;
 }
 
-.heading{
-  height: 4rem;
-  /* width: 100%; */
+/* Tabs wrapper sits above canvas */
+.tabs-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 12;
+  position: relative;
+  margin-top: 5rem; /* pushes tabs below top area */
+  
+}
+
+/* -------------------------
+   Tabs (buttons)
+   ------------------------- */
+.tabs {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  flex-wrap: wrap;
+}
+
+/* Tab style inspired by neon outline in your screenshot */
+.tab-button {
+  border: 2px solid rgba(0, 255, 230, 0.95);
+  background: transparent;
+  color: rgba(0, 255, 230, 0.95);
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+  box-shadow: 0 0 0 rgba(0, 255, 230, 0);
+  z-index: 12;
+}
+
+/* Active / selected state */
+.tab-button.active {
+  background: rgba(29, 193, 174, 0.441);
+  box-shadow: 0 6px 18px rgba(0, 255, 230, 0.06), inset 0 0 12px rgba(0, 255, 230, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Hover */
+.tab-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 255, 230, 0.06);
+}
+
+/* -------------------------
+   Heading image container
+   ------------------------- */
+.heading {
+  height: 1rem;
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 6rem;
+  /* margin-top: 1.2rem; */
 }
 
-.heading-image{
-  height: 100%;
-  overflow: hidden;
+.heading-image {
+  /* height: 50%; */
+  /* overflow: hidden; */
+  object-fit: contain;
 }
 
+/* -------------------------
+   Inner scrollable area
+   ------------------------- */
 .inner-container {
   position: relative;
-  /* margin-top: 4rem; */
   padding-bottom: 8rem;
   z-index: 1;
   width: 100%;
-  /* max-width: 1200px; */
-  height: 100%; /* Take full height of the outer-container */
-  overflow-y: scroll; /* Enable vertical scrolling */
-  padding-right: 15px; /* Add padding to avoid scrollbar overlap */
+  height: calc(100% - 14rem); /* leave room for heading and tabs */
+  overflow-y: scroll;
+  padding-right: 15px;
   box-sizing: border-box;
-  
-  /* Hide scrollbar */
   scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  -ms-overflow-style: none; /* For IE and Edge */
 }
 
 .inner-container::-webkit-scrollbar {
-  display: none; /* For Chrome, Safari, and Opera */
+  display: none; /* For Chrome, Safari, Opera */
 }
 
+/* -------------------------
+   Posters grid
+   ------------------------- */
 .poster-container {
   display: grid;
   gap: 20px;
@@ -81,37 +143,56 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   z-index: 10;
   width: 100%;
-  /* margin-left: 5rem;
-  margin-right: 5rem; */
   overflow-x: hidden;
   box-sizing: border-box;
 }
 
 .society-heading {
-  text-align: center; /* Center the heading */
-  margin: 20px 0; /* Add some margin for spacing */
-  font-size: 1.5rem; /* Adjust font size as needed */
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
-/* Media queries for responsiveness */
+/* Error / no-data messages */
+.fetch-error {
+  color: #ff6b6b;
+  text-align: center;
+  margin-top: 3rem;
+  font-weight: 600;
+}
+
+/* -------------------------
+   Responsive tweaks
+   ------------------------- */
 @media (min-width: 768px) {
   .poster-container {
-      grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .heading-image {
+    max-width: 40%;
+    height: 300px;
   }
 }
 
 @media (max-width: 768px) {
   .poster-container {
-      grid-template-columns: 1fr;
-      padding: 1rem 1.8rem;
+    grid-template-columns: 1fr;
+    padding: 1rem 1.8rem;
   }
-  .heading{
+  .heading {
     height: 2.5rem;
     width: 100%;
   }
-  
-  .heading-image{
+  .heading-image {
     width: 80%;
+  }
+
+  .tab-button {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+  .tabs {
+    gap: 1rem;
   }
 }

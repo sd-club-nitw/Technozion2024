@@ -1,225 +1,185 @@
+:root{
+  --neon-cyan: #00fff0;
+  --neon-fill: rgba(0,255,240,0.95);
+  --panel-dark: rgba(0,0,0,0.6);
+    --neon-dim: rgba(0,255,240,0.18);
+}
+
+/* container + canvas */
 .events-container {
   position: relative;
-  height: 90vh; 
-  width: 100vw;  
-  background-color: transparent; 
-  overflow: hidden; 
-  top:10vh;
+  height: 90vh;
+  width: 100vw;
+  overflow: hidden;
+  top: 5vh;
+  z-index: 2;
 }
 
-/* Styling for the WebCanvas background */
 .web-canvas {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 1; /* WebCanvas should be the lowest layer */
+  inset: 0;
+  z-index: 1;
 }
 
-/* Styling for the Event image in the center of the screen */
+/* floating 'EVENT' logo at top center */
 .EventImg {
   position: absolute;
-  top: 15%;
+  top: 2%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Center the image vertically and horizontally */
-  z-index: 2; /* Above the WebCanvas */
-  width: 15%; /* Adjust as needed */
- 
-  max-height: auto; /* Adjust as needed */
+  transform: translate(-50%, 0);
+  z-index: 8;
+  width: 14%;
+}
+.EventImg img { width: 100%; display:block; }
+
+/* framed area that contains tabs + panel */
+.events-frame{
+  position: relative;
+  margin: 6.5rem auto 0;
+  width: 92%;
+  max-width: 1300px;
+  border-radius: 6px;
+  padding: 1rem 1rem 4.5rem;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.7);
+  z-index: 6;
 }
 
-/* Styling for the Portal image at the bottom of the screen */
-.portal-img {
+/* neon top glow line */
+.events-frame::before{
+  content: "";
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%); /* Center horizontally */
-  z-index: 3; /* Above WebCanvas but below other content */
-  width: 800vw; 
-  max-width: 800px; 
-  height: auto;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+  box-shadow: 0 0 20px rgba(0,255,240,0.25);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  z-index: 10;
 }
 
-
-.Maincards-container {
-  position: absolute;
-  top: 30%; 
-  left: 14%;
-  transform: translate(-50%, -50%); /* Perfect centering */
-  width: 70%;
-  height: auto;
-  display: flex;
-  justify-content: space-between;
-  gap: 2%; /* Space between the cards */
-  z-index: 4; /* Above Event and Portal */
-}
- /* Specific styling for the Flame image */
-.Flame-img {
-  position: absolute;
-  bottom: 1%;
-  left: 51%;
-  transform: translateX(-50%); /* Center horizontally */
-  z-index: 3;
-  width: 70%; /* Adjust the size as needed */
-  max-width: 800px; /* Adjust this value to make the image smaller */
-  height: 75%;
-
+/* Tabs row (centered) */
+.tabs-row {
+  display:flex;
+  justify-content:center;
+  gap: 2.6rem;
+  align-items:center;
+  z-index: 11;
+  margin-bottom: 1.4rem;
 }
 
-/* Individual card styling */
-.Maincard {
-  
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 1.2rem; /* Adjusted to rem for better scalability */
-  font-weight: bold;
-  color: black;
-  box-shadow: 0 4px 8px rgba(217, 2, 2, 0); /* Adds a subtle shadow */
-  width: 13vw; /* Make card size responsive */
-  height: 30vh; /* Increased height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease; /* Smooth transition */
+/* tab buttons styled like your neon screenshot */
+.tab-btn{
+  background: rgba(0,0,0,0.45);
+  color: var(--neon-cyan);
+  border: 2px solid rgba(0,255,230,0.85);
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.05rem;
   cursor: pointer;
-  
-   /* to center the image */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  transition: transform .16s ease, background .12s ease, color .12s ease;
 }
-#C1{
-  background: url('./Club.jpg');
+.tab-btn:hover{ transform: translateY(-3px); }
+.tab-btn.active{
+  background: var(--neon-dim);
+  color: #041617; /* dark text inside neon filled */
+  border-color: rgba(0,200,200,0.98);
+  box-shadow: 0 10px 30px rgba(0,255,240,0.14);
+}
+
+/* main panel (replaces cards) */
+.tab-panel{
+  width: 84%;
+  margin: 0 auto;
+  min-height: 44vh;
+  border-radius: 10px;
+  background-color: var(--panel-dark);
   background-size: cover;
   background-position: center;
-}
-#C2{
-  background: url('./Spot.jpg');
-  background-size: cover;
-  background-position: center;
-}
-#C3{
-  background: url('./Dept.jpg');
-  background-size: cover;
-  background-position: center;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.6), 0 20px 40px rgba(0,0,0,0.6);
+  z-index: 8;
+  position: relative;
+  overflow: hidden;
 }
 
-.Maincard h1 {
-  max-width: 90%; /* Limit width of text */
-  overflow-wrap: break-word; /* Break long words */
-    font-size: 1.6rem;/* Adjust font size */
-    color: black;
-   
-}
-/* Hover effect to make the cards "come out" */
-
-
-@media (min-width:1025){
-  .Maincards-container {
-    width: 90%;
-    gap: 5%; /* Increase gap on smaller screens */
-    left:-30vh;
-  }
-  .Maincard {
-    width: 30vw; /* Adjust card width on smaller screens */
-    height: 35vh; /* Adjusted height for smaller screens */
-    font-size: 1rem;
-    left:0% /* Adjust font size */
-  }
-  .EventImg {
-    width: 40%; /* Ensure event image scales down */
-  }
-  
-}
-/* Media Queries for responsiveness */
-@media (max-width: 1024px) {
-  .Maincards-container {
-    width: 90%;
-     left:5%;
-    transform: translate(-50%, -50%); 
-    gap: 10%; /* Increase gap on smaller screens */
-   
-  }
-  .Flame-img {
-    width: 80%; /* Adjust size for tablets */
-    max-width: 1000px; 
-    height: 70vh;
-  }
-
-  .Maincard {
-    width: 20vw; /* Adjust card width on smaller screens */
-    height: 35vh; /* Adjusted height for smaller screens */
-    font-size: 1rem; /* Adjust font size */
-  }
-  .EventImg {
-    width: 40%; /* Ensure event image scales down */
-  }
+.panel-overlay{
+  padding: 2rem;
+  height: 100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  gap: 0.6rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.705), rgba(0,0,0,0.55));
 }
 
-
-@media (max-width: 768px) {
-  .Maincards-container {
-    flex-direction: column; /* Stack cards vertically on smaller screens */
-    top: 30%;
-    left:5%;
-    transform: translate(-50%, -50%);
-    align-items: center; /* Center-align cards */
-  }
-
-  .Maincard {
-    width: 60vw; /* Increase card width on smaller screens */
-    height: 10vh; /* Adjust height for mobile view */
-    margin-bottom: 20px; /* Add space between vertically stacked cards */
-    font-size: 1rem;
-  }
-  .Flame-img {
-    width: 70%; /* Increase size for smaller screens */
-    max-width: 900px;
-    height: auto;
-  }
-
-
-  .EventImg {
-    width: 40%; /* Ensure event image scales down */
-  }
-
-  .portal-img {
-    width: 80%; /* Scale down the portal image */
-    height:auto;
-  }
-  .Portal{
-    position: absolute;
-    top:85%;
-    width: 120%;
-    left: -10%;
-    
-    height: auto;
-  }
+.panel-title{
+  color: var(--neon-cyan);
+  font-size: 1.6rem;
+  margin: 0;
+  letter-spacing: 1px;
 }
 
-@media (max-width: 480px) {
-  .Maincards-container {
-    top: 30%;
-    left:5%;
-    align-items: center; /* Ensure the cards are centered */
-  }
-  .Flame-img {
-    width: 70%; /* Full width for mobile devices */
-    max-width: 300px; /* Set a smaller max-width for mobile */
-    height: 26vh;
-    
-  }
-  .Maincard {
-    width: 80vw; /* Full width for mobile devices */
-    height: 8vh; /* Adjusted height for smaller mobile view */
-    font-size: 0.9rem; /* Smaller font for mobile */
-  }
+.panel-sub{
+  color: rgba(255,255,255,0.85);
+  margin: 0;
+}
 
-  .EventImg {
-    width: 40%; /* Smaller event image for mobile */
-  }
+/* Enter button */
+.panel-actions{ margin-top: 1.2rem; }
+.enter-btn{
+  background: transparent;
+  border: 2px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  padding: 0.7rem 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 800;
+  transition: background .15s ease, color .15s ease;
+}
+.enter-btn:hover{ background: var(--neon-cyan); color: #041617; }
 
-  .portal-img {
-    width: 60%; /* Smaller portal image for mobile */
-    height:auto;
-  }
+/* portal and flame (bottom centered) */
+.Portal{
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  pointer-events: none;
+}
+.portal-img{
+  width: 900px;
+  max-width: 92vw;
+  height: auto;
+  display:block;
+}
+.Flame-img{
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  width: 60%;
+  max-width: 650px;
+  height: auto;
+  pointer-events: none;
+}
+
+/* responsive tweaks */
+@media (max-width: 1024px){
+  .EventImg{ width: 22%; top: 1.5% }
+  .tab-btn{ padding: 8px 16px; font-size: 0.98rem; }
+  .tab-panel{ width: 92%; min-height: 34vh; }
+  .portal-img{ width: 100%; }
+}
+
+@media (max-width: 480px){
+  .tabs-row{ gap: 1rem; }
+  .tab-btn{ padding: 6px 10px; font-size: 0.9rem; border-radius: 6px; }
+  .EventImg{ width: 34% }
+  .tab-panel{ width: 96%; min-height: 24vh; }
+  .Flame-img{ width: 90%; bottom: 4%; }
 }
