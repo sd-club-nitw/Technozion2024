@@ -93,13 +93,13 @@
     "email":""
 
   },
-  {
-    "name":"Shivang",
-    "contactNo":"7651935316",
+ {
+ "name":"Rishi",
+    "contactNo":"",
+    "image":"rishi.jpg",
     "position":"Developer",
-    "image":"shivang.jpg",
-     "email":"sk22eeb0a24@student.nitw.ac.in"
-  },
+    "email":""
+ },
   {
     "name":"Aman Chaubey",
     "contactNo":"8328352932",
