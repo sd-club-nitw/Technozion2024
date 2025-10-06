@@ -37,7 +37,7 @@ const RoutesManager = () => {
 
 			<Route path="/" element={<Home />} />
 			<Route path="*" element={<ComingSoon />} />
-			{/* <Route path="/about" element={<About />} /> */}
+			<Route path="/about" element={<About />} />
 			{/* <Route path="/sponsors" element={<Sponsors />} /> */}
 			<Route path="/events" element={<Index />} />
 			{/* <Route path="/displayevents" element={<Displayevents />} /> */}
