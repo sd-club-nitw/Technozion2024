@@ -35,8 +35,8 @@
                 {
                     "title": "Mind Domino",
                     "name": "Mathematical Society ",
-                    "overview": "<h1>Mind Domino</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p>7219129324,7388878414</p><br>",
-                    "rules": "Coming SOon...</p>",
+                    "overview": "<h1>Mind Domino</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p> A multi-round contest of logic, speed, and strategy. From  spotting errors to solving chained puzzles and a rapidfire finale, the sharpest minds rise to the top.</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p>7219129324,7388878414</p><br>",
+                    "rules": "<p>->Teams must attempt all rounds in order.<br>->Each correct answer unlocks the next stage.</p>",
                     "judging_criteria": "<p>Coming Soon...</p>",
                     "imgsrc": "/posters25/society_13_imgsrc.jpg",
                     "bsrc1": "/posters/society_6_bsrc1.png",
@@ -47,8 +47,8 @@
                 {
                    "title": "Math Relay Race",
                     "name": "Mathematical Society ",
-                    "overview": "<h1>Math Relay Race</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p>______</p><br>",
-                    "rules": "Coming SOon...</p>",
+                    "overview": "<h1>Math Relay Race</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p>The Math Relay Race is a three round challenge that blends speed, logic, and problem-solving. Presents deeper, conceptual math problems that demand clarity and reasoning.</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p>Neha : 8957366212</p><br>",
+                    "rules": "->Only one final Submission per team allowed.In case of a tie, fastest total completion time wins.</p>",
                     "judging_criteria": "<p>Coming Soon...</p>",
                     "imgsrc": "/posters25/society_14_imgsrc.png",
                     "bsrc1": "/posters/society_6_bsrc1.png",
@@ -71,8 +71,8 @@
                  {
                      "title": "Treco Hunt",
                     "name": "Mathematical Society ",
-                    "overview": "<h1>treco Hunt</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p>______</p><br>",
-                    "rules": "Coming SOon...</p>",
+                    "overview": "<h1>treco Hunt</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p> Gear up for Treco Hunt – a thrilling race of riddles, quizzes, and hidden clues across 5 exciting rounds! Solve, unlock, and decode your way to the final treasure before anyone else!</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p> Pranathi : 8309832046</p><br>",
+                    "rules": "->Teams must complete each round in order to move to the next.<br>->The first team to reach the venue with the final code wins.</p>",
                     "judging_criteria": "<p>Coming Soon...</p>",
                     "imgsrc": "/posters25/society_16_imgsrc.jpg",
                     "bsrc1": "/posters/society_6_bsrc1.png",
