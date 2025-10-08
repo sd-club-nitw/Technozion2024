@@ -33,28 +33,14 @@ const RoutesManager = () => {
 			<Route path="/" element={<Home />} />
 
 			{/* Example of protected routes */}
-			<Route
-				path="/events"
-				element={
-					<ProtectedRoute>
-						<Events />
-					</ProtectedRoute>
-				}
-			/>
+			
 			<Route
 				path="/auth/register"
 				element={
 						<Register />
 				}
 			/>
-			<Route
-				path="/gallery"
-				element={
-					<ProtectedRoute>
-						<Gallery />
-					</ProtectedRoute>
-				}
-			/>
+			
 
 			{/* Catch all */}
 			<Route path="*" element={<ComingSoon />} />
