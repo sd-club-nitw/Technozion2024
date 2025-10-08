@@ -153,7 +153,7 @@ const Register = () => {
     data.idDocument = idFile;
     if (paymentScreenshot) data.paymentScreenshot = paymentScreenshot;
 
-    console.log("registering with data", data);
+    // console.log("registering with data", data);
 
     // delegate to auth manager which should handle FormData when files are present
     authRegister(data);
