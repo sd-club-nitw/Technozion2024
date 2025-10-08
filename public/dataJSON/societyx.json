@@ -3,69 +3,70 @@
             "societyName": "Computer Science and Engineering Society",
             "events": [
                 {
-                    "title": "Mouseless",
+                    "title": "#1 No Bugs Given",
                     "name": "Computer Science and Engineering Society",
-                    "overview": "<h1>Mouseless</h1><br><h4>Computer Science and Engineering Society</h4><br><h6>Description</h6><br><p>\"Mouseless\" is an exciting challenge designed to test your technical skills, speed, and problem-solving abilities to the ultimate test as you solve tasks using only keyboard shortcuts and commands and without the aid of a mouse.</p><br><h6>Team Size</h6><br><p>1</p><br><h6>General Secretary</h6><br><p>Saatvik Srivastava + 9696769711</p><br>",
-                    "rules": "<p>1. No Mouse Allowed: Participants are strictly prohibited from using a mouse or any external pointing devices during the event. Only keyboard navigation and commands are permitted.<br>2. Time-Based Scoring: Each challenge must be completed within a specified time limit. Points will be awarded based on how quickly and efficiently the tasks are solved.<br>3. Penalties for Rule Violations: Any use of unauthorized tools, external devices, or attempts to bypass the established setup (e.g., modifying system settings or installing software) will result in a penalty or disqualification.<br>4. Collaborative Restrictions: This is an individual competition, and collaboration or communication with other participants is prohibited</p>",
-                    "judging_criteria": "<p>Participants will be judged on the time taken to solve a given task, number of key presses, and number of tasks solved.</p>",
-                    "imgsrc": "/posters/society_10_imgsrc.png",
+                    "overview": "<h1>#1 No Bugs Given</h1><br><h4>Computer Science and Engineering Society</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>----</p><br>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "Coming Soon....</p>",
+                    "imgsrc": "/posters25/society_1_imgsrc.jpg",
                     "bsrc1": "/posters/society_10_bsrc1.png",
                     "bsrc2": "/posters/society_10_bsrc2.png",
                     "index": 10,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
-                },
-                {
-                    "title": "Cryptic Hunt",
-                    "name": "Computer Science and Engineering Society",
-                    "overview": "<h1>Cryptic Hunt</h1><br><h4>Computer Science and Engineering Society</h4><br><h6>Description</h6><br><p>Cryptic Hunt is a treasure hunt event designed for puzzle enthusiasts and tech-savvy minds. The event will be conducted in two thrilling phases: an offline and an online phase.\n\nOffline Phase: Participants will navigate through a series of computer science-related clues and flags scattered across the campus, combining traditional treasure hunting with the intellectual challenges of tech puzzles.\n\nOnline Phase: In the second phase, participants will transition to a virtual setting, using their laptops or mobile devices to uncover hidden flags and solve complex clues spread across various online platforms.</p><br><h6>Team Size</h6><br><p>3</p><br><h6>General Secretary</h6><br><p>Saatvik Srivastava + 9696769711</p><br>",
-                    "rules": "<p>1.No External Assistance: Participants must rely solely on their team's skills and knowledge. Collaboration or communication with other teams is not allowed.<br><br>2.No Unauthorized Tools: Participants may not use any unauthorized tools, software, or devices to aid in solving challenges. All tasks must be completed using the provided resources.<br><br>3.Respect Locations: Participants must follow all local rules and regulations at physical challenge locations. Trespassing or damaging property will result in immediate disqualification.</p>",
-                    "judging_criteria": "<p>Total Tasks Completed<br>The total number of successfully completed tasks will be a crucial factor in scoring. Participants who finish more tasks within the allotted time will receive higher scores.<br><br>Speed and Efficiency<br>Participants will be evaluated on how quickly they complete each challenge within the time limits. Bonus points will be awarded for completing tasks efficiently, using minimal hints.<br><br>Number of Tasks Completed<br>The total number of tasks successfully completed during the event will be a key factor, with higher scores awarded to participants who finish more tasks within the time frame.</p>",
-                    "imgsrc": "/posters/society_11_imgsrc.png",
-                    "bsrc1": "/posters/society_11_bsrc1.png",
-                    "bsrc2": "/posters/society_11_bsrc2.png",
-                    "index": 11,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "glink": "Coming Soon..."
                 }
+              
             ]
         },
         {
             "societyName": "Mathematical Society",
             "events": [
                 {
-                    "title": "Find X",
+                    "title": "Mind Domino",
                     "name": "Mathematical Society ",
-                    "overview": "<h1>Find X</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p>Do you still love her...Time has come to enter again a world once lost...The world of math.A competition mixed with numbers aptitude and race against time.</p><br><h6>Team Size</h6><br><p>4</p><br><h6>General Secretary</h6><br><p>Darshan M + 9110894594</p><br>",
-                    "rules": "<p>For all courses, branches and years. <br>Each round is time based and score based which will finally add up.<br>Failling any levels leads to disqualification.<br>First 10 percentile teams that will finish all rounds will get certificate of appreciation.</p>",
-                    "judging_criteria": "<p>Top 3 highest scoring teams will win exciting prizes.</p>",
-                    "imgsrc": "/posters/society_6_imgsrc.png",
+                    "overview": "<h1>Mind Domino</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p>7219129324,7388878414</p><br>",
+                    "rules": "Coming SOon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_13_imgsrc.jpg",
                     "bsrc1": "/posters/society_6_bsrc1.png",
                     "bsrc2": "/posters/society_6_bsrc2.png",
                     "index": 6,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "glink": "Coming Soon..."
                 },
                 {
-                    "title": "Treco Hunt",
+                   "title": "Math Relay Race",
                     "name": "Mathematical Society ",
-                    "overview": "<h1>Treco Hunt</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p>Treasure hunt integrated with coding contest which highlights the logical and computational mathematics.</p><br><h6>Team Size</h6><br><p>3</p><br><h6>General Secretary</h6><br><p>Darshan M + 9110894594</p><br>",
-                    "rules": "<p>1.Team Size:  teams of up to 3 members.<br>2. The use of Ai tools and plagiarism will result in disqualification.<br>3. All participants are advised to bring their own laptops.</p>",
-                    "judging_criteria": "<p>For treasure hunt:<br>Teams completing the challenge at the earliest will be eligible for the coding contest.<br><br>For coding contest:<br>the code will be revised based on :<br>1. time and space complexity. <br>2.Correctness: the codes must produce correct output for all the test cases</p>",
-                    "imgsrc": "/posters/society_7_imgsrc.png",
-                    "bsrc1": "/posters/society_7_bsrc1.png",
-                    "bsrc2": "/posters/society_7_bsrc2.png",
-                    "index": 7,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "overview": "<h1>Math Relay Race</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p>______</p><br>",
+                    "rules": "Coming SOon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_14_imgsrc.png",
+                    "bsrc1": "/posters/society_6_bsrc1.png",
+                    "bsrc2": "/posters/society_6_bsrc2.png",
+                    "index": 6,
+                    "glink": "Coming Soon..."
                 },
                 {
-                    "title": "Data Science Contest",
+                     "title": "Bug Busters",
                     "name": "Mathematical Society ",
-                    "overview": "<h1>Data Science Contest</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p>\"Compete to solve real-world challenges using data science skills and win exciting prizes!\"</p><br><h6>Team Size</h6><br><p>Upto 4</p><br><h6>General Secretary</h6><br><p>Darshan M + 9110894594</p><br>",
-                    "rules": "<p>1.Team Size: Participants can compete individually or in teams of up to 4 members.<br>2. Data Usage: Only the provided dataset can be used; external data sources are not allowed.<br>3. Code and Model Submission: Submit code, models, and a brief report explaining your solution by the deadline.<br>4. Originality: All work must be original. Plagiarism or code copying will result in disqualification.<br>5. All the participants must bring their own devices for the challenge</p>",
-                    "judging_criteria": "<p>Solutions will be evaluated based on accuracy and innovation using a predefined metric.</p>",
-                    "imgsrc": "/posters/society_9_imgsrc.png",
-                    "bsrc1": "/posters/society_9_bsrc1.png",
-                    "bsrc2": "/posters/society_9_bsrc2.png",
-                    "index": 9,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "overview": "<h1>Bug Busters</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p>______</p><br>",
+                    "rules": "Coming SOon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_15_imgsrc.png",
+                    "bsrc1": "/posters/society_6_bsrc1.png",
+                    "bsrc2": "/posters/society_6_bsrc2.png",
+                    "index": 6,
+                    "glink": "Coming Soon..."
+                },
+                 {
+                     "title": "Treco Hunt",
+                    "name": "Mathematical Society ",
+                    "overview": "<h1>treco Hunt</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p>______</p><br>",
+                    "rules": "Coming SOon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_16_imgsrc.jpg",
+                    "bsrc1": "/posters/society_6_bsrc1.png",
+                    "bsrc2": "/posters/society_6_bsrc2.png",
+                    "index": 6,
+                    "glink": "Coming Soon..."
                 }
             ]
         },
@@ -73,200 +74,84 @@
             "societyName": "ECE Society",
             "events": [
                 {
-                    "title": "LLD: Game On!",
+                    "title": "AI Murder Mystery",
                     "name": "ECE Society",
-                    "overview": "<h1>LLD: Game On!</h1><br><h4>ECE Society</h4><br><h6>Description</h6><br><p>It consists of 2 games in which we would have a leaderboard to make the participants see where they stand, encouraging them to compete, improve their performance, and aim for the top spot by tracking their progress throughout the event.\n\nGame 1: Snake Game\n\nObjective: In this game, participants will rearrange code blocks to control a snake and keep it moving smoothly by calling the right functions.\n\nHow It Works:\nAt the start, each participant will be given a set of code blocks that they need to rearrange. They have to rearrange the code blocks such that game would function smoothly.\nThe smoother and faster they arrange the blocks in the correct order, the better the game will perform, and higher points will be awarded.\n\nLeaderboard: For the Snake Game, we\u2019ll consider how fast the participants solve the puzzle and how smoothly their snake moves. The quicker they organize the code, the higher they\u2019ll rank on the Leaderboard.\n\nGame 2: Robot Asteroid Game\n\nObjective: This game is about controlling a robot that has to survive as long as possible in a space full of asteroids.\n\nHow It Works:\nParticipants will control a robot, with options to move in different directions (upward, backward, left, and right) every 6-7 seconds.\nThese directional commands will be executed in a for loop, meaning participants must input directions carefully to avoid asteroids. The directions they choose will continuously run in a 'for loop,' requiring precise timing and logic to survive.\nWe\u2019ll have the option for solo play and for 3-4 players at a time. In multiplayer mode, other participants can generate fireballs or obstacles to increase the challenge for the robots!\nThe longer a robot survives and avoids asteroids, the higher the player\u2019s score.\n\nLeaderboard: For the Robot Game, the leaderboard will track how long each robot survives and how well participants dodge asteroids. Survival time will be the key factor for ranking here.</p><br><h6>Team Size</h6><br><p>16</p><br><h6>General Secretary</h6><br><p>Shashank Vishwas Damle + 8484011372</p><br>",
-                    "rules": "<p>Participants should be in a team of three and to be eligible for prizes team must have one external.<br>Participants must identify and correct all faults. Use of external resources (e.g, internet.) is strictly prohibited.<br>The circuit must function as specified to be considered complete.<br>Time constraints apply for troubleshooting.</p>",
-                    "judging_criteria": "<p>Accuracy of the restored circuit.<br>Speed of troubleshooting and corrections.<br>Adherence to the event rules and specifications.</p>",
-                    "imgsrc": "/posters/society_16_imgsrc.png",
+                    "overview": "<h1>AI Murder Mystery</h1><br><h4>ECE Society</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>Vineet : 6309730630</p><br>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_2_imgsrc.jpg",
                     "bsrc1": "/posters/society_16_bsrc1.png",
                     "bsrc2": "/posters/society_16_bsrc2.png",
                     "index": 16,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "glink": "Coming Soon..."
                 },
                 {
-                    "title": "Build-a-pc",
+                    "title": "Lie Detector",
                     "name": "ECE Society",
-                    "overview": "<h1>Build-a-pc</h1><br><h4>ECE Society</h4><br><h6>Description</h6><br><p>A fun team event where students will build working PCs. After a short explanation of the basic computer parts and how they work, each team will get the hardware they need to assemble a PC. The goal is to put everything together and power it on. The team that finishes and boots up their system first wins!</p><br><h6>Team Size</h6><br><p>`13</p><br><h6>General Secretary</h6><br><p>Shashank Vishwas Damle + 8484011372</p><br>",
-                    "rules": "<p>Each team must consist of 4/5 participants. <br>Teams will have a maximum of 1 hour to complete the PC assembly. <br>All teams must follow safety protocols while handling hardware components.<br>The PC must power on and boot into the BIOS to be considered a successful build.</p>",
-                    "judging_criteria": "<p>The team that powers on their PC the fastest wins.<br>Incorrect or incomplete assembly may result in disqualification or time penalties.<br>Teams that have neat cable management and clean assembly will earn bonus points.</p>",
-                    "imgsrc": "/posters/society_18_imgsrc.png",
+                    "overview": "<h1>Lie Detector</h1><br><h4>ECE Society</h4><br><h6>Description</h6><br><p>Coming soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>Abhiram: 934809877</p><br><p>Abhinav: 9108205643",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_3_imgsrc.png",
                     "bsrc1": "/posters/society_18_bsrc1.png",
                     "bsrc2": "/posters/society_18_bsrc2.png",
                     "index": 18,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "glink": "Coming Soon..."
                 },
                 {
-                    "title": "Debugger's Duel",
+                    "title": "ChipCraft",
                     "name": "ECE Society",
-                    "overview": "<h1>Debugger's Duel</h1><br><h4>ECE Society</h4><br><h6>Description</h6><br><p>A team-based challenge where participants troubleshoot intentional faults in ECES made circuits. Teams receive a faulty circuit with its intended functionality and must identify and correct errors to restore the circuit within the time limit. The event emphasizes circuit knowledge and problem-solving skills under pressure.</p><br><h6>Team Size</h6><br><p>11</p><br><h6>General Secretary</h6><br><p>Shashank Vishwas Damle + 8484011372</p><br>",
-                    "rules": "<p>Participants should be in a team of three and to be eligible for prices team must have one external <br>Participants must identify and correct all faults. <br>Use of external resources (e.g., internet, books) is strictly prohibited<br>The circuit must function as specified to be considered complete. <br>Time constraints apply for troubleshooting.</p>",
-                    "judging_criteria": "<p>Accuracy of the restored circuit.<br>Speed of troubleshooting and corrections.<br>Adherence to the event rules and specifications.</p>",
-                    "imgsrc": "/posters/society_19_imgsrc.png",
+                    "overview": "<h1>ChipCraft</h1><br><h4>ECE Society</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>____</p><br>",
+                    "rules":"<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_4_imgsrc.jpg",
                     "bsrc1": "/posters/society_19_bsrc1.png",
                     "bsrc2": "/posters/society_19_bsrc2.png",
                     "index": 19,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "glink": "Coming Soon..."
                 }
             ]
         },
-        {
-            "societyName": "MANAGEMENT STUDIES SOCIETY",
-            "events": [
-                {
-                    "title": "PRODUCT LAUNCH",
-                    "name": "MANAGEMENT STUDIES SOCIETY",
-                    "overview": "<h1>PRODUCT LAUNCH</h1><br><h4>MANAGEMENT STUDIES SOCIETY</h4><br><h6>Description</h6><br><p>In this event people have to launch their products according to their creativity with good strategies.</p><br><h6>Team Size</h6><br><p>team size of maximum 3 members</p><br><h6>General Secretary</h6><br><p>U R GOPI KRISHNAN + 8137024005</p><br>",
-                    "rules": "<p>Registration<br>All participants must register for the event either online or on-site, as per the instructions provided by the organizing committee.<br>Code of Conduct<br>Any form of misconduct, cheating, or use of foul language will result in immediate disqualification.<br>Use of prohibited items (mobile phones, earphones etc.) will lead to disqualification.<br><br>Any grievances or appeals regarding the event should be directed to the fest organizing committee within one hour of the event conclusion.<br></p>",
-                    "judging_criteria": "<p>Judging will be based on criteria such as creativity, performance, teamwork, adherence to the theme, time management, and others as specified per event.<br><br>The judgment will be impartial, and no requests for reevaluation will be entertained.<br>Communication skills, Strategic thinking, Adaptabity,Innovation skills will be  important </p>",
-                    "imgsrc": "/posters/society_21_imgsrc.png",
-                    "bsrc1": "/posters/society_21_bsrc1.png",
-                    "bsrc2": "/posters/society_21_bsrc2.png",
-                    "index": 21,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
-                },
-                {
-                    "title": "FUTURE MANAGER",
-                    "name": "MANAGEMENT STUDIES SOCIETY",
-                    "overview": "<h1>FUTURE MANAGER</h1><br><h4>MANAGEMENT STUDIES SOCIETY</h4><br><h6>Description</h6><br><p>The participants have to undergo various hurdles and rounds that would make them an efficient manager.</p><br><h6>Team Size</h6><br><p>Individual participation</p><br><h6>General Secretary</h6><br><p>U R GOPI KRISHNAN + 8137024005</p><br>",
-                    "rules": "<p>Registration<br>All participants must register for the event either online or on-site, as per the instructions provided by the organizing committee.<br>Code of Conduct<br>Any form of misconduct, cheating, or use of foul language will result in immediate disqualification.<br>Use of prohibited items (mobile phones, earphones etc.) will lead to disqualification.<br><br>Any grievances or appeals regarding the event should be directed to the fest organizing committee within one hour of the event conclusion.</p>",
-                    "judging_criteria": "<p>Judging will be based on criteria such as creativity, performance, work, time management, and others as specified per event.<br><br>The judgment will be impartial, and no requests for reevaluation will be entertained.<br>Communication skills, Strategic thinking, Adaptabity,Innovation skills will be  important</p>",
-                    "imgsrc": "/posters/society_22_imgsrc.png",
-                    "bsrc1": "/posters/society_22_bsrc1.png",
-                    "bsrc2": "/posters/society_22_bsrc2.png",
-                    "index": 22,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
-                }
-            ]
-        },
-        {
-            "societyName": "ChES & IIChE",
-            "events": [
-                {
-                    "title": "Matlab workshop",
-                    "name": "ChES & IIChE",
-                    "overview": "<h1>Matlab workshop</h1><br><h4>ChES & IIChE</h4><br><h6>Description</h6><br><p>The MATLAB workshop for chemical engineers is designed to provide participants with hands-on experience and foundational knowledge of using MATLAB for various applications within the realm of chemical engineering. MATLAB is a powerful computational tool that can aid in data analysis, simulation, visualization and optimization tasks commonly encountered in chemical engineering disciplines.\nCertificates will be provided for participation</p><br><h6>Team Size</h6><br><p>nan</p><br><h6>General Secretary</h6><br><p>A Juhi + 9182263890</p><br>",
-                    "imgsrc": "/posters/society_1_imgsrc.png",
-                    "bsrc1": "/posters/society_1_bsrc1.png",
-                    "bsrc2": "/posters/society_1_bsrc2.png",
-                    "index": 1,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
-                },
-                {
-                    "title": "Inno Chem",
-                    "name": "ChES & IIChE",
-                    "overview": "<h1>Inno Chem</h1><br><h4>ChES & IIChE</h4><br><h6>Description</h6><br><p>The event \u201cInno Chem\u201d offers a captivating platform for inquisitive minds and aspiring scientists to immerse themselves in the brilliance of cutting-edge research papers and to present their insights to an enthralled audience. The participants have to enact on the theme Sustainable Energy and Environment: Role of Chemical Engineering and present it with flair and passion. \nCertificates will be provided for participation.</p><br><h6>Team Size</h6><br><p>1 to 4</p><br><h6>General Secretary</h6><br><p>A Juhi + 9182263890</p><br>",
-                    "rules": "<p>Within a given time the teams should provide their insights. The time limit is 15 minutes only.</p>",
-                    "judging_criteria": "<p>The winners will be selected based on their ability to eloquently expound upon the concepts and significance of their chosen paper, making it accessible and engaging to all while captivating the audience.</p>",
-                    "imgsrc": "/posters/society_2_imgsrc.png",
-                    "bsrc1": "/posters/society_2_bsrc1.png",
-                    "bsrc2": "/posters/society_2_bsrc2.png",
-                    "index": 2,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
-                },
-                {
-                    "title": "Chem Relay Race",
-                    "name": "ChES & IIChE",
-                    "overview": "<h1>Chem Relay Race</h1><br><h4>ChES & IIChE</h4><br><h6>Description</h6><br><p>Teams compete in a relay-style race where each team member must complete different chemical-related challenges at various points across the campus. The challenges are placed at various locations in the campus called checkpoints and clues are given to find out where the next checkpoint is located. </p><br><h6>Team Size</h6><br><p>1 to 3</p><br><h6>General Secretary</h6><br><p>A Juhi + 9182263890</p><br>",
-                    "rules": "<p>1) The challenges include balancing a chemical reaction, solving a simple chemical engineering puzzle/quiz or mini chemical engineering-related crossword, or a chemical taboo-style game where one player must convey chemical engineering terms to their teammates without using specific 'taboo words or phrases'.<br>2) Participants should reach the destinations by walk only. No bicycles or any other vehicles are allowed.</p>",
-                    "judging_criteria": "<p>The goal is to finish all challenges and reach the final destination first.</p>",
-                    "imgsrc": "/posters/society_3_imgsrc.png",
-                    "bsrc1": "/posters/society_3_bsrc1.png",
-                    "bsrc2": "/posters/society_3_bsrc2.png",
-                    "index": 3,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
-                },
-                {
-                    "title": "ChemQuest Auction",
-                    "name": "ChES & IIChE",
-                    "overview": "<h1>ChemQuest Auction</h1><br><h4>ChES & IIChE</h4><br><h6>Description</h6><br><p>In this competitive event, teams begin with a set number of points and participate in an auction for industrial chemical compounds. The goal is to create the highest number of meaningful reactions by acquiring the right compounds. After the auction, teams can barter to complete their reactions. Participants will gain a deeper understanding of industrial chemical compounds and reaction mechanisms while honing strategic thinking, teamwork, and negotiation skills through bidding and bartering</p><br><h6>Team Size</h6><br><p>1 to 4</p><br><h6>General Secretary</h6><br><p>A Mahesh + 8074012339</p><br>",
-                    "rules": "<p>1) Teams start with a fixed number of points.<br>2) Bid on compounds in an auction format.<br>3) Bartering between teams is allowed after the auction.<br>4) The team with the most complete reactions wins.</p>",
-                    "judging_criteria": "<p>The goal is to create the highest number of meaningful reactions by acquiring the right compounds. The team with the most valid chemical reactions at the end wins. </p>",
-                    "imgsrc": "/posters/society_4_imgsrc.png",
-                    "bsrc1": "/posters/society_4_bsrc1.png",
-                    "bsrc2": "/posters/society_4_bsrc2.png",
-                    "index": 4,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
-                },
-                {
-                    "title": "Chem-E-Case",
-                    "name": "ChES & IIChE",
-                    "overview": "<h1>Chem-E-Case</h1><br><h4>ChES & IIChE</h4><br><h6>Description</h6><br><p>The participants will be provided with a problem statement(Case Study) within the domain of chemical engineering. Their task is to bring about a feasible solution to the problem by brainstorming and coming up with an original solution. The participants would be required to present their ideas and best solutions. </p><br><h6>Team Size</h6><br><p>1 to 4</p><br><h6>General Secretary</h6><br><p>A Mahesh + 8074012339</p><br>",
-                    "rules": "<p>1) Participants should formulate ideas within a given time limit of 30 minutes.<br>2) Participants should present their solutions in a maximum of 10 minutes.</p>",
-                    "judging_criteria": "<p>1) The team that presents the best solution wins.<br>2) Based on these factors the winner is selected:<br>       i) Creativity and novelty of the solution<br>      ii) Practicality and applicability of the solution using chemical engineering principles<br>     iii) Consideration of environmental impact, safety, and sustainability.<br>     iv)  Effectiveness of communication, clarity in explaining the solution, and answering questions. </p>",
-                    "imgsrc": "/posters/society_5_imgsrc.png",
-                    "bsrc1": "/posters/society_5_bsrc1.png",
-                    "bsrc2": "/posters/society_5_bsrc2.png",
-                    "index": 5,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
-                }
-            ]
-        },
-        {
-            "societyName": "Physics Society",
-            "events": [
-                {
-                    "title": "Find your balance",
-                    "name": "Physics Society ",
-                    "overview": "<h1>Find your balance</h1><br><h4>Physics Society </h4><br><h6>Description</h6><br><p>Test your balance, focus, and agility! Participants will navigate challenging obstacles and balance tasks, showcasing their physical and mental coordination</p><br><h6>Team Size</h6><br><p>Individual </p><br><h6>General Secretary</h6><br><p>Mehul Mishra  + 9811159445</p><br>",
-                    "rules": "<p>Individual participation.<br><br>*Time will be recorded.<br><br>*Penalties for losing balance or falling off.<br><br>*Three attempts per obstacle.<br><br>*Best time wins.<br></p>",
-                    "judging_criteria": "<p>*Time Completion (50%)<br><br>*Balance and Stability (50%)</p>",
-                    "imgsrc": "/posters/society_24_imgsrc.jpg",
-                    "bsrc1": "/posters/society_24_bsrc1.jpg",
-                    "bsrc2": "/posters/society_24_bsrc2.jpg",
-                    "index": 24,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
-                },
-                {
-                    "title": "Science Relay Race",
-                    "name": "Physics Society ",
-                    "overview": "<h1>Science Relay Race</h1><br><h4>Physics Society </h4><br><h6>Description</h6><br><p>Join us for an exciting Science Relay Race! Teams of 3-4 students will compete to complete challenging science-based tasks and experiments, showcasing their knowledge teamwork, and problem-solving skills.\n</p><br><h6>Team Size</h6><br><p>3</p><br><h6>General Secretary</h6><br><p>Aryaputra Prashasthi Das + 9556960873</p><br>",
-                    "rules": "<p>*Teams consist of 3-4 members.<br><br>*Each team member must participate in at least one challenge.<br><br>*Challenges will be revealed at the start of the race.<br><br>*Time penalties for incorrect answers or incomplete challenges.<br><br>*Teams must follow safety guidelines and instructions.</p>",
-                    "judging_criteria": "<p>*Time Completion (weightage 50%)<br><br>*Accuracy and Precision in problem solving (weightage 50%)</p>",
-                    "imgsrc": "/posters/society_26_imgsrc.png",
-                    "bsrc1": "/posters/society_26_bsrc1.png",
-                    "bsrc2": "/posters/society_26_bsrc2.png",
-                    "index": 26,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
-                }
-            ]
-        },
+       
+     
+      
         {
             "societyName": "MMES & IIMSC",
             "events": [
                 {
                     "title": "MetaRush",
                     "name": "MMES & IIMSC",
-                    "overview": "<h1>MetaRush</h1><br><h4>MMES & IIMSC</h4><br><h6>Description</h6><br><p>Participants will start by receiving their first clue, which will be related to materials. The clue could involve solving a problem or answering a question.\nFinally, after advancing through several stages (each stage representing a different aspect of materials), participants will reach the final clue\u2014which could be a hidden object or a final riddle they must solve to \"unlock\" the mystery of the treasure hunt.</p><br><h6>Team Size</h6><br><p>4</p><br><h6>General Secretary</h6><br><p>Harshita Sajjan + 7039787139</p><br>",
-                    "rules": "<p><br>No Phone Usage<br>No cycle Usage<br></p>",
-                    "judging_criteria": "<p>The Team that solves the clues first , shall be declared the Winner</p>",
-                    "imgsrc": "/posters/society_25_imgsrc.png",
+                    "overview": "<h1>MetaRush</h1><br><h4>MMES & IIMSC</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>Harshitha Vanam: 9859781704</p><br><p>Amit: 7597587833</p>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_8_imgsrc.png",
                     "bsrc1": "/posters/society_25_bsrc1.png",
                     "bsrc2": "/posters/society_25_bsrc2.png",
                     "index": 25,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "glink": "Coming Soon..."
                 },
                 {
-                    "title": "MetaLusion",
+                     "title": "MetaDart",
                     "name": "MMES & IIMSC",
-                    "overview": "<h1>MetaLusion</h1><br><h4>MMES & IIMSC</h4><br><h6>Description</h6><br><p>A display of illusionary materials where participants can explore and interact with various unique materials that exhibit fascinating properties, often unknown to the general public. The event will explain what these materials are made of and where they are used in real-world applications.</p><br><h6>Team Size</h6><br><p>1</p><br><h6>General Secretary</h6><br><p>Harshita Sajjan + 7039787139</p><br>",
-                    "imgsrc": "/posters/society_27_imgsrc.png",
-                    "bsrc1": "/posters/society_27_bsrc1.png",
-                    "bsrc2": "/posters/society_27_bsrc2.png",
-                    "index": 27,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "overview": "<h1>MetaDart</h1><br><h4>MMES & IIMSC</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>_____</p><br>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_17_imgsrc.png",
+                    "bsrc1": "/posters/society_25_bsrc1.png",
+                    "bsrc2": "/posters/society_25_bsrc2.png",
+                    "index": 25,
+                    "glink": "Coming Soon..."
                 },
                 {
-                    "title": "MetaForge",
+                   "title": "MetaLusion",
                     "name": "MMES & IIMSC",
-                    "overview": "<h1>MetaForge</h1><br><h4>MMES & IIMSC</h4><br><h6>Description</h6><br><p>Test your knowledge of materials in this exciting quiz, covering everything from steel to ceramics. Discover how well you know the essential building blocks shaping the future of technology and engineering.\n</p><br><h6>Team Size</h6><br><p>Solo or Team of Size 2</p><br><h6>General Secretary</h6><br><p>Sankalp Srivastava + 7219884198</p><br>",
-                    "rules": "<p>Usage of mobile phones, tablets, laptops is prohibited. Any team member or individual found cheating will lead to disqualification of the team or individual.</p>",
-                    "judging_criteria": "<p>Participants will be evaluated based on the accuracy and speed of their responses.</p>",
-                    "imgsrc": "/posters/society_28_imgsrc.png",
-                    "bsrc1": "/posters/society_28_bsrc1.png",
-                    "bsrc2": "/posters/society_28_bsrc2.png",
-                    "index": 28,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "overview": "<h1>MetaLusion</h1><br><h4>MMES & IIMSC</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>_____</p><br>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_18_imgsrc.png",
+                    "bsrc1": "/posters/society_25_bsrc1.png",
+                    "bsrc2": "/posters/society_25_bsrc2.png",
+                    "index": 25,
+                    "glink": "Coming Soon..."
                 }
             ]
         },
@@ -274,36 +159,37 @@
             "societyName": "Electrical Engineering society",
             "events": [
                 {
-                    "title": "MATLAB WORKSHOP",
+                    "title": "Gesture Drift",
                     "name": "Electrical Engineering society",
-                    "overview": "<h1>MATLAB WORKSHOP</h1><br><h4>Electrical Engineering society</h4><br><h6>Description</h6><br><p>This event is basically a learning event , in which students who are intrested in learning matlab can join this event. The tutors will be our lecturers form Electrical engineering department. </p><br><h6>Team Size</h6><br><p>nan</p><br><h6>General Secretary</h6><br><p>Rakesh + 9347481626</p><br>",
-                    "imgsrc": "/posters/society_14_imgsrc.png",
+                    "overview": "<h1>Gesture Drift</h1><br><h4>Electrical Engineering society</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>___</p><br>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_5_imgsrc.png",
                     "bsrc1": "/posters/society_14_bsrc1.png",
                     "bsrc2": "/posters/society_14_bsrc2.png",
                     "index": 14,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "glink": "Coming Soon..."
                 },
                 {
-                    "title": "Dare to feel the pain",
+                    "title": "Dance O'Watt",
                     "name": "Electrical engineering society ",
-                    "overview": "<h1>Dare to feel the pain</h1><br><h4>Electrical engineering society </h4><br><h6>Description</h6><br><p>this event brings you the periodic pains simulator , we can experience the pain of women experiences when they are in periods .</p><br><h6>Team Size</h6><br><p>1</p><br><h6>General Secretary</h6><br><p>Rakesh  +  93474 81626</p><br>",
-                    "judging_criteria": "<p>person who can bear highest pain will win</p>",
-                    "imgsrc": "/posters/society_15_imgsrc.jpg",
+                    "overview": "<h1>Dance O'Watt</h1><br><h4>Coming Soon...</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p>____</p><br>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_6_imgsrc.jpg",
                     "bsrc1": "/posters/society_15_bsrc1.jpg",
                     "bsrc2": "/posters/society_15_bsrc2.jpg",
                     "index": 15,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "glink": "Coming Soon..."
                 },
                 {
-                    "title": "Voltage Vortex",
+                    "title": "OptiMystery",
                     "name": "Electrical engineering society ",
-                    "overview": "<h1>Voltage Vortex</h1><br><h4>Electrical engineering society </h4><br><h6>Description</h6><br><p>series of rounds where questions and Tasks related to electrical engineering are given and teams have to solve them in minimum time </p><br><h6>Team Size</h6><br><p>1- 4</p><br><h6>General Secretary</h6><br><p>Rakesh + 93474 81626</p><br>",
-                    "judging_criteria": "<p>student teams who solve more problems in less time will be awarded .</p>",
-                    "imgsrc": "/posters/society_17_imgsrc.jpg",
+                    "overview": "<h1>OptiMystery</h1><br><h4>Electrical engineering society </h4><br><h6>Description</h6><br><p>Coming Soon... </p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>____</p><br>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_7_imgsrc.jpg",
                     "bsrc1": "/posters/society_17_bsrc1.jpg",
                     "bsrc2": "/posters/society_17_bsrc2.jpg",
                     "index": 17,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "glink": "Coming Soon..."
                 }
             ]
         },
@@ -311,121 +197,80 @@
             "societyName": "Mechanical Engineering Society",
             "events": [
                 {
-                    "title": "Mechanical Kit Assembly",
+                    "title": "Track To Trivia",
                     "name": "Mechanical Engineering Society",
-                    "overview": "<h1>Mechanical Kit Assembly</h1><br><h4>Mechanical Engineering Society</h4><br><h6>Description</h6><br><p>A mechanical kit will be provided for the team to assemble using different assembly drawings and component list, just like real fixture. Winners will be decided on the basis of time. </p><br><h6>Team Size</h6><br><p>maximum 4</p><br><h6>General Secretary</h6><br><p>Dhruv Jain + 9619676068</p><br>",
-                    "rules": "<p>Time for making the assembly is 30 minutes.<br>A manual will be provided for guidance.<br>Disassembly of the kit must be done after the evaluation is completed.</p>",
-                    "judging_criteria": "<p>Complete Assembly: <br>Level 1- 8 pts, Level 2- 10 pts.<br>Bonus points +7 for completing both assemblies within the time limit.<br>Partial points awarded based on completion level for incomplete assemblies.</p>",
-                    "imgsrc": "/posters/society_8_imgsrc.png",
+                    "overview": "<h1>Track To Trivia</h1><br><h4>Mechanical Engineering Society</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>____</p><br>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_9_imgsrc.png",
                     "bsrc1": "/posters/society_8_bsrc1.png",
                     "bsrc2": "/posters/society_8_bsrc2.png",
                     "index": 8,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "glink": "Coming Soon..."
                 },
                 {
-                    "title": "Vehicle Demonstration",
+                    "title": "Mechanical Kit Assembly",
                     "name": "Mechanical Enineering Society ",
-                    "overview": "<h1>Vehicle Demonstration</h1><br><h4>Mechanical Enineering Society </h4><br><h6>Description</h6><br><p>Vehicle demonstration is an event which showcases the vehicle of teams MechExhausters and Mechaholics, of which MechExhausters is a student team that builds an F1-style car and compete in competitions like SUPRA SAE INDIA and team Mechaholics builds a quadbike and compete in competitions like QBDC. People can see their vehicles, get to know how each component in vehicle works and know how these automobiles work, from the people who built them.</p><br><h6>Team Size</h6><br><p>nan</p><br><h6>General Secretary</h6><br><p>Dhruv Jain + 9619676068</p><br>",
-                    "imgsrc": "/posters/society_20_imgsrc.png",
+                    "overview": "<h1>Mechanical Kit Assembly</h1><br><h4>Mechanical Enineering Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>COming Soon...</p><br><h6>General Secretary</h6><br><p>_____</p><br>",
+                    "imgsrc": "/posters25/society_10_imgsrc.png",
                     "bsrc1": "/posters/society_20_bsrc1.png",
                     "bsrc2": "/posters/society_20_bsrc2.png",
                     "index": 20,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
-                }
-            ]
-        },
-        {
-            "societyName": "Biotechnology Society",
-            "events": [
-                {
-                    "title": "Forensic investigation ",
-                    "name": "Biotechnology Society ",
-                    "overview": "<h1>Forensic investigation </h1><br><h4>Biotechnology Society </h4><br><h6>Description</h6><br><p>Forensic Investigation\nTeam of up to 3 participants \nA workshop on DNA fingerprinting and other forensic technologies involved in criminal investigation. Following the workshop, participants have to use this knowledge to solve a case.</p><br><h6>Team Size</h6><br><p>3</p><br><h6>General Secretary</h6><br><p>Janga Manoj Kumar Reddy  + 8639676094</p><br>",
-                    "rules": "<p>Following the workshop, participants have to use this knowledge to solve a case.</p>",
-                    "judging_criteria": "<p>IDENTIFYING THE KILLER<br>IDENTIFYING THE MOTIVE<br>UNCOVERING THE EVENTS<br>LEADING UPTO THE MURDER</p>",
-                    "imgsrc": "/posters/society_13_imgsrc.jpg",
-                    "bsrc1": "/posters/society_13_bsrc1.jpg",
-                    "bsrc2": "/posters/society_13_bsrc2.jpg",
-                    "index": 13,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "glink": "Coming Soon..."
                 },
-                {
-                    "title": "Cellution ",
-                    "name": "Biotechnology Society ",
-                    "overview": "<h1>Cellution </h1><br><h4>Biotechnology Society </h4><br><h6>Description</h6><br><p>Team or individual participation \nRound 1 : a quiz about the topics involved in the problem statement.\nRound 1 qualifiers will be allowed to participate in round 2.</p><br><h6>Team Size</h6><br><p>4</p><br><h6>General Secretary</h6><br><p>Janga Manoj Kumar Reddy  + 8639676094</p><br>",
-                    "rules": "<p>Round 1 qualifiers will be allowed to participate in round 2<br>Round 2 : the team will be presented with a problem statement highlighting a developmental challenge in biotechnology. The team must propose a viable solution for the problem.</p>",
-                    "judging_criteria": "<p>Round 1 will be judged based on correct answers, since it is quiz.<br>Round 2 will be judged based on feasibility of the solution, cost implementation, efficiency and impact</p>",
-                    "imgsrc": "/posters/society_12_imgsrc.jpg",
-                    "bsrc1": "/posters/society_12_bsrc1.jpg",
-                    "bsrc2": "/posters/society_12_bsrc2.jpg",
-                    "index": 12,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                  {
+                    "title": "OFF Track:RC Car Showdown",
+                    "name": "Mechanical Enineering Society ",
+                    "overview": "<h1>OFF Track:RC Car Showdown</h1><br><h4>Mechanical Enineering Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>COming Soon...</p><br><h6>General Secretary</h6><br><p>_____</p><br>",
+                    "imgsrc": "/posters25/society_11_imgsrc.png",
+                    "bsrc1": "/posters/society_20_bsrc1.png",
+                    "bsrc2": "/posters/society_20_bsrc2.png",
+                    "index": 20,
+                    "glink": "Coming Soon..."
+                },
+                 {
+                    "title": "NEON Cricket",
+                    "name": "Mechanical Enineering Society ",
+                    "overview": "<h1>NEON Cricket</h1><br><h4>Mechanical Enineering Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>COming Soon...</p><br><h6>General Secretary</h6><br><p>_____</p><br>",
+                    "imgsrc": "/posters25/society_12_imgsrc.png",
+                    "bsrc1": "/posters/society_20_bsrc1.png",
+                    "bsrc2": "/posters/society_20_bsrc2.png",
+                    "index": 20,
+                    "glink": "Coming Soon..."
                 }
+                
+
             ]
         },
-        {
-            "societyName": "Chemistry Society",
+   
+         {
+            "societyName": "Civil Engineering Association",
             "events": [
                 {
-                    "title": "CHEM EXPO",
-                    "name": "Chemistry Society",
-                    "overview": "<h1>CHEM EXPO</h1><h4>Chemistry Society</h4><h6>Description</h6><p>Discover the magic of chemistry through interactive experiments and demonstrations. Hands-on activities that will make chemistry fun by using chemicals which are used in our daily life.</p><br><h6>Team Size</h6><p>6-7 members in each team</p><br><h6>General Secretary</h6><p>Pragati +91 70281 88342</p><br>",
-                    "rules": "<p>1. Team Participation:<br> - Each team of 6-7 members must collaborate to complete the assigned experiment at their station.<br> - All members must be involved in some part of the experiment, whether it’s mixing chemicals, following instructions, or explaining the reaction.<br>2. Safe Chemical Handling:<br> - Safety First: Safety goggles, gloves, and aprons will be provided to all participants. These must be worn at all times when handling chemicals.<br> - The chemicals used are non-hazardous, but teams must follow safety guidelines (e.g., no ingestion, washing hands after handling chemicals).<br>3. Experiment Instructions:<br> - Each station has a set of instructions for the experiment, including steps, materials, and safety measures.<br> - Teams must follow these instructions closely to ensure they perform the reaction correctly and safely.</p>",
-                    "judging_criteria": "<p>Teams will be judged on their ‘teamwork’, ‘execution’ of the experiment, and their ability to explain the reaction (what’s happening chemically, how it applies to everyday life).<br> - Points are awarded based on:<br> - Correct execution of the experiment.<br> - Clear and accurate explanation of the chemical reaction.<br> - Creativity or additional demonstrations of the chemical principles (if possible).</p>",
-                    "imgsrc": "/posters/society_30_imgsrc.png",
+                    "title": "KBCE",
+                    "name": "Civil Society",
+                    "overview": "<h1>KBCE</h1><h4>Civil Society</h4><h6>Description</h6><p>Coming Soon....</p><br><h6>Team Size</h6><p>Coming Soon...</p><br><h6>General Secretary</h6><p>_____</p><br>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>COming Soon....</p>",
+                    "imgsrc": "/posters25/society_19_imgsrc.png",
                     "bsrc1": "/posters/society_30_bsrc1.png",
                     "bsrc2": "/posters/society_30_bsrc2.png",
                     "index": 30,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                    "glink": "Coming Soon..."
                 },
-                {
-                    "title": "Periodic Table battleship",
-                    "name": "Chemistry Society",
-                    "overview": "<h1>Periodic Table battleship</h1><h4>Chemistry Society</h4><h6>Description</h6><p>The game will be totally based on the periodic table like element names, properties, trends in the periodic table, etc.</p><br><h6>Team Size</h6><p>4 to 6 members</p><br><h6>General Secretary</h6><p>Ankita Raj 9354495882</p><br>",
-                    "rules": "<p>Game is divided into 3 stages. In each stage, there will be elimination of participants, and the one who reaches the last stage and wins is the final winner.</p>",
-                    "judging_criteria": "<p>Accuracy, Speed, and Knowledge.</p>",
-                    "imgsrc": "/posters/society_31_imgsrc.jpg",
-                    "bsrc1": "/posters/society_31_bsrc1.jpg",
-                    "bsrc2": "/posters/society_31_bsrc2.jpg",
-                    "index": 31,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
-                },
-                {
-                    "title": "Let Them Cook",
-                    "name": "Chemistry Society",
-                    "overview": "<h1>Let Them Cook</h1><h4>Chemistry Society</h4><h6>Description</h6><p>Players are provided with boxes containing various slips related to chemistry (reactants, products, reagents, solvents, and conditions). They must create a valid chemical reaction using the slips they pick. </p><br><h6>Team Size</h6><p>6-7 members</p><br><h6>General Secretary</h6><p>Pragati +91 70281 88342</p><br>",
-                    "rules": "<p>The player who forms the most meaningful and correct reaction within the time limit wins the round. </p>",
-                    "judging_criteria": "<p>The player who forms the most meaningful and correct reaction within the time limit wins the round. If multiple players create valid reactions, additional criteria(eg: complexity, creativity( can be considered for the win. 6.Rounds and overall winner:- The game continues for multiple rounds( decide in advance how many rounds will be played) . The player who wins most rounds is crowned the overall winner. </p>",
-                    "imgsrc": "/posters/society_32_imgsrc.jpg",
-                    "bsrc1": "/posters/society_32_bsrc1.png",
-                    "bsrc2": "/posters/society_32_bsrc2.jpg",
-                    "index": 32,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
-                },
-                {
-                    "title": "ESCAPE ROOM",
-                    "name": "Chemistry Society",
-                    "overview": "<h1>ESCAPE ROOM</h1><h4>Chemistry Society</h4><h6>Description</h6><p>Participants are to be taken inside a room and asked to answer some questions and solve some puzzles. There would be different levels, and with every round, some participants will be eliminated.</p><br><h6>Team Size</h6><p>1/2</p><br><h6>General Secretary</h6><p>Ankita Raj 9354495882</p><br>",
-                    "rules": "<p>1. Be calm and quiet.<br>2. Phone is not allowed.</p>",
-                    "judging_criteria": "<p>The one who solves all the puzzles or tasks given until the last round would be considered the winner.</p>",
-                    "imgsrc": "/posters/society_33_imgsrc.jpg",
-                    "bsrc1": "/posters/society_33_bsrc1.jpg",
-                    "bsrc2": "/posters/society_33_bsrc2.jpg",
-                    "index": 33,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
-                },
-                {
-                    "title": "Chemistry Jeopardy",
-                    "name": "Chemistry Society",
-                    "overview": "<h1>Chemistry Jeopardy</h1><h4>Chemistry Society</h4><h6>Description</h6><p> Join us for an exciting and intellectually stimulating chemistry quiz competition that will put your  knowledge of elements, reactions, and scientific principles to the test!</p><br><h6>Team Size</h6><p>2 to 3 members</p><br><h6>General Secretary</h6><p>Pragati +91 70281 88342</p><br>",
-                    "rules": "<p>There will be 3 rounds -MCQ-based, Visual(images, diagrams)identification, and rapid-fire Session. Points will be awarded for each correct answer and the team with the maximum points will win.</p>",
-                    "judging_criteria": "<p>Accuracy and speed</p>",
-                    "imgsrc": "/posters/society_34_imgsrc.jpg",
-                    "bsrc1": "/posters/society_34_bsrc1.jpg",
-                    "bsrc2": "/posters/society_34_bsrc2.jpg",
-                    "index": 34,
-                    "glink": "https://forms.gle/6oA8sPJB9L9GkYsb9"
+                   {
+                    "title": "ERBMDC",
+                    "name": "Civil Society",
+                    "overview": "<h1>ERBMDC</h1><h4>Civil Society</h4><h6>Description</h6><p>Coming Soon....</p><br><h6>Team Size</h6><p>Coming Soon...</p><br><h6>General Secretary</h6><p>_____</p><br>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>COming Soon....</p>",
+                    "imgsrc": "/posters25/society_20_imgsrc.png",
+                    "bsrc1": "/posters/society_30_bsrc1.png",
+                    "bsrc2": "/posters/society_30_bsrc2.png",
+                    "index": 30,
+                    "glink": "Coming Soon..."
                 }
+             
             ]
         }
     ]

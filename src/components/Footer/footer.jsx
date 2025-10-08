@@ -11,7 +11,7 @@ const Footer = () => {
                 </a>  
                 </strong>
             </p>
-            <p class="text-sm text-600">&copy; Copyright Technozion'24</p>
+            <p className="text-sm text-600">&copy; Copyright Technozion'25</p>
         </footer>
     );
 };
