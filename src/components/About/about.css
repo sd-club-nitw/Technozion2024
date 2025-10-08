@@ -25,16 +25,27 @@ h1 {
 html,
 body {
   margin: 0; /* Remove default body margin */
-  overflow: hidden; /* Disable scrolling */
-  height: 100%; 
+  max-height: 100vh; 
+  overflow: hidden;
 }
-
+.about-page{
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
 /* Card Container Styles */
 .about-container {
   padding: 20px; 
-  box-sizing: border-box; 
-  min-height: 100vh; 
-  overflow: auto; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  /* background: #000; */
+  z-index: 2;
+  max-height: 100%;
+  overflow: auto;
+
 }
 
 .border {
@@ -44,24 +55,21 @@ body {
   border-radius: 5px; /* Round corners for a softer look */
   /* padding-bottom: 5px;  */
   overflow: hidden; /* Ensure inner content doesn't overflow */
+
 }
 .youtube-links {
-  position: absolute;
-  bottom: 20%;
-  left:35%;
+margin: auto;
   
   display: flex; 
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 150px; /* Adjusted gap for spacing between links */
-  width: fit-content;
-  margin-top: 20px; /* Add spacing from the AboutCard */
+width: 100%;
+  
   border-radius: 5px;
   padding: 10px;
   z-index: 4;
-  transform: translate(-10%, -50%);
-  align-self: center;
 }
 @media (max-width:1600px){
   .youtube-links{
@@ -88,7 +96,7 @@ body {
 
   color: white;
   position: relative;
-  z-index: 4;
+  z-index: 2;
   word-wrap: break-word;
   background: rgba(0, 0, 0, 0.1);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1),
@@ -104,17 +112,7 @@ body {
   height: auto; /* Keep aspect ratio */
 }
 
-/* Create a moving glow effect on the bottom border */
-.border::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 5px; /* Height of the glow */
-  background: linear-gradient(90deg, rgba(22, 246, 243, 1) 0%, rgba(255, 255, 255, 0) 100%); /* Gradient for glow effect */
-  animation: glow 2s infinite alternate; /* Animation for the glow */
-}
+
 
 /* Keyframes for the moving glow effect */
 @keyframes glow {
@@ -186,15 +184,7 @@ body {
   }
 } 
 
-@media (max-width:1024px) {
-    .youtube-links{
-       position: absolute;
-       bottom: 12%;
-       left: 15%;
-       transform: translate(-5%, -5%);
-    }
-  
-}
+
 @media (max-width: 768px) { /* Targeting mobile devices */
   .about_us{
     width: 220px;
@@ -222,12 +212,7 @@ body {
     max-width: 100%; /* Make images responsive */
     height: auto; /* Keep aspect ratio */
   }
-  .youtube-links{
-    position: absolute;
-    bottom: 15%;
-    left: 12%;
-    transform: translate(-5%, -5%);
- }
+  
 }
 
 @media (min-width: 450px) and (max-width: 650px){
@@ -235,14 +220,7 @@ body {
     font-size: 0.9rem;
   }
 }
-@media (max-width:650px){
-  .youtube-links{
-    position: absolute;
-    bottom: 20%;
-    left: 10%;
-     gap:80px
- }
-}
+
 
 @media (max-width: 485px){
   .theme-content{
@@ -254,12 +232,7 @@ body {
   
     
   }
-  .youtube-links{
-    flex-direction: column;
-    gap:10px;
-    bottom: 10%;
-    left: 25%;
- }
+ 
  .youtube-link{
    width: 50vw;
  }
@@ -268,9 +241,7 @@ body {
   .youtube-links{
     flex-direction: column;
     gap:10px;
-    bottom: 15%;
-    left: 25%;
-    width: fit-content;
+    width: 100%;
    
  }
  
@@ -296,9 +267,7 @@ body {
   .youtube-links{
     flex-direction: column;
     gap:10px;
-    bottom: 12%;
-    left: 25%;
-    width: fit-content;
+  
    
  }
  .youtube-link{
@@ -311,11 +280,7 @@ body {
   .youtube-links{
     flex-direction: column;
     gap:10px;
-    bottom: 8%;
-    left: 30%;
-    width: fit-content;
-    height:fit-content;
-    padding: 0px;
+    
    
  }
  .youtube-link{
@@ -380,8 +345,8 @@ body {
   top: 0; /* Align to the top */
   left: 0; /* Align to the left */
   width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  z-index: 1; /* Behind content */
+  height: 100%; /* Full viewport height */
+  z-index: 0; /* Behind content */
   pointer-events: none; /* Allow interactions through the canvas */
 }
 
