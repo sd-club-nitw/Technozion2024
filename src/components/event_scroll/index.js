@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Poster from './poster.js';
-import { Loader } from '../Loader/index.js'; // Import your loader
+import { Loader } from '../Loader/index.js';
 import './index.css';
 import { WebCanvas } from '../bg_animation/bg_animate.js';
 import imgsrc from './tzcomingsoon.png'; // Fallback image
@@ -13,19 +13,49 @@ const TABS = [
   { key: 'societies', label: 'DEPARTMENT' },
   { key: 'spotlight', label: 'SPOTLIGHT' },
   { key: 'clubevents', label: 'CLUB' },
+  { key: 'workshops', label: 'WORKSHOPS EXPO' },
 ];
 
 function Index() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { state } = location || {};
 
-  const initialTab = state?.dataSource || 'spotlight';
-  const [selectedTab, setSelectedTab] = useState(initialTab);
+  // pick initial tab from URL ?tab=..., then location.state?.dataSource, then default to 'societies'
+  const getInitialTab = () => {
+    const params = new URLSearchParams(location.search);
+    return params.get('tab') || location.state?.dataSource || 'societies';
+  };
+
+  const [selectedTab, setSelectedTab] = useState(getInitialTab);
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [headingImage, setHeadingImage] = useState(null);
   const [error, setError] = useState(null);
+
+  // Keep selectedTab in sync if the URL or location.state changes (e.g., user navigates / bookmarks)
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tabFromSearch = params.get('tab');
+    const tabFromState = location.state?.dataSource;
+
+    const preferred = tabFromSearch || tabFromState;
+    if (preferred && preferred !== selectedTab) {
+      setSelectedTab(preferred);
+    }
+    // note: we intentionally do not force a change if preferred is falsy,
+    // so the current selectedTab (maybe user-chosen) remains.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.search, location.state]);
+
+  // When selectedTab changes, update the URL query param so the route persists the tab
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('tab') !== selectedTab) {
+      params.set('tab', selectedTab);
+      navigate(`${location.pathname}?${params.toString()}`, { replace: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedTab]);
 
   useEffect(() => {
     let isMounted = true;
@@ -45,8 +75,13 @@ function Index() {
         } else if (selectedTab === 'clubevents') {
           response = await fetch('/dataJSON/club.json');
           setHeadingImage(club);
-        } else {
-          // fallback (shouldn't happen)
+        }
+         else if (selectedTab === 'workshops') {
+          response = await fetch('/dataJSON/workshop.json');
+          setHeadingImage(club);
+         }
+         else {
+          // fallback
           response = await fetch('/dataJSON/spotlight.json');
           setHeadingImage(spotlight);
         }
@@ -81,7 +116,6 @@ function Index() {
   };
 
   const renderSocieties = () => {
-    // Expecting data to be an array of societies with events
     return data.map((society) => (
       <div key={society.societyName}>
         <h2 className="society-heading">{society.societyName}</h2>
@@ -128,13 +162,6 @@ function Index() {
           ))}
         </div>
       </div>
-
-      {/* Heading image */}
-      {/* <div className="heading">
-        {headingImage && (
-          <img src={headingImage} alt="eventtype" className="heading-image" />
-        )}
-      </div> */}
 
       <div className="inner-container">
         {selectedTab === 'societies' ? renderSocieties() : (
