@@ -14,8 +14,8 @@
     {
         "title": "Bomb's Away!",
         "name": "Robotics Club",
-        "overview": "<h1>Bomb's Away!</h1><br><h4>Robotics Club</h4><br><h6>Description</h6><p>Coming Soon...</p><br><h6>Team Size</h6><p>Coming Soon... </p><br><h6>Point of contact</h6><p>______</p><br>",
-        "rules": "<p>Coming Soon...</p>",
+        "overview": "<h1>Bomb's Away!</h1><br><h4>Robotics Club</h4><br><h6>Description</h6><p>Bomb’s Away challenges participants to time the release of a payload from a remotely piloted aircraft onto a ground target. Success depends on judging speed, altitude, and wind for maximum accuracy.</p><br><h6>Team Size</h6><p>Coming Soon... </p><br><h6>Point of contact</h6><p>Dhanvanth Chandrasekaran : 7418056603</p><br>",
+        "rules": "<p>->Pilot announces the approach, participant times the trigger to drop the payload, and marshals record the result.<br>->No communication or interference with the pilot is allowed during the run.</p>",
         "judging_criteria": "<p>Coming Soon...</p>",
         "imgsrc": "/posters25/club_2_imgsrc.png",
         "bsrc1": "/posters/club_31_bsrc1.png",
@@ -26,8 +26,8 @@
     {
        "title": "Blaze",
         "name": "Robotics Club",
-        "overview": "<h1>Blaze</h1><br><h4>Robotics Club</h4><br><h6>Description</h6><p>Coming Soon...</p><br><h6>Team Size</h6><p>Coming Soon... </p><br><h6>Point of contact</h6><p>______</p><br>",
-        "rules": "<p>Coming Soon...</p>",
+        "overview": "<h1>Blaze</h1><br><h4>Robotics Club</h4><br><h6>Description</h6><p> BLAZE is a laser Tag experience featuring a custom-built arena and DIY technology, challenging two teams to a 15-minute survivor match.</p><br><h6>Team Size</h6><p>Coming Soon... </p><br><h6>Point of contact</h6><p> Soumilya Dwivedi : 8448644855</p><br>",
+        "rules": "<p>->Two teams of four compete for 15 minutes; winners aredecided by points or full elimination.<br>->Players have 3 lives and register via RFID or manually;scores are tracked live.</p>",
         "judging_criteria": "<p>Coming Soon...</p>",
         "imgsrc": "/posters25/club_3_imgsrc.png",
         "bsrc1": "/posters/club_31_bsrc1.png",
@@ -47,6 +47,7 @@
         "index": 31,
         "glink": "Coming Soon..."
     },
+    
     {
        "title": "The LaunchPad",
         "name": "SEA Club",
@@ -102,6 +103,18 @@
         "rules": "<p>Coming Soon...</p>",
         "judging_criteria": "<p>Coming Soon...</p>",
         "imgsrc": "/posters25/club_9_imgsrc.jpg",
+        "bsrc1": "/posters/club_31_bsrc1.png",
+        "bsrc2": "/posters/club_31_bsrc2.png",
+        "index": 7,
+        "glink": "Coming Soon..."
+    },
+     {
+       "title": "Project Expo",
+        "name": "Innovation Garage",
+        "overview": "<h1>Project Expo</h1><br><h4>Innovation Garage</h4><br><h6>Description</h6><p>Project Expo is a platform for participants to showcase their innovative models and projects to an expert jury, gaining evaluation, recognition, and the visibility their work deserves</p><br><h6>Team Size</h6><p>Coming Soon... </p><br><h6>Point of contact</h6><p> Akhil : 90594 22616</p><br>",
+        "rules": "<p>Only  original, participant-created projects are allowed; plagiarism will lead to disqualification.<br>->Each team must present their project within the allotted time and answer the jury’s questions clearly.</p>",
+        "judging_criteria": "<p>Coming Soon...</p>",
+        "imgsrc": "/posters25/club_13_imgsrc.jpg",
         "bsrc1": "/posters/club_31_bsrc1.png",
         "bsrc2": "/posters/club_31_bsrc2.png",
         "index": 7,
