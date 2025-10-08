@@ -6,9 +6,23 @@ dotenv.config();
 
 const app = express();
 
+const whitelist = ['https://technozion.nitw.ac.in/', 'http://localhost:3000'];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
+
+app.use(cors(corsOptions)); // to prevent access from untrusted origins
+// app.use(cors())
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors())
 
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB connected"))
