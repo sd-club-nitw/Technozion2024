@@ -9,7 +9,7 @@ import Sponsors from '../components/Sponsors/Sponsors';
 import { useAuth } from './AuthManager';
 import  Register  from '../components/Register2/Register.jsx';
 import { Gallery } from '../components/Gallery/gallery.js';
-import { Team } from '../components/Team/team.js';
+import { Team } from '../components/Team/team.jsx';
 import Card from '../components/card/card.jsx';
 import Index from '../components/event_scroll/index.js';
 import { ComingSoon } from "../components/ComingSoon/ComingSoon.jsx";
@@ -60,6 +60,17 @@ const RoutesManager = () => {
 
 			{/* Catch all */}
 			<Route path="*" element={<ComingSoon />} />
+			<Route path="/about" element={<About />} />
+			{/* <Route path="/sponsors" element={<Sponsors />} /> */}
+			<Route path="/events" element={<Index />} />
+			{/* <Route path="/displayevents" element={<Displayevents />} /> */}
+			<Route path="/team" element={<Team />} />
+			{/* <Route path="/register" element={<Register />} /> */}
+			{/* <Route path="/gallery" element={<Gallery />} /> */}
+			{/* <Route path="/index" element={<Index />} /> */}
+			<Route path="/card" element={<Card />} /> Route for the card component
+
+			
 		</Routes>
 	);
 };
