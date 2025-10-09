@@ -114,7 +114,7 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("user_info", JSON.stringify(data.user));
       localStorage.setItem("token", data.token);
       setUser(data.user);
-      alert('Successfully Registered' )
+      alert(`Successfully Registered you id is ${data?.user?.registrationNum || 'NA'}` )
       navigate("/");
     } else {
       console.log("register error", data);
