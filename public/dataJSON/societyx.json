@@ -1,556 +1,276 @@
-[
-  {
-    "societyName": "Computer Science and Engineering Society",
-    "events": [
-      {
-        "title": "#1 No Bugs Given",
-        "name": "Computer Science and Engineering Society",
-        "total_cost": 7000,
-        "overview": {
-          "main_title": "#1 No Bugs Given",
-          "description": "No Bugs Given is a competitive 1v1 debugging tournament where players race to identify and fix flaws in programs faster than their opponent.",
-          "team_size": "1",
-          "contact": [
-            {
-              "name": "Devashish",
-              "email": null,
-              "phone": "9987938287"
-            }
-          ]
+    [
+        {
+            "societyName": "Computer Science and Engineering Society",
+            "events": [
+                {
+                    "title": "#1 No Bugs Given",
+                    "name": "Computer Science and Engineering Society",
+                    "overview": "<h1>#1 No Bugs Given</h1><br><h4>Computer Science and Engineering Society</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>----</p><br>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "Coming Soon....</p>",
+                    "imgsrc": "/posters25/society_1_imgsrc.jpg",
+                    "bsrc1": "/posters/society_10_bsrc1.png",
+                    "bsrc2": "/posters/society_10_bsrc2.png",
+                    "index": 10,
+                    "glink": "Coming Soon..."
+                }
+              
+            ]
         },
-        "rules": [
-          "Participants face knockout rounds and must debug programs for syntax and logic errors",
-          "Strict time limit, with no AI tools permitted"
-        ],
-        "judging_criteria": "Coming Soon....",
-        "imgsrc": "/posters25/society_1_imgsrc.jpg",
-        "index": 10
-      },
-      {
-        "title": "CSES Arcade",
-        "name": "Computer Science and Engineering Society",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "CSES Arcade",
-          "description": "An intense 3D, two-player duel built on suspense, strategy, and quick thinking, enhanced by immersive visuals and sound design.",
-          "team_size": "2",
-          "contact": [
-            {
-              "name": "Neel",
-              "email": null,
-              "phone": "7022235002"
-            }
-          ]
+        {
+            "societyName": "Mathematical Society",
+            "events": [
+                {
+                    "title": "Mind Domino",
+                    "name": "Mathematical Society ",
+                    "overview": "<h1>Mind Domino</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p>7219129324,7388878414</p><br>",
+                    "rules": "Coming SOon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_13_imgsrc.jpg",
+                    "bsrc1": "/posters/society_6_bsrc1.png",
+                    "bsrc2": "/posters/society_6_bsrc2.png",
+                    "index": 6,
+                    "glink": "Coming Soon..."
+                },
+                {
+                   "title": "Math Relay Race",
+                    "name": "Mathematical Society ",
+                    "overview": "<h1>Math Relay Race</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p>______</p><br>",
+                    "rules": "Coming SOon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_14_imgsrc.png",
+                    "bsrc1": "/posters/society_6_bsrc1.png",
+                    "bsrc2": "/posters/society_6_bsrc2.png",
+                    "index": 6,
+                    "glink": "Coming Soon..."
+                },
+                {
+                     "title": "Bug Busters",
+                    "name": "Mathematical Society ",
+                    "overview": "<h1>Bug Busters</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p>______</p><br>",
+                    "rules": "Coming SOon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_15_imgsrc.png",
+                    "bsrc1": "/posters/society_6_bsrc1.png",
+                    "bsrc2": "/posters/society_6_bsrc2.png",
+                    "index": 6,
+                    "glink": "Coming Soon..."
+                },
+                 {
+                     "title": "Treco Hunt",
+                    "name": "Mathematical Society ",
+                    "overview": "<h1>treco Hunt</h1><br><h4>Mathematical Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p>______</p><br>",
+                    "rules": "Coming SOon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_16_imgsrc.jpg",
+                    "bsrc1": "/posters/society_6_bsrc1.png",
+                    "bsrc2": "/posters/society_6_bsrc2.png",
+                    "index": 6,
+                    "glink": "Coming Soon..."
+                }
+            ]
         },
-        "rules": [
-          "Players take alternating turns with randomized live or dud shells.",
-          "The round continues until only one player remains."
-        ],
-        "judging_criteria": "Coming Soon....",
-        "imgsrc": "/posters25/society_1000_imgsrc.jpg",
-        "index": 10
-      }
+        {
+            "societyName": "ECE Society",
+            "events": [
+                {
+                    "title": "AI Murder Mystery",
+                    "name": "ECE Society",
+                    "overview": "<h1>AI Murder Mystery</h1><br><h4>ECE Society</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>Vineet : 6309730630</p><br>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_2_imgsrc.jpg",
+                    "bsrc1": "/posters/society_16_bsrc1.png",
+                    "bsrc2": "/posters/society_16_bsrc2.png",
+                    "index": 16,
+                    "glink": "Coming Soon..."
+                },
+                {
+                    "title": "Lie Detector",
+                    "name": "ECE Society",
+                    "overview": "<h1>Lie Detector</h1><br><h4>ECE Society</h4><br><h6>Description</h6><br><p>Coming soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>Abhiram: 934809877</p><br><p>Abhinav: 9108205643",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_3_imgsrc.png",
+                    "bsrc1": "/posters/society_18_bsrc1.png",
+                    "bsrc2": "/posters/society_18_bsrc2.png",
+                    "index": 18,
+                    "glink": "Coming Soon..."
+                },
+                {
+                    "title": "ChipCraft",
+                    "name": "ECE Society",
+                    "overview": "<h1>ChipCraft</h1><br><h4>ECE Society</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>____</p><br>",
+                    "rules":"<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_4_imgsrc.jpg",
+                    "bsrc1": "/posters/society_19_bsrc1.png",
+                    "bsrc2": "/posters/society_19_bsrc2.png",
+                    "index": 19,
+                    "glink": "Coming Soon..."
+                }
+            ]
+        },
+       
+     
+      
+        {
+            "societyName": "MMES & IIMSC",
+            "events": [
+                {
+                    "title": "MetaRush",
+                    "name": "MMES & IIMSC",
+                    "overview": "<h1>MetaRush</h1><br><h4>MMES & IIMSC</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>Harshitha Vanam: 9859781704</p><br><p>Amit: 7597587833</p>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_8_imgsrc.png",
+                    "bsrc1": "/posters/society_25_bsrc1.png",
+                    "bsrc2": "/posters/society_25_bsrc2.png",
+                    "index": 25,
+                    "glink": "Coming Soon..."
+                },
+                {
+                     "title": "MetaDart",
+                    "name": "MMES & IIMSC",
+                    "overview": "<h1>MetaDart</h1><br><h4>MMES & IIMSC</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>_____</p><br>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_17_imgsrc.png",
+                    "bsrc1": "/posters/society_25_bsrc1.png",
+                    "bsrc2": "/posters/society_25_bsrc2.png",
+                    "index": 25,
+                    "glink": "Coming Soon..."
+                },
+                {
+                   "title": "MetaLusion",
+                    "name": "MMES & IIMSC",
+                    "overview": "<h1>MetaLusion</h1><br><h4>MMES & IIMSC</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>_____</p><br>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_18_imgsrc.png",
+                    "bsrc1": "/posters/society_25_bsrc1.png",
+                    "bsrc2": "/posters/society_25_bsrc2.png",
+                    "index": 25,
+                    "glink": "Coming Soon..."
+                }
+            ]
+        },
+        {
+            "societyName": "Electrical Engineering society",
+            "events": [
+                {
+                    "title": "Gesture Drift",
+                    "name": "Electrical Engineering society",
+                    "overview": "<h1>Gesture Drift</h1><br><h4>Electrical Engineering society</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>___</p><br>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_5_imgsrc.png",
+                    "bsrc1": "/posters/society_14_bsrc1.png",
+                    "bsrc2": "/posters/society_14_bsrc2.png",
+                    "index": 14,
+                    "glink": "Coming Soon..."
+                },
+                {
+                    "title": "Dance O'Watt",
+                    "name": "Electrical engineering society ",
+                    "overview": "<h1>Dance O'Watt</h1><br><h4>Coming Soon...</p><br><h6>Team Size</h6><br><p>coming soon...</p><br><h6>General Secretary</h6><br><p>____</p><br>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_6_imgsrc.jpg",
+                    "bsrc1": "/posters/society_15_bsrc1.jpg",
+                    "bsrc2": "/posters/society_15_bsrc2.jpg",
+                    "index": 15,
+                    "glink": "Coming Soon..."
+                },
+                {
+                    "title": "OptiMystery",
+                    "name": "Electrical engineering society ",
+                    "overview": "<h1>OptiMystery</h1><br><h4>Electrical engineering society </h4><br><h6>Description</h6><br><p>Coming Soon... </p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>____</p><br>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_7_imgsrc.jpg",
+                    "bsrc1": "/posters/society_17_bsrc1.jpg",
+                    "bsrc2": "/posters/society_17_bsrc2.jpg",
+                    "index": 17,
+                    "glink": "Coming Soon..."
+                }
+            ]
+        },
+        {
+            "societyName": "Mechanical Engineering Society",
+            "events": [
+                {
+                    "title": "Track To Trivia",
+                    "name": "Mechanical Engineering Society",
+                    "overview": "<h1>Track To Trivia</h1><br><h4>Mechanical Engineering Society</h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>Coming Soon...</p><br><h6>General Secretary</h6><br><p>____</p><br>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>Coming Soon...</p>",
+                    "imgsrc": "/posters25/society_9_imgsrc.png",
+                    "bsrc1": "/posters/society_8_bsrc1.png",
+                    "bsrc2": "/posters/society_8_bsrc2.png",
+                    "index": 8,
+                    "glink": "Coming Soon..."
+                },
+                {
+                    "title": "Mechanical Kit Assembly",
+                    "name": "Mechanical Enineering Society ",
+                    "overview": "<h1>Mechanical Kit Assembly</h1><br><h4>Mechanical Enineering Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>COming Soon...</p><br><h6>General Secretary</h6><br><p>_____</p><br>",
+                    "imgsrc": "/posters25/society_10_imgsrc.png",
+                    "bsrc1": "/posters/society_20_bsrc1.png",
+                    "bsrc2": "/posters/society_20_bsrc2.png",
+                    "index": 20,
+                    "glink": "Coming Soon..."
+                },
+                  {
+                    "title": "OFF Track:RC Car Showdown",
+                    "name": "Mechanical Enineering Society ",
+                    "overview": "<h1>OFF Track:RC Car Showdown</h1><br><h4>Mechanical Enineering Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>COming Soon...</p><br><h6>General Secretary</h6><br><p>_____</p><br>",
+                    "imgsrc": "/posters25/society_11_imgsrc.png",
+                    "bsrc1": "/posters/society_20_bsrc1.png",
+                    "bsrc2": "/posters/society_20_bsrc2.png",
+                    "index": 20,
+                    "glink": "Coming Soon..."
+                },
+                 {
+                    "title": "NEON Cricket",
+                    "name": "Mechanical Enineering Society ",
+                    "overview": "<h1>NEON Cricket</h1><br><h4>Mechanical Enineering Society </h4><br><h6>Description</h6><br><p>Coming Soon...</p><br><h6>Team Size</h6><br><p>COming Soon...</p><br><h6>General Secretary</h6><br><p>_____</p><br>",
+                    "imgsrc": "/posters25/society_12_imgsrc.png",
+                    "bsrc1": "/posters/society_20_bsrc1.png",
+                    "bsrc2": "/posters/society_20_bsrc2.png",
+                    "index": 20,
+                    "glink": "Coming Soon..."
+                }
+                
+
+            ]
+        },
+   
+         {
+            "societyName": "Civil Engineering Association",
+            "events": [
+                {
+                    "title": "KBCE",
+                    "name": "Civil Society",
+                    "overview": "<h1>KBCE</h1><h4>Civil Society</h4><h6>Description</h6><p>Coming Soon....</p><br><h6>Team Size</h6><p>Coming Soon...</p><br><h6>General Secretary</h6><p>_____</p><br>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>COming Soon....</p>",
+                    "imgsrc": "/posters25/society_19_imgsrc.png",
+                    "bsrc1": "/posters/society_30_bsrc1.png",
+                    "bsrc2": "/posters/society_30_bsrc2.png",
+                    "index": 30,
+                    "glink": "Coming Soon..."
+                },
+                   {
+                    "title": "ERBMDC",
+                    "name": "Civil Society",
+                    "overview": "<h1>ERBMDC</h1><h4>Civil Society</h4><h6>Description</h6><p>Coming Soon....</p><br><h6>Team Size</h6><p>Coming Soon...</p><br><h6>General Secretary</h6><p>_____</p><br>",
+                    "rules": "<p>Coming Soon...</p>",
+                    "judging_criteria": "<p>COming Soon....</p>",
+                    "imgsrc": "/posters25/society_20_imgsrc.png",
+                    "bsrc1": "/posters/society_30_bsrc1.png",
+                    "bsrc2": "/posters/society_30_bsrc2.png",
+                    "index": 30,
+                    "glink": "Coming Soon..."
+                }
+             
+            ]
+        }
     ]
-  },
-  {
-    "societyName": "Mathematical Society",
-    "events": [
-      {
-        "title": "Mind Domino",
-        "name": "Mathematical Society",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "Mind Domino",
-          "description": "A multi-round contest of logic, speed, and strategy. From spotting errors to solving chained puzzles and a rapidfire finale, the sharpest minds rise to the top.",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": null,
-              "email": "km24mac1r16@student.nitw.ac.in",
-              "phone": "7219129324"
-            },
-            {
-              "name": null,
-              "email": null,
-              "phone": "7388878414"
-            }
-          ]
-        },
-        "rules": [
-          "Teams must attempt all rounds in order.",
-          "Each correct answer unlocks the next stage."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_13_imgsrc.jpg",
-        "index": 6
-      },
-      {
-        "title": "Math Relay Race",
-        "name": "Mathematical Society",
-        "total_cost": 4000,
-        "overview": {
-          "main_title": "Math Relay Race",
-          "description": "The Math Relay Race is a three round challenge that blends speed, logic, and problem-solving. Presents deeper, conceptual math problems that demand clarity and reasoning.",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Neha",
-              "email": null,
-              "phone": "8957366212"
-            }
-          ]
-        },
-        "rules": [
-          "Only one final submission per team allowed.",
-          "In case of a tie, fastest total completion time wins."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_14_imgsrc.png",
-        "index": 6
-      },
-      {
-        "title": "TRECO HUNT : Time travel through mathematics",
-        "name": "Mathematical Society",
-        "total_cost": 4000,
-        "overview": {
-          "main_title": "TRECO HUNT : Time travel through mathematics",
-          "description": "Gear up for Treco Hunt – a thrilling race of riddles, quizzes, and hidden clues across 5 exciting rounds! Solve, unlock, and decode your way to the final treasure before anyone else!",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Pranathi",
-              "email": null,
-              "phone": "8309832046"
-            }
-          ]
-        },
-        "rules": [
-          "Teams must complete each round in order to move to the next.",
-          "The first team to reach the venue with the final code wins."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_16_imgsrc.jpg",
-        "index": 6
-      }
-    ]
-  },
-  {
-    "societyName": "ECE Society",
-    "events": [
-      {
-        "title": "AI Murder Mystery",
-        "name": "ECE Society",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "AI Murder Mystery",
-          "description": "Solve a thrilling mystery using AI-bot interrogations and digital clues, connecting evidence logically to uncover the hidden storyline.",
-          "team_size": "1",
-          "contact": [
-            {
-              "name": "Vineet",
-              "email": null,
-              "phone": "6309730630"
-            }
-          ]
-        },
-        "rules": [
-          "Solve the mystery by analyzing clues from AI bot interrogations.",
-          "Use additional software-generated hints to uncover the case plot."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_2_imgsrc.jpg",
-        "index": 16
-      },
-      {
-        "title": "Lie Detector",
-        "name": "ECE Society",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "Lie Detector",
-          "description": "Answer thought-provoking questions while connected to a lie detector, revealing surprising truths and playful lies in a safe environment.",
-          "team_size": "1",
-          "contact": [
-            {
-              "name": "Abhiram",
-              "email": null,
-              "phone": "9346809877"
-            },
-            {
-              "name": "Abhinav",
-              "email": null,
-              "phone": "9108205643"
-            }
-          ]
-        },
-        "rules": [
-          "Take turns honestly and respect others' privacy.",
-          "Enjoy the interactive experience of uncovering truth and deception."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_3_imgsrc.png",
-        "index": 18
-      },
-      {
-        "title": "ChipCraft",
-        "name": "ECE Society",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "ChipCraft",
-          "description": "Build creative structures, automated systems, and logical circuits in Minecraft, showcasing problem-solving and technical imagination within the time limit.",
-          "team_size": "1",
-          "contact": [
-            {
-              "name": "Alstin",
-              "email": null,
-              "phone": "8157987306"
-            }
-          ]
-        },
-        "rules": [
-          "Collaborate effectively and follow all in-game rules.",
-          "Showcase creativity, efficiency, and precision in your designs."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_4_imgsrc.jpg",
-        "index": 19
-      }
-    ]
-  },
-  {
-    "societyName": "MMES & IIMSC",
-    "events": [
-      {
-        "title": "MetaRush",
-        "name": "MMES & IIMSC",
-        "total_cost": 1500,
-        "overview": {
-          "main_title": "MetaRush",
-          "description": "“Meta-Rush” is an adventurous race across multiple routes with exciting checkpoints, where teams unlock clues via QR codes, complete challenges, and compete to finish first with the highest score. It’s a perfect mix of strategy, speed, and fun!",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Harshitha Vanam",
-              "email": null,
-              "phone": "9059701704"
-            },
-            {
-              "name": "Amit",
-              "email": null,
-              "phone": "7597587833"
-            }
-          ]
-        },
-        "rules": [
-          "Teams race through 6–8 checkpoints, unlocking clues via QR codes.",
-          "Points (+4 correct, -2 wrong, 0 dares) and time decide the winner."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_8_imgsrc.png",
-        "index": 25
-      },
-      {
-        "title": "MetaDart",
-        "name": "MMES & IIMSC",
-        "total_cost": 1000,
-        "overview": {
-          "main_title": "MetaDart",
-          "description": "“Meta-Dart” is a fun blend of skill and knowledge where each dart throw decides your challenge. The closer you land to the center, the easier the question; miss wide, and tougher material-based questions await!",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Abhiram",
-              "email": null,
-              "phone": "9059066629"
-            }
-          ]
-        },
-        "rules": [
-          "Players throw a dart at a 12-section material board.",
-          "Closer to center = easier questions; farther = tougher questions."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_17_imgsrc.png",
-        "index": 25
-      },
-      {
-        "title": "MetaLusion",
-        "name": "MMES & IIMSC",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "MetaLusion",
-          "description": "“Metalusion” brings futuristic materials like self-healing compounds and smart alloys to life, showcasing their fascinating real-world applications. Visitors can explore how these innovations reshape technology.",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Harijinder",
-              "email": null,
-              "phone": "9000130823"
-            }
-          ]
-        },
-        "rules": [
-          "Present special materials, like self-healing materials, at the stall.",
-          "Explain their interesting applications to the audience."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_18_imgsrc.png",
-        "index": 25
-      },
-      {
-        "title": "AI/ML",
-        "name": "MMES & IIMSC",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "AI/ML",
-          "description": "“Metalusion” brings futuristic materials like self-healing compounds and smart alloys to life, showcasing their fascinating real-world applications. Visitors can explore how these innovations reshape technology.",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Harijinder",
-              "email": null,
-              "phone": "9000130823"
-            }
-          ]
-        },
-        "rules": [
-          "Present special materials, like self-healing materials, at the stall.",
-          "Explain their interesting applications to the audience."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_18_imgsrc.png",
-        "index": 25
-      }
-    ]
-  },
-  {
-    "societyName": "Electrical Engineering society",
-    "events": [
-      {
-        "title": "Gesture Drift",
-        "name": "Electrical Engineering Society",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "Gesture Drift",
-          "description": "The Event is a thrilling two-player competitive race where participants control their cars exclusively through hand gestures.",
-          "team_size": "2",
-          "contact": [
-            {
-              "name": "Pradeep",
-              "email": null,
-              "phone": "7898513104"
-            }
-          ]
-        },
-        "rules": [
-          "Two players race gesture-controlled cars on a hurdle-filled track.",
-          "The first to cross the finish line wins, using only hand gestures—no remotes allowed."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_5_imgsrc.png",
-        "index": 14
-      },
-      {
-        "title": "Dance O'Watt",
-        "name": "Electrical Engineering Society",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "Dance O'Watt",
-          "description": "This event is a team-based interactive dance experience.",
-          "team_size": "3",
-          "contact": [
-            {
-              "name": "Adi Pranav",
-              "email": null,
-              "phone": "6309641064"
-            }
-          ]
-        },
-        "rules": [
-          "This team-based interactive dance event challenges players to follow on-screen steps in sync on a 3×3 energy-harvesting tile grid.",
-          "Each correct move boosts their score, but one mistake ends the game and locks in their final score."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_6_imgsrc.jpg",
-        "index": 15
-      },
-      {
-        "title": "OptiMystery",
-        "name": "Electrical Engineering Society",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "OptiMystery",
-          "description": "In this event, one must synchronize strobe lights with rotating objects to reveal and decode hidden patterns for points.",
-          "team_size": "1",
-          "contact": [
-            {
-              "name": "Kruthika",
-              "email": null,
-              "phone": "9391783822"
-            }
-          ]
-        },
-        "rules": [
-          "Participants must adjust the strobe frequency carefully, synchronize it with the rotating object, and decode the hidden information.",
-          "The patterns may reveal numbers, letters, or even riddles. The faster you decode, the higher you score!"
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_7_imgsrc.jpg",
-        "index": 17
-      }
-    ]
-  },
-  {
-    "societyName": "Mechanical Engineering Society",
-    "events": [
-      {
-        "title": "Track To Trivia",
-        "name": "Mechanical Engineering Society",
-        "total_cost": 2000,
-        "overview": {
-          "main_title": "Track to Trivia: F1 Quiz",
-          "description": "The F1 Quiz includes online qualifiers, a Grand Prix round (riddles, rapid-fire, strategy, buzzer), and a Final Lap (individual round). Buzzer rules apply in some rounds.",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Vamsi",
-              "email": null,
-              "phone": "9392791259"
-            }
-          ]
-        },
-        "rules": [
-          "Buzzer rounds: first to press answers; wrong answers incur penalties.",
-          "No audience discussion or use of phones/internet allowed."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_9_imgsrc.png",
-        "index": 8
-      },
-      {
-        "title": "Mechanical Kit Assembly",
-        "name": "Mechanical Engineering Society",
-        "total_cost": 2000,
-        "overview": {
-          "main_title": "Mechanical Kit Assembly",
-          "description": "Teams are given a dismantled kit and have 45 minutes to assemble it. Points awarded by time and percentage accuracy of assembly.",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Tsheten",
-              "email": null,
-              "phone": "9382678789"
-            }
-          ]
-        },
-        "rules": [
-          "Points awarded based on time taken and percentage assembled accurately.",
-          "Team with maximum points declared winner."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_10_imgsrc.png",
-        "index": 20
-      },
-      {
-        "title": "OFF Track: RC Car Showdown",
-        "name": "Mechanical Engineering Society",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "RC Car Showdown",
-          "description": "Fun races (3 laps each) at B-312, Mechanical Department; 10:00 AM–12:00 PM & 2:00 PM–5:00 PM. Overtaking and pushing are allowed; first to finish wins. No prizes.",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Om Prashant Patil",
-              "email": "op23meb0f01@student.nitw.ac.in",
-              "phone": "9579298602"
-            }
-          ]
-        },
-        "rules": [
-          "Each race has 3 laps on a circuit with turns, intersections, and elevation changes; overtaking and pushing are allowed.",
-          "Participants complete all laps; the first to finish is the winner. No prizes awarded."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_11_imgsrc.png",
-        "index": 20
-      },
-      {
-        "title": "NEON Cricket",
-        "name": "Mechanical Engineering Society",
-        "total_cost": 500,
-        "overview": {
-          "main_title": "Neon Cricket",
-          "description": "Each team has 6 players; matches are 6 overs per innings with 1 over per bowler. Runs are awarded by walls hit and bounces. Fun competitive format with specific dismissal rules.",
-          "team_size": "6",
-          "contact": [
-            {
-              "name": "Naman Ranjan",
-              "email": "nr22meb0b44@student.nitw.ac.in",
-              "phone": "9931001777"
-            }
-          ]
-        },
-        "rules": [
-          "Teams of 6 play 6-over innings.",
-          "Outs include bowled, catch, run-out, stumped, LBW, hit-wicket, and one-handed catches."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_12_imgsrc.png",
-        "index": 20
-      }
-    ]
-  },
-  {
-    "societyName": "Civil Engineering Association",
-    "events": [
-      {
-        "title": "KBCE",
-        "name": "Civil Society",
-        "total_cost": 3000,
-        "overview": {
-          "main_title": "KBCE",
-          "description": "KBC – Kon Banega Civil Engineer is a fast-paced quiz competition testing participants’ knowledge in civil engineering. Teams compete through multiple rounds, leading to an exciting “Hot Seat” finale where the top scorers battle for victory.",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Tanmay",
-              "email": null,
-              "phone": "7737610206"
-            }
-          ]
-        },
-        "rules": [
-          "Teams compete in multiple quiz rounds to advance.",
-          "Top three teams enter the Hot Seat round to determine the final winners."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_19_imgsrc.png",
-        "index": 30
-      },
-      {
-        "title": "Earthquake Resistant Building",
-        "name": "Civil Society",
-        "total_cost": 5000,
-        "overview": {
-          "main_title": "ERBMDC",
-          "description": "Earthquake Resistant Building Model challenges teams to design and construct a 4-storey structure using limited materials that can withstand rigorous load and shake tests. It’s a test of creativity, engineering skill, and structural strength!",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Shristi Singh",
-              "email": null,
-              "phone": "9893399933"
-            }
-          ]
-        },
-        "rules": [
-          "Design and build the strongest model possible.",
-          "Models must withstand rigorous load and shake table tests."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_20_imgsrc.png",
-        "index": 30
-      }
-    ]
-  }
-]

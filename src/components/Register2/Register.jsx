@@ -1,10 +1,53 @@
 import React, { useState, useEffect } from "react";
-import QRCode from "react-qr-code";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../Context/AuthManager";
 
 const Register = () => {
   const { register: authRegister } = useAuth();
+  const [societies, setSocieties] = useState([]);
+  const [clubs, setClubs] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const societiesRes = await fetch("/dataJSON/societyx.json");
+        const clubsRes = await fetch("/dataJSON/club.json");
+
+        const societiesData = await societiesRes.json();
+        const clubsData = await clubsRes.json();
+
+        setSocieties(societiesData);
+        setClubs(clubsData);
+      } catch (err) {
+        console.error("Failed to fetch JSON:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const finalData = React.useMemo(() => {
+    const map = new Map();
+
+    societies.forEach(soc => {
+      map.set(soc.societyName, {
+        societyName: soc.societyName,
+        events: soc.events.map(ev => ({ ...ev, displayName: ev.title || ev.name }))
+      });
+    });
+
+    clubs.forEach(club => {
+      if (map.has(club.name)) {
+        map.get(club.name).events.push({ ...club, displayName: club.title || club.name });
+      } else {
+        map.set(club.name, { societyName: club.name, events: [{ ...club, displayName: club.title || club.name }] });
+      }
+    });
+
+    return Array.from(map.values());
+  }, [societies, clubs]);
+
+  const allEventsFromJSON = finalData.flatMap(item => item.events.map(ev => ev.displayName));
 
   const {
     register: reactRegister,
@@ -16,194 +59,309 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const watchedIdDocument = watch("idDocument");
+  // Keep form `events` and local selectedEventsState in sync
   const watchedEvents = watch("events") || [];
+  useEffect(() => {
+    if (watchedEvents && watchedEvents.length) {
+      setSelectedEventsState(Array.isArray(watchedEvents) ? watchedEvents : [watchedEvents]);
+    }
+  }, [watchedEvents]);
+
   const watchedEmail = watch("email") || "";
   const watchedAccommodation = watch("accommodation") || false;
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedEventsState, setSelectedEventsState] = useState([]);
   const [payModalOpen, setPayModalOpen] = useState(false);
   const [paymentScreenshot, setPaymentScreenshot] = useState(null);
   const [paymentError, setPaymentError] = useState("");
-  const [showGeneratedQR, setShowGeneratedQR] = useState(false);
-
-  useEffect(() => {
-    if (watchedEvents && watchedEvents.length)
-      setSelectedEventsState(
-        Array.isArray(watchedEvents) ? watchedEvents : [watchedEvents]
-      );
-  }, [watchedEvents]);
+  const [idDocument, setIdDocument] = useState(null);
 
   useEffect(() => {
     try {
-      reactRegister && reactRegister("events");
-    } catch (e) {}
+      reactRegister("events");
+    } catch { }
   }, [reactRegister]);
 
-  const sampleEvents = [
-    "Robo Race",
-    "Coding Marathon",
-    "Hackathon",
-    "Paper Presentation",
-    "Treasure Hunt",
-  ];
-
-  const handleFileLabelKey = (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      const el = document.getElementById("idDocument");
-      if (el) el.click();
-    }
-  };
-
-  const isValidGmail = (email) => {
+  const isValidEmail = (email) => {
     if (!email || typeof email !== "string") return false;
-    const trimmed = email.trim().toLowerCase();
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return regex.test(trimmed);
+    return regex.test(email.trim().toLowerCase());
   };
 
   const computeAmount = () => {
-    let amount = 0;
-    if (watchedAccommodation) amount += 100;
-    if (!watchedEmail || typeof watchedEmail !== "string") return amount;
-    if (!watchedEmail.includes("niw.ac.in")) amount += 500;
-    return amount;
+    let amt = 0;
+    if (watchedAccommodation) amt += 100;
+    if (watchedEmail && !watchedEmail.includes("@nitw.ac.in")) amt += 500;
+    return amt;
   };
 
   const normalizeFirstFile = (maybeFile) => {
     if (!maybeFile) return undefined;
-    if (typeof File !== "undefined" && maybeFile instanceof File)
-      return maybeFile;
-    if (maybeFile && maybeFile.length && maybeFile[0]) return maybeFile[0];
-    if (Array.isArray(maybeFile) && maybeFile.length) return maybeFile[0];
+    if (maybeFile instanceof File) return maybeFile;
+    if (Array.isArray(maybeFile) && maybeFile[0]) return maybeFile[0];
     return undefined;
   };
 
-  const hasFile = (maybeFile) => !!normalizeFirstFile(maybeFile);
-
   const onSubmit = (data) => {
-    if (!data) return;
-
-    if (!data.name) {
-      setError("name", { type: "required", message: "Name is required" });
-      return;
-    } else {
-      clearErrors("name");
-    }
-    if (!data.email) {
-      setError("email", { type: "required", message: "Email is required" });
-      return;
-    } else {
-      clearErrors("email");
-    }
-    if (!data.collegeName) {
-      setError("collegeName", {
-        type: "required",
-        message: "College name is required",
-      });
-      return;
-    } else {
-      clearErrors("collegeName");
-    }
-
     const eventsVal = data.events || [];
-    if (!eventsVal || (Array.isArray(eventsVal) && eventsVal.length === 0)) {
-      setError("events", {
-        type: "required",
-        message: "Please select at least one event.",
-      });
+    if (!eventsVal.length) {
+      setError("events", { type: "required", message: "Select at least one event." });
       return;
-    } else {
-      clearErrors("events");
-    }
+    } else clearErrors("events");
 
-    const idFile = normalizeFirstFile(data.idDocument);
-    if (!idFile) {
-      setError("idDocument", {
-        type: "required",
-        message: "Please upload your College ID/Aadhar.",
-      });
-      const el = document.getElementById("idDocument");
-      if (el) el.focus();
-      return;
-    } else {
-      clearErrors("idDocument");
-    }
-
-    if (watchedEmail && !watchedEmail.includes("niw.ac.in")) {
+    const idFile = normalizeFirstFile(idDocument);
+    if (watchedEmail && !watchedEmail.includes("@nitw.ac.in")) {
       if (!paymentScreenshot) {
-        setPaymentError(
-          "Please upload a payment screenshot before registering."
-        );
+        setPaymentError("Upload payment screenshot before registering.");
         setPayModalOpen(true);
         return;
-      } else {
-        setPaymentError("");
-      }
+      } else setPaymentError("");
     }
 
-    try {
-      const rand8 = Math.floor(10000000 + Math.random() * 90000000);
-      data.password = String(rand8);
-    } catch (e) {
-      data.password = "00000000";
-    }
-
-    // replace idDocument field with the normalized File
-    data.idDocument = idFile;
+    const rand8 = Math.floor(10000000 + Math.random() * 90000000);
+    data.password = String(rand8);
+    if (idFile) data.idDocument = idFile;
     if (paymentScreenshot) data.paymentScreenshot = paymentScreenshot;
 
-    // console.log("registering with data", data);
-
-    // delegate to auth manager which should handle FormData when files are present
+    console.log("Registering with data", data);
     authRegister(data);
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 ">
-      {" "}
-      <div className="bg-gray p-8 rounded-2xl shadow-lg w-full max-w-md">
-        {" "}
-        <h2 className="text-2xl font-bold mb-6 text-center">
-          Create Account
-        </h2>{" "}
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {" "}
-          <input
-            type="text"
-            placeholder="Full Name"
-            {...reactRegister("name", { required: "Name is required" })}
-            className="w-full px-4 py-2 border rounded-md outline-none focus:outline-none bg-gray"
-          />{" "}
-          {errors.name && (
-            <p className="text-ssred text-sm">{errors.name.message}</p>
-          )}{" "}
-          <input
-            type="email"
-            placeholder="Email"
-            {...reactRegister("email", { required: "Email is required" })}
-            className="w-full px-4 py-2 border rounded-md outline-none focus:outline-none bg-gray"
-          />{" "}
-          {errors.email && (
-            <p className="text-red-500 text-sm">{errors.email.message}</p>
-          )}{" "}
-          <input
-            type="password"
-            placeholder="Password"
-            {...reactRegister("password", { required: "Password is required" })}
-            className="w-full px-4 py-2 border rounded-md outline-none focus:outline-none bg-gray"
-          />{" "}
-          {errors.password && (
-            <p className="text-red-500 text-sm">{errors.password.message}</p>
-          )}{" "}
-          <button
-            type="submit"
-            className="w-full py-3 bg-gray text-white rounded-lg hover:bg-slate-800 transition font-semibold shadow-md"
-          >
-            Register
-          </button>
+    <div className="h-[100vh] bg-black text-white p-4 md:p-8 overflow-y-auto">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-cyan">
+            Registration for Technozion 2025
+          </h1>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 text-sm">
+            <div className="px-4 py-2 bg-gray rounded-lg">
+              Registration fee: <span className="font-semibold text-cyan">₹500</span>
+            </div>
+            <div className="px-4 py-2 bg-gray rounded-lg">
+              Accommodation: <span className="font-semibold text-cyan">₹100/day</span>
+            </div>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            <div className="bg-darkGray rounded-xl p-6 md:p-8 shadow-lg shadow-cyan/10">
+              <h2 className="text-xl font-semibold mb-6 pb-3 border-b border-cyan/30">
+                Personal Info
+              </h2>
+              <div className="space-y-6">
+                <div>
+                  <label className="block text-sm font-medium mb-2">Full Name *</label>
+                  <input
+                    type="text"
+                    placeholder="Your full name"
+                    {...reactRegister("name", { required: "Name is required" })}
+                    className="w-full px-4 py-3 bg-gray rounded-lg text-white placeholder-grayishWhite/50 focus:outline-none focus:ring-2 focus:ring-cyan transition"
+                  />
+                  {errors.name && <p className="text-cyan text-sm mt-1">{errors.name.message}</p>}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Email *</label>
+                  <input
+                    type="email"
+                    placeholder="your.email@domain.com"
+                    {...reactRegister("email", { required: "Email is required" })}
+                    className="w-full px-4 py-3 bg-gray rounded-lg text-white placeholder-grayishWhite/50 focus:outline-none focus:ring-2 focus:ring-cyan transition"
+                  />
+                  {errors.email && <p className="text-cyan text-sm mt-1">{errors.email.message}</p>}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">College *</label>
+                  <input
+                    type="text"
+                    placeholder="Enter college name"
+                    {...reactRegister("collegeName", { required: "College name is required" })}
+                    className="w-full px-4 py-3 bg-gray rounded-lg text-white placeholder-grayishWhite/50 focus:outline-none focus:ring-2 focus:ring-cyan transition"
+                  />
+                  {errors.collegeName && (
+                    <p className="text-cyan text-sm mt-1">{errors.collegeName.message}</p>
+                  )}
+                </div>
+
+                <div className="flex items-center space-x-3 p-4 bg-gray rounded-lg">
+                  <input
+                    id="accommodation"
+                    type="checkbox"
+                    {...reactRegister("accommodation")}
+                    className="h-5 w-5 accent-cyan"
+                    onChange={() => setPayModalOpen(true)}
+                  />
+                  <label htmlFor="accommodation" className="text-sm font-medium">
+                    Need accommodation
+                  </label>
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium mb-2">Upload ID Document *</label>
+                  <input
+                    type="file"
+                    accept="image/*,.pdf"
+                    onChange={(e) => setIdDocument(e.target.files[0])}
+                    className="w-full text-sm text-white file:bg-cyan file:text-black file:px-4 file:py-2 rounded-lg hover:file:bg-cyanLight transition"
+                  />
+                </div>
+
+                {isValidEmail(watchedEmail) && !watchedEmail.includes("@nitw.ac.in") && (
+                  <div className="pt-6">
+                    <div className="bg-gray rounded-lg p-4 mb-4">
+                      <div className="flex justify-between items-center mb-3">
+                        <span className="text-sm font-medium">Total</span>
+                        <span className="text-xl font-bold text-cyan">₹{computeAmount()}</span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => setPayModalOpen(true)}
+                        className="w-full px-4 py-3 bg-cyan text-black rounded-lg hover:bg-cyanLight hover:text-black transition font-medium"
+                      >
+                        Pay & Upload Screenshot
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="bg-darkGray rounded-xl p-6 md:p-8 shadow-lg shadow-cyan/10">
+              <h2 className="text-xl font-semibold mb-6 pb-3 border-b border-cyan/30">
+                Event Selection
+              </h2>
+
+              <div className="space-y-6">
+                <div>
+                  <label className="block text-sm font-medium mb-3">Select Events *</label>
+                  <div className="min-h-[120px] p-4 bg-gray rounded-lg mb-4">
+                    {selectedEventsState.length > 0 ? (
+                      <div className="flex flex-wrap gap-2">
+                        {selectedEventsState.map((event, i) => (
+                          <span
+                            key={i}
+                            className="inline-flex items-center px-3 py-1 bg-black/20 text-sm rounded-full"
+                          >
+                            {event}
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const next = selectedEventsState.filter((e) => e !== event);
+                                setSelectedEventsState(next);
+                                setValue("events", next, { shouldValidate: true });
+                              }}
+                              className="ml-2 text-black hover:text-cyanDark"
+                            >
+                              ×
+                            </button>
+                          </span>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="text-gray text-sm text-center">
+                        No events selected yet
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="space-y-6 max-h-[500px] overflow-y-auto">
+                    {finalData.map((item) => (
+                      <div key={item.societyName} className="mb-4">
+                        <h3 className="text-lg font-semibold mb-2 border-b border-cyan/30 pb-1">{item.societyName}</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                          {item.events.map((ev, i) => {
+                            const eventName = ev.displayName || "Unnamed Event";
+                            const isSelected = selectedEventsState.includes(eventName);
+
+                            return (
+                              <label
+                                key={i}
+                                onClick={(e) => {
+                                  e.preventDefault(); // prevent default focus
+                                  const next = !isSelected
+                                    ? [...selectedEventsState, eventName]
+                                    : selectedEventsState.filter((x) => x !== eventName);
+                                  setSelectedEventsState(next);
+                                  setValue("events", next, { shouldValidate: true });
+                                }}
+                                className={`flex items-center p-2 rounded-lg cursor-pointer transition hover:bg-gray ${isSelected ? "bg-cyan/20" : "bg-black/10"}`}
+                              >
+                                <input
+                                  type="checkbox"
+                                  checked={isSelected}
+                                  readOnly
+                                  className="sr-only"
+                                />
+                                <span className="text-sm font-medium">{eventName}</span>
+                              </label>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))}
+                    {errors.events && <p className="text-cyan text-sm mt-2">{errors.events.message}</p>}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <button
+              type="submit"
+              className="px-8 py-4 bg-gray/10 rounded-xl hover:bg-gray transition font-semibold text-lg shadow-lg hover:shadow-cyan/30 transform hover:-translate-y-0.5"
+            >
+              Complete Registration
+            </button>
+          </div>
         </form>
       </div>
+
+      {payModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
+          <div className="bg-darkGray rounded-2xl p-6 md:p-8 max-w-md w-full shadow-lg shadow-cyan/50 animate-fadeIn">
+            <h2 className="text-2xl font-bold mb-4 text-cyan text-center">
+              Payment Details
+            </h2>
+
+            <div className="mb-6 text-white space-y-2 text-sm">
+              <p className="font-medium">Bank Account Info:</p>
+              <p>Account Name: <span className="font-semibold">Technozion 2025</span></p>
+              <p>Account No: <span className="font-semibold">1234567890</span></p>
+              <p>IFSC: <span className="font-semibold">TECH0001234</span></p>
+              <p>Bank: <span className="font-semibold">ABC Bank</span></p>
+            </div>
+
+            <div className="mb-6">
+              <label className="block mb-2 font-medium text-white">Upload Payment Screenshot *</label>
+              <input
+                type="file"
+                accept="image/*,.pdf"
+                onChange={(e) => setPaymentScreenshot(e.target.files[0])}
+                className="w-full text-sm text-white file:bg-cyan file:text-black file:px-4 file:py-2 rounded-lg hover:file:bg-cyanLight transition"
+              />
+              {paymentError && <p className="text-cyan mt-2 text-sm">{paymentError}</p>}
+            </div>
+
+            <div className="flex justify-end gap-3 mt-4">
+              <button
+                onClick={() => setPayModalOpen(false)}
+                className="px-5 py-2 rounded-lg bg-gray/20 hover:bg-gray transition font-medium"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => setPayModalOpen(false)}
+                className="px-5 py-2 rounded-lg bg-gray/10 text-black hover:bg-gray transition font-medium"
+              >
+                Done
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

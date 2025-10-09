@@ -97,13 +97,7 @@ export default function Navbar() {
 
   return (
     <>
-      {!menuOpen ? (
-        <div className="logo">
-          <Link to="./" onClick={closeMenu}>
-            <img src={chota_logo} alt="logo1" />
-          </Link>
-        </div>
-      ) : null}
+      
 
       <nav className={menuOpen ? 'menu-open' : 'menu-closed'}>
         <div

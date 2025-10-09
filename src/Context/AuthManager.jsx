@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const url = window.location.origin
+  const url = "http://localhost:5000"
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user_info')
@@ -40,33 +40,44 @@ const AuthProvider = ({ children }) => {
     finally { setLoading(false) }
   }
 
-  const register = async (name, email, password) => {
-    setLoading(true)
-    try {
-      const res = await fetch(`${url}/auth/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password })
-      })
-      const data = await res.json()
-      if (res.ok) {
-        localStorage.setItem('user_info', JSON.stringify(data.user))
-        localStorage.setItem('token', data.token)
-        setUser(data.user)
-        if (data.user.needsPayment) navigate('/payment')
-        else navigate('/')
-      } 
-      else{
-        alert(data.message);
-      }
-    } catch (err) {
-      alert(err);
+  // register accepts a single object with fields used by the frontend form.
+  // It supports File, FileList or array for idDocument and paymentScreenshot.
+  const register = async (registrationData) => {
+  setLoading(true);
+  try {
+    // Helper: upload a file to Cloudinary and return the URL
+    const uploadToCloudinary = async (file) => {
+      const cloudName = "dpjrslhwg"; // replace with your Cloudinary cloud name
+      const uploadPreset = "technozian_upload"; // replace with your preset
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", uploadPreset);
+
+      const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/upload`, {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      return data.secure_url; // return the uploaded file URL
+    };
+
+    // Upload ID Document
+    let idDocumentUrl = null;
+    if (registrationData.idDocument) {
+      const idFile = Array.isArray(registrationData.idDocument)
+        ? registrationData.idDocument[0]
+        : registrationData.idDocument;
+      idDocumentUrl = await uploadToCloudinary(idFile);
+    } else {
+      alert("Please upload your College ID/Aadhar.");
+      setLoading(false);
+      return;
     }
 
     // Upload Payment Screenshot if needed
     let paymentScreenshotUrl = null;
     const emailDomain = registrationData.email?.trim().toLowerCase().split("@")[1];
-    if (emailDomain !== "niw.ac.in") {
+    if (emailDomain !== "nitw.ac.in") {
       if (registrationData.paymentScreenshot) {
         const paymentFile = Array.isArray(registrationData.paymentScreenshot)
           ? registrationData.paymentScreenshot[0]
@@ -92,7 +103,7 @@ const AuthProvider = ({ children }) => {
     };
 
     // Send JSON with URLs to backend
-    const res = await fetch(`${url}/api/auth/register`, {
+    const res = await fetch(`${url}/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -103,7 +114,6 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("user_info", JSON.stringify(data.user));
       localStorage.setItem("token", data.token);
       setUser(data.user);
-      alert(`Successfully Registered you id is ${data?.user?.registrationNum || 'NA'}` )
       navigate("/");
     } else {
       console.log("register error", data);
