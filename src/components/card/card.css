@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 /* Global reset */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   color: #16f6f3 !important;
@@ -41,7 +41,7 @@
     #16f6f3,
     #009cba
   );
-  font-family: 'Martel Sans', sans-serif;
+  font-family: "Martel Sans", sans-serif;
 }
 
 /* h1 {
@@ -64,18 +64,9 @@ p {
   width: 70vmin;
   height: 70vmin;
   border: 3px solid;
-  border-image: linear-gradient(
-      -50deg,
-      #16f6f3,
-      #16f6f3,
-      #16f6f7,
-      #16f6f9,
-      #16f6f1,
-      #16f6f3
-    )
-    1;
   transition: 0.3s ease-in-out;
   position: relative;
+  border-radius: 1rem;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.8);
   box-shadow: 0px 0px 20px rgba(22, 246, 243, 0.75),
@@ -86,7 +77,6 @@ p {
 
 /* Updated glassy effect for .text */
 .text {
-  box-sizing: border-box;
   position: absolute;
   top: 0;
   right: 0;
@@ -96,20 +86,20 @@ p {
     0,
     0,
     0,
-    0.1
+    0.5
   ); /* Light semi-transparent background for glassy effect */
   /* backdrop-filter: blur(3px);  */
   box-shadow: inset 1px 1px 15px rgba(0, 0, 0, 0.4); /* Optional shadow for depth */
   color: white; /* Change text color to white */
-  overflow-y: scroll;
   z-index: 2;
+  backdrop-filter: blur(10px); /* Blur effect for glassy appearance */
   /* padding: 7rem; */
 }
 
 /* Removed the dark background overlay */
 /* Optional: Adding a glassy effect instead */
 .text:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -179,7 +169,7 @@ p {
   font-weight: bold;
   outline: none;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
@@ -226,63 +216,34 @@ p {
 /* Sticky content-container */
 .content-container {
   flex: 3; /* Content takes 3 parts */
-  padding: 0.6rem;
+  /* padding: 0.6rem; */
   /* padding-top: ; */
   width: 60%;
   overflow-y: auto; /* Allow scrolling of content */
-  margin-bottom: 2rem;
   z-index: 5;
 }
 
 .content {
   /* margin-top:1.8rem; */
   z-index: 5;
-  height: 90%;
+  width: 100%;
+  height: fit-content;
   /* padding-bottom: 5rem; */
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.content div {
-  font-family: 'Raleway', sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-  padding: 1rem;
-  height: 100%;
-  overflow: scroll;
-}
-.content div h1 {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 500;
-}
-.content div p {
-  font-size: 1.5rem;
-  overflow: hidden;
-  height: auto;
-}
-.content h3 {
-  font-size: 1.5rem;
-  font-weight: 300;
-  padding: 1rem;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
 }
 
 /* Sticky cardnav */
 .cardnav {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 0.4rem;
   position: sticky;
   top: 0;
-  z-index: 9;
-
-  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent cyan background */
-  backdrop-filter: blur(10px); /* Blur effect for glassy appearance */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.9); /* Optional shadow for depth */
+  background: #000;
 }
 
 /* Glassy effect for navigation buttons */
@@ -299,7 +260,7 @@ p {
   backdrop-filter: blur(6px); /* Blur effect for glassy appearance */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
   border: 1px solid rgba(255, 255, 255, 0.25); /* Soft white border */
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
@@ -565,15 +526,11 @@ p {
 
   .cardnav {
     /* position: fixed;  */
-    z-index: 9; /* Ensure it appears below the logo but on top of the content */
     width: 100%; /* Ensure full width for navigation */
     display: flex; /* Flexbox for horizontal layout */
-    justify-content: space-around; /* Evenly distribute buttons */
-    box-shadow: none; /* Remove shadow for a cleaner look */
-    background-color: rgba(0, 0, 0, 0.8); /* Ensure the background is solid */
     left: 0;
+    top: 0;
     /* margin-top: 48%; */
-    height: 10%;
   }
 
   .cardnav button {
@@ -595,9 +552,7 @@ p {
     height: 75%;
     /* margin-top: 10%; */
   }
-  .content div {
-    padding: 0.3rem 0.6rem;
-  }
+
   .content div h1 {
     text-align: center;
     font-size: 1.4rem;
@@ -608,7 +563,6 @@ p {
   .content h3 {
     font-size: 1rem;
     font-weight: 300;
-    padding: 0.6rem;
   }
   .cnt-logo {
     /* height: 28vmin; */
@@ -623,12 +577,7 @@ p {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.7
-  ); /* White color for the scrollbar */
+  background-color: rgba(20, 225, 247, 0.7); /* White color for the scrollbar */
   border-radius: 10px; /* Rounded edges for the scrollbar */
 }
 

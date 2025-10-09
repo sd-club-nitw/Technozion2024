@@ -5,6 +5,7 @@ import ResizeObserver from "resize-observer-polyfill";
 import { WebCanvas } from "../bg_animation/bg_animate";
 import fallbackImg from "./tzcomingsoon.png"; // Fallback image
 import PosterSkeleton from "../Skeleton/PosterSkeleton";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const Card = () => {
   const location = useLocation(); // Extract data from navigation
@@ -88,19 +89,19 @@ const Card = () => {
       <div className="web-canvas">
         <WebCanvas />
       </div>
-      <div className={`event_card wrap animate pop active`}>
+      <div className={`event_card wrap animate pop active `}>
         <div className="text">
           <div className="logo-cardnav-container">
-            <div className="logo-container">
+            <div className="logo-container p-5 ">
               <PosterSkeleton
                 src={imageSrc}
                 alt="Logo"
-                className="cnt-logo"
+                className="cnt-logo rounded-md"
                 onError={handleImageError}
               />
             </div>
             <div className="content-container">
-              <div className="cardnav">
+              <div className="cardnav p-5 z-10">
                 <button
                   onClick={() => setActiveTab("overview")}
                   className={activeTab === "overview" ? "active" : ""}
@@ -123,14 +124,85 @@ const Card = () => {
                     Judging Criteria
                   </button>
                 )} */}
-                <button className="back-button" onClick={handleBack}>
+                <button
+                  className="back-button flex items-center gap-x-2"
+                  onClick={handleBack}
+                >
+                  <span>
+                    <IoMdArrowRoundBack />
+                  </span>
                   Back
                 </button>
               </div>
-              <div className="content" ref={contentRef} key={activeTab}>
+              <div
+                className="content p-5 lg:gap-y-10 gap-y-5"
+                ref={contentRef}
+                key={activeTab}
+              >
                 {" "}
                 {/* Key ensures content re-renders on tab change */}
-                {renderContent()}
+                {activeTab === "overview" ? (
+                  <>
+                    <div className="font-bold text-2xl uppercase w-full ">
+                      {overview?.main_title}
+                    </div>
+                    <section className="flex flex-col gap-y-1 items-start justify-start">
+                      <span className="opacity-70 text-[1rem]">
+                        Description
+                      </span>
+
+                      <div>{overview?.description}</div>
+                    </section>
+                    <section className="flex flex-col gap-y-1 items-start justify-start">
+                      <span className="opacity-70 text-[1rem]">Team size</span>
+                      <div className="font-bold">{overview?.team_size}</div>
+                    </section>
+                    <section className="flex flex-col gap-y-1 items-start justify-start">
+                      <span className="opacity-70 text-[1rem]">Contact</span>
+                      <div className="flex flex-col gap-y-1">
+                        {overview?.contact?.map((contact, index) => (
+                          <div key={index} className="flex flex-col mb-5">
+                            <span> {contact.name}</span>
+                            <span>
+                              Phone - <strong>{contact.phone}</strong>
+                            </span>
+                            {contact?.email && (
+                              <span>
+                                Email - <strong>{contact.email}</strong>
+                              </span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+                  </>
+                ) : (
+                  <>
+                    {activeTab === "rules" ? (
+                      <>
+                        <div>
+                          <div className="font-bold text-2xl uppercase w-full ">
+                            Rules
+                          </div>
+                          <div className="flex flex-col gap-y-3 mt-5">
+                            {rules?.map((rule, index) => (
+                              <div
+                                key={index}
+                                className="flex items-start gap-x-3"
+                              >
+                                <span className="font-bold">{index + 1}.</span>
+                                <span>{rule}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <>Invalid Tab</>
+                    )}
+                  </>
+                )}
+                {/* {renderContent()} */}
               </div>
               {/* <div className="register">
                                 <button className="register-button" onClick={handleRegister}>Register</button>
