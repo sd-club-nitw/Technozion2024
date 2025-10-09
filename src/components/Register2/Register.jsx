@@ -8,7 +8,7 @@ const Register = () => {
   const { register: authRegister } = useAuth();
 
   const {
-    register: reactRegister,
+    register : reactRegister,
     handleSubmit,
     watch,
     setValue,
