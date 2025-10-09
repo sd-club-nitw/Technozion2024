@@ -3,6 +3,7 @@ module.exports = {
 	content: ["./src/**/*.{js,jsx,ts,tsx}"],
 	theme: {
 		fontSize: {
+			xs: '0.64rem',
 			sm: '0.8rem',
 			base: '1rem',
 			xl: '1.25rem',
@@ -20,18 +21,19 @@ module.exports = {
 			xl: "1440px",
 		},
 		colors: {
-			navyBlue: "#202A44",
-			lightGreen: "#90FE90",
-			gray: "rgba(250,250,250,0.1)",
-			grayishWhite: "#c0c7d1",
-			white: "#fff",
-			black: "#000",
-			ssred: "#bc1718",
-			ssblue: "#3324A7",
-			ssyellow: "#F9C512",
-			purple:"#2f2e5c",
-      		pink:"#f4d4d8",
-			purple2:"#343663",
+			  navyBlue: "#202A44",
+        lightGreen: "#90FE90",
+        gray: "rgba(250,250,250,0.1)",
+        grayishWhite: "#c0c7d1",
+        white: "#fff",
+        black: "#000",
+        ssred: "#bc1718",
+        ssblue: "#3324A7",
+        ssyellow: "#F9C512",
+        purple: "#2f2e5c",
+        pink: "#f4d4d8",
+        purple2: "#343663",
+
 
 		},
 		fontFamily: {

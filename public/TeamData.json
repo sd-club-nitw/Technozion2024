@@ -1,5 +1,31 @@
-[
-  {
+{
+  "chief_patrons": [{
+    "name": "Professor Bidyadhar Subudhi",
+    "position": "Director, NIT Warangal",
+    "image": "director.jpg",
+    "email": "dsada"
+  }],
+  "patrons":[
+     {
+    "name": "Prof. K. Kiran Kumar",
+    "position": "Dean Student Welfare",
+    "email": "dean_sa@nitw.ac.in",
+    "image": "dean-sw.jpeg"
+  } ,{
+    "name": "Prof. P. Hari Prasad Reddy",
+    "position": "SAC President",
+    "email": "hari@nitw.ac.in",
+    "image": "sac-president.jpg"
+
+  }, {
+    "name": "Prof. Venkanna Udutalapally",
+    "position": "SAC Vice President (Technical)",
+    "email": "venkannau@nitw.ac.in",
+    "image": "sac-vp-technical.jpeg"
+  }],
+  "student_council": {
+    "general_secretaries": [
+ {
     "name": "G. V. Sai Vamsi",
     "position": "SAC Secretary Technical",
     "email": "sec_technical@nitw.ac.in",
@@ -28,8 +54,18 @@
    "email": "sec_cultural@nitw.ac.in",
    "image":"cultural_secretary.jpg"
     
+  }
+    ],
+    "joint_secretaries": [
+        {
+    "name":"Dheeraj Bhasaru",
+    "contactNo": "9826078917",
+    "position": "Joint Secretary Technical",
+   "email": "",
+   "image":"technical_joint_secretary.jpg"
+    
   },
-  {
+ {
     "name":"Sai Pavan Godasu",
     "position": "Joint Secretary Cultural",
    "email": "",
@@ -43,67 +79,36 @@
    "email": "",
    "image":"fms_joint_secretary.jpg"
     
-  },
+  }
   
-  {
-    "name":"Dheeraj Bhasaru",
-      "contactNo": "9826078917",
-    "position": "Joint Secretary Sports",
-   "email": "",
-   "image":"technical_joint_secretary.jpg"
-    
-  },
-  {},
 
-  {
-    "name":"Manikanta Reddy Sama",
-    "contactNo":"7032716998",
-    "image":"manikanta.jpg",
-    "position":"Dev Team Head",
-    "email":"sm21csb0a50@student.nitw.ac.in"
-
+    ]
   },
-  {
-    "name":"Vikram",
-    "contactNo":"9929523068",
-    "image":"vikram.jpg",
-    "position":"Lead Developer",
-    "email":"vv22csb0b32@student.nitw.ac.in"
-
-  },
-  {
-    "name":"Anubhav",
-    "contactNo":"6378827728",
-    "image":"anubhav.jpg",
-    "position":"Lead Developer",
-    "email":"av22csb0b27@student.nitw.ac.in"
-
-  },
-  {
-    "name":"Prashant",
-    "contactNo":"7739902211",
-    "image":"prashant.jpg",
+  "web_team":[
+{
+    "name":"Nitin Bhandari",
+    "contactNo":"",
+    "image":"nitin.png",
     "position":"Developer",
-    "email":"pr22csb0b03@student.nitw.ac.in"
+    "email":""
 
   },
+ {
+ "name":"Rishi",
+    "contactNo":"",
+    "image":"rishi.jpg",
+    "position":"Developer",
+    "email":""
+ },
+ {
+ "name":"Sai Rushith",
+    "contactNo":"",
+    "image":"rushith.jpg",
+    "position":"Developer",
+    "email":""
+ },
   {
-    "name":"Sahil",
-    "contactNo":"8168298651",
-    "image":"sahil.jpg",
-    "position":"Designer",
-    "email":"sy22csb0b20@student.nitw.ac.in"
-
-  },
-  {
-    "name":"Shivang",
-    "contactNo":"7651935316",
-    "position":"Lead Developer",
-    "image":"shivang.jpg",
-     "email":"sk22eeb0a24@student.nitw.ac.in"
-  },
-  {
-    "name":"Aman",
+    "name":"Aman Chaubey",
     "contactNo":"8328352932",
     "image":"aman.jpg",
     "position":"Developer",
@@ -116,5 +121,14 @@
     "position":"Designer",
     "email":"bj24mac2r06@student.nitw.ac.in"
   }
-
 ]
+ 
+ 
+
+  
+  
+  
+  
+  
+
+}
