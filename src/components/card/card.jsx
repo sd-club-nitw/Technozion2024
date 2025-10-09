@@ -6,6 +6,8 @@ import { WebCanvas } from "../bg_animation/bg_animate";
 import fallbackImg from "./tzcomingsoon.png"; // Fallback image
 import PosterSkeleton from "../Skeleton/PosterSkeleton";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { a, span } from "framer-motion/client";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const Card = () => {
   const location = useLocation(); // Extract data from navigation
@@ -35,20 +37,6 @@ const Card = () => {
     }
   }, [activeTab]); // Runs whenever activeTab changes
 
-  // Renders the content of the active tab
-  const renderContent = () => {
-    switch (activeTab) {
-      case "overview":
-        return <div dangerouslySetInnerHTML={{ __html: overview }} />;
-      case "rules":
-        return <div dangerouslySetInnerHTML={{ __html: rules }} />;
-      case "judging_criteria":
-        return <div dangerouslySetInnerHTML={{ __html: judging_criteria }} />;
-      default:
-        return null;
-    }
-  };
-
   // Effect to set the logo height CSS variable
   useEffect(() => {
     const logoContainer = document.querySelector(".logo-container");
@@ -74,15 +62,6 @@ const Card = () => {
       resizeObserver.disconnect(); // Stop observing when component unmounts
     };
   }, []);
-
-  // Handles redirect to the registration link
-  const handleRegister = () => {
-    if (glink) {
-      window.open(glink, "_blank"); // Open the glink URL in a new tab
-    } else {
-      alert("Registration link is unavailable."); // Fallback if glink is missing
-    }
-  };
 
   return (
     <div className="card-container">
@@ -146,6 +125,21 @@ const Card = () => {
                     <div className="font-bold text-2xl uppercase w-full ">
                       {overview?.main_title}
                     </div>
+                    {glink && (
+                      <span className="opacity-70 text-[1rem]">
+                        <a
+                          href={glink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-500 flex hover:bg-[#16f6f256] hover:scale-110 duration-150 hover:text-white items-center gap-x-3 uno-underline px-3 py-3 bg-gray rounded-md border-blue-500"
+                        >
+                          <span>
+                            <FaExternalLinkAlt />
+                          </span>
+                          Register Now
+                        </a>
+                      </span>
+                    )}
                     <section className="flex flex-col gap-y-1 items-start justify-start">
                       <span className="opacity-70 text-[1rem]">
                         Description
@@ -153,9 +147,31 @@ const Card = () => {
 
                       <div>{overview?.description}</div>
                     </section>
+                    {overview?.cash_prize && (
+                      <section className="flex flex-col gap-y-1 items-start justify-start">
+                        <span className="opacity-70 text-[1rem]">
+                          Cash Prize
+                        </span>
+                        <small>
+                          * cash prize will be given based on performance
+                        </small>
+
+                        <div>{overview?.cash_prize}</div>
+                      </section>
+                    )}
                     <section className="flex flex-col gap-y-1 items-start justify-start">
-                      <span className="opacity-70 text-[1rem]">Team size</span>
-                      <div className="font-bold">{overview?.team_size}</div>
+                      <span className="opacity-70 text-[1rem]">
+                        Participation
+                      </span>
+                      <div className="font-bold">
+                        {overview?.team_size == 1
+                          ? `Individual`
+                          : overview.team_size}
+                      </div>
+                    </section>
+                    <section className="flex flex-col gap-y-1 items-start justify-start">
+                      <span className="opacity-70 text-[1rem]">Cash Prize</span>
+                      <div className="font-bold">{overview?.cash_prize}</div>
                     </section>
                     <section className="flex flex-col gap-y-1 items-start justify-start">
                       <span className="opacity-70 text-[1rem]">Contact</span>
