@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import './index.css';
 import { WebCanvas } from "../bg_animation/bg_animate";
 import tzlogo_with_date from "./tzlogo_with_date.png";
+import TypingWords from "./TypingWords";
 
 // Countdown Component
 const CountdownTimer = ({ targetDate }) => {
@@ -70,8 +71,8 @@ const Hero = () => {
                 <div className='heading1 flex flex-col justify-center items-center' style={{ 'background': 'transparent' }}>
                     <div className="main-logo">
 
-                  <span className="text-5xl font-bold mb-4 uppercase animate-pulse cursor-pointer">
-          Coming Soon...
+                  <span className="lg:text-5xl text-3xl font-bold mb-4 uppercase animate-pulse cursor-pointer">
+          <TypingWords words={['TECHNOZION 2025', 'COMING SOON']} />
         </span>
                     </div>
                     {/* Countdown Clock */}

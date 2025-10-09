@@ -11,7 +11,11 @@ const Footer = () => {
                 </a>  
                 </strong>
             </p>
+<<<<<<< HEAD
             <p class="text-sm text-600">&copy; Copyright Technozion'25</p>
+=======
+            <p className="text-sm text-600">&copy; Copyright Technozion'25</p>
+>>>>>>> c569a10bf3cf4169c980c6b9f3a4f58845d462b7
         </footer>
     );
 };

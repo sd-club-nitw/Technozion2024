@@ -1,144 +1,123 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { WebCanvas } from '../bg_animation/bg_animate';
-import { useNavigate } from 'react-router-dom';
-import Event from './Event.png';
-import Portal from './newPortal.png';
-import Flame from './Flame.png';
-import './index.css';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { WebCanvas } from "../bg_animation/bg_animate";
+import { useNavigate } from "react-router-dom";
+
+import Event from "./Event.png";
+import Portal from "./newPortal.png";
+import Flame from "./Flame.png";
+import ClubImg from "./Club.jpg";
+import SpotImg from "./Spot.jpg";
+import DeptImg from "./Dept.jpg";
+
+import "./index.css";
+
+const TABS = [
+  { key: "club", label: "CLUB", dataSource: "clubevents", bg: ClubImg },
+  { key: "spotlight", label: "SPOTLIGHT", dataSource: "spotlight", bg: SpotImg },
+  { key: "department", label: "DEPARTMENT", dataSource: "societies", bg: DeptImg },
+];
 
 const Events = () => {
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState("club"); // default active
+  const [flame, setFlame] = useState(false);
 
-  const [card1State, setCard1State] = useState({ moveToCenter: false, moveDown: false });
-  const [card2State, setCard2State] = useState({ moveToCenter: false, moveDown: false });
-  const [card3State, setCard3State] = useState({ moveToCenter: false, moveDown: false });
-  const [flamestate, setflamestate] = useState(true);
+  // keep the same 'card click' feel: flash flame then navigate
+  const handleTabClick = (tabKey) => {
+    setActiveTab(tabKey);
+    setFlame(true);
 
-  const screenWidth = window.innerWidth;
-  const X1f = (screenWidth < 768) ? '0vw' : '25vw';
-  const X2f = (screenWidth < 768) ? '0vw' : '-25vw';
-  const D1f = (screenWidth < 768) ? '0vw' : '40vw';
-  const D2f = (screenWidth < 768) ? '0vw' : '-40vw';
+    // show flame briefly then navigate (timings follow original pattern)
+    setTimeout(() => setFlame(false), 700);
+    const tab = TABS.find((t) => t.key === tabKey);
+    if (!tab) return;
 
-  const cardVariants = {
-    initial: { scale: 1, opacity: 1 },
-    floating: {
-      y: ["0%", "-10%", "0%"], // Moves up and down
-      transition: { repeat: Infinity, duration: 2, ease: "easeInOut" },
-    },
-    moveToCenterCard1: { scale: 2, x: X1f, y: '-20vh', opacity: 1, rotateY: 360 },
-    moveDownCard1: { scale: 0, y: '100vh', x: D1f, opacity: 0 },
-    moveToCenterCard2: { scale: 2, x: '0', y: '-20vh', opacity: 1, rotateY: 360 },
-    moveDownCard2: { scale: 0, y: '100vh', opacity: 0 },
-    moveToCenterCard3: { scale: 2, x: X2f, y: '-20vh', opacity: 1, rotateY: 360 },
-    moveDownCard3: { scale: 0, y: '100vh', x: D2f, opacity: 0 },
+    setTimeout(() => {
+      navigate("/Index", { state: { dataSource: tab.dataSource } });
+    }, 900);
   };
 
-  const handleCard1Click = () => {
-    setCard1State({ moveToCenter: true, moveDown: false });
-    setTimeout(() => {
-      setCard1State({ moveToCenter: false, moveDown: true });
-      setflamestate(true);
-    }, 800);
-    setTimeout(() => {
-      navigate('/Index', { state: { dataSource: 'clubevents' } });
-    }, 1600);
-  };
-
-  const handleCard2Click = () => {
-    setCard2State({ moveToCenter: true, moveDown: false });
-    setTimeout(() => {
-      setCard2State({ moveToCenter: false, moveDown: true });
-      setflamestate(true);
-    }, 800);
-    setTimeout(() => {
-      navigate('/Index', { state: { dataSource: 'spotlight' } });
-    }, 1600);
-  };
-
-  const handleCard3Click = () => {
-    setCard3State({ moveToCenter: true, moveDown: false });
-    setTimeout(() => {
-      setCard3State({ moveToCenter: false, moveDown: true });
-      setflamestate(true);
-    }, 800);
-    setTimeout(() => {
-      navigate('/Index', { state: { dataSource: 'societies' } });
-    }, 1600);
-  };
+  const activeTabObj = TABS.find((t) => t.key === activeTab);
 
   return (
     <>
-      <div className='web-canvas'>
+      <div className="web-canvas">
         <WebCanvas />
       </div>
+
       <div className="events-container">
+        {/* top Event logo */}
         <div className="EventImg">
           <img src={Event} alt="Event" />
         </div>
-        <div className="Portal">
-          <img src={Portal} alt="Portal" className="portal-img" />
-          <motion.img 
-            src={Flame}
-            alt="Flame"
-            className="Flame-img" 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: flamestate ? 1 : 0 }}
-            transition={{ duration: 0.5 }}
-          />
+
+        {/* neon framed area */}
+        <div className="events-frame">
+          {/* tabs row */}
+          <motion.div
+            className="tabs-row"
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            {TABS.map((tab) => (
+              <motion.button
+                key={tab.key}
+                className={`tab-btn ${activeTab === tab.key ? "active" : ""}`}
+                onClick={() => handleTabClick(tab.key)}
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {tab.label}
+              </motion.button>
+            ))}
+          </motion.div>
+
+          {/* content panel (uses the selected tab's background image for look) */}
+          <div
+            className="tab-panel"
+            style={{
+              backgroundImage: activeTabObj && activeTabObj.bg ? `url(${activeTabObj.bg})` : "none",
+            }}
+          >
+            <div className="panel-overlay">
+              <h2 className="panel-title">{activeTabObj?.label}</h2>
+              <p className="panel-sub">
+                {activeTab === "club"
+                  ? "Explore club events and activities."
+                  : activeTab === "spotlight"
+                  ? "Spotlight events and highlights."
+                  : "Department level events and notices."}
+              </p>
+
+              <div className="panel-actions">
+                <button
+                  className="enter-btn"
+                  onClick={() => {
+                    // same enter behavior as clicking the tab
+                    handleTabClick(activeTab);
+                  }}
+                >
+                  Enter
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* portal + flame remain at the bottom */}
+          {/* <div className="Portal">
+            <img src={Portal} alt="Portal" className="portal-img" />
+            <motion.img
+              src={Flame}
+              alt="Flame"
+              className="Flame-img"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: flame ? 1 : 0 }}
+              transition={{ duration: 0.35 }}
+            />
+          </div> */}
         </div>
-        <motion.div className="Maincards-container"
-          initial={{ y: "100vh", opacity: 0, scale: 0, x: 0 }}
-          animate={{ y: 0, opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 1, ease: "easeInOut" }}
-          onAnimationComplete={() => setflamestate(false)}
-        >
-          <motion.div
-            className="Maincard" id='C1'
-            variants={cardVariants}
-            initial="initial"
-            animate={
-              card1State.moveDown
-                ? 'moveDownCard1'
-                : card1State.moveToCenter
-                ? 'moveToCenterCard1'
-                : 'floating'
-            }
-            transition={{ duration: (card1State.moveDown ? 0.8 : 0.5) }}
-            onClick={handleCard1Click}
-          />
-
-          <motion.div
-            className="Maincard" id='C2'
-            variants={cardVariants}
-            initial="initial"
-            animate={
-              card2State.moveDown
-                ? 'moveDownCard2'
-                : card2State.moveToCenter
-                ? 'moveToCenterCard2'
-                : 'floating'
-            }
-            transition={{ duration: (card1State.moveDown ? 0.8 : 0.5) }}
-            onClick={handleCard2Click}
-          />
-
-          <motion.div
-            className="Maincard" id='C3'
-            variants={cardVariants}
-            initial="initial"
-            animate={
-              card3State.moveDown
-                ? 'moveDownCard3'
-                : card3State.moveToCenter
-                ? 'moveToCenterCard3'
-                : 'floating'
-            }
-            transition={{ duration: (card1State.moveDown ? 0.8 : 0.5) }}
-            onClick={handleCard3Click}
-          />
-        </motion.div>
       </div>
     </>
   );
