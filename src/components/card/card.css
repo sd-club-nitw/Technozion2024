@@ -1,40 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 /* Global reset */
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    color: #16f6f3 !important;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: #16f6f3 !important;
 }
 
 /* General container for the card */
 .event_card {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    padding: 5rem;
-    /* bottom: 5%; */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  padding: 5rem;
+  /* bottom: 5%; */
 }
 
-.card-container{
-    padding-top: 10rem;
-    padding: 10rem;
-    /* margin: 5rem; */
-    width: 100%;
+.card-container {
+  padding-top: 10rem;
+  padding: 10rem;
+  /* margin: 5rem; */
+  width: 100%;
 }
 
 /* Wrapper for the main content */
 .app-wrapper {
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to right, #009cba, #16f6f3, #80e0e0, #16f6f3, #009cba);
-    font-family: "Martel Sans", sans-serif;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(
+    to right,
+    #009cba,
+    #16f6f3,
+    #80e0e0,
+    #16f6f3,
+    #009cba
+  );
+  font-family: "Martel Sans", sans-serif;
 }
 
 /* h1 {
@@ -52,96 +59,93 @@ p {
 
 /* Main card container */
 .wrap {
-    display: flex;
-    flex-direction: column; /* Change to column layout */
-    width: 70vmin;
-    height: 70vmin;
-    border: 3px solid;
-    border-image: linear-gradient(
-            -50deg,
-            #16f6f3,
-            #16f6f3,
-            #16f6f7,
-            #16f6f9,
-            #16f6f1,
-            #16f6f3
-        ) 1;
-    transition: 0.3s ease-in-out;
-    position: relative;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.8);
-    box-shadow: 0px 0px 20px rgba(22, 246, 243, 0.75), 0px 0px 40px rgba(22, 246, 243, 0.5); 
-    /* margin-left: 5rem; */
-    /* right: 5rem; */
+  display: flex;
+  flex-direction: column; /* Change to column layout */
+  width: 70vmin;
+  height: 70vmin;
+  border: 3px solid;
+  transition: 0.3s ease-in-out;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 0px 20px rgba(22, 246, 243, 0.75),
+    0px 0px 40px rgba(22, 246, 243, 0.5);
+  /* margin-left: 5rem; */
+  /* right: 5rem; */
 }
 
 /* Updated glassy effect for .text */
 .text {
-    box-sizing: border-box;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.1); /* Light semi-transparent background for glassy effect */
-    /* backdrop-filter: blur(3px);  */
-    box-shadow: inset 1px 1px 15px rgba(0, 0, 0, 0.4); /* Optional shadow for depth */
-    color: white; /* Change text color to white */
-    overflow-y: scroll;
-    z-index: 2;
-    /* padding: 7rem; */
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Light semi-transparent background for glassy effect */
+  /* backdrop-filter: blur(3px);  */
+  box-shadow: inset 1px 1px 15px rgba(0, 0, 0, 0.4); /* Optional shadow for depth */
+  color: white; /* Change text color to white */
+  z-index: 2;
+  backdrop-filter: blur(10px); /* Blur effect for glassy appearance */
+  /* padding: 7rem; */
 }
 
 /* Removed the dark background overlay */
 /* Optional: Adding a glassy effect instead */
 .text:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.05); /* Lighter glassy background for contrast */
-    z-index: -1;
-    backdrop-filter: blur(10px); /* Blur effect for glassy appearance */
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.05); /* Lighter glassy background for contrast */
+  z-index: -1;
+  backdrop-filter: blur(10px); /* Blur effect for glassy appearance */
 }
 
 /* Overlay style for images/text */
 .overlay {
-    position: relative;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    /* padding: 1rem 0.75rem; */
-    background: rgba(0, 153, 167, 0.9); /* Slightly transparent overlay */
-    transition: 0.4s ease-in-out;
-    z-index: 1;
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /* padding: 1rem 0.75rem; */
+  background: rgba(0, 153, 167, 0.9); /* Slightly transparent overlay */
+  transition: 0.4s ease-in-out;
+  z-index: 1;
 }
 
 /* Image content */
 .image-content {
-    position: relative;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    transition: 0.3s ease-in-out;
+  position: relative;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  transition: 0.3s ease-in-out;
 }
 
 /* read indicating clickable content */
 .read {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 10vmin;
-    height: 3vmin;
-    transition: 0.3s ease-in-out 0.3s;
-    font-size: 0.2rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 10vmin;
+  height: 3vmin;
+  transition: 0.3s ease-in-out 0.3s;
+  font-size: 0.2rem;
 }
 
 /* .dot {
@@ -154,201 +158,168 @@ p {
 
 /* Style of button */
 .read button {
-    background-color: #16f6f3; /* Cyan background */
-    border: none; /* Remove default borders */
-    /* border-radius: 50%; */
-    width: 10vmin;
-    height: 3vmin;
-    cursor: pointer; /* Pointer on hover */
-    color: black; /* White text color */
-    font-size: 2vmin; /* Adjust font size */
-    font-weight: bold;
-    outline: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+  background-color: #16f6f3; /* Cyan background */
+  border: none; /* Remove default borders */
+  /* border-radius: 50%; */
+  width: 10vmin;
+  height: 3vmin;
+  cursor: pointer; /* Pointer on hover */
+  color: black; /* White text color */
+  font-size: 2vmin; /* Adjust font size */
+  font-weight: bold;
+  outline: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 /* Card navigation */
 .logo-cardnav-container {
-    display: flex; /* Flex container for logo and content */
-    width: 100%;
-    /* background-color: black; */
-    height: 100%;
-    box-sizing: border-box;
-    z-index: 5;
+  display: flex; /* Flex container for logo and content */
+  width: 100%;
+  /* background-color: black; */
+  height: 100%;
+  box-sizing: border-box;
+  z-index: 5;
 }
 
 /* Sticky logo-container */
 .logo-container {
-    flex: 1; /* Logo takes 1 part */
-    display: flex;
-    justify-content: center; /* Center the logo */
-    align-items: center; /* Center the logo vertically */
-    width: 40%;
-    /* position: sticky; */
-    top: 0; /* Stick the logo at the top */
-    z-index: 10; /* Ensure it stays on top of other content */
+  flex: 1; /* Logo takes 1 part */
+  display: flex;
+  justify-content: center; /* Center the logo */
+  align-items: center; /* Center the logo vertically */
+  width: 40%;
+  /* position: sticky; */
+  top: 0; /* Stick the logo at the top */
+  z-index: 10; /* Ensure it stays on top of other content */
 }
 
 .cnt-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #000000;
-    overflow: hidden;
-    width: 100%;  /* Width set to 100% of its parent container */
-    aspect-ratio: 1 / 1; /* Enforce square shape */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  overflow: hidden;
+  width: 100%; /* Width set to 100% of its parent container */
+  aspect-ratio: 1 / 1; /* Enforce square shape */
 }
 
 .cnt-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure the image fills the container without distortion */
-    object-position: center; /* Center the image */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image fills the container without distortion */
+  object-position: center; /* Center the image */
 }
-
-
 
 /* Sticky content-container */
 .content-container {
-    flex: 3; /* Content takes 3 parts */
-    padding: 0.6rem;
-    /* padding-top: ; */
-    width: 60%;
-    overflow-y: auto; /* Allow scrolling of content */
-    margin-bottom: 2rem;
-    z-index: 5;
+  flex: 3; /* Content takes 3 parts */
+  /* padding: 0.6rem; */
+  /* padding-top: ; */
+  width: 60%;
+  overflow-y: auto; /* Allow scrolling of content */
+  z-index: 5;
 }
 
-.content{
-    /* margin-top:1.8rem; */
-    z-index: 5;
-    height: 90%;
-    /* padding-bottom: 5rem; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.content div{
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-    padding: 1rem;
-    height: 100%;
-    overflow: scroll;
-}
-.content div h1{
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 500;
-}
-.content div p{
-    font-size: 1.5rem;
-    overflow: hidden;
-    height: auto;
-}
-.content h3{
-    font-size: 1.5rem;
-    font-weight: 300;
-    padding: 1rem;
+.content {
+  /* margin-top:1.8rem; */
+  z-index: 5;
+  width: 100%;
+  height: fit-content;
+  /* padding-bottom: 5rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
 }
 
 /* Sticky cardnav */
 .cardnav {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 0.4rem;
-    position: sticky;
-    top: 0;
-    z-index: 9;
-    
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent cyan background */
-    backdrop-filter: blur(10px); /* Blur effect for glassy appearance */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.9); /* Optional shadow for depth */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: #000;
 }
-
 
 /* Glassy effect for navigation buttons */
 .cardnav button {
-    background-color: rgba(22, 246, 243, 0.2); /* Semi-transparent cyan */
-    border: none;
-    color: white;
-    padding: 0.3rem 0.2rem;
-    border-radius: 5px; /* Softer edges */
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    font-size: 1rem; /* Set font size */
-    min-width: 80px; /* Set a minimum width for buttons */
-    backdrop-filter: blur(6px); /* Blur effect for glassy appearance */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
-    border: 1px solid rgba(255, 255, 255, 0.25); /* Soft white border */
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+  background-color: rgba(22, 246, 243, 0.2); /* Semi-transparent cyan */
+  border: none;
+  color: white;
+  padding: 0.3rem 0.2rem;
+  border-radius: 5px; /* Softer edges */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1rem; /* Set font size */
+  min-width: 80px; /* Set a minimum width for buttons */
+  backdrop-filter: blur(6px); /* Blur effect for glassy appearance */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  border: 1px solid rgba(255, 255, 255, 0.25); /* Soft white border */
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 /* Active button style */
 /* Active button style */
 .cardnav button.active {
-    border: 2px solid #16f6f3; /* Border color for active button */
-    transform: scale(1.05); /* Slightly enlarge button on active */
+  border: 2px solid #16f6f3; /* Border color for active button */
+  transform: scale(1.05); /* Slightly enlarge button on active */
 }
 
 .cardnav button:hover {
-    background-color: rgba(0, 156, 186, 0.3); /* Darker cyan on hover */
-    transform: scale(1.05); /* Slightly enlarge button on hover */
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* More shadow on hover */
+  background-color: rgba(0, 156, 186, 0.3); /* Darker cyan on hover */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* More shadow on hover */
 }
 
-
-.register{
-    display: flex;
-    justify-content: center;
+.register {
+  display: flex;
+  justify-content: center;
 }
 
 .register-button {
-    position: fixed;
-    /* bottom: 0; */
-    /* left: 50%; */
-    /* transform: translateX(-20%);
+  position: fixed;
+  /* bottom: 0; */
+  /* left: 50%; */
+  /* transform: translateX(-20%);
     transform: translateY(500%); */
-    z-index: 10;
-    background-color: #16f6f3;
-    color: black !important;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    font-size: 16px;
-    /* color: #fff !important; */
-  }
-  
-  .register-button:hover {
-    background-color: #13e1d9;
-  }
-  
-  .footer {
-    background-color: #282c34;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-  }
+  z-index: 10;
+  background-color: #16f6f3;
+  color: black !important;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-size: 16px;
+  /* color: #fff !important; */
+}
+
+.register-button:hover {
+  background-color: #13e1d9;
+}
+
+.footer {
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+}
 
 /* Hover effect */
 .wrap.active .overlay {
-    transform: translateX(-1000vmin);
+  transform: translateX(-1000vmin);
 }
 
 .wrap.active .image-content {
-    width: 0vmin;
+  width: 0vmin;
 }
 
 /* .wrap.active .read {
@@ -356,279 +327,270 @@ p {
 } */
 
 .wrap.active .read .dot {
-    background: #16f6f3; /* Change dot color on hover */
+  background: #16f6f3; /* Change dot color on hover */
 }
 
 .wrap.active {
-    width: 100%;
+  width: 100%;
 }
 
 /* Animations */
 .animate {
-    animation-duration: 0.7s;
-    animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
-    animation-fill-mode: backwards;
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+  animation-fill-mode: backwards;
 }
 
 .pop {
-    animation-name: pop;
+  animation-name: pop;
 }
 
 /* Styling for the WebCanvas background */
 .web-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 1; /* WebCanvas should be the lowest layer */
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1; /* WebCanvas should be the lowest layer */
+}
 
 @keyframes pop {
-    0% {
-        opacity: 0;
-        transform: scale(0.5, 0.5);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1, 1);
-    }
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
 }
 
 .slide {
-    animation-name: slide;
+  animation-name: slide;
 }
 
 @keyframes slide {
-    0% {
-        opacity: 0;
-        transform: translate(4em, 0);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
+  0% {
+    opacity: 0;
+    transform: translate(4em, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
 }
 
 /* Delay animations */
 .delay-1 {
-    animation-delay: 0.3s;
+  animation-delay: 0.3s;
 }
 .delay-2 {
-    animation-delay: 0.6s;
+  animation-delay: 0.6s;
 }
 .delay-3 {
-    animation-delay: 0.9s;
+  animation-delay: 0.9s;
 }
 .delay-4 {
-    animation-delay: 1.2s;
+  animation-delay: 1.2s;
 }
 .delay-5 {
-    animation-delay: 1.5s;
+  animation-delay: 1.5s;
 }
 .delay-6 {
-    animation-delay: 1.8s;
+  animation-delay: 1.8s;
 }
 .delay-7 {
-    animation-delay: 2.1s;
+  animation-delay: 2.1s;
 }
 .delay-8 {
-    animation-delay: 2.4s;
+  animation-delay: 2.4s;
 }
 
 /* Responsive design */
 @media (max-width: 1440px) {
-    .wrap {
-        width: 75vmin;
-        height: 75vmin;
-    }
-    h1 {
-        font-size: 4.5vmin;
-    }
-    p {
-        font-size: max(9pt, 2.2vmin);
-    }
-    .cnt-logo{
-        /* height: 35vmin; */
-        width: 35vmin;
-    }
-    /* .image-content {
+  .wrap {
+    width: 75vmin;
+    height: 75vmin;
+  }
+  h1 {
+    font-size: 4.5vmin;
+  }
+  p {
+    font-size: max(9pt, 2.2vmin);
+  }
+  .cnt-logo {
+    /* height: 35vmin; */
+    width: 35vmin;
+  }
+  /* .image-content {
         width: 55vmin;
     } */
 }
 
 @media (max-width: 1024px) {
-    .wrap {
-        flex-direction: column;
-        height: 70vmin;
-        width: 75vmin;
-    }
-    .image-content {
-        width: 100%;
-        height: 70vmin;
-    }
-    .overlay-content {
-        width: 100%;
-        padding: 1rem;
-    }
-    .cnt-logo{
-        /* height: 30vmin; */
-        width: 30vmin;
-    }
+  .wrap {
+    flex-direction: column;
+    height: 70vmin;
+    width: 75vmin;
+  }
+  .image-content {
+    width: 100%;
+    height: 70vmin;
+  }
+  .overlay-content {
+    width: 100%;
+    padding: 1rem;
+  }
+  .cnt-logo {
+    /* height: 30vmin; */
+    width: 30vmin;
+  }
 }
 
 :root {
-    --logo-height: 16rem; /* Default value for logo height */
+  --logo-height: 16rem; /* Default value for logo height */
 }
 
 @media (max-width: 510px) {
-    .card-container{
-        padding: 2rem;
-        padding-top: 12rem;
-    }
-    h1 {
-        font-size: 8vmin;
-    }
-    p {
-        font-size: 4vmin;
-    }
-    .wrap {
-        flex-direction: column;
-        width: 95%;
-        height: 140vmin;
-        bottom:3.5rem;
-    }
-    /* .overlay-content {
+  .card-container {
+    padding: 2rem;
+    padding-top: 12rem;
+  }
+  h1 {
+    font-size: 8vmin;
+  }
+  p {
+    font-size: 4vmin;
+  }
+  .wrap {
+    flex-direction: column;
+    width: 95%;
+    height: 140vmin;
+    bottom: 3.5rem;
+  }
+  /* .overlay-content {
         width: 100%;
         padding: 1rem;
         aspect-ratio: 1;
     } */
-    /* .event_card {
+  /* .event_card {
         height: 53%;
         width: 90%;
     } */
-    .image-content {
-        height: 80vmin;
-    }
-    
+  .image-content {
+    height: 80vmin;
+  }
 
-    /* Apply overflow hidden to .text */
-    .text {
-        overflow: hidden; /* Prevent outer scrollbar on this element */
-        height: 100%; /* Ensure it takes full height */
-        width:100%;
-    }
+  /* Apply overflow hidden to .text */
+  .text {
+    overflow: hidden; /* Prevent outer scrollbar on this element */
+    height: 100%; /* Ensure it takes full height */
+    width: 100%;
+  }
 
-    /* Allow the content container to be scrollable */
-    .content-container {
-        overflow-y: auto; /* Enable scrolling for content only */
-    }
+  /* Allow the content container to be scrollable */
+  .content-container {
+    overflow-y: auto; /* Enable scrolling for content only */
+  }
 
-    /* Additional changes for small devices */
-    .logo-cardnav-container {
-        /* display: block;  */
-        display: flex;
-        flex-direction: row;
-        box-sizing: border-box;
-    }
+  /* Additional changes for small devices */
+  .logo-cardnav-container {
+    /* display: block;  */
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+  }
 
-    .logo-container, 
-    .content-container {
-        width: 100%; /* Make each container take full width */
-        /* height: auto;  */
-        margin: 0; /* Remove any margin */
-    }
+  .logo-container,
+  .content-container {
+    width: 100%; /* Make each container take full width */
+    /* height: auto;  */
+    margin: 0; /* Remove any margin */
+  }
 
-    .logo-container {
-        display: none;
-        z-index: 0;
-    }
+  .logo-container {
+    display: none;
+    z-index: 0;
+  }
 
-    .content-container {
-        /* margin-top: 48%; */
-        height: 100%; /* Allow the content to take the remaining height of the viewport */
-        /* margin-left: 1rem;
+  .content-container {
+    /* margin-top: 48%; */
+    height: 100%; /* Allow the content to take the remaining height of the viewport */
+    /* margin-left: 1rem;
         margin-right: 1rem; */
-        overflow-y: auto; /* Allow scrolling only for content */
-        padding: 0px;
-        width: 100%;
-    }
+    overflow-y: auto; /* Allow scrolling only for content */
+    padding: 0px;
+    width: 100%;
+  }
 
-    .cardnav {
-        /* position: fixed;  */
-        z-index: 9; /* Ensure it appears below the logo but on top of the content */
-        width: 100%; /* Ensure full width for navigation */
-        display: flex; /* Flexbox for horizontal layout */
-        justify-content: space-around; /* Evenly distribute buttons */
-        box-shadow: none; /* Remove shadow for a cleaner look */
-        background-color: rgba(0, 0, 0, 0.8); /* Ensure the background is solid */
-        left:0;
-        /* margin-top: 48%; */
-        height: 10%;
-    }
+  .cardnav {
+    /* position: fixed;  */
+    width: 100%; /* Ensure full width for navigation */
+    display: flex; /* Flexbox for horizontal layout */
+    left: 0;
+    top: 0;
+    /* margin-top: 48%; */
+  }
 
-    .cardnav button {
-        /* padding: 0.4rem 0.8rem; */
-        font-size: 0.8rem; /* Smaller font size */
-        min-width: 3rem; /* Set a minimum width for buttons */
-        margin: 0 0.2rem; /* Add some margin between buttons */
-        text-align: center; /* Center the text in buttons */
-        border-radius: 5px; /* Add rounded corners for buttons */
-        transition: background-color 0.3s ease, transform 0.2s ease; /* Transition effects */
-    }
+  .cardnav button {
+    /* padding: 0.4rem 0.8rem; */
+    font-size: 0.8rem; /* Smaller font size */
+    min-width: 3rem; /* Set a minimum width for buttons */
+    margin: 0 0.2rem; /* Add some margin between buttons */
+    text-align: center; /* Center the text in buttons */
+    border-radius: 5px; /* Add rounded corners for buttons */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transition effects */
+  }
 
-    .cardnav button:hover {
-        background-color: rgba(0, 156, 186, 0.3); /* Darker cyan on hover */
-        transform: scale(1.05); /* Slightly enlarge button on hover */
-    }
+  .cardnav button:hover {
+    background-color: rgba(0, 156, 186, 0.3); /* Darker cyan on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+  }
 
-    .content{
-        height: 75%;
-        /* margin-top: 10%; */
-    }
-    .content div{
-        padding: 0.3rem 0.6rem;
-    }
-    .content div h1{
-        text-align: center;
-        font-size: 1.4rem;
-    }
-    .content div p{
-        font-size: 1rem;
-    }
-    .content h3{
-        font-size: 1rem;
-        font-weight: 300;
-        padding: 0.6rem;
-    }
-    .cnt-logo{
-        /* height: 28vmin; */
-        width: 28vmin;
-    }
+  .content {
+    height: 75%;
+    /* margin-top: 10%; */
+  }
+
+  .content div h1 {
+    text-align: center;
+    font-size: 1.4rem;
+  }
+  .content div p {
+    font-size: 1rem;
+  }
+  .content h3 {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+  .cnt-logo {
+    /* height: 28vmin; */
+    width: 28vmin;
+  }
 }
-
 
 /*Scrollbar*/
 /* Custom scrollbar for WebKit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-    width: 8px; /* Change the width of the scrollbar */
+  width: 8px; /* Change the width of the scrollbar */
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.7); /* White color for the scrollbar */
-    border-radius: 10px; /* Rounded edges for the scrollbar */
+  background-color: rgba(20, 225, 247, 0.7); /* White color for the scrollbar */
+  border-radius: 10px; /* Rounded edges for the scrollbar */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.9); /* Slightly darker on hover */
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly darker on hover */
 }
 
 ::-webkit-scrollbar-track {
-    background-color: rgba(0, 0, 0, 0.2); /* Dark track for contrast */
+  background-color: rgba(0, 0, 0, 0.2); /* Dark track for contrast */
 }
 
 /* Custom scrollbar for Firefox */
 .scroll-container {
-    scrollbar-width: thin; /* Reduces the scrollbar width */
-    scrollbar-color: rgba(255, 255, 255, 0.7) rgba(0, 0, 0, 0.2); /* White scrollbar and dark track */
+  scrollbar-width: thin; /* Reduces the scrollbar width */
+  scrollbar-color: rgba(255, 255, 255, 0.7) rgba(0, 0, 0, 0.2); /* White scrollbar and dark track */
 }

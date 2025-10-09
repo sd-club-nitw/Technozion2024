@@ -1,14 +1,17 @@
 [
-      {
-        "title": "Devops Workshop",
-        "name": "Robotics Club",
-        "overview": "<h1>Devops Workshop</h1><br><h4>Robotics Club</h4><br><h6>Description</h6><p>Coming Soon...</p><br><h6>Team Size</h6><p>Coming Soon... </p><br><h6>Point of contact</h6><p>______</p><br>",
-        "rules": "<p>Coming Soon...</p>",
-        "judging_criteria": "<p>Coming Soon...</p>",
-        "imgsrc": "/posters25/club_12_imgsrc.png",
-        "bsrc1": "/posters/club_31_bsrc1.png",
-        "bsrc2": "/posters/club_31_bsrc2.png",
-        "index": 31,
-        "glink": "Coming Soon..."
-    }
+  {
+    "title": "Devops Workshop",
+    "name": "HAM ARC Club",
+    "overview": {
+      "main_title": "Devops Workshop",
+      "description": "Coming Soon...",
+      "team_size": "Coming Soon...",
+      "contact": []
+    },
+    "rules": ["Coming Soon..."],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_12_imgsrc.png",
+    "index": 31,
+    "glink": "Coming Soon..."
+  }
 ]
