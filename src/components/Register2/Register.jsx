@@ -173,7 +173,7 @@ const Register = () => {
             type="text"
             placeholder="Full Name"
             {...reactRegister("name", { required: "Name is required" })}
-            className="w-full px-4 py-2 border rounded-md outline-none focus:outline-none text-ssblue"
+            className="w-full px-4 py-2 border rounded-md outline-none focus:outline-none bg-gray"
           />{" "}
           {errors.name && (
             <p className="text-ssred text-sm">{errors.name.message}</p>
@@ -182,7 +182,7 @@ const Register = () => {
             type="email"
             placeholder="Email"
             {...reactRegister("email", { required: "Email is required" })}
-            className="w-full px-4 py-2 border rounded-md outline-none focus:outline-none"
+            className="w-full px-4 py-2 border rounded-md outline-none focus:outline-none bg-gray"
           />{" "}
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -191,7 +191,7 @@ const Register = () => {
             type="password"
             placeholder="Password"
             {...reactRegister("password", { required: "Password is required" })}
-            className="w-full px-4 py-2 border rounded-md outline-none focus:outline-none"
+            className="w-full px-4 py-2 border rounded-md outline-none focus:outline-none bg-gray"
           />{" "}
           {errors.password && (
             <p className="text-red-500 text-sm">{errors.password.message}</p>
