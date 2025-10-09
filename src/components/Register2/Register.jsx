@@ -3,6 +3,7 @@ import QRCode from "react-qr-code";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../Context/AuthManager";
 
+
 const Register = () => {
   const { register: authRegister } = useAuth();
 
@@ -20,7 +21,8 @@ const Register = () => {
   const watchedEvents = watch("events") || [];
   const watchedEmail = watch("email") || "";
   const watchedAccommodation = watch("accommodation") || false;
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
   const [selectedEventsState, setSelectedEventsState] = useState([]);
   const [payModalOpen, setPayModalOpen] = useState(false);
   const [paymentScreenshot, setPaymentScreenshot] = useState(null);
@@ -36,16 +38,28 @@ const Register = () => {
 
   useEffect(() => {
     try {
-      reactRegister && reactRegister("events");
-    } catch (e) {}
+      reactRegister("events");
+    } catch (e) {
+      // It might throw an error on re-render if already registered, safe to ignore.
+    }
   }, [reactRegister]);
 
-  const sampleEvents = [
+  const allEvents = [
     "Robo Race",
     "Coding Marathon",
     "Hackathon",
     "Paper Presentation",
     "Treasure Hunt",
+    "Web Weaver",
+    "Circuitrix",
+    "Drone Challenge",
+    "AI Symposium",
+    "Game Dev Expo",
+    "Startup Pitch",
+    "Tech Quiz",
+    "Ethical Hacking Workshop",
+    "CAD Contest",
+    "IoT Innovation Challenge",
   ];
 
   const handleFileLabelKey = (e) => {
@@ -55,7 +69,7 @@ const Register = () => {
     }
   };
 
-  const isValidGmail = (email) => {
+  const isValidEmail = (email) => {
     if (!email || typeof email !== "string") return false;
     const trimmed = email.trim().toLowerCase();
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -65,8 +79,9 @@ const Register = () => {
   const computeAmount = () => {
     let amount = 0;
     if (watchedAccommodation) amount += 100;
-    if (!watchedEmail || typeof watchedEmail !== "string") return amount;
-    if (!watchedEmail.includes("niw.ac.in")) amount += 500;
+    if (watchedEmail && !watchedEmail.includes("@nitw.ac.in")) {
+        amount += 500;
+    }
     return amount;
   };
 
@@ -79,32 +94,8 @@ const Register = () => {
     return undefined;
   };
 
-  const hasFile = (maybeFile) => !!normalizeFirstFile(maybeFile);
-
   const onSubmit = (data) => {
     if (!data) return;
-
-    if (!data.name) {
-      setError("name", { type: "required", message: "Name is required" });
-      return;
-    } else {
-      clearErrors("name");
-    }
-    if (!data.email) {
-      setError("email", { type: "required", message: "Email is required" });
-      return;
-    } else {
-      clearErrors("email");
-    }
-    if (!data.collegeName) {
-      setError("collegeName", {
-        type: "required",
-        message: "College name is required",
-      });
-      return;
-    } else {
-      clearErrors("collegeName");
-    }
 
     const eventsVal = data.events || [];
     if (!eventsVal || (Array.isArray(eventsVal) && eventsVal.length === 0)) {
@@ -118,19 +109,8 @@ const Register = () => {
     }
 
     const idFile = normalizeFirstFile(data.idDocument);
-    if (!idFile) {
-      setError("idDocument", {
-        type: "required",
-        message: "Please upload your College ID/Aadhar.",
-      });
-      const el = document.getElementById("idDocument");
-      if (el) el.focus();
-      return;
-    } else {
-      clearErrors("idDocument");
-    }
 
-    if (watchedEmail && !watchedEmail.includes("niw.ac.in")) {
+    if (watchedEmail && !watchedEmail.includes("@nitw.ac.in")) {
       if (!paymentScreenshot) {
         setPaymentError(
           "Please upload a payment screenshot before registering."
@@ -149,34 +129,80 @@ const Register = () => {
       data.password = "00000000";
     }
 
-    // replace idDocument field with the normalized File
-    data.idDocument = idFile;
+    if(idFile) data.idDocument = idFile;
     if (paymentScreenshot) data.paymentScreenshot = paymentScreenshot;
 
-    console.log("registering with data", data);
-
-    // delegate to auth manager which should handle FormData when files are present
+    console.log("Registering with data", data);
     authRegister(data);
   };
 
+  const EventsModal = () => (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 p-4 animate-fade-in">
+      <div className="bg-gray-800 text-white rounded-2xl shadow-xl w-full max-w-2xl h-full max-h-[90vh] flex flex-col">
+        <div className="p-6 border-b border-gray-700">
+          <h3 className="text-xl font-bold">Select Events</h3>
+          <p className="text-sm text-gray-400">Choose all the events you want to participate in.</p>
+        </div>
+        <div className="p-6 flex-grow overflow-y-auto custom-scrollbar">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {allEvents.map((ev) => {
+              const checked = selectedEventsState && selectedEventsState.includes(ev);
+              return (
+                <label key={ev} className="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg cursor-pointer hover:bg-gray-600 transition">
+                  <input
+                    type="checkbox"
+                    checked={checked}
+                    onChange={(e) => {
+                      let next = [];
+                      if (e.target.checked)
+                        next = [...selectedEventsState, ev];
+                      else
+                        next = selectedEventsState.filter((x) => x !== ev);
+                      setSelectedEventsState(next);
+                      setValue("events", next, { shouldValidate: true });
+                    }}
+                    className="h-5 w-5 text-purple-600 bg-gray-900 border-gray-600 rounded focus:ring-purple-500"
+                  />
+                  <span className="font-medium">{ev}</span>
+                </label>
+              );
+            })}
+          </div>
+        </div>
+        <div className="p-6 border-t border-gray-700 text-right">
+          <button
+            type="button"
+            onClick={() => setIsEventsModalOpen(false)}
+            className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+          >
+            Done
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+
   return (
-    <div className="flex justify-center items-center md:items-start min-h-screen p-2 sm:p-4 md:pt-24 overflow-auto">
+    <div className="flex justify-center items-center md:items-start min-h-screen p-2 sm:p-4 md:pt-24 overflow-auto bg-gray text-gray-300">
+
+      {isEventsModalOpen && <EventsModal />}
+
       <div
-        className="bg-gray p-6 md:p-8 rounded-2xl shadow-lg w-full max-w-md"
+        className="bg-gray p-6 md:p-8 rounded-2xl shadow-lg w-full max-w-md custom-scrollbar"
         style={{ maxHeight: "calc(100vh - 4rem)", overflow: "auto" }}
       >
-        <style>{`.no-glow::after { display: none !important; }`}</style>
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">
-          Registration for technozion 2025
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-white">
+          Registration for Technozion 2025
         </h2>
         <div className="mb-6 text-center">
           <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4">
-            <div className="px-3 py-2 bg-gray-100 rounded-md text-sm text-gray-700 w-full sm:w-auto">
-              Registration fee of TZ:{" "}
-              <span className="font-semibold">₹500</span>
+            <div className="px-3 py-2 bg-gray-700 rounded-md text-sm w-full sm:w-auto">
+              Registration fee:{" "}
+              <span className="font-semibold text-white">₹500</span>
             </div>
-            <div className="px-3 py-2 bg-gray-100 rounded-md text-sm text-gray-700 w-full sm:w-auto">
-              Accommodation: <span className="font-semibold">₹100 / day</span>
+            <div className="px-3 py-2 bg-gray-700 rounded-md text-sm w-full sm:w-auto">
+              Accommodation: <span className="font-semibold text-white">₹100 / day</span>
             </div>
           </div>
         </div>
@@ -188,10 +214,10 @@ const Register = () => {
               type="text"
               placeholder="John Doe"
               {...reactRegister("name", { required: "Name is required" })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray focus:outline-none focus:ring-2 focus:ring-purple transition"
+              className="w-full px-4 py-3 border border-gray-600 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
             />
             {errors.name && (
-              <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+              <p className="text-red-400 text-sm mt-1">{errors.name.message}</p>
             )}
           </div>
 
@@ -201,10 +227,10 @@ const Register = () => {
               type="email"
               placeholder="you@example.com"
               {...reactRegister("email", { required: "Email is required" })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray focus:outline-none focus:ring-2 focus:ring-purple transition"
+              className="w-full px-4 py-3 border border-gray-600 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
             />
             {errors.email && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-400 text-sm mt-1">
                 {errors.email.message}
               </p>
             )}
@@ -218,10 +244,10 @@ const Register = () => {
               {...reactRegister("collegeName", {
                 required: "College name is required",
               })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray focus:outline-none focus:ring-2 focus:ring-purple transition"
+              className="w-full px-4 py-3 border border-gray-600 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
             />
             {errors.collegeName && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-400 text-sm mt-1">
                 {errors.collegeName.message}
               </p>
             )}
@@ -232,84 +258,32 @@ const Register = () => {
               id="accommodation"
               type="checkbox"
               {...reactRegister("accommodation")}
-              className="h-4 w-4 text-purple focus:ring-purple border-gray-300 rounded"
+              className="h-4 w-4 text-purple-600 bg-gray-700 focus:ring-purple-500 border-gray-600 rounded"
             />
             <label htmlFor="accommodation" className="text-sm">
               I want accommodation
             </label>
           </div>
 
-          <div className="flex flex-col relative">
-            <label className="text-sm font-medium mb-1">
-              Select events to register for
+          <div className="flex flex-col">
+            <label className="text-sm font-medium mb-2">
+              Registered Events
             </label>
-
-            <div>
-              <button
-                type="button"
-                onClick={() => setDropdownOpen((s) => !s)}
-                className="w-full text-left px-4 py-2 rounded-lg bg-gray flex items-center justify-between focus:outline-none focus:ring-0"
-              >
-                <span className="text-sm text-gray-700">
-                  {selectedEventsState && selectedEventsState.length > 0
-                    ? selectedEventsState.join(", ")
-                    : "Choose events..."}
-                </span>
-                <span className="text-xs text-gray-500">▾</span>
-              </button>
-
-              {dropdownOpen && (
-                <div
-                  className="mt-2 absolute z-20 w-full bg-gray border rounded-md p-3 no-glow"
-                  style={{ maxHeight: "40vh", overflowY: "auto" }}
-                >
-                  {sampleEvents.map((ev) => {
-                    const checked =
-                      selectedEventsState && selectedEventsState.includes(ev);
-                    return (
-                      <label
-                        key={ev}
-                        className="flex items-center space-x-2 py-1"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={checked}
-                          onChange={(e) => {
-                            let next = [];
-                            if (e.target.checked)
-                              next = [...(selectedEventsState || []), ev];
-                            else
-                              next = (selectedEventsState || []).filter(
-                                (x) => x !== ev
-                              );
-                            setSelectedEventsState(next);
-                            setValue("events", next, { shouldValidate: true });
-                          }}
-                          className="h-4 w-4 text-lightGreen border-gray rounded"
-                        />
-                        <span className="text-sm">{ev}</span>
-                      </label>
-                    );
-                  })}
-
-                  <div className="flex justify-end mt-2">
-                    <button
-                      type="button"
-                      onClick={() => setDropdownOpen(false)}
-                      className="px-3 py-1 text-sm bg-gray-100 rounded-md hover:scale-125 transition"
-                    >
-                      Done
-                    </button>
-                  </div>
-                </div>
-              )}
-              {errors.events && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.events.message}
-                </p>
-              )}
+            <div className="p-3 min-h-[48px]  border-dashed border-gray-600 rounded-lg bg-gray-700">
+              <span className="text-sm text-gray-400 italic overflow-auto">
+                {selectedEventsState.length > 0 ? selectedEventsState.join(', ') : "No events selected yet."}
+              </span>
             </div>
+            <button
+              type="button"
+              onClick={() => setIsEventsModalOpen(true)}
+              className="mt-2 w-full text-center px-4 py-2 rounded-lg bg-gray-600 hover:bg-gray-500 text-white font-semibold transition"
+            >
+              Select Events
+            </button>
+            {errors.events && <p className="text-red-400 text-sm mt-1">{errors.events.message}</p>}
           </div>
+
 
           <div className="flex flex-col">
             <label className="text-sm font-medium mb-1">
@@ -338,16 +312,15 @@ const Register = () => {
                 onKeyDown={handleFileLabelKey}
                 role="button"
                 aria-label="Choose ID file"
-                className="px-4 py-2 bg-gray text-white rounded-md cursor-pointer text-sm font-medium text-center"
-                style={{ transition: "none", animation: "none" }}
+                className="px-4 py-2 bg-gray-600 text-white rounded-md cursor-pointer text-sm font-medium text-center hover:bg-gray-500"
               >
                 Choose file
               </label>
 
-              <div className="text-sm text-gray-600 truncate">
+              <div className="text-sm text-gray-400 truncate">
                 {watchedIdDocument && watchedIdDocument.length ? (
                   <>
-                    <span className="font-medium">
+                    <span className="font-medium text-gray-200">
                       {watchedIdDocument[0].name}
                     </span>
                     <span className="ml-2 text-xs text-gray-500">
@@ -360,62 +333,49 @@ const Register = () => {
               </div>
             </div>
             {errors.idDocument && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-400 text-sm mt-1">
                 {errors.idDocument.message}
               </p>
             )}
           </div>
 
-          {isValidGmail(watchedEmail) && (
-            <div className="border-t pt-4">
+          {isValidEmail(watchedEmail) && !watchedEmail.includes("@nitw.ac.in") && (
+            <div className="border-t border-gray-700 pt-4">
               <div className="flex items-center justify-between mb-3">
-                <div className="text-sm text-gray-700">Amount payable</div>
-                <div className="text-lg font-semibold">₹{computeAmount()}</div>
+                <div className="text-sm">Amount payable</div>
+                <div className="text-lg font-semibold text-white">₹{computeAmount()}</div>
               </div>
 
               <div className="flex items-center space-x-2">
                 <button
                   type="button"
                   onClick={() => setPayModalOpen(true)}
-                  className="px-4 py-2 bg-indigo-600 text-white rounded-md"
+                  className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition"
                 >
-                  Pay here
+                  Pay & Upload Screenshot
                 </button>
-
-                <div className="text-sm text-gray-500">
-                  (or upload payment screenshot in the modal)
-                </div>
               </div>
 
               {payModalOpen && (
-                <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-60 p-4">
-                  <div className="bg-[#242424] rounded-lg max-w-lg w-full p-4 ">
-                    <div className="flex justify-between items-center mb-3">
-                      <h3 className="font-semibold">Scan QR to pay</h3>
+                <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-90 p-4 animate-fade-in">
+                  <div className="bg-gray rounded-lg max-w-lg w-full p-6 shadow-xl">
+                    <div className="flex justify-between items-center mb-4">
+                      <h3 className="font-semibold text-lg text-white">Scan QR to pay</h3>
                       <button
                         onClick={() => setPayModalOpen(false)}
-                        className="text-sm text-gray-600"
+                        className="text-gray-400 hover:text-white text-2xl leading-none"
                       >
-                        Close
+                        &times;
                       </button>
                     </div>
 
                     <div className="flex flex-col items-center">
-                      <img
-                        src="/qr.png"
-                        alt="payment qr"
-                        onError={(e) => {
-                          e.currentTarget.style.display = "none";
-                          setShowGeneratedQR(true);
-                        }}
-                        onLoad={() => setShowGeneratedQR(false)}
-                        className="w-56 h-56 object-contain mb-3 bg-gray-100 p-2"
-                      />
-
-                      <div className="text-sm text-gray-600 mb-3">
-                        Upload a screenshot of the payment below
+                       <div className="p-2 bg-white rounded-md border">
+                        <QRCode value={`upi://pay?pa=technozion@nitw&pn=Technozion NITW&am=${computeAmount()}`} size={200} />
                       </div>
-
+                      <div className="text-sm text-gray-400 my-4">
+                        Upload a screenshot of the payment below.
+                      </div>
                       <input
                         id="paymentScreenshot"
                         type="file"
@@ -435,11 +395,11 @@ const Register = () => {
                             setPaymentError("");
                           }
                         }}
-                        className="m-2 bg-gray text-center rounded-md"
+                        className="text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-purple-100 file:text-purple-700 hover:file:bg-purple-200"
                       />
-
+                      {paymentError && <p className="text-red-400 text-sm mt-2">{paymentError}</p>}
                       {paymentScreenshot && (
-                        <div className="text-sm text-gray-700 mt-2">
+                        <div className="text-sm mt-2 text-center">
                           <div className="font-medium">
                             {paymentScreenshot.name}
                           </div>
@@ -448,11 +408,10 @@ const Register = () => {
                           </div>
                         </div>
                       )}
-
-                      <div className="flex justify-end w-full mt-4">
+                      <div className="flex justify-end w-full mt-6">
                         <button
                           onClick={() => setPayModalOpen(false)}
-                          className="px-3 py-1 bg-gray-200 rounded-md mr-2"
+                          className="px-5 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-500 transition"
                         >
                           Done
                         </button>
@@ -465,12 +424,12 @@ const Register = () => {
           )}
 
           {paymentError && (
-            <div className="text-red-500 text-sm mt-2">{paymentError}</div>
+            <div className="text-red-400 text-sm mt-2">{paymentError}</div>
           )}
 
           <button
             type="submit"
-            className="w-full py-3 bg-gray text-white rounded-lg hover:bg-slate-800 transition font-semibold shadow-md"
+            className="w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-semibold shadow-md"
           >
             Register
           </button>
@@ -481,3 +440,4 @@ const Register = () => {
 };
 
 export default Register;
+
