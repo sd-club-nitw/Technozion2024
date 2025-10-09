@@ -75,12 +75,10 @@ function Index() {
         } else if (selectedTab === 'clubevents') {
           response = await fetch('/dataJSON/club.json');
           setHeadingImage(club);
-        }
-         else if (selectedTab === 'workshops') {
+        } else if (selectedTab === 'workshops') {
           response = await fetch('/dataJSON/workshop.json');
           setHeadingImage(club);
-         }
-         else {
+        } else {
           // fallback
           response = await fetch('/dataJSON/spotlight.json');
           setHeadingImage(spotlight);
@@ -112,7 +110,9 @@ function Index() {
 
   // click to card page
   const handlePosterClick = (item) => {
-    navigate('/card', { state: { ...item, imgsrc: item.imgsrc || imgsrc, glink: item.glink } });
+    navigate('/card', {
+      state: { ...item, imgsrc: item.imgsrc || imgsrc, glink: item.glink },
+    });
   };
 
   const renderSocieties = () => {
@@ -138,7 +138,8 @@ function Index() {
   // UI states
   if (isLoading) return <Loader />;
   if (error) return <div className="fetch-error">Error: {error}</div>;
-  if (!data || (Array.isArray(data) && data.length === 0)) return <div className="fetch-error">No data available</div>;
+  if (!data || (Array.isArray(data) && data.length === 0))
+    return <div className="fetch-error">No data available</div>;
 
   return (
     <div className="outer-container">
@@ -153,7 +154,9 @@ function Index() {
             <button
               key={tab.key}
               type="button"
-              className={`tab-button ${selectedTab === tab.key ? 'active' : ''}`}
+              className={`tab-button ${
+                selectedTab === tab.key ? 'active' : ''
+              }`}
               onClick={() => setSelectedTab(tab.key)}
               aria-pressed={selectedTab === tab.key}
             >
@@ -164,7 +167,9 @@ function Index() {
       </div>
 
       <div className="inner-container">
-        {selectedTab === 'societies' ? renderSocieties() : (
+        {selectedTab === 'societies' ? (
+          renderSocieties()
+        ) : (
           <div className="poster-container">
             {data.map((item, index) => (
               <Poster
