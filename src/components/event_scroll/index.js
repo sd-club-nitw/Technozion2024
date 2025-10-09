@@ -119,17 +119,23 @@ function Index() {
     return data.map((society) => (
       <div key={society.societyName}>
         <h2 className="society-heading">{society.societyName}</h2>
-        <div className="poster-container">
-          {society.events?.map((event, index) => (
-            <Poster
-              key={index}
-              imageSrc={event.imgsrc}
-              fallbackSrc={imgsrc}
-              title={event.title}
-              content={event.name}
-              onClick={() => handlePosterClick(event)}
-            />
-          ))}
+        <div className="flex justify-center items-center">
+          <div
+            className={
+              "grid grid-cols-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2  gap-4 m-10 place-content-center justify-items-center"
+            }
+          >
+            {society.events?.map((event, index) => (
+              <Poster
+                key={index}
+                imageSrc={event.imgsrc}
+                fallbackSrc={imgsrc}
+                title={event.title}
+                content={event.name}
+                onClick={() => handlePosterClick(event)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     ));
@@ -170,7 +176,11 @@ function Index() {
         {selectedTab === "societies" ? (
           renderSocieties()
         ) : (
-          <div className="poster-container">
+          <div
+            className=" grid lg:grid-cols-5 md:grid-cols-3 
+          sm:grid-cols-2 grid-cols-2 gap-4 m-10 place-content-center 
+          justify-items-center"
+          >
             {data.map((item, index) => (
               <Poster
                 key={index}

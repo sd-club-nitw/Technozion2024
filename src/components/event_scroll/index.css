@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 /* Global reset */
 * {
@@ -53,7 +53,6 @@
   z-index: 12;
   position: relative;
   margin-top: 5rem; /* pushes tabs below top area */
-  
 }
 
 /* -------------------------
@@ -64,7 +63,7 @@
   gap: 2rem;
   align-items: center;
   justify-content: center;
-  padding: 0 1rem;
+  padding: 0.5rem;
   flex-wrap: wrap;
 }
 
@@ -86,7 +85,8 @@
 /* Active / selected state */
 .tab-button.active {
   background: rgba(29, 193, 174, 0.441);
-  box-shadow: 0 6px 18px rgba(0, 255, 230, 0.06), inset 0 0 12px rgba(0, 255, 230, 0.05);
+  box-shadow: 0 6px 18px rgba(0, 255, 230, 0.06),
+    inset 0 0 12px rgba(0, 255, 230, 0.05);
   transform: translateY(-2px);
 }
 
@@ -121,9 +121,9 @@
   padding-bottom: 8rem;
   z-index: 1;
   width: 100%;
-  height: calc(100% - 14rem); /* leave room for heading and tabs */
+  height: 100%; /* leave room for heading and tabs */
   overflow-y: scroll;
-  padding-right: 15px;
+  padding-bottom: 10rem;
   box-sizing: border-box;
   scrollbar-width: none; /* For Firefox */
   -ms-overflow-style: none; /* For IE and Edge */
@@ -134,18 +134,8 @@
 }
 
 /* -------------------------
-   Posters grid
-   ------------------------- */
-.poster-container {
-  display: grid;
-  gap: 20px;
-  padding: 3rem 7rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  z-index: 10;
-  width: 100%;
-  overflow-x: hidden;
-  box-sizing: border-box;
-}
+Posters grid
+------------------------- */
 
 .society-heading {
   text-align: center;
