@@ -101,29 +101,108 @@ const Register = () => {
     return undefined;
   };
 
-  const onSubmit = (data) => {
-    const eventsVal = data.events || [];
-    if (!eventsVal.length) {
-      setError("events", { type: "required", message: "Select at least one event." });
-      return;
-    } else clearErrors("events");
+  // Cloudinary helper (fill YOUR_CLOUD_NAME and ensure preset exists)
+  const uploadToCloudinary = async (file) => {
+    const cloudName = "dpjrslhwg"; // your Cloudinary cloud name
+    const uploadPreset = "technozian_upload"; // the preset you just created
 
-    const idFile = normalizeFirstFile(idDocument);
-    if (watchedEmail && !watchedEmail.includes("@nitw.ac.in")) {
-      if (!paymentScreenshot) {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", uploadPreset);
+
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/upload`, {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await res.json();
+    return data.secure_url; // this is the uploaded file URL
+  }; // Uses unsigned client-side upload with upload_preset as required by Cloudinary docs [web:4][web:2][web:3]
+
+  const onSubmit = async (formData) => {
+    try {
+      // Validate events selection
+      const eventsVal = Array.isArray(formData.events) ? formData.events : (formData.events ? [formData.events] : []);
+      if (!eventsVal.length) {
+        setError("events", { type: "required", message: "Select at least one event." });
+        return;
+      } else {
+        clearErrors("events");
+      }
+
+      // College ID must be present
+      const idFile = normalizeFirstFile(idDocument);
+      if (!idFile) {
+        setPaymentError("");
+        setPayModalOpen(false);
+        alert("Please upload a valid College ID document before registering.");
+        return;
+      }
+
+      // Payment screenshot required if accommodation OR email not nitw.ac.in
+      const needsPayment = Boolean(watchedAccommodation) || (isValidEmail(watchedEmail) && !watchedEmail.includes("@nitw.ac.in"));
+      const payFile = normalizeFirstFile(paymentScreenshot);
+      if (needsPayment && !payFile) {
         setPaymentError("Upload payment screenshot before registering.");
         setPayModalOpen(true);
         return;
-      } else setPaymentError("");
+      } else {
+        setPaymentError("");
+      }
+
+      // Generate password
+      const rand8 = Math.floor(10000000 + Math.random() * 90000000);
+      const password = String(rand8);
+
+      // Upload files to Cloudinary
+      const idDocumentUrl = await uploadToCloudinary(idFile); // Returns secure_url which should be sent to backend [web:4]
+      let paymentScreenshotUrl = null;
+      if (needsPayment && payFile) {
+        paymentScreenshotUrl = await uploadToCloudinary(payFile); // Same unsigned upload flow [web:4]
+      }
+
+      // Build backend payload
+      const payload = {
+        name: formData.name || "",
+        email: (formData.email || "").trim(),
+        password,
+        collegeName: formData.collegeName || "",
+        accommodation: !!formData.accommodation,
+        events: eventsVal,
+        idDocumentUrl: idDocumentUrl || null,
+        paymentScreenshotUrl: paymentScreenshotUrl || null,
+      };
+
+      // Send to backend route (adjust URL if different)
+      const res = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const errJson = await res.json().catch(() => ({}));
+        throw new Error(errJson.message || `Registration failed with status ${res.status}`);
+      }
+
+      const result = await res.json();
+
+      // Preserve original behavior: call authRegister with original data shape
+      const authData = {
+        ...formData,
+        password,
+        idDocument: idFile,
+        paymentScreenshot: payFile || undefined,
+      };
+
+      console.log("Registering with data", authData);
+      authRegister(authData);
+
+      setPayModalOpen(false);
+    } catch (err) {
+      console.error("Register submit error:", err);
+      alert(err.message || "Something went wrong during registration.");
     }
-
-    const rand8 = Math.floor(10000000 + Math.random() * 90000000);
-    data.password = String(rand8);
-    if (idFile) data.idDocument = idFile;
-    if (paymentScreenshot) data.paymentScreenshot = paymentScreenshot;
-
-    console.log("Registering with data", data);
-    authRegister(data);
   };
 
   return (
@@ -191,7 +270,6 @@ const Register = () => {
                     type="checkbox"
                     {...reactRegister("accommodation")}
                     className="h-5 w-5 accent-cyan"
-                    onChange={() => setPayModalOpen(true)}
                   />
                   <label htmlFor="accommodation" className="text-sm font-medium">
                     Need accommodation
@@ -208,7 +286,7 @@ const Register = () => {
                   />
                 </div>
 
-                {isValidEmail(watchedEmail) && !watchedEmail.includes("@nitw.ac.in") && (
+                {((isValidEmail(watchedEmail) && !watchedEmail.includes("@nitw.ac.in")) || watchedAccommodation ) && (
                   <div className="pt-6">
                     <div className="bg-gray rounded-lg p-4 mb-4">
                       <div className="flex justify-between items-center mb-3">
@@ -218,7 +296,7 @@ const Register = () => {
                       <button
                         type="button"
                         onClick={() => setPayModalOpen(true)}
-                        className="w-full px-4 py-3 bg-cyan text-black rounded-lg hover:bg-cyanLight hover:text-black transition font-medium"
+                        className="w-full px-4 py-3 bg-black/65 text-black rounded-lg hover:bg-black/30 hover:text-black transition font-medium"
                       >
                         Pay & Upload Screenshot
                       </button>
@@ -312,6 +390,7 @@ const Register = () => {
             <button
               type="submit"
               className="px-8 py-4 bg-gray/10 rounded-xl hover:bg-gray transition font-semibold text-lg shadow-lg hover:shadow-cyan/30 transform hover:-translate-y-0.5"
+              onClick={handleSubmit(onSubmit)}
             >
               Complete Registration
             </button>
