@@ -3,6 +3,8 @@ import './index.css';
 import { WebCanvas } from "../bg_animation/bg_animate";
 import tzlogo_with_date from "./tzlogo_with_date.png";
 import TypingWords from "./TypingWords";
+import NumCount from "../utils/NumCount";
+import { Link } from "react-router-dom";
 
 // Countdown Component
 const CountdownTimer = ({ targetDate }) => {
@@ -38,19 +40,19 @@ const CountdownTimer = ({ targetDate }) => {
         <div className="countdown-container">
             <div className="countdown-clock">
                 <div className="time-box">
-                    <span>{timeLeft.days}</span>
+                    <span className="time-numeric">{timeLeft.days}</span>
                     <span className="time-label">Days</span>
                 </div>
                 <div className="time-box">
-                    <span>{timeLeft.hours}</span>
+                    <span className="time-numeric">{timeLeft.hours}</span>
                     <span className="time-label">Hours</span>
                 </div>
                 <div className="time-box">
-                    <span>{timeLeft.minutes}</span>
+                    <span className="time-numeric">{timeLeft.minutes}</span>
                     <span className="time-label">Minutes</span>
                 </div>
                 <div className="time-box">
-                    <span>{timeLeft.seconds}</span>
+                    <span className="time-numeric">{timeLeft.seconds}</span>
                     <span className="time-label">Seconds</span>
                 </div>
             </div>
@@ -77,6 +79,11 @@ const Hero = () => {
                     </div>
                     {/* Countdown Clock */}
                     <CountdownTimer targetDate={targetDate} />
+                    <section className="text-center uppercase mt-4 lg:text-3xl text-xl font-bold">
+                         Prize pool worth ₹ <Link to='/events'><NumCount num={243000} className='hover:opacity-70 duration-100 cursor-pointer' /> /-</Link>
+                    </section>
+                    <section className="text-center mt-4 text-xl font-bold">
+                    </section>
                 </div>
             </div>
         </div>

@@ -215,6 +215,7 @@ button.float:hover>img {
 
 .time-box {
 	display: flex;
+	border-radius: .7rem;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -239,15 +240,19 @@ button.float:hover>img {
   .time-box{
 	height: 9rem;
   }
-  
+  .time-numeric{
+	font-size: 1.7em;
+  }
 
 .time-box span {
 	display: block;
-	font-size: 1.4em;
+
 }
 
 .time-label {
-	font-size: 1em; /* Increased label size for visibility */
+	font-size: 1.2em;
+	opacity: 60%;
+
 }
 
 /* Responsive Design */
