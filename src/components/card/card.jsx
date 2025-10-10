@@ -5,14 +5,17 @@ import ResizeObserver from "resize-observer-polyfill";
 import { WebCanvas } from "../bg_animation/bg_animate";
 import fallbackImg from "./tzcomingsoon.png"; // Fallback image
 import PosterSkeleton from "../Skeleton/PosterSkeleton";
-import { IoMdArrowRoundBack } from "react-icons/io";
+import { IoMdArrowRoundBack, IoMdPerson } from "react-icons/io";
 import { a, span } from "framer-motion/client";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaPhoneFlip } from "react-icons/fa6";
+import { MdContentCopy, MdEmail } from "react-icons/md";
+import CopyWrapper from "../utils/CopyWrapper";
 
 const Card = () => {
   const location = useLocation(); // Extract data from navigation
   const navigate = useNavigate(); // For navigating back
-  const { title, overview, rules, judging_criteria, imgsrc, glink } =
+  const { title, overview, rules, judging_criteria, imgsrc, glink, total_cost } =
     location.state || {}; // Extract state data
 
   const [activeTab, setActiveTab] = useState("overview"); // Track the active tab
@@ -145,18 +148,30 @@ const Card = () => {
                         Description
                       </span>
 
-                      <div>{overview?.description}</div>
+                      <div className="text-[1.1rem]">{overview?.description}</div>
                     </section>
+                    {total_cost ? (
+                       <section className="flex flex-col gap-y-1 items-start justify-start">
+                        <span className="opacity-70 text-[1rem]">
+                          Prizes worth
+                        </span>
+                        <span className="text-[1.2rem]">₹ <strong>{total_cost}</strong></span>
+                        <small className="opacity-60">
+                          prizes will be given based on judging criteria
+                        </small>
+                        
+                      </section>
+                    ) : null}
                     {overview?.cash_prize && (
                       <section className="flex flex-col gap-y-1 items-start justify-start">
                         <span className="opacity-70 text-[1rem]">
                           Cash Prize
                         </span>
-                        <small>
-                          * cash prize will be given based on performance
-                        </small>
+                        <span className="text-[1.2rem]">₹ <strong>{overview.cash_prize}</strong></span>
 
-                        <div>{overview?.cash_prize}</div>
+                       <small className="opacity-60">
+                          cash prize will be given based on performance
+                        </small>
                       </section>
                     )}
                     <section className="flex flex-col gap-y-1 items-start justify-start">
@@ -169,23 +184,33 @@ const Card = () => {
                           : overview.team_size}
                       </div>
                     </section>
-                    <section className="flex flex-col gap-y-1 items-start justify-start">
-                      <span className="opacity-70 text-[1rem]">Cash Prize</span>
-                      <div className="font-bold">{overview?.cash_prize}</div>
-                    </section>
+                    
                     <section className="flex flex-col gap-y-1 items-start justify-start">
                       <span className="opacity-70 text-[1rem]">Contact</span>
-                      <div className="flex flex-col gap-y-1">
+                      <div className="flex lg:flex-row flex-col gap-x-5 text-[1rem] gap-y-1">
                         {overview?.contact?.map((contact, index) => (
-                          <div key={index} className="flex flex-col mb-5">
-                            <span> {contact.name}</span>
-                            <span>
-                              Phone - <strong>{contact.phone}</strong>
+                          <div key={index} className="flex flex-col mb-5 bg-gray p-3 rounded-md lg:min-w-[15em]">
+                            <span className="flex gap-x-3 opacity-50 text-[.9rem] items-center"><IoMdPerson /> {contact.name}</span>
+
+                            <span className="flex justify-between gap-x-3 items-center cursor-pointer">
+                              <span  className="flex gap-x-3 items-center">
+
+                             <FaPhoneFlip /> {contact.phone}
+                              </span>
+                            <CopyWrapper text={contact.phone}>
+                              <MdContentCopy />
+                            </CopyWrapper>
                             </span>
                             {contact?.email && (
-                              <span>
-                                Email - <strong>{contact.email}</strong>
+                            <span className="flex justify-between gap-x-3 items-center cursor-pointer">
+                              <span  className="flex gap-x-3 items-center">
+
+                             <MdEmail /> {contact.email}
                               </span>
+                              <CopyWrapper text={contact.email}>
+                              <MdContentCopy />
+                                </CopyWrapper>
+                            </span>
                             )}
                           </div>
                         ))}
