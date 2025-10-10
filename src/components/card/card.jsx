@@ -190,22 +190,28 @@ const Card = () => {
                       <div className="flex lg:flex-row flex-col gap-x-5 text-[1rem] gap-y-1">
                         {overview?.contact?.map((contact, index) => (
                           <div key={index} className="flex flex-col mb-5 bg-gray p-3 rounded-md lg:min-w-[15em]">
-                            <span className="flex gap-x-3 opacity-50 text-[.9rem] items-center"><IoMdPerson /> {contact.name}</span>
+                            {contact?.name && (
 
-                            <span className="flex justify-between gap-x-3 items-center cursor-pointer">
+                              <span className="flex gap-x-3 opacity-50 text-[.9rem] items-center">{contact.name}</span>
+                            )}
+{contact?.phone && (
+
+  <span className="flex justify-between gap-x-3 items-center cursor-pointer">
                               <span  className="flex gap-x-3 items-center">
 
-                             <FaPhoneFlip /> {contact.phone}
+                             +91 {contact.phone}
                               </span>
                             <CopyWrapper text={contact.phone}>
                               <MdContentCopy />
                             </CopyWrapper>
                             </span>
+                            )}
                             {contact?.email && (
                             <span className="flex justify-between gap-x-3 items-center cursor-pointer">
-                              <span  className="flex gap-x-3 items-center">
+                              <span  className="">
 
-                             <MdEmail /> {contact.email}
+                              {contact.email}
+                              
                               </span>
                               <CopyWrapper text={contact.email}>
                               <MdContentCopy />
