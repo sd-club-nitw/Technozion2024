@@ -5,6 +5,7 @@
       {
         "title": "#1 No Bugs Given",
         "name": "Computer Science and Engineering Society",
+        "total_cost": 7000,
         "overview": {
           "main_title": "#1 No Bugs Given",
           "description": "No Bugs Given is a competitive 1v1 debugging tournament where players race to identify and fix flaws in programs faster than their opponent.",
@@ -28,6 +29,7 @@
       {
         "title": "CSES Arcade",
         "name": "Computer Science and Engineering Society",
+        "total_cost": 0,
         "overview": {
           "main_title": "CSES Arcade",
           "description": "An intense 3D, two-player duel built on suspense, strategy, and quick thinking, enhanced by immersive visuals and sound design.",
@@ -56,6 +58,7 @@
       {
         "title": "Mind Domino",
         "name": "Mathematical Society",
+        "total_cost": 0,
         "overview": {
           "main_title": "Mind Domino",
           "description": "A multi-round contest of logic, speed, and strategy. From spotting errors to solving chained puzzles and a rapidfire finale, the sharpest minds rise to the top.",
@@ -84,6 +87,7 @@
       {
         "title": "Math Relay Race",
         "name": "Mathematical Society",
+        "total_cost": 4000,
         "overview": {
           "main_title": "Math Relay Race",
           "description": "The Math Relay Race is a three round challenge that blends speed, logic, and problem-solving. Presents deeper, conceptual math problems that demand clarity and reasoning.",
@@ -107,6 +111,7 @@
       {
         "title": "TRECO HUNT : Time travel through mathematics",
         "name": "Mathematical Society",
+        "total_cost": 4000,
         "overview": {
           "main_title": "TRECO HUNT : Time travel through mathematics",
           "description": "Gear up for Treco Hunt – a thrilling race of riddles, quizzes, and hidden clues across 5 exciting rounds! Solve, unlock, and decode your way to the final treasure before anyone else!",
@@ -135,6 +140,7 @@
       {
         "title": "AI Murder Mystery",
         "name": "ECE Society",
+        "total_cost": 0,
         "overview": {
           "main_title": "AI Murder Mystery",
           "description": "Solve a thrilling mystery using AI-bot interrogations and digital clues, connecting evidence logically to uncover the hidden storyline.",
@@ -158,6 +164,7 @@
       {
         "title": "Lie Detector",
         "name": "ECE Society",
+        "total_cost": 0,
         "overview": {
           "main_title": "Lie Detector",
           "description": "Answer thought-provoking questions while connected to a lie detector, revealing surprising truths and playful lies in a safe environment.",
@@ -186,6 +193,7 @@
       {
         "title": "ChipCraft",
         "name": "ECE Society",
+        "total_cost": 0,
         "overview": {
           "main_title": "ChipCraft",
           "description": "Build creative structures, automated systems, and logical circuits in Minecraft, showcasing problem-solving and technical imagination within the time limit.",
@@ -208,13 +216,13 @@
       }
     ]
   },
-
   {
     "societyName": "MMES & IIMSC",
     "events": [
       {
         "title": "MetaRush",
         "name": "MMES & IIMSC",
+        "total_cost": 1500,
         "overview": {
           "main_title": "MetaRush",
           "description": "“Meta-Rush” is an adventurous race across multiple routes with exciting checkpoints, where teams unlock clues via QR codes, complete challenges, and compete to finish first with the highest score. It’s a perfect mix of strategy, speed, and fun!",
@@ -243,6 +251,7 @@
       {
         "title": "MetaDart",
         "name": "MMES & IIMSC",
+        "total_cost": 1000,
         "overview": {
           "main_title": "MetaDart",
           "description": "“Meta-Dart” is a fun blend of skill and knowledge where each dart throw decides your challenge. The closer you land to the center, the easier the question; miss wide, and tougher material-based questions await!",
@@ -266,6 +275,7 @@
       {
         "title": "MetaLusion",
         "name": "MMES & IIMSC",
+        "total_cost": 0,
         "overview": {
           "main_title": "MetaLusion",
           "description": "“Metalusion” brings futuristic materials like self-healing compounds and smart alloys to life, showcasing their fascinating real-world applications. Visitors can explore how these innovations reshape technology.",
@@ -289,6 +299,7 @@
       {
         "title": "AI/ML",
         "name": "MMES & IIMSC",
+        "total_cost": 0,
         "overview": {
           "main_title": "AI/ML",
           "description": "“Metalusion” brings futuristic materials like self-healing compounds and smart alloys to life, showcasing their fascinating real-world applications. Visitors can explore how these innovations reshape technology.",
@@ -317,6 +328,7 @@
       {
         "title": "Gesture Drift",
         "name": "Electrical Engineering Society",
+        "total_cost": 0,
         "overview": {
           "main_title": "Gesture Drift",
           "description": "The Event is a thrilling two-player competitive race where participants control their cars exclusively through hand gestures.",
@@ -340,6 +352,7 @@
       {
         "title": "Dance O'Watt",
         "name": "Electrical Engineering Society",
+        "total_cost": 0,
         "overview": {
           "main_title": "Dance O'Watt",
           "description": "This event is a team-based interactive dance experience.",
@@ -363,6 +376,7 @@
       {
         "title": "OptiMystery",
         "name": "Electrical Engineering Society",
+        "total_cost": 0,
         "overview": {
           "main_title": "OptiMystery",
           "description": "In this event, one must synchronize strobe lights with rotating objects to reveal and decode hidden patterns for points.",
@@ -391,6 +405,7 @@
       {
         "title": "Track To Trivia",
         "name": "Mechanical Engineering Society",
+        "total_cost": 2000,
         "overview": {
           "main_title": "Track to Trivia: F1 Quiz",
           "description": "The F1 Quiz includes online qualifiers, a Grand Prix round (riddles, rapid-fire, strategy, buzzer), and a Final Lap (individual round). Buzzer rules apply in some rounds.",
@@ -414,6 +429,7 @@
       {
         "title": "Mechanical Kit Assembly",
         "name": "Mechanical Engineering Society",
+        "total_cost": 2000,
         "overview": {
           "main_title": "Mechanical Kit Assembly",
           "description": "Teams are given a dismantled kit and have 45 minutes to assemble it. Points awarded by time and percentage accuracy of assembly.",
@@ -437,6 +453,7 @@
       {
         "title": "OFF Track: RC Car Showdown",
         "name": "Mechanical Engineering Society",
+        "total_cost": 0,
         "overview": {
           "main_title": "RC Car Showdown",
           "description": "Fun races (3 laps each) at B-312, Mechanical Department; 10:00 AM–12:00 PM & 2:00 PM–5:00 PM. Overtaking and pushing are allowed; first to finish wins. No prizes.",
@@ -460,6 +477,7 @@
       {
         "title": "NEON Cricket",
         "name": "Mechanical Engineering Society",
+        "total_cost": 500,
         "overview": {
           "main_title": "Neon Cricket",
           "description": "Each team has 6 players; matches are 6 overs per innings with 1 over per bowler. Runs are awarded by walls hit and bounces. Fun competitive format with specific dismissal rules.",
@@ -482,13 +500,13 @@
       }
     ]
   },
-
   {
     "societyName": "Civil Engineering Association",
     "events": [
       {
         "title": "KBCE",
         "name": "Civil Society",
+        "total_cost": 3000,
         "overview": {
           "main_title": "KBCE",
           "description": "KBC – Kon Banega Civil Engineer is a fast-paced quiz competition testing participants’ knowledge in civil engineering. Teams compete through multiple rounds, leading to an exciting “Hot Seat” finale where the top scorers battle for victory.",
@@ -512,6 +530,7 @@
       {
         "title": "Earthquake Resistant Building",
         "name": "Civil Society",
+        "total_cost": 5000,
         "overview": {
           "main_title": "ERBMDC",
           "description": "Earthquake Resistant Building Model challenges teams to design and construct a 4-storey structure using limited materials that can withstand rigorous load and shake tests. It’s a test of creativity, engineering skill, and structural strength!",

@@ -1,34 +1,30 @@
 [
-  {
-    "title": "Submit Your Project",
-    "name": "Project Expo",
+  
+   {
+    "title": "Project Expo",
+    "name": "modelling and Prototype",
+    "total_cost": 6000,
     "overview": {
       "main_title": "Project Expo",
-
-      "description": "We are delighted to invite your students to participate in the Inter-NIT Project Expo 2025, proudly hosted by NIT Warangal. This prestigious event aims to bring together bright innovators from IITs, NITs, IIITs, and other leading institutes to showcase impactful projects, exchange ideas, and foster meaningful collaborations",
-      "team_size": "Multiple Allowed",
-      "contact": [],
-      "cash_prize": "60000 INR"
-    },
-    "rules": ["Coming Soon..."],
-    "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/project-expo.png",
-    "index": 31,
-    "glink": "https://forms.gle/uRD9cFzTs34XE2js5"
-  },
-  {
-    "title": "Devops Workshop",
-    "name": "HAM ARC Club",
-    "overview": {
-      "main_title": "Devops Workshop",
-      "description": "Coming Soon...",
+      "description": "Project Expo is a platform for participants to showcase their innovative models and projects to an expert jury, gaining evaluation, recognition, and the visibility their work deserves",
       "team_size": "Coming Soon...",
-      "contact": []
+      "contact": [
+        {
+          "name": "Akhil",
+          "email": null,
+          "phone": "90594 22616"
+        }
+      ]
     },
-    "rules": ["Coming Soon..."],
+    "rules": [
+      "Only original, participant-created projects are allowed; plagiarism will lead to disqualification.",
+      "Each team must present their project within the allotted time and answer the jury’s questions clearly."
+    ],
     "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/club_12_imgsrc.png",
-    "index": 31,
-    "glink": null
+    "imgsrc": "/posters25/club_13_imgsrc.jpg",
+    "index": 7,
+    "glink": "https://forms.gle/uRD9cFzTs34XE2js5"
+
   }
+  
 ]

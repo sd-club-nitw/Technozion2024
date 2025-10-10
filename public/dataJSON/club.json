@@ -2,6 +2,7 @@
   {
     "title": "SharkTank 2.0",
     "name": "Research and Development Club",
+    "total_cost": 10000,
     "overview": {
       "main_title": "SharkTank 2.0",
       "description": "A premier pitching competition where participants present innovative ideas, projects, or prototypes to “Sharks,” fostering entrepreneurship by linking academic research with real world commercialization.",
@@ -30,6 +31,7 @@
   {
     "title": "Bomb's Away!",
     "name": "Robotics Club",
+    "total_cost": 15000,
     "overview": {
       "main_title": "Bomb's Away!",
       "description": "Bomb’s Away challenges participants to time the release of a payload from a remotely piloted aircraft onto a ground target. Success depends on judging speed, altitude, and wind for maximum accuracy.",
@@ -53,6 +55,7 @@
   {
     "title": "Blaze",
     "name": "Robotics Club",
+    "total_cost": 15000,
     "overview": {
       "main_title": "Blaze",
       "description": "BLAZE is a laser Tag experience featuring a custom-built arena and DIY technology, challenging two teams to a 15-minute survivor match.",
@@ -76,6 +79,7 @@
   {
     "title": "Sumowar",
     "name": "Robotics Club",
+    "total_cost": 0,
     "overview": {
       "main_title": "Sumowar",
       "description": "Enter the arena for an electrifying Sumo bot battle where teams fight to dominate the warzone. Push, punch, and strategize to outsmart opponents and claim victory!",
@@ -99,6 +103,7 @@
   {
     "title": "Rocket Building Hackathon",
     "name": "SEA Club",
+    "total_cost": 5000,
     "overview": {
       "main_title": "The LaunchPad",
       "description": "In the 3D rocket building hackathon, we will be building the teams all around the campus to make a prototype and launch it to win the competition",
@@ -121,6 +126,7 @@
   {
     "title": "Cross",
     "name": "SEA Club",
+    "total_cost": 8000,
     "overview": {
       "main_title": "The LaunchPad",
       "description": "Coming Soon...",
@@ -133,7 +139,9 @@
         }
       ]
     },
-    "rules": ["Coming Soon..."],
+    "rules": [
+      "Coming Soon..."
+    ],
     "judging_criteria": "Coming Soon...",
     "imgsrc": "/posters25/club_6_imgsrc.jpg",
     "index": 4
@@ -141,6 +149,7 @@
   {
     "title": "Project Showcase",
     "name": "SEA Club",
+    "total_cost": 0,
     "overview": {
       "main_title": "Project Showcase",
       "description": "Project Showcase invites teams to present an AI-driven smart car prototype featuring road detection, traffic light recognition, and obstacle avoidance. The event highlights innovation in real-time intelligent systems, sensor integration.",
@@ -164,6 +173,7 @@
   {
     "title": "Trading Ring",
     "name": "FinWiz Club",
+    "total_cost": 5000,
     "overview": {
       "main_title": "Trading Ring",
       "description": "Step into the world of high-stakes trading and test your financial instincts. Compete in a simulated stock market environment and prove your strategy under pressure.",
@@ -187,6 +197,7 @@
   {
     "title": "StartUp Simulation",
     "name": "Innovation Garage",
+    "total_cost": 6000,
     "overview": {
       "main_title": "StartUp Simulation",
       "description": "Teams of startup founders begin with a random idea and compete by adapting to challenges across four 10 minutes rounds. They conclude the simulation by delivering a 3-minute pitch on their evolved business concept.",
@@ -199,37 +210,34 @@
         }
       ]
     },
-    "rules": ["Teams must adapt their product idea within 10 mins per round."],
+    "rules": [
+      "Teams must adapt their product idea within 10 mins per round."
+    ],
     "judging_criteria": "Coming Soon...",
     "imgsrc": "/posters25/club_9_imgsrc.jpg",
     "index": 7
   },
-  {
-    "title": "Project Expo",
-    "name": "modelling and Prototype",
+ {
+    "title": "Devops Workshop",
+    "name": "HAM ARC Club",
     "overview": {
-      "main_title": "Project Expo",
-      "description": "Project Expo is a platform for participants to showcase their innovative models and projects to an expert jury, gaining evaluation, recognition, and the visibility their work deserves",
+      "main_title": "Devops Workshop",
+      "description": "Coming Soon...",
       "team_size": "Coming Soon...",
-      "contact": [
-        {
-          "name": "Akhil",
-          "email": null,
-          "phone": "90594 22616"
-        }
-      ]
+      "contact": []
     },
     "rules": [
-      "Only original, participant-created projects are allowed; plagiarism will lead to disqualification.",
-      "Each team must present their project within the allotted time and answer the jury’s questions clearly."
+      "Coming Soon..."
     ],
     "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/club_13_imgsrc.jpg",
-    "index": 7
+    "imgsrc": "/posters25/club_12_imgsrc.png",
+    "index": 31,
+    "glink": null
   },
   {
     "title": "StockFischer",
     "name": "Chess Committee",
+    "total_cost": 0,
     "overview": {
       "main_title": "StockFischer",
       "description": "The StockFischer AI Chess Engine event is a chess competition where participants challenge an AI chess engine. The event is expected to attract around 100 participants and will last approximately 2-3 hours, including an introduction and technical overview of the AI",
@@ -253,6 +261,7 @@
   {
     "title": "Code Red",
     "name": "HAM ARC Club",
+    "total_cost": 3000,
     "overview": {
       "main_title": "Code Red",
       "description": "Bomb Defusal Challenge, teams collaborate to solve riddles, decode messages, and defuse a bomb within a time limit. It tests problem solving, communication, and strategy skills.",
@@ -276,6 +285,7 @@
   {
     "title": "The Quick-Think Challenge",
     "name": "Modelling and prototype",
+    "total_cost": 8000,
     "overview": {
       "main_title": "The Quick-Think Challenge",
       "description": "Rules &regulations: Here we prepare real world problem statements and students come and take a problem statement randomly according to their respective branch and they will be given a time of 30 to 45 minutes and they will have all resources to give their best pitch or detailed document for the given problem statement..",
