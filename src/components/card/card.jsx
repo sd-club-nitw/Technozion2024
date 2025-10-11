@@ -155,10 +155,8 @@ const Card = () => {
                         <span className="opacity-70 text-[1rem]">
                           Prizes worth
                         </span>
-                        <span className="text-[1.2rem]">₹ <strong>{total_cost}</strong></span>
-                        <small className="opacity-60">
-                          prizes will be given based on judging criteria
-                        </small>
+                        <span className="text-[1.2rem]">₹ <strong>{total_cost}<sup>*</sup></strong></span>
+                    
                         
                       </section>
                     ) : null}
@@ -169,9 +167,7 @@ const Card = () => {
                         </span>
                         <span className="text-[1.2rem]">₹ <strong>{overview.cash_prize}</strong></span>
 
-                       <small className="opacity-60">
-                          cash prize will be given based on performance
-                        </small>
+                       
                       </section>
                     )}
                     <section className="flex flex-col gap-y-1 items-start justify-start">
@@ -221,6 +217,9 @@ const Card = () => {
                           </div>
                         ))}
                       </div>
+                      <small className="opacity-60">
+                          *cash prize will be given based on judging criteria
+                        </small>
                     </section>
                   </>
                 ) : (

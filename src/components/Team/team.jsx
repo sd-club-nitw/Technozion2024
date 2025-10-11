@@ -42,41 +42,24 @@ export const Team = () => {
     return rows; 
   }; 
 
-  const gridTemplate = getGridTemplate(data);
-
-  const handleMouseEnter = (index) => {
-    // setHoverStates((prev) => {
-    //   const newHoverStates = [...prev];
-    //   newHoverStates[index] = true;
-    //   return newHoverStates;
-    // });
-  };
-  
-  const handleMouseLeave = (index) => {
-    // setHoverStates((prev) => {
-    //   const newHoverStates = [...prev];
-    //   newHoverStates[index] = false;
-    //   return newHoverStates;
-    // });
-  };
 
   return (
     <div className="Teams">
       <div className="web-canvas">
         <WebCanvas />
       </div>
-      <img src={Teams} alt="teams" className='mainteams lg:mt-36 mt-44'/>
+      <img src={Teams} alt="teams" className='mainteams lg:mt-36 mt-24 lg:scale-100 scale-90 sm:mt-28'/>
        
       <div className="list">
      <section className="flex flex-col items-center justify-center mb-10">
-      <h1 className="lg:text-5xl text-4xl uppercase font-bold">Chief Patron</h1>
+      <h1 className="lg:text-5xl sm:text-4xl text-3xl  uppercase font-bold">Chief Patron</h1>
       {data?.chief_patrons?.map((member, index) => (
 
       <TeamCrad src={`/teamImages/${member.image}`} key={index} name={member.name} position={member.position} />
       ))}
      </section>
       <section className="flex flex-col items-center justify-center mb-10">
-      <h1 className="lg:text-5xl text-4xl uppercase font-bold">Patrons</h1>
+      <h1 className="lg:text-5xl sm:text-4xl text-3xl  uppercase font-bold">Patrons</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
       {data?.patrons?.map((member, index) => (
@@ -86,8 +69,8 @@ export const Team = () => {
       </div>
      </section>
      <section className="flex flex-col items-center justify-center mb-10">
-      <h1 className="lg:text-5xl text-4xl uppercase font-bold">Student Council</h1>
-    <h2 className="lg:text-3xl text-2xl uppercase my-5">General Secretaries</h2>
+      <h1 className="lg:text-5xl sm:text-4xl text-3xl  uppercase font-bold">Student Council</h1>
+    <h2 className="lg:text-3xl text-xl uppercase lg:my-5 xs:my-3">General Secretaries</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       
       {data?.student_council?.general_secretaries?.map((member, index) => (
@@ -95,7 +78,8 @@ export const Team = () => {
         <TeamCrad src={`/teamImages/${member.image}`} name={member.name} position={member.position} />
       ))}
       </div>
-    <h2 className="lg:text-3xl text-2xl uppercase my-5">Joint Secretaries</h2>
+      <br />
+    <h2 className="lg:text-3xl text-xl uppercase lg:my-5 xs:my-3">Joint Secretaries</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       
@@ -109,7 +93,7 @@ export const Team = () => {
 
 {/* web team  */}
       <section className="flex flex-col items-center justify-center mb-10">
-      <h1 className="lg:text-5xl text-4xl uppercase font-bold">Web Team</h1>
+      <h1 className="lg:text-5xl sm:text-4xl text-3xl  uppercase font-bold">Web Team</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
 
       {data?.web_team?.map((member, index) => (
