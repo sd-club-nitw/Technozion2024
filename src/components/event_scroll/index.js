@@ -19,44 +19,16 @@ const TABS = [
 function Index() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { state } = location || {};
 
-  // pick initial tab from URL ?tab=..., then location.state?.dataSource, then default to 'societies'
-  const getInitialTab = () => {
-    const params = new URLSearchParams(location.search);
-    return params.get("tab") || location.state?.dataSource || "societies";
-  };
-
-  const [selectedTab, setSelectedTab] = useState(getInitialTab);
+  const initialTab = state?.dataSource || 'spotlight';
+  const [selectedTab, setSelectedTab] = useState(initialTab);
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [headingImage, setHeadingImage] = useState(null);
   const [error, setError] = useState(null);
 
   // Keep selectedTab in sync if the URL or location.state changes (e.g., user navigates / bookmarks)
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const tabFromSearch = params.get("tab");
-    const tabFromState = location.state?.dataSource;
-
-    const preferred = tabFromSearch || tabFromState;
-    if (preferred && preferred !== selectedTab) {
-      setSelectedTab(preferred);
-    }
-    // note: we intentionally do not force a change if preferred is falsy,
-    // so the current selectedTab (maybe user-chosen) remains.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.search, location.state]);
-
-  // When selectedTab changes, update the URL query param so the route persists the tab
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    if (params.get("tab") !== selectedTab) {
-      params.set("tab", selectedTab);
-      navigate(`${location.pathname}?${params.toString()}`, { replace: true });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedTab]);
-
   useEffect(() => {
     let isMounted = true;
 
@@ -66,21 +38,18 @@ function Index() {
 
       try {
         let response;
-        if (selectedTab === "societies") {
-          response = await fetch("/dataJSON/societyx.json");
+        if (selectedTab === 'societies') {
+          response = await fetch('/dataJSON/societyx.json');
           setHeadingImage(dept);
-        } else if (selectedTab === "spotlight") {
-          response = await fetch("/dataJSON/spotlight.json");
+        } else if (selectedTab === 'spotlight') {
+          response = await fetch('/dataJSON/spotlight.json');
           setHeadingImage(spotlight);
-        } else if (selectedTab === "clubevents") {
-          response = await fetch("/dataJSON/club.json");
-          setHeadingImage(club);
-        } else if (selectedTab === "projects") {
-          response = await fetch("/dataJSON/workshop.json");
+        } else if (selectedTab === 'clubevents') {
+          response = await fetch('/dataJSON/club.json');
           setHeadingImage(club);
         } else {
-          // fallback
-          response = await fetch("/dataJSON/spotlight.json");
+          // fallback (shouldn't happen)
+          response = await fetch('/dataJSON/spotlight.json');
           setHeadingImage(spotlight);
         }
 
@@ -92,9 +61,9 @@ function Index() {
         if (!isMounted) return;
         setData(result);
       } catch (err) {
-        console.error("Error loading data:", err);
+        console.error('Error loading data:', err);
         if (!isMounted) return;
-        setError(err.message || "Unknown error");
+        setError(err.message || 'Unknown error');
         setData([]);
       } finally {
         if (!isMounted) return;
@@ -110,32 +79,25 @@ function Index() {
 
   // click to card page
   const handlePosterClick = (item) => {
-    navigate("/card", {
-      state: { ...item, imgsrc: item.imgsrc || imgsrc, glink: item.glink },
-    });
+    navigate('/card', { state: { ...item, imgsrc: item.imgsrc || imgsrc, glink: item.glink } });
   };
 
   const renderSocieties = () => {
+    // Expecting data to be an array of societies with events
     return data.map((society) => (
       <div key={society.societyName}>
         <h2 className="society-heading">{society.societyName}</h2>
-        <div className="flex justify-center items-center">
-          <div
-            className={
-              "grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1  gap-4 lg:m-10 m-5 place-content-center justify-items-center"
-            }
-          >
-            {society.events?.map((event, index) => (
-              <Poster
-                key={index}
-                imageSrc={event.imgsrc}
-                fallbackSrc={imgsrc}
-                title={event.title}
-                content={event.name}
-                onClick={() => handlePosterClick(event)}
-              />
-            ))}
-          </div>
+        <div className="poster-container">
+          {society.events?.map((event, index) => (
+            <Poster
+              key={index}
+              imageSrc={event.imgsrc}
+              fallbackSrc={imgsrc}
+              title={event.title}
+              content={event.name}
+              onClick={() => handlePosterClick(event)}
+            />
+          ))}
         </div>
       </div>
     ));
@@ -144,8 +106,7 @@ function Index() {
   // UI states
   if (isLoading) return <Loader />;
   if (error) return <div className="fetch-error">Error: {error}</div>;
-  if (!data || (Array.isArray(data) && data.length === 0))
-    return <div className="fetch-error">No data available</div>;
+  if (!data || (Array.isArray(data) && data.length === 0)) return <div className="fetch-error">No data available</div>;
 
   return (
     <div className="outer-container">
@@ -154,15 +115,13 @@ function Index() {
       </div>
 
       {/* Tabs row */}
-      <div className="tabs-wrapper mt-20 lg:mt-28 sm:mt-28 md:mt-28">
+      <div className="tabs-wrapper">
         <div className="tabs">
           {TABS.map((tab) => (
             <button
               key={tab.key}
               type="button"
-              className={`tab-button ${
-                selectedTab === tab.key ? "active" : ""
-              }`}
+              className={`tab-button ${selectedTab === tab.key ? 'active' : ''}`}
               onClick={() => setSelectedTab(tab.key)}
               aria-pressed={selectedTab === tab.key}
             >
@@ -172,15 +131,16 @@ function Index() {
         </div>
       </div>
 
+      {/* Heading image */}
+      {/* <div className="heading">
+        {headingImage && (
+          <img src={headingImage} alt="eventtype" className="heading-image" />
+        )}
+      </div> */}
+
       <div className="inner-container">
-        {selectedTab === "societies" ? (
-          renderSocieties()
-        ) : (
-          <div
-            className="grid lg:grid-cols-5 md:grid-cols-3 
-          sm:grid-cols-2 grid-cols-1 gap-4 lg:m-10 m-5 place-content-center 
-          justify-items-center"
-          >
+        {selectedTab === 'societies' ? renderSocieties() : (
+          <div className="poster-container">
             {data.map((item, index) => (
               <Poster
                 key={index}

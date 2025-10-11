@@ -13,6 +13,7 @@ import { Team } from '../components/Team/team.jsx';
 import Card from '../components/card/card.jsx';
 import Index from '../components/event_scroll/index.js';
 import { ComingSoon } from "../components/ComingSoon/ComingSoon.jsx";
+import Payment from '../components/Payment/Payment.jsx';
 
 const ProtectedRoute = ({ children }) => {
 	const { user } = useAuth();
@@ -31,6 +32,7 @@ const RoutesManager = () => {
 			<Route path="/auth" element={<AuthPage />} />
 
 			<Route path="/" element={<Home />} />
+			<Route path='/payment' element={<Payment/>}></Route>
 
 			{/* Example of protected routes */}
 			

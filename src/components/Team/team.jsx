@@ -72,7 +72,7 @@ export const Team = () => {
       <h1 className="lg:text-5xl text-4xl uppercase font-bold">Chief Patron</h1>
       {data?.chief_patrons?.map((member, index) => (
 
-      <TeamCrad src={`/teamImages/${member.image}`} key={index} name={member.name} position={member.position} />
+      <TeamCrad src={`/teamImages/${member.image}`} name={member.name} position={member.position} />
       ))}
      </section>
       <section className="flex flex-col items-center justify-center mb-10">
@@ -81,7 +81,7 @@ export const Team = () => {
 
       {data?.patrons?.map((member, index) => (
         
-        <TeamCrad src={`/teamImages/${member.image}`} key={index} email={member.email} name={member.name} position={member.position} />
+        <TeamCrad src={`/teamImages/${member.image}`} email={member.email} name={member.name} position={member.position} />
       ))}
       </div>
      </section>
