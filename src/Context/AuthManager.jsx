@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const url = window.location.origin
+  const url = "http://localhost:5000"
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user_info')
@@ -77,7 +77,7 @@ const AuthProvider = ({ children }) => {
     // Upload Payment Screenshot if needed
     let paymentScreenshotUrl = null;
     const emailDomain = registrationData.email?.trim().toLowerCase().split("@")[1];
-    if (emailDomain !== "niw.ac.in") {
+    if (emailDomain !== "nitw.ac.in") {
       if (registrationData.paymentScreenshot) {
         const paymentFile = Array.isArray(registrationData.paymentScreenshot)
           ? registrationData.paymentScreenshot[0]
@@ -103,7 +103,7 @@ const AuthProvider = ({ children }) => {
     };
 
     // Send JSON with URLs to backend
-    const res = await fetch(`${url}/api/auth/register`, {
+    const res = await fetch(`${url}/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -114,7 +114,6 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("user_info", JSON.stringify(data.user));
       localStorage.setItem("token", data.token);
       setUser(data.user);
-      alert(`Successfully Registered you id is ${data?.user?.registrationNum || 'NA'}` )
       navigate("/");
     } else {
       console.log("register error", data);
@@ -130,6 +129,8 @@ const AuthProvider = ({ children }) => {
 
 
   const logout = () => {
+    const ok = window.confirm("Logout?");
+    if(!ok) return;
     localStorage.removeItem('user_info')
     localStorage.removeItem('token')
     setUser(null)
