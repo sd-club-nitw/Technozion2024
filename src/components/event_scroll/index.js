@@ -16,8 +16,6 @@ const TABS = [
   { key: "projects", label: "PROJECTS EXPO" },
 ];
 
-
-
 function Index() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -118,7 +116,6 @@ function Index() {
   };
 
   const renderSocieties = () => {
-    // Expecting data to be an array of societies with events
     return data.map((society) => (
       <div key={society.societyName}>
         <h2 className="society-heading">{society.societyName}</h2>

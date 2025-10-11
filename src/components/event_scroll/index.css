@@ -29,7 +29,8 @@
   align-items: flex-start;
   flex-direction: column;
   padding: 20px;
-  min-height: 100vh; /* allow outer container to grow and permit page scroll */
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* No scroll on the outer container */
   width: 100%;
 }
 
