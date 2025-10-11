@@ -148,7 +148,7 @@ const Card = () => {
                         Description
                       </span>
 
-                      <div className="text-[1.1rem]">{overview?.description}</div>
+                      <div className="lg:text-[1.1rem]">{overview?.description}</div>
                     </section>
                     {total_cost ? (
                        <section className="flex flex-col gap-y-1 items-start justify-start">

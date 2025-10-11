@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import './about.css';
 import youtubeLogo from './youtube-logo.png';
 
+
 function AboutCard({ content, image, imgToRight, title }) {
   return (
     <div className="about-container lg:mt-32 mt-24">
@@ -38,7 +39,9 @@ function AboutCard({ content, image, imgToRight, title }) {
         </div>
         <section className="w-full z-10 h-full">
           <h1 className="text-center">Technozion Brochure</h1>
-          <object data="/pdf/tz.pdf" type="application/pdf" width="100%" height="700px" className=" lg:mb-32 mb-10">
+          
+    
+          <object data="/pdf/tz.pdf#toolbar=0&zoom=100&" type="application/pdf" width="100%" height="700px" className="mx-auto lg:mb-32 mb-10">
           <p>Technozion 25 brochure</p>
           </object>
         </section>

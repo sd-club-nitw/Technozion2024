@@ -4,7 +4,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Raleway", sans-serif;
+  
   font-optical-sizing: auto;
   font-style: normal;
   color: #16f6f3 !important;
@@ -27,22 +27,7 @@
 }
 
 /* Wrapper for the main content */
-.app-wrapper {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(
-    to right,
-    #009cba,
-    #16f6f3,
-    #80e0e0,
-    #16f6f3,
-    #009cba
-  );
-  font-family: "Martel Sans", sans-serif;
-}
+
 
 /* h1 {
     font-size: 5.25vmin;
@@ -63,6 +48,7 @@ p {
   flex-direction: column; /* Change to column layout */
   width: 70vmin;
   height: 70vmin;
+  
   border: 3px solid;
   transition: 0.3s ease-in-out;
   position: relative;
@@ -106,7 +92,7 @@ p {
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.05); /* Lighter glassy background for contrast */
-  z-index: -1;
+  z-index: 1;
   backdrop-filter: blur(10px); /* Blur effect for glassy appearance */
 }
 
@@ -196,22 +182,8 @@ p {
   z-index: 10; /* Ensure it stays on top of other content */
 }
 
-.cnt-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #000000;
-  overflow: hidden;
-  width: 100%; /* Width set to 100% of its parent container */
-  aspect-ratio: 1 / 1; /* Enforce square shape */
-}
 
-.cnt-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure the image fills the container without distortion */
-  object-position: center; /* Center the image */
-}
+
 
 /* Sticky content-container */
 .content-container {
@@ -225,7 +197,7 @@ p {
 
 .content {
   /* margin-top:1.8rem; */
-  z-index: 5;
+  z-index: 0;
   width: 100%;
   height: fit-content;
   /* padding-bottom: 5rem; */
@@ -419,16 +391,14 @@ p {
   p {
     font-size: max(9pt, 2.2vmin);
   }
-  .cnt-logo {
-    /* height: 35vmin; */
-    width: 35vmin;
-  }
+  
   /* .image-content {
         width: 55vmin;
     } */
 }
 
 @media (max-width: 1024px) {
+ 
   .wrap {
     flex-direction: column;
     height: 70vmin;
@@ -442,32 +412,27 @@ p {
     width: 100%;
     padding: 1rem;
   }
-  .cnt-logo {
-    /* height: 30vmin; */
-    width: 30vmin;
+    .logo-container {
+    display: none;
+    z-index: 0;
   }
+  
 }
 
-:root {
-  --logo-height: 16rem; /* Default value for logo height */
-}
+
 
 @media (max-width: 510px) {
   .card-container {
     padding: 2rem;
     padding-top: 12rem;
   }
-  h1 {
-    font-size: 8vmin;
-  }
-  p {
-    font-size: 4vmin;
-  }
+
   .wrap {
     flex-direction: column;
-    width: 95%;
-    height: 140vmin;
-    bottom: 3.5rem;
+    width: 100%;
+    height: 100%;
+    bottom: 2rem;
+    min-height: 65vh;
   }
   /* .overlay-content {
         width: 100%;
@@ -484,7 +449,7 @@ p {
 
   /* Apply overflow hidden to .text */
   .text {
-    overflow: hidden; /* Prevent outer scrollbar on this element */
+  
     height: 100%; /* Ensure it takes full height */
     width: 100%;
   }
@@ -498,7 +463,7 @@ p {
   .logo-cardnav-container {
     /* display: block;  */
     display: flex;
-    flex-direction: row;
+ 
     box-sizing: border-box;
   }
 
@@ -509,10 +474,7 @@ p {
     margin: 0; /* Remove any margin */
   }
 
-  .logo-container {
-    display: none;
-    z-index: 0;
-  }
+
 
   .content-container {
     /* margin-top: 48%; */
@@ -549,25 +511,13 @@ p {
   }
 
   .content {
-    height: 75%;
-    /* margin-top: 10%; */
+    height: 100%;
+    min-height: 50vh;
+    margin: 0;
   }
 
-  .content div h1 {
-    text-align: center;
-    font-size: 1.4rem;
-  }
-  .content div p {
-    font-size: 1rem;
-  }
-  .content h3 {
-    font-size: 1rem;
-    font-weight: 300;
-  }
-  .cnt-logo {
-    /* height: 28vmin; */
-    width: 28vmin;
-  }
+  
+
 }
 
 /*Scrollbar*/

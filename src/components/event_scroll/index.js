@@ -122,7 +122,7 @@ function Index() {
         <div className="flex justify-center items-center">
           <div
             className={
-              "grid grid-cols-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2  gap-4 m-10 place-content-center justify-items-center"
+              "grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1  gap-4 lg:m-10 m-5 place-content-center justify-items-center"
             }
           >
             {society.events?.map((event, index) => (
@@ -154,7 +154,7 @@ function Index() {
       </div>
 
       {/* Tabs row */}
-      <div className="tabs-wrapper">
+      <div className="tabs-wrapper mt-20 lg:mt-28 sm:mt-28 md:mt-28">
         <div className="tabs">
           {TABS.map((tab) => (
             <button
@@ -177,8 +177,8 @@ function Index() {
           renderSocieties()
         ) : (
           <div
-            className=" grid lg:grid-cols-5 md:grid-cols-3 
-          sm:grid-cols-2 grid-cols-2 gap-4 m-10 place-content-center 
+            className="grid lg:grid-cols-5 md:grid-cols-3 
+          sm:grid-cols-2 grid-cols-1 gap-4 lg:m-10 m-5 place-content-center 
           justify-items-center"
           >
             {data.map((item, index) => (
