@@ -16,11 +16,7 @@ const TABS = [
   { key: "projects", label: "PROJECTS EXPO" },
 ];
 
-const TABS = [
-  { key: 'societies', label: 'DEPARTMENT' },
-  { key: 'spotlight', label: 'SPOTLIGHT' },
-  { key: 'clubevents', label: 'CLUB' },
-];
+
 
 function Index() {
   const location = useLocation();
