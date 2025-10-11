@@ -3,7 +3,6 @@ import { NavLink, Link } from "react-router-dom";
 import { ImCross } from "react-icons/im";
 import chota_logo from "./logo-03.png";
 import './index.css';
-import { useAuth } from "../../Context/AuthManager";
 
 const oldNavigation = [
   { name: "HOME", link: "/" },
@@ -24,7 +23,6 @@ const dropList = [
 ];
 
 export default function Navbar() {
-  const { user, logout } = useAuth();
   const [navigation, setNavigation] = useState(oldNavigation);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 725);
@@ -42,15 +40,13 @@ export default function Navbar() {
 
   useEffect(() => {
     if (isMobileView) {
-      const filteredRightNav = user
-        ? rightNavigation.filter(item => item.name !== "REGISTER")
-        : rightNavigation;
-      setNavigation([...oldNavigation, ...filteredRightNav]);
+      
+      setNavigation([...oldNavigation, ...rightNavigation]);
     } else {
-
+     
       setNavigation(oldNavigation);
     }
-  }, [isMobileView, user]);
+  }, [isMobileView]);
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -87,7 +83,7 @@ export default function Navbar() {
     </li>
   ));
 
-  const rightNavItems = (!user ? rightNavigation : rightNavigation.filter(item => item.name !== "REGISTER")).map((menuItem, index) => (
+  const rightNavItems = rightNavigation.map((menuItem, index) => (
     <li key={index}>
       <NavLink to={menuItem.link} onClick={closeMenu}>
         {menuItem.name}
@@ -97,7 +93,13 @@ export default function Navbar() {
 
   return (
     <>
-      
+      {!menuOpen ? (
+        <div className="logo">
+          <Link to="./" onClick={closeMenu}>
+            <img src={chota_logo} alt="logo1" />
+          </Link>
+        </div>
+      ) : null}
 
       <nav className={menuOpen ? 'menu-open' : 'menu-closed'}>
         <div
@@ -116,28 +118,13 @@ export default function Navbar() {
             </>
           )}
         </div>
-        <ul className={menuOpen ? "open" : ""}>
-          {listItems}
-          {user && isMobileView &&(
-            <li>
-              <button onClick={() => { logout(); closeMenu(); }}>LOGOUT</button>
-            </li>
-          )}
-        </ul>
+        <ul className={menuOpen ? "open" : ""}>{listItems}</ul>
       </nav>
 
       {/* Right side navbar only appears on larger screens */}
       {!isMobileView && (
         <nav className="right-nav">
-          <ul>{rightNavItems}
-            {
-              user && (
-                <li>
-                  <button onClick={logout}>LOGOUT</button>
-                </li>
-              )
-            }
-          </ul>
+          <ul>{rightNavItems}</ul>
         </nav>
       )}
     </>
