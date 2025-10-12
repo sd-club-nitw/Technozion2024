@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const url = window.localtion.origin // TODO: change this to env variable
+  const url = window.location.origin // TODO: change this to env variable
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user_info')
