@@ -412,10 +412,10 @@ const Register = () => {
 
             <div className="mb-6 text-white space-y-2 text-sm">
               <p className="font-medium">Bank Account Info:</p>
-              <p>Account Name: <span className="font-semibold">Technozion 2025</span></p>
-              <p>Account No: <span className="font-semibold">1234567890</span></p>
-              <p>IFSC: <span className="font-semibold">TECH0001234</span></p>
-              <p>Bank: <span className="font-semibold">ABC Bank</span></p>
+              <p>Account Name: <span className="font-semibold uppercase">Technozion</span></p>
+              <p>Account No: <span className="font-semibold">62046706567</span></p>
+              <p>IFSC: <span className="font-semibold">SBIN0020149</span></p>
+              <p>Bank: <span className="font-semibold">SBI</span></p>
             </div>
 
             <div className="mb-6">
