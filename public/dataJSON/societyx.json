@@ -1,5 +1,82 @@
 [
   {
+    "societyName": "Chemical Engineering Society",
+    "events": [
+      {
+        "title": "Stone Age Prison Break",
+        "name": "Chemical Engineering Society",
+        "total_cost": 0,
+        "overview": {
+          "main_title": "Stone Age Prison Break",
+          "description": "Stone Age Prison Break is an escape-room where teams solve science, chemistry, and logic puzzles to free Chrome from a stone prison. The journey ends with NaOH as the final 'key' to escape.",
+          "team_size": "Coming Soon...",
+          "contact": [
+            {
+              "name": "Kuppa Jnana Vaishnavi",
+              "email": "kj23chb0a10@student.nitw.ac.in",
+              "phone": "6303972267"
+            }
+          ]
+        },
+        "rules": [
+          "Teams solve science, chemistry, and logic puzzles to free Chrome from a stone prison.",
+          "The escape concludes with NaOH as the final 'key.'"
+        ],
+        "judging_criteria": "Coming Soon....",
+        "imgsrc": "/posters25/society_chem_1_imgsrc.jpg",
+        "index": 40
+      },
+      {
+        "title": "DEA Audit",
+        "name": "Chemical Engineering Society",
+        "total_cost": 0,
+        "overview": {
+          "main_title": "DEA Audit",
+          "description": "DEA Audit is an investigative simulation where participants analyze logs and evidence after a chemical plant explosion to uncover whether the disaster resulted from negligence or sabotage.",
+          "team_size": "Coming Soon...",
+          "contact": [
+            {
+              "name": "Sri Nithya",
+              "email": "ss23chb0b09@student.nitw.ac.in",
+              "phone": "7981589610"
+            }
+          ]
+        },
+        "rules": [
+          "Teams investigate logs and evidence using Root Cause Analysis.",
+          "Final reports determine negligence or sabotage, scored on accuracy and adaptability."
+        ],
+        "judging_criteria": "Coming Soon....",
+        "imgsrc": "/posters25/society_chem_2_imgsrc.jpg",
+        "index": 40
+      },
+      {
+        "title": "The Scoop Stop",
+        "name": "Chemical Engineering Society",
+        "total_cost": 0,
+        "overview": {
+          "main_title": "The Scoop Stop",
+          "description": "An interactive ice cream station where participants make ice cream using the bag-in-bag method, demonstrating freezing point depression, heat transfer, and phase transitions in a fun, hands-on way.",
+          "team_size": "Coming Soon...",
+          "contact": [
+            {
+              "name": "Yeddula Rudraaksh Reddy",
+              "email": "yr23chb0a09@student.nitw.ac.in",
+              "phone": "7893650236"
+            }
+          ]
+        },
+        "rules": [
+          "Participants make ice cream using the bag-in-bag method.",
+          "The activity demonstrates freezing point depression, heat transfer, and phase transitions."
+        ],
+        "judging_criteria": "Coming Soon....",
+        "imgsrc": "/posters25/society_chem_3_imgsrc.jpg",
+        "index": 40
+      }
+    ]
+  },
+  {
     "societyName": "Computer Science and Engineering Society",
     "events": [
       {
@@ -13,7 +90,7 @@
           "contact": [
             {
               "name": "Devashish",
-              "email": null,
+              "email": "dv22csb0f38@student.nitw.ac.in",
               "phone": "9987938287"
             }
           ]
@@ -37,7 +114,7 @@
           "contact": [
             {
               "name": "Neel",
-              "email": null,
+              "email": "nm23csb0f42@student.nitw.ac.in",
               "phone": "7022235002"
             }
           ]
@@ -56,35 +133,6 @@
     "societyName": "Mathematical Society",
     "events": [
       {
-        "title": "Mind Domino",
-        "name": "Mathematical Society",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "Mind Domino",
-          "description": "A multi-round contest of logic, speed, and strategy. From spotting errors to solving chained puzzles and a rapidfire finale, the sharpest minds rise to the top.",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": null,
-              "email": "km24mac1r16@student.nitw.ac.in",
-              "phone": "7219129324"
-            },
-            {
-              "name": null,
-              "email": null,
-              "phone": "7388878414"
-            }
-          ]
-        },
-        "rules": [
-          "Teams must attempt all rounds in order.",
-          "Each correct answer unlocks the next stage."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_13_imgsrc.jpg",
-        "index": 6
-      },
-      {
         "title": "Math Relay Race",
         "name": "Mathematical Society",
         "total_cost": 4000,
@@ -95,7 +143,7 @@
           "contact": [
             {
               "name": "Neha",
-              "email": null,
+              "email": "y24mac2r19@student.nitw.ac.in",
               "phone": "8957366212"
             }
           ]
@@ -109,17 +157,17 @@
         "index": 6
       },
       {
-        "title": "TRECO HUNT : Time travel through mathematics",
+        "title": "Treco Hunt",
         "name": "Mathematical Society",
         "total_cost": 4000,
         "overview": {
-          "main_title": "TRECO HUNT : Time travel through mathematics",
+          "main_title": "Treco Hunt",
           "description": "Gear up for Treco Hunt – a thrilling race of riddles, quizzes, and hidden clues across 5 exciting rounds! Solve, unlock, and decode your way to the final treasure before anyone else!",
           "team_size": "Coming Soon...",
           "contact": [
             {
               "name": "Pranathi",
-              "email": null,
+              "email": "sp23mab0a14@student.nitw.ac.in",
               "phone": "8309832046"
             }
           ]
@@ -130,6 +178,55 @@
         ],
         "judging_criteria": "Coming Soon...",
         "imgsrc": "/posters25/society_16_imgsrc.jpg",
+        "index": 6
+      },
+	  {
+        "title": "Mind Dominos",
+        "name": "Mathematical Society",
+        "total_cost": 0,
+        "overview": {
+          "main_title": "Mind Dominos",
+          "description": "A multi-round contest of logic, speed, and strategy. From spotting errors to solving chained puzzles and a rapid-fire finale, the sharpest minds rise to the top.",
+          "team_size": "Coming Soon...",
+          "contact": [
+            {
+              "name": "Mehvish",
+              "email": "km24mac1r16@student.nitw.ac.in",
+              "phone": "7219129324"
+            }
+          ]
+        },
+        "rules": [
+          "Teams must attempt all rounds in order.",
+          "Each correct answer unlocks the next stage."
+        ],
+        "judging_criteria": "Coming Soon....",
+        "imgsrc": "/posters25/society_13_imgsrc.jpg",
+        "index": 6
+      },
+	  {
+        "title": "Python Debug",
+        "name": "Mathematical Society",
+        "total_cost": 0,
+        "overview": {
+          "main_title": "Python Debug",
+          "description": "A 1-hour coding faceoff to spot and fix errors. Solve 4 problems and climb to the top with precision and speed.",
+          "team_size": "Coming Soon...",
+          "contact": [
+            {
+              "name": "Amogh",
+              "email": "aa23ab0a03@student.nitw.ac.in",
+              "phone": "7058116338"
+            }
+          ]
+        },
+        "rules": [
+          "Set contains 4 problems, fix buggy code.",
+          "-0.5 for incorrect submission.",
+		  "Time limit: 1 hr"
+        ],
+        "judging_criteria": "Coming Soon....",
+        "imgsrc": "/posters25/society_15_imgsrc.png",
         "index": 6
       }
     ]
@@ -148,7 +245,7 @@
           "contact": [
             {
               "name": "Vineet",
-              "email": null,
+              "email": "rv23ecb0b28@student.nitw.ac.in",
               "phone": "6309730630"
             }
           ]
@@ -172,13 +269,8 @@
           "contact": [
             {
               "name": "Abhiram",
-              "email": null,
+              "email": "am23ecb0f25@student.nitw.ac.in",
               "phone": "9346809877"
-            },
-            {
-              "name": "Abhinav",
-              "email": null,
-              "phone": "9108205643"
             }
           ]
         },
@@ -201,7 +293,7 @@
           "contact": [
             {
               "name": "Alstin",
-              "email": null,
+              "email": "ao23ecb0f30@student.nitw.ac.in",
               "phone": "8157987306"
             }
           ]
@@ -229,14 +321,9 @@
           "team_size": "Coming Soon...",
           "contact": [
             {
-              "name": "Harshitha Vanam",
-              "email": null,
+              "name": "Harshitha",
+              "email": "ga22mmb0a44@student.nitw.ac.in",
               "phone": "9059701704"
-            },
-            {
-              "name": "Amit",
-              "email": null,
-              "phone": "7597587833"
             }
           ]
         },
@@ -259,7 +346,7 @@
           "contact": [
             {
               "name": "Abhiram",
-              "email": null,
+              "email": "ka23mmb0a47@student.nitw.ac.in",
               "phone": "9059066629"
             }
           ]
@@ -273,41 +360,17 @@
         "index": 25
       },
       {
-        "title": "MetaLusion",
+        "title": "Metalusion",
         "name": "MMES & IIMSC",
         "total_cost": 0,
         "overview": {
-          "main_title": "MetaLusion",
+          "main_title": "Metalusion",
           "description": "“Metalusion” brings futuristic materials like self-healing compounds and smart alloys to life, showcasing their fascinating real-world applications. Visitors can explore how these innovations reshape technology.",
           "team_size": "Coming Soon...",
           "contact": [
             {
               "name": "Harijinder",
-              "email": null,
-              "phone": "9000130823"
-            }
-          ]
-        },
-        "rules": [
-          "Present special materials, like self-healing materials, at the stall.",
-          "Explain their interesting applications to the audience."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_18_imgsrc.png",
-        "index": 25
-      },
-      {
-        "title": "AI/ML",
-        "name": "MMES & IIMSC",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "AI/ML",
-          "description": "“Metalusion” brings futuristic materials like self-healing compounds and smart alloys to life, showcasing their fascinating real-world applications. Visitors can explore how these innovations reshape technology.",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Harijinder",
-              "email": null,
+              "email": "sh23mmb0a29@student.nitw.ac.in",
               "phone": "9000130823"
             }
           ]
@@ -323,7 +386,7 @@
     ]
   },
   {
-    "societyName": "Electrical Engineering society",
+    "societyName": "Electrical Engineering Society",
     "events": [
       {
         "title": "Gesture Drift",
@@ -336,7 +399,7 @@
           "contact": [
             {
               "name": "Pradeep",
-              "email": null,
+              "email": "ps23eeb0a09@student.nitw.ac.in",
               "phone": "7898513104"
             }
           ]
@@ -360,7 +423,7 @@
           "contact": [
             {
               "name": "Adi Pranav",
-              "email": null,
+              "email": "na23eeb0a11@student.nitw.ac.in",
               "phone": "6309641064"
             }
           ]
@@ -374,17 +437,17 @@
         "index": 15
       },
       {
-        "title": "OptiMystery",
+        "title": "Opti-Mystery",
         "name": "Electrical Engineering Society",
         "total_cost": 0,
         "overview": {
-          "main_title": "OptiMystery",
+          "main_title": "Opti-Mystery",
           "description": "In this event, one must synchronize strobe lights with rotating objects to reveal and decode hidden patterns for points.",
           "team_size": "1",
           "contact": [
             {
               "name": "Kruthika",
-              "email": null,
+              "email": "kk23eeb0b27@student.nitw.ac.in",
               "phone": "9391783822"
             }
           ]
@@ -403,24 +466,24 @@
     "societyName": "Mechanical Engineering Society",
     "events": [
       {
-        "title": "Track To Trivia",
+        "title": "Track to Trivia: F1 Quiz",
         "name": "Mechanical Engineering Society",
         "total_cost": 2000,
         "overview": {
           "main_title": "Track to Trivia: F1 Quiz",
-          "description": "The F1 Quiz includes online qualifiers, a Grand Prix round (riddles, rapid-fire, strategy, buzzer), and a Final Lap (individual round). Buzzer rules apply in some rounds.",
+          "description": "The F1 Quiz includes online qualifiers, a Grand Prix round (riddles, rapid-fire, strategy, buzzer), and a Final Lap (individual round).",
           "team_size": "Coming Soon...",
           "contact": [
             {
               "name": "Vamsi",
-              "email": null,
+              "email": "av22meb0b15@student.nitw.ac.in",
               "phone": "9392791259"
             }
           ]
         },
         "rules": [
-          "Buzzer rounds: first to press answers; wrong answers incur penalties.",
-          "No audience discussion or use of phones/internet allowed."
+          "In buzzer rounds, the first team to press gets to answer; wrong answers incur penalties.",
+          "No audience discussion or use of phones/internet is allowed."
         ],
         "judging_criteria": "Coming Soon...",
         "imgsrc": "/posters25/society_9_imgsrc.png",
@@ -432,31 +495,31 @@
         "total_cost": 2000,
         "overview": {
           "main_title": "Mechanical Kit Assembly",
-          "description": "Teams are given a dismantled kit and have 45 minutes to assemble it. Points awarded by time and percentage accuracy of assembly.",
+          "description": "In Mechanical Kit Assembly, participating team will be given a dismantled kit and they will have 45 minutes to assemble it.",
           "team_size": "Coming Soon...",
           "contact": [
             {
               "name": "Tsheten",
-              "email": null,
+              "email": "tamangtsheten0@gmail.com",
               "phone": "9382678789"
             }
           ]
         },
         "rules": [
-          "Points awarded based on time taken and percentage assembled accurately.",
-          "Team with maximum points declared winner."
+          "Points will be awarded to team based on time taken to assemble the kit and percentage of kit assembled accurately.",
+          "The team with maximum points will be declared winner."
         ],
         "judging_criteria": "Coming Soon...",
         "imgsrc": "/posters25/society_10_imgsrc.png",
         "index": 20
       },
       {
-        "title": "OFF Track: RC Car Showdown",
+        "title": "OFF TRACK: RC Car Showdown",
         "name": "Mechanical Engineering Society",
         "total_cost": 0,
         "overview": {
-          "main_title": "RC Car Showdown",
-          "description": "Fun races (3 laps each) at B-312, Mechanical Department; 10:00 AM–12:00 PM & 2:00 PM–5:00 PM. Overtaking and pushing are allowed; first to finish wins. No prizes.",
+          "main_title": "OFF TRACK: RC Car Showdown",
+          "description": "Fun races (3 laps each) at B-312, Mech Dept, 10 AM-12 PM & 2 PM-5 PM. Overtaking/pushing allowed, first to finish wins, no prizes.",
           "team_size": "Coming Soon...",
           "contact": [
             {
@@ -468,19 +531,19 @@
         },
         "rules": [
           "Each race has 3 laps on a circuit with turns, intersections, and elevation changes; overtaking and pushing are allowed.",
-          "Participants complete all laps; the first to finish is the winner. No prizes awarded."
+          "Participants complete all laps for fun; the first to finish is the winner, with no prizes awarded."
         ],
         "judging_criteria": "Coming Soon...",
         "imgsrc": "/posters25/society_11_imgsrc.png",
         "index": 20
       },
       {
-        "title": "NEON Cricket",
+        "title": "Neon Cricket",
         "name": "Mechanical Engineering Society",
         "total_cost": 500,
         "overview": {
           "main_title": "Neon Cricket",
-          "description": "Each team has 6 players; matches are 6 overs per innings with 1 over per bowler. Runs are awarded by walls hit and bounces. Fun competitive format with specific dismissal rules.",
+          "description": "Each team has 6 players; matches are 6 overs per innings with 1 over per bowler, runs awarded by walls hit, and penalties for no-balls/wides.",
           "team_size": "6",
           "contact": [
             {
@@ -491,7 +554,7 @@
           ]
         },
         "rules": [
-          "Teams of 6 play 6-over innings.",
+          "Teams of 6 play 6-over innings, scoring via wall hits and bounces.",
           "Outs include bowled, catch, run-out, stumped, LBW, hit-wicket, and one-handed catches."
         ],
         "judging_criteria": "Coming Soon...",
@@ -504,24 +567,24 @@
     "societyName": "Civil Engineering Association",
     "events": [
       {
-        "title": "KBCE",
-        "name": "Civil Society",
+        "title": "Kon Banega Civil Engineer",
+        "name": "Civil Engineering Association",
         "total_cost": 3000,
         "overview": {
-          "main_title": "KBCE",
-          "description": "KBC – Kon Banega Civil Engineer is a fast-paced quiz competition testing participants’ knowledge in civil engineering. Teams compete through multiple rounds, leading to an exciting “Hot Seat” finale where the top scorers battle for victory.",
+          "main_title": "Kon Banega Civil Engineer",
+          "description": "'Kon Banega Civil Engineer' is a fast-paced quiz competition testing participants' knowledge in civil engineering. Teams compete through multiple rounds, leading to an exciting 'Hot Seat' finale where the top scorers battle for victory.",
           "team_size": "Coming Soon...",
           "contact": [
             {
               "name": "Tanmay",
-              "email": null,
+              "email": "ts23ceb0a04@student.nitw.ac.in",
               "phone": "7737610206"
             }
           ]
         },
         "rules": [
           "Teams compete in multiple quiz rounds to advance.",
-          "Top three teams enter the Hot Seat round to determine the final winners."
+          "Top three teams enter the 'Hot Seat' round to determine the final winners."
         ],
         "judging_criteria": "Coming Soon...",
         "imgsrc": "/posters25/society_19_imgsrc.png",
@@ -529,23 +592,23 @@
       },
       {
         "title": "Earthquake Resistant Building",
-        "name": "Civil Society",
+        "name": "Civil Engineering Association",
         "total_cost": 5000,
         "overview": {
-          "main_title": "ERBMDC",
-          "description": "Earthquake Resistant Building Model challenges teams to design and construct a 4-storey structure using limited materials that can withstand rigorous load and shake tests. It’s a test of creativity, engineering skill, and structural strength!",
+          "main_title": "Earthquake Resistant Building",
+          "description": "'Earthquake Resistant Building Model' challenges teams to design and construct a 4-storey structure using limited materials that can withstand rigorous load and shake tests. It's a test of creativity, engineering skill, and structural strength!",
           "team_size": "Coming Soon...",
           "contact": [
             {
               "name": "Shristi Singh",
-              "email": null,
+              "email": "ss23ceb0a09@student.nitw.ac.in",
               "phone": "9893399933"
             }
           ]
         },
         "rules": [
           "Design and build the strongest model possible.",
-          "Models must withstand rigorous load and shake table tests."
+          "Models must withstand rigorous load and shake table tests"
         ],
         "judging_criteria": "Coming Soon...",
         "imgsrc": "/posters25/society_20_imgsrc.png",

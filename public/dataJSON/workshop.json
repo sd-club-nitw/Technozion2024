@@ -1,30 +1,170 @@
 [
-  
-   {
-    "title": "Project Expo",
-    "name": "modelling and Prototype",
-    "total_cost": 6000,
+  {
+    "title": "Submit Your Project",
+    "name": "Project Expo",
+    "total_cost": 60000,
     "overview": {
       "main_title": "Project Expo",
-      "description": "Project Expo is a platform for participants to showcase their innovative models and projects to an expert jury, gaining evaluation, recognition, and the visibility their work deserves",
+      "description": "We are delighted to invite your students to participate in the Inter-NIT Project Expo 2025, proudly hosted by NIT Warangal. This prestigious event aims to bring together bright innovators from IITs, NITs, IIITs, and other leading institutes to showcase impactful projects, exchange ideas, and foster meaningful collaborations",
+      "team_size": "Multiple Allowed",
+      "contact": [],
+      "cash_prize": "60000 INR"
+    },
+    "rules": [
+      "Coming Soon..."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_13_imgsrc.jpg",
+    "index": 31,
+    "glink": "https://forms.gle/uRD9cFzTs34XE2js5"
+  },
+  {
+    "title": "DevOps Workshop",
+    "name": "HAM ARC Club",
+    "total_cost": 0,
+    "overview": {
+      "main_title": "DevOps Workshop",
+      "description": "Teaching the fundamentals of CI/CD pipelines, automation, version control, and containerization with practical insights into tools and workflows used by top tech companies.",
       "team_size": "Coming Soon...",
       "contact": [
         {
-          "name": "Akhil",
-          "email": null,
-          "phone": "90594 22616"
+          "name": "Mukesh",
+          "email": "am24btb0a07@student.nitw.ac.in",
+          "phone": "6301966895"
         }
       ]
     },
     "rules": [
-      "Only original, participant-created projects are allowed; plagiarism will lead to disqualification.",
-      "Each team must present their project within the allotted time and answer the jury’s questions clearly."
+      "Basics of version control",
+      "Github actions",
+      "Containerisation- use of docker, docker commands",
+      "Small intro to orchestration- use of kubernates"
     ],
     "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/club_13_imgsrc.jpg",
-    "index": 7,
-    "glink": "https://forms.gle/uRD9cFzTs34XE2js5"
-
+    "imgsrc": "/posters25/club_12_imgsrc.png",
+    "index": 31,
+    "glink": null
+  },
+  {
+    "title": "Motion Capture",
+    "name": "Workshop",
+    "total_cost": 0,
+    "overview": {
+      "main_title": "Motion Capture Workshop",
+      "description": "A unique blend of live tech demonstration and a hands-on interactive workshop. Volunteers perform on stage and their movements are instantly captured and projected as animated 3D characters, letting the audience experience the technology behind movies and games.",
+      "team_size": "Coming Soon...",
+      "contact": [
+        {
+          "name": "Jaishankar Janardhan",
+          "email": "jj22ceb0a58@student.nitw.ac.in",
+          "phone": "9660997997"
+        }
+      ]
+    },
+    "rules": [
+      "Coming Soon..."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/motion-capture.png",
+    "index": 31,
+    "glink": null
+  },
+  {
+    "title": "Photography Light Painting Session",
+    "name": "Photography Club",
+    "total_cost": 0,
+    "overview": {
+      "main_title": "Photography Light Painting Session",
+      "description": "An experienced guest photographer will lead a workshop on mobile photography, sharing tips and techniques to capture creative and professional shots using just a smartphone.",
+      "team_size": "Coming Soon...",
+      "contact": [
+        {
+          "name": "Kasi Vishwanath",
+          "email": "kk23mebob02@student.nitw.ac.in",
+          "phone": "9490744388"
+        }
+      ]
+    },
+    "rules": [
+      "Participants must bring their own phones with enough battery and storage.",
+      "Each participant will get 3-5 minutes for a joint light painting session with the guest photographer."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/light-painting.png",
+    "index": 31,
+    "glink": null
+  },
+  {
+    "title": "Mobile Journalism",
+    "name": "Media Club",
+    "total_cost": 0,
+    "overview": {
+      "main_title": "Mobile Journalism Workshop",
+      "description": "Learn how to transform your smartphone into a powerful storytelling tool. This hands-on workshop, conducted by a journalist, will guide you through the essentials of mobile reporting, shooting, and editing.",
+      "team_size": "Coming Soon...",
+      "contact": [
+        {
+          "name": "Mulka Madhav",
+          "email": "mm23meb0a56@student.nitw.ac.in",
+          "phone": "7671847031"
+        }
+      ]
+    },
+    "rules": [
+      "Coming Soon..."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/mobile-journalism.png",
+    "index": 31,
+    "glink": null
+  },
+  {
+    "title": "Speaker Session",
+    "name": "Innovation Garage (IG)",
+    "total_cost": 0,
+    "overview": {
+      "main_title": "Speaker Session",
+      "description": "The Innovation Garage is bringing in top experts for a dynamic speaker session to inspire students and provide real-world insights and practical guidance on entrepreneurship and innovation.",
+      "team_size": "Coming Soon...",
+      "contact": [
+        {
+          "name": "Vatsal Saini",
+          "email": "vs2meb0a67@student.nitw.ac.in",
+          "phone": "7819843527"
+        }
+      ]
+    },
+    "rules": [
+      "Coming Soon..."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/speaker-session.png",
+    "index": 31,
+    "glink": null
+  },
+  {
+    "title": "Rocket Building Hackathon",
+    "name": "SEA Club",
+    "total_cost": 0,
+    "overview": {
+      "main_title": "Rocket Building Hackathon",
+      "description": "In this 3D rocket building hackathon, teams from around campus will build a prototype rocket and launch it to win the competition.",
+      "team_size": "Coming Soon...",
+      "contact": [
+        {
+          "name": "Thisura Damsith",
+          "email": "ma24ecb0b68@student.nitw.ac.in",
+          "phone": "8789602093"
+        }
+      ]
+    },
+    "rules": [
+      "Each team will be given a set of designs and models required to build it from scratch.",
+      "Hardware parts will be printed prior to the final competition; assembly of electronics and hardware will take place on the day of the event."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/rocket-hackathon.png",
+    "index": 31,
+    "glink": null
   }
-  
 ]
