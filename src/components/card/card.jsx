@@ -188,11 +188,11 @@ const Card = () => {
                           <div key={index} className="flex flex-col mb-5 bg-gray p-3 rounded-md lg:min-w-[15em]">
                             {contact?.name && (
 
-                              <span className="flex gap-x-3 opacity-50 text-[.9rem] items-center">{contact.name}</span>
+                              <span className="flex gap-x-3 opacity-50 text-[.8rem] lg:text-[.9rem] items-center">{contact.name}</span>
                             )}
 {contact?.phone && (
 
-  <span className="flex justify-between gap-x-3 items-center cursor-pointer">
+  <span className="flex justify-between gap-x-3 items-center cursor-pointer text-[.9rem] lg:text-[1rem]">
                               <span  className="flex gap-x-3 items-center">
 
                              +91 {contact.phone}
@@ -203,7 +203,7 @@ const Card = () => {
                             </span>
                             )}
                             {contact?.email && (
-                            <span className="flex justify-between gap-x-3 items-center cursor-pointer">
+                            <span className="flex justify-between gap-x-3 items-center cursor-pointer text-[.9rem] lg:text-[1rem]">
                               <span  className="">
 
                               {contact.email}

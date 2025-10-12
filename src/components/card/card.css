@@ -424,7 +424,7 @@ p {
 @media (max-width: 510px) {
   .card-container {
     padding: 2rem;
-    padding-top: 12rem;
+    padding-top: 8rem;
   }
 
   .wrap {
@@ -511,8 +511,9 @@ p {
   }
 
   .content {
+  
     height: 100%;
-    min-height: 50vh;
+    min-height: 80vh;
     margin: 0;
   }
 
