@@ -173,19 +173,7 @@ const Register = () => {
         paymentScreenshotUrl: paymentScreenshotUrl || null,
       };
 
-      // Send to backend route (adjust URL if different)
-      const res = await fetch("http://localhost:5000/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      if (!res.ok) {
-        const errJson = await res.json().catch(() => ({}));
-        throw new Error(errJson.message || `Registration failed with status ${res.status}`);
-      }
-
-      const result = await res.json();
+      
 
       // Preserve original behavior: call authRegister with original data shape
       const authData = {
@@ -194,8 +182,6 @@ const Register = () => {
         idDocument: idFile,
         paymentScreenshot: payFile || undefined,
       };
-
-      console.log("Registering with data", authData);
       authRegister(authData);
 
       setPayModalOpen(false);
@@ -207,7 +193,7 @@ const Register = () => {
 
   return (
     <div className="h-[100vh] bg-black text-white p-4 md:p-8 overflow-y-auto">
-      <div className="max-w-7xl mx-auto mt-10">
+      <div className="max-w-7xl mx-auto mt-14">
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-cyan">
             Registration for Technozion 2025
@@ -392,7 +378,7 @@ const Register = () => {
           <div className="mt-8 text-center">
             <button
               type="submit"
-              className="px-8 py-4 bg-blue-600 rounded-xl hover:bg-gray transition font-semibold text-lg shadow-lg hover:shadow-cyan/30 transform hover:-translate-y-0.5"
+              className="px-8 py-4 bg-slate-800 rounded-xl hover:bg-indigo-800 transition font-semibold text-lg shadow-lg  transform hover:-translate-y-0.5"
               onClick={handleSubmit(onSubmit)}
             >
               Complete Registration

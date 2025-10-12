@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const url = "http://localhost:5000"
+  const url = window.localtion.origin // TODO: change this to env variable
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user_info')
@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     setLoading(true)
     try {
-      const res = await fetch(`${url}/auth/login`, {
+      const res = await fetch(`${url}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -103,7 +103,7 @@ const AuthProvider = ({ children }) => {
     };
 
     // Send JSON with URLs to backend
-    const res = await fetch(`${url}/auth/register`, {
+    const res = await fetch(`${url}/api/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -114,6 +114,7 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("user_info", JSON.stringify(data.user));
       localStorage.setItem("token", data.token);
       setUser(data.user);
+      alert("Registration successful! Your ID is "+data?.user?.registrationNum);
       navigate("/");
     } else {
       console.log("register error", data);
