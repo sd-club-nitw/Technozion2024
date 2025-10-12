@@ -119,10 +119,10 @@ function Index() {
     return data.map((society) => (
       <div key={society.societyName}>
         <h2 className="society-heading">{society.societyName}</h2>
-        <div className="flex justify-center items-center">
+      
           <div
             className={
-              "grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1  gap-4 lg:m-10 m-5 place-content-center justify-items-center"
+              "grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1  gap-4 lg:m-10 m-5"
             }
           >
             {society.events?.map((event, index) => (
@@ -137,7 +137,7 @@ function Index() {
             ))}
           </div>
         </div>
-      </div>
+   
     ));
   };
 
@@ -178,8 +178,8 @@ function Index() {
         ) : (
           <div
             className="grid lg:grid-cols-5 md:grid-cols-3 
-          sm:grid-cols-2 grid-cols-1 gap-4 lg:m-10 m-5 place-content-center 
-          justify-items-center"
+          sm:grid-cols-2 grid-cols-1 gap-4 lg:m-10 m-5 
+          "
           >
             {data.map((item, index) => (
               <Poster
