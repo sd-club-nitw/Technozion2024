@@ -392,13 +392,15 @@ const Register = () => {
           <div className="mt-8 text-center">
             <button
               type="submit"
-              className="px-8 py-4 bg-gray/10 rounded-xl hover:bg-gray transition font-semibold text-lg shadow-lg hover:shadow-cyan/30 transform hover:-translate-y-0.5"
+              className="px-8 py-4 bg-blue-600 rounded-xl hover:bg-gray transition font-semibold text-lg shadow-lg hover:shadow-cyan/30 transform hover:-translate-y-0.5"
               onClick={handleSubmit(onSubmit)}
             >
               Complete Registration
             </button>
           </div>
         </form>
+        <br />
+        <br />
       </div>
 
       {payModalOpen && (
