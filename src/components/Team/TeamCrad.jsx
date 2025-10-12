@@ -2,7 +2,7 @@ import React from 'react'
 
 function TeamCrad({src, name, position, email=""}) {
   return (
-    <div className="flex flex-col bg-navyBlue rounded-lg p-3 max-w-80">
+    <div className="flex flex-col bg-slate-800 rounded-lg p-3 max-w-80">
       <div className="flex-1 flex items-center justify-center">
         <img
           src={src}

@@ -29,7 +29,6 @@ nav {
 	align-items: center;
 	width: 100%;
 	margin-top: 1%;
-	scale: 1.4;
 	z-index: 10;
 }
 
@@ -119,6 +118,7 @@ nav ul li button {
 }
 
 .logo img {
+	scale: 1.4;
 	width: var(--img-width);
 }
 
@@ -274,6 +274,7 @@ nav ul li a {
 	}
   
 	.ham {
+	
 	  height: 0.3rem; /* Reduce the height of the hamburger lines */
 	  width: 100%;    /* Keep the width full relative to .menu */
 	  background-color: white;
@@ -282,6 +283,7 @@ nav ul li a {
 	}
   
 	.logo img {
+		scale: 1.2;
 	  width: calc(var(--img-width) + 10vw);
 	  margin-top: 1rem;
 	}
