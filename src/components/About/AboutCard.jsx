@@ -40,10 +40,45 @@ function AboutCard({ content, image, imgToRight, title }) {
         <section className="w-full z-10 h-full">
           <h1 className="text-center">Technozion Brochure</h1>
           
-    
-          <object data="/pdf/tz.pdf#toolbar=0&zoom=100&" type="application/pdf" width="100%" height="700px" className="mx-auto lg:mb-32 mb-10">
+
+<div style={{ height: '800px', width: '100%' }}>
+  <iframe
+    src="/pdf/tz.pdf#toolbar=0&zoom=60&"
+    title="Embedded PDF Document"
+   
+    style={{ border: 'none', width: '80%', margin: 'auto', height: '100%' }}
+  >
+    {/* This content inside the <iframe> tag acts as the fallback 
+      for browsers (especially on mobile) that cannot render 
+      the PDF inline.
+    */}
+    <div style={{ padding: '20px', textAlign: 'center' }}>
+      <p>
+        **Sorry, your browser doesn't support embedded PDFs on this device.**
+      </p>
+      <a
+        href="/pdf/tz.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        download // Optional: suggests a download instead of just viewing
+        style={{
+          display: 'inline-block',
+          padding: '10px 20px',
+          backgroundColor: '#007bff',
+          color: 'white',
+          textDecoration: 'none',
+          borderRadius: '5px',
+          marginTop: '10px',
+        }}
+      >
+        📥 Download PDF
+      </a>
+    </div>
+  </iframe>
+</div>
+          {/* <object data="/pdf/tz.pdf#toolbar=0&zoom=100&" type="application/pdf" width="100%" height="700px" className="mx-auto lg:mb-32 mb-10">
           <p>Technozion 25 brochure</p>
-          </object>
+          </object> */}
         </section>
     </div>
   );
