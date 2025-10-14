@@ -357,7 +357,7 @@ nav ul li a {
     justify-content: flex-start; /* This is the key change to align left */
     width: auto; /* Let the container be only as wide as the logo */
     left: 15px; /* Add some space from the left edge */
-    margin-top: 1.6rm; /* A fixed margin often works better on mobile */
+    margin-top: 1.6rem; /* A fixed margin often works better on mobile */
   }
 }
   
