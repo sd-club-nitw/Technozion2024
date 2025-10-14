@@ -615,5 +615,56 @@
         "index": 30
       }
     ]
-  }
+  },
+  {
+  "societyName": "Physics Society",
+  "events": [
+    {
+      "title": "Model Mania",
+      "name": "Physics Society",
+      "total_cost": 0,
+      "overview": {
+        "main_title": "Model Mania",
+        "description": "Coming Soon...",
+        "team_size": "Coming Soon...",
+        "contact": [
+          {
+            "name": "To be updated",
+            "email": "",
+            "phone": ""
+          }
+        ]
+      },
+      "rules": [
+        "Rules will be updated soon."
+      ],
+      "judging_criteria": "Coming Soon....",
+      "imgsrc": "/posters25/society_phy_1_imgsrc.jpg",
+      "index": 10
+    },
+    {
+      "title": "Starlight Sparkathon",
+      "name": "Physics Society",
+      "total_cost": 0,
+      "overview": {
+        "main_title": "Starlight Sparkathon",
+        "description": "Coming Soon...",
+        "team_size": "Coming Soon...",
+        "contact": [
+          {
+            "name": "To be updated",
+            "email": "",
+            "phone": ""
+          }
+        ]
+      },
+      "rules": [
+        "Rules will be updated soon."
+      ],
+      "judging_criteria": "Coming Soon....",
+      "imgsrc": "/posters25/society_phy_2_imgsrc.jpg",
+      "index": 10
+    }
+  ]
+}
 ]
