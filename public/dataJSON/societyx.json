@@ -341,7 +341,7 @@
         "total_cost": 1000,
         "overview": {
           "main_title": "MetaDart",
-          "description": "“Meta-Dart” is a fun blend of skill and knowledge where each dart throw decides your challenge. The closer you land to the center, the easier the question; miss wide, and tougher material-based questions await!",
+          "description": "“Meta-Dart” is an exciting mix of precision and quick thinking where two teams compete head-to-head.Each dart throw decides who gets to answer first, turning skill into opportunity.Teams earn points by answering questions of varying difficulty.Aim sharp, think fast — the first to hit the target score wins the game!",
           "team_size": "Coming Soon...",
           "contact": [
             {
@@ -615,5 +615,56 @@
         "index": 30
       }
     ]
-  }
+  },
+  {
+  "societyName": "Physics Society",
+  "events": [
+    {
+      "title": "Model Mania",
+      "name": "Physics Society",
+      "total_cost": 0,
+      "overview": {
+        "main_title": "Model Mania",
+        "description": "Coming Soon...",
+        "team_size": "Coming Soon...",
+        "contact": [
+          {
+            "name": "To be updated",
+            "email": "",
+            "phone": ""
+          }
+        ]
+      },
+      "rules": [
+        "Rules will be updated soon."
+      ],
+      "judging_criteria": "Coming Soon....",
+      "imgsrc": "/posters25/society_phy_1_imgsrc.jpg",
+      "index": 10
+    },
+    {
+      "title": "Starlight Sparkathon",
+      "name": "Physics Society",
+      "total_cost": 0,
+      "overview": {
+        "main_title": "Starlight Sparkathon",
+        "description": "Coming Soon...",
+        "team_size": "Coming Soon...",
+        "contact": [
+          {
+            "name": "To be updated",
+            "email": "",
+            "phone": ""
+          }
+        ]
+      },
+      "rules": [
+        "Rules will be updated soon."
+      ],
+      "judging_criteria": "Coming Soon....",
+      "imgsrc": "/posters25/society_phy_2_imgsrc.jpg",
+      "index": 10
+    }
+  ]
+}
 ]
