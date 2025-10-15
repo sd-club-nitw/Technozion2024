@@ -50,7 +50,7 @@
   {
     "title": "Blaze",
     "name": "Robotics Club",
-    "total_cost": 15000,
+    "total_cost": 10000,
     "overview": {
       "main_title": "Blaze",
       "description": "BLAZE is a laser Tag experience featuring a custom-built arena and DIY technology, challenging two teams to a 15-minute survivor match.",
@@ -96,12 +96,12 @@
     "index": 31
   },
   {
-    "title": "Climb The Rope",
+    "title": "Cross The Rope", 
     "name": "SEA Club",
-    "total_cost": 0,
+    "total_cost": 8000,
     "overview": {
-      "main_title": "Climb The Rope",
-      "description": "'CLIMB THE ROPE' challenges participants to design and build an efficient rope-climbing robot using a basic chassis and selected components.",
+      "main_title": "Cross The Rope",
+      "description": "'CROSS THE ROPE' challenges participants to design and build an efficient rope-climbing robot using a basic chassis and selected components.",
       "team_size": "Coming Soon...",
       "contact": [
         {
@@ -114,29 +114,6 @@
     "rules": [
       "Use provided components to customize gripping mechanisms and control algorithms.",
       "Complete assembly and programming within time and pass all safety checks."
-    ],
-    "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/club_sea_climb.jpg",
-    "index": 4
-  },
-  {
-    "title": "Cross",
-    "name": "SEA Club",
-    "total_cost": 8000,
-    "overview": {
-      "main_title": "Cross",
-      "description": "Coming Soon...",
-      "team_size": "Coming Soon...",
-      "contact": [
-        {
-          "name": "______",
-          "email": null,
-          "phone": null
-        }
-      ]
-    },
-    "rules": [
-      "Coming Soon..."
     ],
     "judging_criteria": "Coming Soon...",
     "imgsrc": "/posters25/club_6_imgsrc.jpg",
@@ -215,7 +192,7 @@
   },
   {
     "title": "Project Expo",
-    "name": "Model and Prototype Club",
+    "name": "Modelling and Prototype Club",
     "total_cost": 6000,
     "overview": {
       "main_title": "Project Expo",
@@ -287,7 +264,7 @@
   },
   {
     "title": "The Quick-Think Challenge",
-    "name": "Model and Prototype Club",
+    "name": "Modelling and Prototype Club",
     "total_cost": 8000,
     "overview": {
       "main_title": "The Quick-Think Challenge",
@@ -312,7 +289,7 @@
   {
     "title": "SKY SCOUT",
     "name": "Science & Astronomy Club",
-    "total_cost": 0,
+    "total_cost": 6000,
     "overview": {
       "main_title": "SKY SCOUT: Telescope Making",
       "description": "Build a functional telescope using a standardized DIY kit, promoting the practical understanding of optics and scientific curiosity. Creativity and accuracy will be evaluated.",
@@ -334,27 +311,27 @@
     "index": 31
   },
   {
-    "title": "Climb The Rope",
-    "name": "SEA Club",
-    "total_cost": 0,
+    "title": "SDC GAMES",
+    "name": "Software Development Club",
+    "total_cost": 25000,
     "overview": {
-      "main_title": "Climb The Rope",
-      "description": "'CLIMB THE ROPE' challenges participants to design and build an efficient rope-climbing robot using a basic chassis and selected components to ascend autonomously.",
+      "main_title": "SDC GAMES",
+      "description": "SDC Games is a thrilling survival themed event inspired by Squid game and Alice in Borderland. Players face intense. brain-bending challenges that test strategy,teamwork and quick decisions - delivering non stop excitement and adrenaline. ",
       "team_size": "Coming Soon...",
       "contact": [
         {
-          "name": "Utkarsh Prabhat",
-          "email": "up23eeb0b56@student.nitw.ac.in",
-          "phone": "8225850228"
+          "name": "Prakhar Gupta",
+          "email": "pg23csb0b24@student.nitw.ac.in",
+          "phone": "9555298015"
         }
       ]
     },
     "rules": [
-      "Use provided components to customize gripping mechanisms and control algorithms. ",
-      "Complete assembly and programming within the allotted time and pass all safety checks. "
+      "Players must strictly follow the instructions of each game , any voilation will lead to disqualification",
+      "Teamwork and fairplay are essential , no external help is allowed"
     ],
     "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/sea_climb_rope.jpg",
+    "imgsrc": "/posters25/club_sdc_games.jpg",
     "index": 31
   }
 ]
