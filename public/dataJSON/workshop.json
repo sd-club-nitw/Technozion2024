@@ -90,7 +90,7 @@
       "Each participant will get 3-5 minutes for a joint light painting session with the guest photographer."
     ],
     "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/light-painting.png",
+    "imgsrc": "/posters25/workshop_photography.jpg",
     "index": 31,
     "glink": null
   },
@@ -114,7 +114,7 @@
       "Coming Soon..."
     ],
     "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/mobile-journalism.png",
+    "imgsrc": "/posters25/workshop_mobile.jpg",
     "index": 31,
     "glink": null
   },
@@ -138,16 +138,16 @@
       "Coming Soon..."
     ],
     "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/speaker-session.png",
+    "imgsrc": "/posters25/workshop_speaker.jpg",
     "index": 31,
     "glink": null
   },
   {
-    "title": "Rocket Building Hackathon",
+    "title": "The LaunchPad",
     "name": "SEA Club",
     "total_cost": 5000,
     "overview": {
-      "main_title": "Rocket Building Hackathon",
+      "main_title": "The LaunchPad",
       "description": "In this 3D rocket building hackathon, teams from around campus will build a prototype rocket and launch it to win the competition.",
       "team_size": "Coming Soon...",
       "contact": [
@@ -163,7 +163,7 @@
       "Hardware parts will be printed prior to the final competition; assembly of electronics and hardware will take place on the day of the event."
     ],
     "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/rocket-hackathon.png",
+    "imgsrc": "/posters25/workshop_rocket.jpg",
     "index": 31,
     "glink": null
   },
