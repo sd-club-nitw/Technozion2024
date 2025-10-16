@@ -47,8 +47,6 @@ const Register = () => {
     return Array.from(map.values());
   }, [societies, clubs]);
 
-  const allEventsFromJSON = finalData.flatMap(item => item.events.map(ev => ev.displayName));
-
   const {
     register: reactRegister,
     handleSubmit,
@@ -86,12 +84,21 @@ const Register = () => {
   const [paymentScreenshot, setPaymentScreenshot] = useState(null);
   const [paymentError, setPaymentError] = useState("");
   const [idDocument, setIdDocument] = useState(null);
+  const [idDocumentError, setIdDocumentError] = useState("");
+  const [teamSizeError, setTeamSizeError] = useState("");
 
   useEffect(() => {
     try {
       reactRegister("events");
     } catch { }
   }, [reactRegister]);
+
+  // Clear team size error when team members change
+  useEffect(() => {
+    if (watchedRegistrationType === "team" && fields.length > 0) {
+      setTeamSizeError("");
+    }
+  }, [fields.length, watchedRegistrationType]);
 
   const isValidEmail = (email) => {
     if (!email || typeof email !== "string") return false;
@@ -100,7 +107,6 @@ const Register = () => {
   };
 
   const computeAmount = () => {
-    // Only charge ₹500 if email is not from NITW (one-time fee for entire team)
     if (watchedEmail && !watchedEmail.includes("@nitw.ac.in")) return 500;
     return 0;
   };
@@ -131,10 +137,15 @@ const Register = () => {
 
   const onSubmit = async (formData) => {
     try {
+      // Reset custom errors
+      setTeamSizeError("");
+      setIdDocumentError("");
+      setPaymentError("");
+
       // Validate events selection
       const eventsVal = Array.isArray(formData.events) ? formData.events : (formData.events ? [formData.events] : []);
       if (!eventsVal.length) {
-        setError("events", { type: "required", message: "Select at least one event." });
+        setError("events", { type: "required", message: "Please select at least one event to participate." });
         return;
       } else {
         clearErrors("events");
@@ -144,11 +155,11 @@ const Register = () => {
       if (formData.registrationType === "team") {
         const teamSize = 1 + (formData.teamMembers?.length || 0);
         if (teamSize > 5) {
-          alert("Maximum team size is 5 members (including you).");
+          setTeamSizeError("Maximum team size is 5 members (including you).");
           return;
         }
         if (teamSize < 2) {
-          alert("Team must have at least 2 members. Add team members or switch to individual registration.");
+          setTeamSizeError("Team must have at least 2 members. Add team members or switch to individual registration.");
           return;
         }
       }
@@ -156,9 +167,7 @@ const Register = () => {
       // College ID must be present
       const idFile = normalizeFirstFile(idDocument);
       if (!idFile) {
-        setPaymentError("");
-        setPayModalOpen(false);
-        alert("Please upload a valid College ID document before registering.");
+        setIdDocumentError("Please upload your College ID document before registering.");
         return;
       }
 
@@ -166,11 +175,9 @@ const Register = () => {
       const needsPayment = isValidEmail(watchedEmail) && !watchedEmail.includes("@nitw.ac.in");
       const payFile = normalizeFirstFile(paymentScreenshot);
       if (needsPayment && !payFile) {
-        setPaymentError("Upload payment screenshot before registering.");
+        setPaymentError("Please upload payment screenshot before registering.");
         setPayModalOpen(true);
         return;
-      } else {
-        setPaymentError("");
       }
 
       // Generate password
@@ -283,14 +290,21 @@ const Register = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Full Name (Team Leader) *</label>
+                  <label className="block text-sm font-medium mb-2">
+                    Full Name {watchedRegistrationType === "team" && "(Team Leader)"} *
+                  </label>
                   <input
                     type="text"
                     placeholder="Your full name"
                     {...reactRegister("name", { required: "Name is required" })}
                     className="w-full px-4 py-3 bg-gray rounded-lg text-white placeholder-grayishWhite/50 focus:outline-none focus:ring-2 focus:ring-cyan transition"
                   />
-                  {errors.name && <p className="text-cyan text-sm mt-1">{errors.name.message}</p>}
+                  {errors.name && (
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="text-red-400 text-sm">⚠</span>
+                      <p className="text-red-400 text-sm">{errors.name.message}</p>
+                    </div>
+                  )}
                 </div>
 
                 <div>
@@ -301,7 +315,12 @@ const Register = () => {
                     {...reactRegister("email", { required: "Email is required" })}
                     className="w-full px-4 py-3 bg-gray rounded-lg text-white placeholder-grayishWhite/50 focus:outline-none focus:ring-2 focus:ring-cyan transition"
                   />
-                  {errors.email && <p className="text-cyan text-sm mt-1">{errors.email.message}</p>}
+                  {errors.email && (
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="text-red-400 text-sm">⚠</span>
+                      <p className="text-red-400 text-sm">{errors.email.message}</p>
+                    </div>
+                  )}
                 </div>
 
                 <div>
@@ -313,7 +332,10 @@ const Register = () => {
                     className="w-full px-4 py-3 bg-gray rounded-lg text-white placeholder-grayishWhite/50 focus:outline-none focus:ring-2 focus:ring-cyan transition"
                   />
                   {errors.collegeName && (
-                    <p className="text-cyan text-sm mt-1">{errors.collegeName.message}</p>
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="text-red-400 text-sm">⚠</span>
+                      <p className="text-red-400 text-sm">{errors.collegeName.message}</p>
+                    </div>
                   )}
                 </div>
 
@@ -321,29 +343,46 @@ const Register = () => {
                 {watchedRegistrationType === "team" && (
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
-                      <label className="block text-sm font-medium">Team Members</label>
+                      <label className="block text-sm font-medium">Team Members *</label>
                       <span className="text-xs text-cyan/70">
                         {fields.length + 1} / 5 members
                       </span>
                     </div>
 
+                    {teamSizeError && (
+                      <div className="flex items-center gap-2 p-3 bg-red-500/10  rounded-lg">
+                        <span className="text-red-400 text-sm">⚠</span>
+                        <p className="text-red-400 text-sm">{teamSizeError}</p>
+                      </div>
+                    )}
+
                     {fields.map((field, index) => (
-                      <div key={field.id} className="flex gap-2">
-                        <input
-                          type="text"
-                          placeholder={`Team member ${index + 2} name`}
-                          {...reactRegister(`teamMembers.${index}.name`, {
-                            required: "Team member name is required"
-                          })}
-                          className="flex-1 px-4 py-3 bg-gray rounded-lg text-white placeholder-grayishWhite/50 focus:outline-none focus:ring-2 focus:ring-cyan transition"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => remove(index)}
-                          className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 rounded-lg transition text-red-400"
-                        >
-                          Remove
-                        </button>
+                      <div key={field.id}>
+                        <div className="flex gap-2">
+                          <input
+                            type="text"
+                            placeholder={`Team member ${index + 2} name`}
+                            {...reactRegister(`teamMembers.${index}.name`, {
+                              required: "Team member name is required"
+                            })}
+                            className="flex-1 px-4 py-3 bg-gray rounded-lg text-white placeholder-grayishWhite/50 focus:outline-none focus:ring-2 focus:ring-cyan transition"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => remove(index)}
+                            className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 rounded-lg transition text-red-400"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                        {errors.teamMembers?.[index]?.name && (
+                          <div className="flex items-center gap-2 mt-2">
+                            <span className="text-red-400 text-sm">⚠</span>
+                            <p className="text-red-400 text-sm">
+                              {errors.teamMembers[index].name.message}
+                            </p>
+                          </div>
+                        )}
                       </div>
                     ))}
 
@@ -355,10 +394,6 @@ const Register = () => {
                       >
                         + Add Team Member
                       </button>
-                    )}
-
-                    {errors.teamMembers && (
-                      <p className="text-cyan text-sm">{errors.teamMembers.message}</p>
                     )}
                   </div>
                 )}
@@ -376,13 +411,24 @@ const Register = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label className="block text-sm font-medium mb-2">Upload ID Document *</label>
+                  <label className="block text-sm font-medium mb-2">Upload College ID *</label>
                   <input
                     type="file"
                     accept="image/*,.pdf"
-                    onChange={(e) => setIdDocument(e.target.files[0])}
+                    onChange={(e) => {
+                      setIdDocument(e.target.files[0]);
+                      if (e.target.files[0]) {
+                        setIdDocumentError("");
+                      }
+                    }}
                     className="w-full text-sm text-white file:bg-cyan file:text-black file:px-4 file:py-2 rounded-lg hover:file:bg-cyanLight transition"
                   />
+                  {idDocumentError && (
+                    <div className="flex items-center gap-2 mt-2 p-3 bg-red-500/10  rounded-lg">
+                      <span className="text-red-400 text-sm">⚠</span>
+                      <p className="text-red-400 text-sm">{idDocumentError}</p>
+                    </div>
+                  )}
                 </div>
 
                 {(isValidEmail(watchedEmail) && !watchedEmail.includes("@nitw.ac.in")) && (
@@ -418,6 +464,14 @@ const Register = () => {
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium mb-3">Select Events *</label>
+                  
+                  {errors.events && (
+                    <div className="flex items-center gap-2 mb-3 p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+                      <span className="text-red-400 text-sm">⚠</span>
+                      <p className="text-red-400 text-sm">{errors.events.message}</p>
+                    </div>
+                  )}
+
                   <div className="min-h-[120px] p-4 bg-gray rounded-lg mb-4">
                     {selectedEventsState.length > 0 ? (
                       <div className="flex flex-wrap gap-2">
@@ -467,6 +521,9 @@ const Register = () => {
                                     : selectedEventsState.filter((x) => x !== eventName);
                                   setSelectedEventsState(next);
                                   setValue("events", next, { shouldValidate: true });
+                                  if (next.length > 0) {
+                                    clearErrors("events");
+                                  }
                                 }}
                                 className={`flex items-center p-2 rounded-lg cursor-pointer transition hover:bg-gray ${isSelected ? "bg-cyan/20" : "bg-black/10"}`}
                               >
@@ -483,7 +540,6 @@ const Register = () => {
                         </div>
                       </div>
                     ))}
-                    {errors.events && <p className="text-cyan text-sm mt-2">{errors.events.message}</p>}
                   </div>
                 </div>
               </div>
@@ -526,10 +582,20 @@ const Register = () => {
               <input
                 type="file"
                 accept="image/*,.pdf"
-                onChange={(e) => setPaymentScreenshot(e.target.files[0])}
+                onChange={(e) => {
+                  setPaymentScreenshot(e.target.files[0]);
+                  if (e.target.files[0]) {
+                    setPaymentError("");
+                  }
+                }}
                 className="w-full text-sm text-white file:bg-cyan file:text-black file:px-4 file:py-2 rounded-lg hover:file:bg-cyanLight transition"
               />
-              {paymentError && <p className="text-red-400 mt-2 text-sm">{paymentError}</p>}
+              {paymentError && (
+                <div className="flex items-center gap-2 mt-3 p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+                  <span className="text-red-400 text-sm">⚠</span>
+                  <p className="text-red-400 text-sm">{paymentError}</p>
+                </div>
+              )}
             </div>
 
             <div className="flex justify-end gap-3 mt-4">
