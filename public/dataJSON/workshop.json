@@ -65,7 +65,7 @@
       "Coming Soon..."
     ],
     "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/motion-capture.png",
+    "imgsrc": "/posters25/workshop_motion.jpg",
     "index": 31,
     "glink": null
   },
@@ -90,7 +90,7 @@
       "Each participant will get 3-5 minutes for a joint light painting session with the guest photographer."
     ],
     "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/light-painting.png",
+    "imgsrc": "/posters25/workshop_photography.jpg",
     "index": 31,
     "glink": null
   },
@@ -114,7 +114,7 @@
       "Coming Soon..."
     ],
     "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/mobile-journalism.png",
+    "imgsrc": "/posters25/workshop_mobile.jpg",
     "index": 31,
     "glink": null
   },
@@ -138,16 +138,16 @@
       "Coming Soon..."
     ],
     "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/speaker-session.png",
+    "imgsrc": "/posters25/workshop_speaker.jpg",
     "index": 31,
     "glink": null
   },
   {
-    "title": "Rocket Building Hackathon",
+    "title": "The LaunchPad",
     "name": "SEA Club",
-    "total_cost": 0,
+    "total_cost": 5000,
     "overview": {
-      "main_title": "Rocket Building Hackathon",
+      "main_title": "The LaunchPad",
       "description": "In this 3D rocket building hackathon, teams from around campus will build a prototype rocket and launch it to win the competition.",
       "team_size": "Coming Soon...",
       "contact": [
@@ -163,7 +163,29 @@
       "Hardware parts will be printed prior to the final competition; assembly of electronics and hardware will take place on the day of the event."
     ],
     "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/rocket-hackathon.png",
+    "imgsrc": "/posters25/workshop_rocket.jpg",
+    "index": 31,
+    "glink": null
+  },
+  {
+    "title": "Data Alchemy",
+    "name": "MME Society",
+    "total_cost": 3000,
+    "overview": {
+      "main_title": "Data Alchemy",
+      "description": "A Hands-on session to explore the horizons AI/ML in problem solving .Quiz will be taken after the session on basis of which top 3 will be provided goodies.",
+      "team_size": "Coming Soon...",
+      "contact": [
+        {
+          "name": "Gudimella krishi kumar",
+          "email": "gk23mmb0a12@student.nitw.ac.in",
+          "phone": "7396351458"
+        }
+      ]
+    },
+   
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/workshop_dataAlchemy.jpg",
     "index": 31,
     "glink": null
   }

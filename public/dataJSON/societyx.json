@@ -5,7 +5,7 @@
       {
         "title": "Stone Age Prison Break",
         "name": "Chemical Engineering Society",
-        "total_cost": 0,
+        "total_cost": 3000,
         "overview": {
           "main_title": "Stone Age Prison Break",
           "description": "Stone Age Prison Break is an escape-room where teams solve science, chemistry, and logic puzzles to free Chrome from a stone prison. The journey ends with NaOH as the final 'key' to escape.",
@@ -29,7 +29,7 @@
       {
         "title": "DEA Audit",
         "name": "Chemical Engineering Society",
-        "total_cost": 0,
+        "total_cost": 3000,
         "overview": {
           "main_title": "DEA Audit",
           "description": "DEA Audit is an investigative simulation where participants analyze logs and evidence after a chemical plant explosion to uncover whether the disaster resulted from negligence or sabotage.",
@@ -124,7 +124,7 @@
           "The round continues until only one player remains."
         ],
         "judging_criteria": "Coming Soon....",
-        "imgsrc": "/posters25/society_1000_imgsrc.jpg",
+        "imgsrc": "/posters25/society_23_imgsrc.png",
         "index": 10
       }
     ]
@@ -180,36 +180,12 @@
         "imgsrc": "/posters25/society_16_imgsrc.jpg",
         "index": 6
       },
-	  {
-        "title": "Mind Dominos",
+	    {
+        "title": "bugbusters pyFix challenge",
         "name": "Mathematical Society",
-        "total_cost": 0,
+        "total_cost": 4000,
         "overview": {
-          "main_title": "Mind Dominos",
-          "description": "A multi-round contest of logic, speed, and strategy. From spotting errors to solving chained puzzles and a rapid-fire finale, the sharpest minds rise to the top.",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Mehvish",
-              "email": "km24mac1r16@student.nitw.ac.in",
-              "phone": "7219129324"
-            }
-          ]
-        },
-        "rules": [
-          "Teams must attempt all rounds in order.",
-          "Each correct answer unlocks the next stage."
-        ],
-        "judging_criteria": "Coming Soon....",
-        "imgsrc": "/posters25/society_13_imgsrc.jpg",
-        "index": 6
-      },
-	  {
-        "title": "Python Debug",
-        "name": "Mathematical Society",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "Python Debug",
+          "main_title": "bugbusters pyFix challenge",
           "description": "A 1-hour coding faceoff to spot and fix errors. Solve 4 problems and climb to the top with precision and speed.",
           "team_size": "Coming Soon...",
           "contact": [
@@ -255,7 +231,7 @@
           "Use additional software-generated hints to uncover the case plot."
         ],
         "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_2_imgsrc.jpg",
+        "imgsrc": "/posters25/society_2_imgsrc.png",
         "index": 16
       },
       {
@@ -303,7 +279,7 @@
           "Showcase creativity, efficiency, and precision in your designs."
         ],
         "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_4_imgsrc.jpg",
+        "imgsrc": "/posters25/society_4_imgsrc.png",
         "index": 19
       }
     ]
@@ -418,8 +394,7 @@
         "total_cost": 0,
         "overview": {
           "main_title": "Dance O'Watt",
-          "description": "This event is a team-based interactive dance experience.",
-          "team_size": "3",
+          "description": "A fun dance game on energy tiles where every step follows the on-screen moves and generates electricity. Play, compete, and power up while you dance!",
           "contact": [
             {
               "name": "Adi Pranav",
@@ -564,6 +539,104 @@
     ]
   },
   {
+    "societyName": "Biotechnology Society",
+    "events": [
+      {
+        "title": "Microsope Hunt",
+        "name": "Biotechnology Society",
+        "overview": {
+          "main_title": "Microscope Hunt",
+          "description": "Join the Microscope Treasure Hunt — a fun, hands-on challenge where teams explore microscope slides like onion peel, pollen grains, sugar crystals, and hair to uncover hidden clues visible only under the lens. Each clue (a letter, number, or symbol) leads you closer to the final code and the treasure! Earn bonus points for identifying samples or solving riddles. The fastest team wins exciting goodies, certificates, and the title of “Microscope Master.”Join the Microscope Treasure Hunt — a fun, hands-on challenge where teams explore microscope slides like onion peel, pollen grains, sugar crystals, and hair to uncover hidden clues visible only under the lens. Each clue (a letter, number, or symbol) leads you closer to the final code and the treasure! Earn bonus points for identifying samples or solving riddles. The fastest team wins exciting goodies, certificates, and the title of “Microscope Master.”",
+          "team_size": "Coming Soon...",
+          "contact": [
+            {
+              "name": "Akhil",
+              "email": "vs23btb0a04@student.nitw.ac.in",
+              "phone": "7977705312"
+            }
+          ]
+        },
+        "rules": [
+          " ⁠Handle microscopes carefully — do not adjust lenses unnecessarily.",
+          "Teams must move to the next station only when instructed or after finding the clue."
+        ],
+        "judging_criteria": "Coming Soon...",
+        "imgsrc": "/posters25/society_24_imgsrc.png",
+        "index": 30
+      },
+      {
+        "title": "Poster Presentation",
+        "name": "Biotechnology Society",
+        "total_cost": 2000,
+        "overview": {
+          "main_title": "Poster Presentation",
+          "description": "Visit our Research Poster Showcase to explore fascinating posters on research studies, projects, and case studies. Participants can simply share a soft copy of their posters, and we’ll take care of printing and displaying them at the venue. A perfect platform to share ideas, inspire others, and celebrate research creativity!",
+          "team_size": "Coming Soon...",
+          "contact": [
+            {
+              "name": "Maharshi",
+              "email": "mm23btb0a57@student.nitw.ac.in",
+              "phone": "8978647520"
+            }
+          ]
+        },
+        "rules": [
+          "Posters must be original, biotechnology-related, and properly referenced if external sources are used.",
+          "Entries can be individual or in teams of two, and the poster size must not exceed A2 (42 cm × 59.4 cm)."
+        ],
+        "judging_criteria": "Coming Soon...",
+        "imgsrc": "/posters25/society_25_imgsrc.png",
+        "index": 30
+      },
+      {
+        "title": "Immunofight",
+        "name": "Biotechnology Society",
+        "overview": {
+          "main_title": "Immunofight",
+          "description": "Immunofight is an action-packed, team-based challenge that brings biology to life! In this thrilling tournament, the Pathogen team attacks while the Immune System team defends—using colored dodgeballs to represent their roles. Teams of 6–8 will combine strategy, speed, and teamwork in an intense face-off to emerge as the ultimate Biotech Champions of Technozion!",
+          "team_size": "Coming Soon...",
+          "contact": [
+            {
+              "name": "Yashaswini",
+              "email": "vy23btb0f02@student.nitw.ac.in",
+              "phone": "8074371391"
+            }
+          ]
+        },
+        "rules": [
+          "Two Teams, Two Roles: Choose your side – the relentless Immune System or the crafty Pathogen.",
+          "Immune System's Goal: Eliminate all Pathogens by hitting them with foam 'antibody' balls. Pathogen's Goal: Survive by dodging! Catch a ball to eliminate the thrower. Answer biotech trivia questions to revive your fallen teammates."
+        ],
+        "judging_criteria": "Coming Soon...",
+        "imgsrc": "/posters25/society_26_imgsrc.png",
+        "index": 30
+      },
+      {
+        "title": "Dusk till Dawn",
+        "name": "Biotechnology Society",
+        "overview": {
+          "main_title": "Dusk till Dawn",
+          "description": "Step into the shoes of a forensic investigator in this thrilling, chemistry-driven challenge! Teams will race against time to uncover hidden evidence using luminol spray, revealing glowing clues that vanish in under a minute. Sharpen your observation, teamwork, and problem-solving skills as you piece together the mystery and identify the culprit before the truth fades away. A perfect fusion of science, suspense, and strategy!",
+          "team_size": "",
+          "contact": [
+            {
+              "name": "Suraj",
+              "email": "my22btb0a41@student.nitw.ac.in",
+              "phone": "8978471479"
+            }
+          ]
+        },
+        "rules": [
+          "Teams have limited time to observe glowing clues revealed by luminol and must quickly memorize or sketch them before they fade.",
+          "After the glow disappears, teams collaborate to analyze clues and identify the culprit within the allotted time." 
+        ],
+        "judging_criteria": "Coming Soon...",
+        "imgsrc": "/posters25/society_27_imgsrc.png",
+        "index": 30
+      }
+    ]
+  },
+  {
     "societyName": "Civil Engineering Association",
     "events": [
       {
@@ -612,6 +685,59 @@
         ],
         "judging_criteria": "Coming Soon...",
         "imgsrc": "/posters25/society_20_imgsrc.png",
+        "index": 30
+      }
+    ]
+  },
+  {
+    "societyName": "Physics Society",
+    "events": [
+      {
+        "title": "Model mania",
+        "name": "Physics Society",
+        "total_cost": 5000,
+        "overview": {
+          "main_title": "Model mania",
+          "description": "Participants have to present their model and will be judged on the basis of their model and presentation.",
+          "team_size": "Coming Soon...",
+          "contact": [
+            {
+              "name": "Teja",
+              "email": "gt23phc1r53@student.nitw.ac.in",
+              "phone": "9700401490"
+            }
+          ]
+        },
+        "rules": [
+          "Participants have to present their model and will be judged on the basis of their model and presentation.",
+          "The model must be original and must be based on the theme of the event."
+        ],
+        "judging_criteria": "Coming Soon...",
+        "imgsrc": "/posters25/society_phy_1_imgsrc.jpg",
+        "index": 30
+      },
+      {
+        "title": "Starlight Sparkathon",
+        "name": "Physics Society",
+        "total_cost": 9000,
+        "overview": {
+          "main_title": "Starlight Sparkathon",
+          "description": "Sparkathon is a platform for young innovators to showcase their creativity and research in physics. Participants submit their project ideas via Google Form, after which the top 10 are shortlisted to present their models. From these, the 3 most innovative and impactful projects will be crowned winners. It’s an exciting opportunity to explore practical physics applications and spark new ideas!",
+          "team_size": "Coming Soon...",
+          "contact": [
+            {
+              "name": "Stains",
+              "email": "ks22phe0016@student.nitw.ac.in",
+              "phone": "8328391550"
+            }
+          ]
+        },
+        "rules": [
+          "Participants must submit original project ideas related to physics through the provided Google Form.",
+          "Shortlisted finalists must present their project models within the given time limit for evaluation."
+        ],
+        "judging_criteria": "Coming Soon...",
+        "imgsrc": "/posters25/society_phy_2_imgsrc.jpg",
         "index": 30
       }
     ]
