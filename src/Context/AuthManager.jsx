@@ -100,10 +100,10 @@ const AuthProvider = ({ children }) => {
       accommodation: registrationData.accommodation || false,
       events: registrationData.events || [],
       teamMembers: registrationData.registrationType === "team" ? (registrationData.teamMembers || []) : [],
+      registrationType: registrationData.registrationType,
       idDocumentUrl,
       paymentScreenshotUrl,
     };
-
     // Send JSON with URLs to backend
     const res = await fetch(`${url}/api/auth/register`, {
       method: "POST",
