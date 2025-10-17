@@ -228,7 +228,7 @@ const Register = () => {
       };
 
       console.log("Registering with data", authData);
-      authRegister(authData);
+      // authRegister(authData);
 
       setPayModalOpen(false);
     } catch (err) {
