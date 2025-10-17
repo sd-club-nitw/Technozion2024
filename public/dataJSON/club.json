@@ -1,5 +1,29 @@
 [
   {
+    "title": "SDC GAMES",
+    "name": "Software Development Club",
+    "total_cost": 25000,
+    "overview": {
+      "main_title": "SDC GAMES",
+      "description": "SDC Games is a thrilling survival themed event inspired by Squid game and Alice in Borderland. Players face intense. brain-bending challenges that test strategy,teamwork and quick decisions - delivering non stop excitement and adrenaline. ",
+      "team_size": "Coming Soon...",
+      "contact": [
+        {
+          "name": "Prakhar Gupta",
+          "email": "pg23csb0b24@student.nitw.ac.in",
+          "phone": "9555298015"
+        }
+      ]
+    },
+    "rules": [
+      "Players must strictly follow the instructions of each game , any voilation will lead to disqualification",
+      "Teamwork and fairplay are essential , no external help is allowed"
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_sdc_games.png",
+    "index": 31
+  },
+  {
     "title": "SharkTank 2.0",
     "name": "Research and Development Club",
     "total_cost": 10000,
@@ -308,30 +332,6 @@
     ],
     "judging_criteria": "Coming Soon...",
     "imgsrc": "/posters25/club_sky_scout.jpg",
-    "index": 31
-  },
-  {
-    "title": "SDC GAMES",
-    "name": "Software Development Club",
-    "total_cost": 25000,
-    "overview": {
-      "main_title": "SDC GAMES",
-      "description": "SDC Games is a thrilling survival themed event inspired by Squid game and Alice in Borderland. Players face intense. brain-bending challenges that test strategy,teamwork and quick decisions - delivering non stop excitement and adrenaline. ",
-      "team_size": "Coming Soon...",
-      "contact": [
-        {
-          "name": "Prakhar Gupta",
-          "email": "pg23csb0b24@student.nitw.ac.in",
-          "phone": "9555298015"
-        }
-      ]
-    },
-    "rules": [
-      "Players must strictly follow the instructions of each game , any voilation will lead to disqualification",
-      "Teamwork and fairplay are essential , no external help is allowed"
-    ],
-    "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/club_sdc_games.png",
     "index": 31
   }
 ]
