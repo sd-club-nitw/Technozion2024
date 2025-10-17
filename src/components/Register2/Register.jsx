@@ -205,7 +205,7 @@ const Register = () => {
   };
 
   return (
-    <div className="h-[100vh] bg-black text-white p-4 md:p-8 overflow-y-auto">
+<div className="h-[100vh] bg-black text-white px-4 md:px-8 pb-4 md:pb-8 pt-24 md:pt-32 overflow-y-auto">  
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-cyan">
