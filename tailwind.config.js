@@ -14,11 +14,7 @@ module.exports = {
         cyanDark: "#008b8b",
         accent: "#00e0e0",
       },
-      fontFamily: {
-        oswald: ["Oswald", "sans-serif"],
-        mont: ["Montserrat", "sans-serif"],
-        futura: ["Futura", "sans-serif"],
-      },
+    
       fontSize: {
         xs: "0.64rem",
         sm: "0.8rem",

@@ -1,11 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
-/* Global reset */
-* {
-  font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-}
 
 /* -------------------------
    Heading / heading image

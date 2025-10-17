@@ -2,12 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap');
+@font-face {
+  font-family: 'Stark';
+  src: url('../public/fonts/Stark.otf') format('opentype');
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: 'tecknaf';
+  src: url('../public/fonts/tecknaf.otf') format('opentype');
+  font-weight: lighter;
+}
 
 html{
     scroll-behavior: smooth;
 }
 
 body{
-    font-family: 'Golos Text', sans-serif;
+    font-family: 'tecknaf', 'monospace';
+    letter-spacing: 2px; /* adjust as needed */
 }

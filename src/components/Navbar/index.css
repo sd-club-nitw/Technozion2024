@@ -3,8 +3,6 @@
 	z-index: 100;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 .active {
 	color: white;
@@ -43,7 +41,6 @@ nav .reg-login a {
 	border-radius: 5rem;
 	font-optical-sizing: auto;
 	font-size: large;
-	font-family: "Raleway", sans-serif;
 	font-weight: 500;
 	font-style: normal;
 }
@@ -72,7 +69,6 @@ nav ul li {
 nav ul li a {
 	display: block;
 	font-weight: 500;
-	font-family: "Raleway", sans-serif; /* Set Raleway font */
 	font-optical-sizing: auto;
 	font-style: normal;
 	font-size: 105%; /* Default font size */
@@ -111,7 +107,6 @@ nav ul li button {
 	border-radius: 0.5rem;
 	white-space: nowrap;
 	background-color: #031f1b;
-	font-family: "Raleway", sans-serif; /* Set Raleway font */
 	font-optical-sizing: auto;
 	font-weight: 500;
 	font-style: normal;
@@ -221,7 +216,6 @@ nav ul li {
 nav ul li a {
 	display: block;
 	font-weight: 500;
-	font-family: "Raleway", sans-serif; /* Set Raleway font */
 	font-optical-sizing: auto;
 	font-style: normal;
 	font-size: 105%; /* Default font size */
