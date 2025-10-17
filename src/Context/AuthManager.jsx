@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const url = window.localtion.origin // TODO: change this to env variable
+  const url = "http://localhost:5000" // TODO: change this to env variable
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user_info')
@@ -77,7 +77,7 @@ const AuthProvider = ({ children }) => {
     // Upload Payment Screenshot if needed
     let paymentScreenshotUrl = null;
     const emailDomain = registrationData.email?.trim().toLowerCase().split("@")[1];
-    if (emailDomain !== "nitw.ac.in") {
+    if (!emailDomain.endsWith("nitw.ac.in")) {
       if (registrationData.paymentScreenshot) {
         const paymentFile = Array.isArray(registrationData.paymentScreenshot)
           ? registrationData.paymentScreenshot[0]
@@ -89,6 +89,7 @@ const AuthProvider = ({ children }) => {
         return;
       }
     }
+    
 
     // Prepare payload for backend
     const payload = {
@@ -98,6 +99,7 @@ const AuthProvider = ({ children }) => {
       collegeName: registrationData.collegeName || "",
       accommodation: registrationData.accommodation || false,
       events: registrationData.events || [],
+      teamMembers: registrationData.registrationType === "team" ? (registrationData.teamMembers || []) : [],
       idDocumentUrl,
       paymentScreenshotUrl,
     };
