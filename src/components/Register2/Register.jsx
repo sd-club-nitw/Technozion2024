@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { useAuth } from "../../Context/AuthManager";
 
 const Register = () => {
@@ -47,8 +47,6 @@ const Register = () => {
     return Array.from(map.values());
   }, [societies, clubs]);
 
-  const allEventsFromJSON = finalData.flatMap(item => item.events.map(ev => ev.displayName));
-
   const {
     register: reactRegister,
     handleSubmit,
@@ -56,30 +54,51 @@ const Register = () => {
     setValue,
     setError,
     clearErrors,
+    control,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      registrationType: "individual",
+      teamMembers: [],
+    }
+  });
 
-  // Keep form `events` and local selectedEventsState in sync
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "teamMembers"
+  });
+
   const watchedEvents = watch("events") || [];
+  const watchedEmail = watch("email") || "";
+  const watchedAccommodation = watch("accommodation") || false;
+  const watchedRegistrationType = watch("registrationType") || "individual";
+
   useEffect(() => {
     if (watchedEvents && watchedEvents.length) {
       setSelectedEventsState(Array.isArray(watchedEvents) ? watchedEvents : [watchedEvents]);
     }
   }, [watchedEvents]);
 
-  const watchedEmail = watch("email") || "";
-  const watchedAccommodation = watch("accommodation") || false;
   const [selectedEventsState, setSelectedEventsState] = useState([]);
   const [payModalOpen, setPayModalOpen] = useState(false);
   const [paymentScreenshot, setPaymentScreenshot] = useState(null);
   const [paymentError, setPaymentError] = useState("");
   const [idDocument, setIdDocument] = useState(null);
+  const [idDocumentError, setIdDocumentError] = useState("");
+  const [teamSizeError, setTeamSizeError] = useState("");
 
   useEffect(() => {
     try {
       reactRegister("events");
     } catch { }
   }, [reactRegister]);
+
+  // Clear team size error when team members change
+  useEffect(() => {
+    if (watchedRegistrationType === "team" && fields.length > 0) {
+      setTeamSizeError("");
+    }
+  }, [fields.length, watchedRegistrationType]);
 
   const isValidEmail = (email) => {
     if (!email || typeof email !== "string") return false;
@@ -88,10 +107,8 @@ const Register = () => {
   };
 
   const computeAmount = () => {
-    let amt = 0;
-    if (watchedAccommodation) amt += 100;
-    if (watchedEmail && !watchedEmail.includes("@nitw.ac.in")) amt += 500;
-    return amt;
+    if (watchedEmail && !watchedEmail.includes("nitw.ac.in")) return 500;
+    return 0;
   };
 
   const normalizeFirstFile = (maybeFile) => {
@@ -101,10 +118,9 @@ const Register = () => {
     return undefined;
   };
 
-  // Cloudinary helper (fill YOUR_CLOUD_NAME and ensure preset exists)
   const uploadToCloudinary = async (file) => {
-    const cloudName = "dpjrslhwg"; // your Cloudinary cloud name
-    const uploadPreset = "technozian_upload"; // the preset you just created
+    const cloudName = "dpjrslhwg";
+    const uploadPreset = "technozian_upload";
 
     const formData = new FormData();
     formData.append("file", file);
@@ -116,72 +132,69 @@ const Register = () => {
     });
 
     const data = await res.json();
-    return data.secure_url; // this is the uploaded file URL
-  }; // Uses unsigned client-side upload with upload_preset as required by Cloudinary docs [web:4][web:2][web:3]
+    return data.secure_url;
+  };
 
   const onSubmit = async (formData) => {
     try {
+      // Reset custom errors
+      setTeamSizeError("");
+      setIdDocumentError("");
+      setPaymentError("");
+
       // Validate events selection
       const eventsVal = Array.isArray(formData.events) ? formData.events : (formData.events ? [formData.events] : []);
       if (!eventsVal.length) {
-        setError("events", { type: "required", message: "Select at least one event." });
+        setError("events", { type: "required", message: "Please select at least one event to participate." });
         return;
       } else {
         clearErrors("events");
       }
 
+      // Validate team registration
+      if (formData.registrationType === "team") {
+        const teamSize = 1 + (formData.teamMembers?.length || 0);
+        if (teamSize > 5) {
+          setTeamSizeError("Maximum team size is 5 members (including you).");
+          return;
+        }
+        if (teamSize < 2) {
+          setTeamSizeError("Team must have at least 2 members. Add team members or switch to individual registration.");
+          return;
+        }
+      }
+
       // College ID must be present
       const idFile = normalizeFirstFile(idDocument);
       if (!idFile) {
-        setPaymentError("");
-        setPayModalOpen(false);
-        alert("Please upload a valid College ID document before registering.");
+        setIdDocumentError("Please upload your College ID document before registering.");
         return;
       }
 
-      // Payment screenshot required if accommodation OR email not nitw.ac.in
-      const needsPayment = Boolean(watchedAccommodation) || (isValidEmail(watchedEmail) && !watchedEmail.includes("@nitw.ac.in"));
+      // Payment screenshot required if email not nitw.ac.in
+      const needsPayment = isValidEmail(watchedEmail) && !watchedEmail.includes("nitw.ac.in");
       const payFile = normalizeFirstFile(paymentScreenshot);
       if (needsPayment && !payFile) {
-        setPaymentError("Upload payment screenshot before registering.");
+        setPaymentError("Please upload payment screenshot before registering.");
         setPayModalOpen(true);
         return;
-      } else {
-        setPaymentError("");
       }
 
       // Generate password
       const rand8 = Math.floor(10000000 + Math.random() * 90000000);
       const password = String(rand8);
 
-      // Upload files to Cloudinary
-      const idDocumentUrl = await uploadToCloudinary(idFile); // Returns secure_url which should be sent to backend [web:4]
-      let paymentScreenshotUrl = null;
-      if (needsPayment && payFile) {
-        paymentScreenshotUrl = await uploadToCloudinary(payFile); // Same unsigned upload flow [web:4]
-      }
 
-      // Build backend payload
-      const payload = {
-        name: formData.name || "",
-        email: (formData.email || "").trim(),
-        password,
-        collegeName: formData.collegeName || "",
-        accommodation: !!formData.accommodation,
-        events: eventsVal,
-        idDocumentUrl: idDocumentUrl || null,
-        paymentScreenshotUrl: paymentScreenshotUrl || null,
-      };
 
-      
-
-      // Preserve original behavior: call authRegister with original data shape
+      // Preserve original behavior
       const authData = {
         ...formData,
         password,
         idDocument: idFile,
         paymentScreenshot: payFile || undefined,
       };
+
+      console.log("Registering with data", authData);
       authRegister(authData);
 
       setPayModalOpen(false);
@@ -193,20 +206,20 @@ const Register = () => {
 
   return (
     <div className="h-[100vh] bg-black text-white p-4 md:p-8 overflow-y-auto">
-      <div className="max-w-7xl mx-auto mt-14">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-cyan">
             Registration for Technozion 2025
           </h1>
           <h1 className="text-lg font-bold mb-4 text-cyan/80">
-            Open to all years and branches from IITs, NITs, IIITs, and leading institutes.
+            Open to all years and branches from IITs, NITs, IIITs, and leading institutes.
           </h1>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 text-sm">
             <div className="px-4 py-2 bg-gray rounded-lg">
               Registration fee: <span className="font-semibold text-cyan">₹500</span>
             </div>
             <div className="px-4 py-2 bg-gray rounded-lg">
-              Accommodation: <span className="font-semibold text-cyan">₹100/day</span>
+              Team size: <span className="font-semibold text-cyan">Up to 5 members</span>
             </div>
           </div>
         </div>
@@ -218,15 +231,47 @@ const Register = () => {
                 Personal Info
               </h2>
               <div className="space-y-6">
+                {/* Registration Type */}
                 <div>
-                  <label className="block text-sm font-medium mb-2">Full Name *</label>
+                  <label className="block text-sm font-medium mb-3">Registration Type *</label>
+                  <div className="flex gap-6">
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        value="individual"
+                        {...reactRegister("registrationType")}
+                        className="h-4 w-4 accent-cyan"
+                      />
+                      <span className="text-sm">Individual</span>
+                    </label>
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        value="team"
+                        {...reactRegister("registrationType")}
+                        className="h-4 w-4 accent-cyan"
+                      />
+                      <span className="text-sm">Team (up to 5)</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">
+                    Full Name {watchedRegistrationType === "team" && "(Team Leader)"} *
+                  </label>
                   <input
                     type="text"
                     placeholder="Your full name"
                     {...reactRegister("name", { required: "Name is required" })}
                     className="w-full px-4 py-3 bg-gray rounded-lg text-white placeholder-grayishWhite/50 focus:outline-none focus:ring-2 focus:ring-cyan transition"
                   />
-                  {errors.name && <p className="text-cyan text-sm mt-1">{errors.name.message}</p>}
+                  {errors.name && (
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="text-red-400 text-sm">⚠</span>
+                      <p className="text-red-400 text-sm">{errors.name.message}</p>
+                    </div>
+                  )}
                 </div>
 
                 <div>
@@ -237,7 +282,12 @@ const Register = () => {
                     {...reactRegister("email", { required: "Email is required" })}
                     className="w-full px-4 py-3 bg-gray rounded-lg text-white placeholder-grayishWhite/50 focus:outline-none focus:ring-2 focus:ring-cyan transition"
                   />
-                  {errors.email && <p className="text-cyan text-sm mt-1">{errors.email.message}</p>}
+                  {errors.email && (
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="text-red-400 text-sm">⚠</span>
+                      <p className="text-red-400 text-sm">{errors.email.message}</p>
+                    </div>
+                  )}
                 </div>
 
                 <div>
@@ -249,9 +299,71 @@ const Register = () => {
                     className="w-full px-4 py-3 bg-gray rounded-lg text-white placeholder-grayishWhite/50 focus:outline-none focus:ring-2 focus:ring-cyan transition"
                   />
                   {errors.collegeName && (
-                    <p className="text-cyan text-sm mt-1">{errors.collegeName.message}</p>
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="text-red-400 text-sm">⚠</span>
+                      <p className="text-red-400 text-sm">{errors.collegeName.message}</p>
+                    </div>
                   )}
                 </div>
+
+                {/* Team Members Fields */}
+                {watchedRegistrationType === "team" && (
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <label className="block text-sm font-medium">Team Members *</label>
+                      <span className="text-xs text-cyan/70">
+                        {fields.length + 1} / 5 members
+                      </span>
+                    </div>
+
+                    {teamSizeError && (
+                      <div className="flex items-center gap-2 p-3 bg-red-500/10  rounded-lg">
+                        <span className="text-red-400 text-sm">⚠</span>
+                        <p className="text-red-400 text-sm">{teamSizeError}</p>
+                      </div>
+                    )}
+
+                    {fields.map((field, index) => (
+                      <div key={field.id}>
+                        <div className="flex gap-2">
+                          <input
+                            type="text"
+                            placeholder={`Team member ${index + 2} name`}
+                            {...reactRegister(`teamMembers.${index}.name`, {
+                              required: "Team member name is required"
+                            })}
+                            className="flex-1 px-4 py-3 bg-gray rounded-lg text-white placeholder-grayishWhite/50 focus:outline-none focus:ring-2 focus:ring-cyan transition"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => remove(index)}
+                            className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 rounded-lg transition text-red-400"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                        {errors.teamMembers?.[index]?.name && (
+                          <div className="flex items-center gap-2 mt-2">
+                            <span className="text-red-400 text-sm">⚠</span>
+                            <p className="text-red-400 text-sm">
+                              {errors.teamMembers[index].name.message}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+
+                    {fields.length < 4 && (
+                      <button
+                        type="button"
+                        onClick={() => append({ name: "" })}
+                        className="w-full px-4 py-3 bg-cyan/10 hover:bg-cyan/20 rounded-lg transition font-medium text-cyan"
+                      >
+                        + Add Team Member
+                      </button>
+                    )}
+                  </div>
+                )}
 
                 <div className="flex items-center space-x-3 p-4 bg-gray rounded-lg">
                   <input
@@ -266,26 +378,42 @@ const Register = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label className="block text-sm font-medium mb-2">Upload ID Document *</label>
+                  <label className="block text-sm font-medium mb-2">Upload College ID *</label>
                   <input
                     type="file"
                     accept="image/*,.pdf"
-                    onChange={(e) => setIdDocument(e.target.files[0])}
+                    onChange={(e) => {
+                      setIdDocument(e.target.files[0]);
+                      if (e.target.files[0]) {
+                        setIdDocumentError("");
+                      }
+                    }}
                     className="w-full text-sm text-white file:bg-cyan file:text-black file:px-4 file:py-2 rounded-lg hover:file:bg-cyanLight transition"
                   />
+                  {idDocumentError && (
+                    <div className="flex items-center gap-2 mt-2 p-3 bg-red-500/10  rounded-lg">
+                      <span className="text-red-400 text-sm">⚠</span>
+                      <p className="text-red-400 text-sm">{idDocumentError}</p>
+                    </div>
+                  )}
                 </div>
 
-                {((isValidEmail(watchedEmail) && !watchedEmail.includes("@nitw.ac.in")) || watchedAccommodation ) && (
+                {(isValidEmail(watchedEmail) && !watchedEmail.includes("nitw.ac.in")) && (
                   <div className="pt-6">
                     <div className="bg-gray rounded-lg p-4 mb-4">
                       <div className="flex justify-between items-center mb-3">
-                        <span className="text-sm font-medium">Total</span>
+                        <span className="text-sm font-medium">Registration Fee</span>
                         <span className="text-xl font-bold text-cyan">₹{computeAmount()}</span>
                       </div>
+                      {watchedRegistrationType === "team" && (
+                        <p className="text-xs text-cyan/70 mb-3">
+                          One-time payment for entire team
+                        </p>
+                      )}
                       <button
                         type="button"
                         onClick={() => setPayModalOpen(true)}
-                        className="w-full px-4 py-3 bg-black/65 text-black rounded-lg hover:bg-black/30 hover:text-black transition font-medium"
+                        className="w-full px-4 py-3 bg-cyan/20 text-white rounded-lg hover:bg-cyan/30 transition font-medium"
                       >
                         Pay & Upload Screenshot
                       </button>
@@ -303,13 +431,21 @@ const Register = () => {
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium mb-3">Select Events *</label>
+                  
+                  {errors.events && (
+                    <div className="flex items-center gap-2 mb-3 p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+                      <span className="text-red-400 text-sm">⚠</span>
+                      <p className="text-red-400 text-sm">{errors.events.message}</p>
+                    </div>
+                  )}
+
                   <div className="min-h-[120px] p-4 bg-gray rounded-lg mb-4">
                     {selectedEventsState.length > 0 ? (
                       <div className="flex flex-wrap gap-2">
                         {selectedEventsState.map((event, i) => (
                           <span
                             key={i}
-                            className="inline-flex items-center px-3 py-1 bg-black/20 text-sm rounded-full"
+                            className="inline-flex items-center px-3 py-1 bg-cyan/20 text-sm rounded-full"
                           >
                             {event}
                             <button
@@ -319,7 +455,7 @@ const Register = () => {
                                 setSelectedEventsState(next);
                                 setValue("events", next, { shouldValidate: true });
                               }}
-                              className="ml-2 text-black hover:text-cyanDark"
+                              className="ml-2 text-white hover:text-cyan"
                             >
                               ×
                             </button>
@@ -327,7 +463,7 @@ const Register = () => {
                         ))}
                       </div>
                     ) : (
-                      <div className="text-gray text-sm text-center">
+                      <div className="text-grayishWhite/50 text-sm text-center">
                         No events selected yet
                       </div>
                     )}
@@ -346,12 +482,15 @@ const Register = () => {
                               <label
                                 key={i}
                                 onClick={(e) => {
-                                  e.preventDefault(); // prevent default focus
+                                  e.preventDefault();
                                   const next = !isSelected
                                     ? [...selectedEventsState, eventName]
                                     : selectedEventsState.filter((x) => x !== eventName);
                                   setSelectedEventsState(next);
                                   setValue("events", next, { shouldValidate: true });
+                                  if (next.length > 0) {
+                                    clearErrors("events");
+                                  }
                                 }}
                                 className={`flex items-center p-2 rounded-lg cursor-pointer transition hover:bg-gray ${isSelected ? "bg-cyan/20" : "bg-black/10"}`}
                               >
@@ -368,7 +507,6 @@ const Register = () => {
                         </div>
                       </div>
                     ))}
-                    {errors.events && <p className="text-cyan text-sm mt-2">{errors.events.message}</p>}
                   </div>
                 </div>
               </div>
@@ -378,15 +516,12 @@ const Register = () => {
           <div className="mt-8 text-center">
             <button
               type="submit"
-              className="px-8 py-4 bg-slate-800 rounded-xl hover:bg-indigo-800 transition font-semibold text-lg shadow-lg  transform hover:-translate-y-0.5"
-              onClick={handleSubmit(onSubmit)}
+              className="px-8 py-4 bg-cyan/20 rounded-xl hover:bg-cyan/30 transition font-semibold text-lg shadow-lg hover:shadow-cyan/30 transform hover:-translate-y-0.5"
             >
               Complete Registration
             </button>
           </div>
         </form>
-        <br />
-        <br />
       </div>
 
       {payModalOpen && (
@@ -403,28 +538,43 @@ const Register = () => {
               <p>IFSC: <span className="font-semibold">SBIN0020149</span></p>
               <p>Bank: <span className="font-semibold">SBI</span></p>
             </div>
+             {watchedRegistrationType === "team" && (
+                <p className="text-cyan/80 mt-3 pt-3 border-t border-cyan/30">
+                  ℹ️ One payment covers the entire team
+                </p>
+              )}
 
             <div className="mb-6">
               <label className="block mb-2 font-medium text-white">Upload Payment Screenshot *</label>
               <input
                 type="file"
                 accept="image/*,.pdf"
-                onChange={(e) => setPaymentScreenshot(e.target.files[0])}
+                onChange={(e) => {
+                  setPaymentScreenshot(e.target.files[0]);
+                  if (e.target.files[0]) {
+                    setPaymentError("");
+                  }
+                }}
                 className="w-full text-sm text-white file:bg-cyan file:text-black file:px-4 file:py-2 rounded-lg hover:file:bg-cyanLight transition"
               />
-              {paymentError && <p className="text-cyan mt-2 text-sm">{paymentError}</p>}
+              {paymentError && (
+                <div className="flex items-center gap-2 mt-3 p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+                  <span className="text-red-400 text-sm">⚠</span>
+                  <p className="text-red-400 text-sm">{paymentError}</p>
+                </div>
+              )}
             </div>
 
             <div className="flex justify-end gap-3 mt-4">
               <button
                 onClick={() => setPayModalOpen(false)}
-                className="px-5 py-2 rounded-lg bg-gray/20 hover:bg-gray transition font-medium"
+                className="px-5 py-2 rounded-lg bg-gray/20 hover:bg-gray/30 transition font-medium"
               >
                 Cancel
               </button>
               <button
                 onClick={() => setPayModalOpen(false)}
-                className="px-5 py-2 rounded-lg bg-gray/10 text-black hover:bg-gray transition font-medium"
+                className="px-5 py-2 rounded-lg bg-cyan/20 text-white hover:bg-cyan/30 transition font-medium"
               >
                 Done
               </button>

@@ -77,7 +77,7 @@ const AuthProvider = ({ children }) => {
     // Upload Payment Screenshot if needed
     let paymentScreenshotUrl = null;
     const emailDomain = registrationData.email?.trim().toLowerCase().split("@")[1];
-    if (emailDomain !== "nitw.ac.in") {
+    if (!emailDomain.endsWith("nitw.ac.in")) {
       if (registrationData.paymentScreenshot) {
         const paymentFile = Array.isArray(registrationData.paymentScreenshot)
           ? registrationData.paymentScreenshot[0]
@@ -89,6 +89,7 @@ const AuthProvider = ({ children }) => {
         return;
       }
     }
+    
 
     // Prepare payload for backend
     const payload = {
@@ -98,10 +99,11 @@ const AuthProvider = ({ children }) => {
       collegeName: registrationData.collegeName || "",
       accommodation: registrationData.accommodation || false,
       events: registrationData.events || [],
+      teamMembers: registrationData.registrationType === "team" ? (registrationData.teamMembers || []) : [],
+      registrationType: registrationData.registrationType,
       idDocumentUrl,
       paymentScreenshotUrl,
     };
-
     // Send JSON with URLs to backend
     const res = await fetch(`${url}/api/auth/register`, {
       method: "POST",
