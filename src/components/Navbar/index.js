@@ -93,18 +93,18 @@ export default function Navbar() {
           )}
         </div>
       ) : (
-        <NavLink to={menuItem.link} onClick={closeMenu}>
-          {menuItem.name}
-        </NavLink>
+     <NavLink to={menuItem.link} onClick={closeMenu} className="nav-btn">
+  <span>{menuItem.name}</span>
+</NavLink>
       )}
     </li>
   ));
 
   const rightNavItems = rightNavigation.map((menuItem, index) => (
     <li key={index}>
-      <NavLink to={menuItem.link} onClick={closeMenu}>
-        {menuItem.name}
-      </NavLink>
+       <NavLink to={menuItem.link} onClick={closeMenu} className="nav-btn">
+  <span>{menuItem.name}</span>
+</NavLink>
     </li>
   ));
 

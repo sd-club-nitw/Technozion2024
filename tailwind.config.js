@@ -13,6 +13,9 @@ module.exports = {
         cyanLight: "#4ef0ff",
         cyanDark: "#008b8b",
         accent: "#00e0e0",
+        darkPurple: "#190033",
+        purple: "#7b00ff",
+        lightPurple: "#9633ff"
       },
     
       fontSize: {

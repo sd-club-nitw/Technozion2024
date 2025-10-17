@@ -1,12 +1,103 @@
 :root {
 	--img-width: 5vw;
-	z-index: 100;
+	
 }
 
 
 .active {
 	color: white;
 }
+
+
+
+.nav-btn {
+  position: relative;
+  	padding: 0.5rem 1rem; /* Default padding */
+  color: white;
+border-radius: .15rem;
+  text-decoration: none;
+  font-weight: 600;
+  margin: .5rem 1rem;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  	display: block;
+	font-weight: 500;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-size: 105%; /* Default font size */
+	white-space: nowrap;
+	transition: text-shadow 0.3s ease, font-size 0.3s ease, margin 0.3s ease; /* Add transition for margin */
+	/* Glassmorphism Effect */
+	/* background: rgba(22, 246, 243, 0.2); Transparent background */
+	
+
+}
+
+
+
+/* Two pseudo-elements for top-left & bottom-right */
+.nav-btn::before,
+.nav-btn::after {
+  content: "";
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  border: 2px solid #9633ff;
+  transition: all 0.5s ease;
+
+}
+
+/* Top-left corner */
+.nav-btn::before {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+/* Bottom-right corner */
+.nav-btn::after {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+/* Two more pseudo-elements inside span for other corners */
+.nav-btn span::before,
+.nav-btn span::after {
+  content: "";
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  border: 2px solid #fff;
+  transition: all 0.5s ease;
+}
+
+.nav-btn span::before {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+
+.nav-btn span::after {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+}
+
+/* Hover — extend all corners */
+.nav-btn:hover::before,
+.nav-btn:hover::after,
+.nav-btn:hover span::before,
+.nav-btn:hover span::after {
+  width: 100%;
+  height: 100%;
+}
+ /* new code ends here  */
 
 nav {
 	display: inline-block;
@@ -16,7 +107,6 @@ nav {
 	position: fixed;
 	z-index: 10;
 	padding: 10px 0px 0px 10px;
-	border-radius: 10px;
 }
 
 .logo {
@@ -30,25 +120,6 @@ nav {
 	z-index: 10;
 }
 
-/* Reg button */
-nav .reg-login {
-	flex: 1;
-}
-
-nav .reg-login a {
-	background-color: white;
-	color: #031f1b;
-	border-radius: 5rem;
-	font-optical-sizing: auto;
-	font-size: large;
-	font-weight: 500;
-	font-style: normal;
-}
-
-nav .reg-login a:not(.active):hover {
-	background-color: white;
-	color: white;
-}
 
 nav ul {
 	display: flex;
@@ -58,72 +129,36 @@ nav ul {
 
 nav ul li {
 	list-style: none;
-	background: linear-gradient(to right, white, white);
-	background-clip: text;
-	-webkit-background-clip: text;
 	color: transparent;
+
 	margin: 0; /* Reset margin */
 	padding: 0; /* Reset padding */
 }
+nav ul li a{
+border-radius: .15rem;
 
-nav ul li a {
-	display: block;
-	font-weight: 500;
-	font-optical-sizing: auto;
-	font-style: normal;
-	font-size: 105%; /* Default font size */
-	padding: 0.5rem; /* Default padding */
-	margin: 0 0.2rem; /* Reduced margin for left navbar */
-	border-radius: 0.5rem;
-	white-space: nowrap;
-	transition: text-shadow 0.3s ease, font-size 0.3s ease, margin 0.3s ease; /* Add transition for margin */
-	/* Glassmorphism Effect */
-	background: rgba(22, 246, 243, 0.2); /* Transparent background */
-	backdrop-filter: blur(10px); /* Frosted glass effect */
-	border: 1px solid rgba(22, 246, 243, 0.3); /* Subtle border */
-	color: white; /* Text visibility */
 }
 
-nav ul li a:not(.active):hover {
-	background: rgba(22, 246, 243, 0.4); /* Hover background */
-	box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37); /* Hover shadow */
-	border: 1px solid rgba(22, 246, 243, 0.5); /* Hover border */
-	color: white;
+nav ul li a:hover{
+		background: rgba(22, 246, 243, 0.3);
+
 }
+
+
 
 nav ul li a.active {
-	background: rgba(22, 246, 243, 0.4);
-	border: 1px solid rgba(22, 246, 243, 0.6);
-	color: white;
+	background: rgba(22, 246, 243, 0.5);
+
 }
 
-/* Log out button */
-nav ul li button {
-	display: block;
-	text-decoration: none;
-	color: rgb(0, 0, 0);
-	padding: 0.5rem;
-	margin: 0.5rem;
-	border-radius: 0.5rem;
-	white-space: nowrap;
-	background-color: #031f1b;
-	font-optical-sizing: auto;
-	font-weight: 500;
-	font-style: normal;
-}
+
 
 .logo img {
 	scale: 1.4;
 	width: var(--img-width);
 }
 
-/* prevents active link to be clicked again */
-nav ul li a:not(.active):hover {
-	background-color: #031f1b;
-	color: white;
-	border-radius: 5rem;
-	animation: glow-animation 1s infinite alternate;
-}
+
 
 @keyframes glow-animation {
 	0% {
@@ -221,7 +256,7 @@ nav ul li a {
 	font-size: 105%; /* Default font size */
 	padding: 0.5rem; /* Default padding */
 	margin: 0 0.2rem; /* Reduced margin for left navbar */
-	border-radius: 0.5rem;
+	
 	white-space: nowrap;
 	transition: text-shadow 0.3s ease, font-size 0.3s ease, margin 0.3s ease; /* Add transition for margin */
 }

@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
 import './about.css';
 import youtubeLogo from './youtube-logo.png';
+import { motion } from "framer-motion";
+import TypingText from "../utils/TypingText";
 
 
 function AboutCard({ content, image, imgToRight, title }) {
@@ -16,26 +18,69 @@ function AboutCard({ content, image, imgToRight, title }) {
         </div>
 
         {/* card div - it will appear below the about_us div */}
-        <div className="about-card text-black p-10 rounded-md w-full">
-          <div className=" z-5 flex justify-center items-center duration-700 flex-col sm:flex-row">
+        <div className="about-card   text-black p-10 rounded-md w-full">
+          <div className=" z-5 flex   justify-center items-center duration-700 flex-col sm:flex-row">
             {/* Uncomment this if you need to display an image */}
             {/* <div className="sm:w-[100%] md:w-[45%] flex justify-center items-center">
               <img className="sm:w-[330px] md:w-[590px] max-w-full rounded-md" src={image} alt="themelogo" />
             </div> */}
             <div className="theme-content sm:w-[100%] md:w-[45%] text-md space-x-9">
-              {content}
+            <TypingText speed={30}
+              text={content} />
             </div>
           </div>
         </div>
         <br />
       </div>
+
         <div className="youtube-links">
+        <motion.button
+         
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 20,
+            delay: 2 * 0.2, // stagger effect
+          }}
+          style={{
+            padding: "0.8rem 2rem",
+            background: "transparent",
+            color: "white",
+            fontWeight: 600,
+            cursor: "pointer",
+           
+          }}
+        >
           <a href="https://www.youtube.com/watch?v=LJLtHr0kcrA&t=1s" target="_blank" rel="noopener noreferrer" className="youtube-link">
             <img src={youtubeLogo} alt="YouTube" className="youtube-icon" /> &nbsp;What is Technozion ?
           </a>
+        </motion.button>
+          <motion.button
+         
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 20,
+            delay: 2 * 0.2, // stagger effect
+          }}
+          style={{
+            padding: "0.8rem 2rem",
+            background: "transparent",
+            color: "white",
+            fontWeight: 600,
+            cursor: "pointer",
+           
+          }}
+        >
+
           <a href="https://www.youtube.com/watch?v=1T_d1YoCWuA" target="_blank" rel="noopener noreferrer" className="youtube-link">
             <img src={youtubeLogo} alt="YouTube" className="youtube-icon" /> &nbsp;Events Technozion'24
           </a>
+        </motion.button>
         </div>
         <section className="w-full z-10 h-full">
           <h1 className="text-center">Technozion Brochure</h1>

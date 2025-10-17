@@ -213,26 +213,36 @@ button.float:hover>img {
 
 .time-box {
 	display: flex;
-	border-radius: .7rem;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background-color: #000000; /* Adjusted to dark for visibility */
-	color: white;
-	padding: 20px; 
-	margin: 10px;
-	/* border-radius: 10px; */
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-	text-align: center;
-	width: 130px; /* Increased width for larger text */
-	transition: transform 0.2s;
-	border: 2px solid white; /* Base border color */
-	flex-shrink: 0; /* Prevent shrinking of boxes */
-	/* Glow effect for the border */
-	height: 9rem;
-	box-shadow: 0 0 5px #16f6f3, /* Inner glow */
-			0 0 10px #16f6f3, /* Outer glow */
-			0 0 5px #16f6f3; /* Strong outer glow */
+border-radius: 0.7rem;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+padding: 20px;
+margin: 10px;
+text-align: center;
+width: 130px;
+height: 9rem;
+
+border: 1px solid rgba(255, 255, 255, 0.15);
+flex-shrink: 0;
+transition: transform 0.2s;
+box-shadow: 0 0 5px #7b00ff,
+            0 0 10px #7b00ff,
+            0 0 20px #7b00ff;
+
+/* 🟣 Dark transparent glass */
+background: rgba(0, 0, 0, 0.01);
+backdrop-filter: blur(3px);
+-webkit-backdrop-filter: blur(12px);
+
+/* Optional dark gradient depth */
+background-image: linear-gradient(
+  135deg,
+  rgba(0, 0, 0, 0.1),
+  rgba(0, 0, 0, 0.05)
+);
+
   }
 
   .time-box{

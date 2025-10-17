@@ -1,14 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
-/* Global reset */
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  
-  font-optical-sizing: auto;
-  font-style: normal;
-  color: #16f6f3 !important;
-}
+
 
 /* General container for the card */
 .event_card {
