@@ -93,10 +93,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ===== THIS DIV WAS ADDED ===== */}
-      {!menuOpen && <div className="navbar-background"></div>}
-      {/* ============================== */}
-
       {!menuOpen ? (
         <div className="logo" > 
           <Link to="./" onClick={closeMenu}>
