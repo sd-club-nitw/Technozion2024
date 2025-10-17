@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, Link } from "react-router-dom";
+// 1. IMPORT useLocation
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { ImCross } from "react-icons/im";
 import chota_logo from "./logo-03.png";
 import './index.css';
@@ -8,6 +9,8 @@ const oldNavigation = [
   { name: "HOME", link: "/" },
   { name: "ABOUT", link: "/about" },
   { name: "EVENTS", link: "/events" },
+  // If you want the dropdown to appear, add:
+  // { name: "REVENTS", link: "#" } 
 ];
 
 const rightNavigation = [
@@ -27,6 +30,10 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 725);
   const [showDropdown, setShowDropdown] = useState(false);
+
+  // 2. GET CURRENT LOCATION
+  const location = useLocation();
+  const isRegisterPage = location.pathname === '/auth/register';
 
   useEffect(() => {
     const handleResize = () => {
@@ -53,8 +60,8 @@ export default function Navbar() {
     setShowDropdown(false);
   };
 
-  const toggleDropdown = (e) => {
-    e.preventDefault();
+  // 3. (FIX) REMOVED 'e' and 'e.preventDefault()'
+  const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
 
@@ -62,7 +69,17 @@ export default function Navbar() {
     <li key={index}>
       {menuItem.name === "REVENTS" ? (
         <div className="dropdown2-trigger">
-          <a onClick={toggleDropdown}>{menuItem.name}</a>
+          {/* 4. (FIX) CHANGED <a> to <button>
+            - Added type="button"
+            - Added className="nav-button-link" for styling
+          */}
+          <button 
+            onClick={toggleDropdown} 
+            className="nav-button-link" 
+            type="button"
+          >
+            {menuItem.name}
+          </button>
           {showDropdown && (
             <ul className="dropdown2">
               {dropList.map((dropItem, idx) => (
@@ -93,6 +110,9 @@ export default function Navbar() {
 
   return (
     <>
+      {/* 5. Conditional background from previous fix */}
+      {!menuOpen && isRegisterPage && <div className="navbar-background"></div>}
+
       {!menuOpen ? (
         <div className="logo" > 
           <Link to="./" onClick={closeMenu}>

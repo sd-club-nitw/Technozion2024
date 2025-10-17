@@ -354,4 +354,14 @@ nav ul li a {
     margin-top: 1.6rm; /* A fixed margin often works better on mobile */
   }
 }
-  
+
+/* This block provides the solid background */
+.navbar-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75px; /* Adjust this height to match your navbar's total height */
+  background-color: #000; /* Solid background color */
+  z-index: 9; /* Sits behind the nav items (z-index: 10) */
+}

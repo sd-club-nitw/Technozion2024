@@ -205,15 +205,18 @@ const Register = () => {
   };
 
   return (
-    <div className="h-[100vh] bg-black text-white p-4 md:p-8 overflow-y-auto">
+  <div className="h-[100vh] bg-black text-white px-4 md:px-8 pb-4 md:pb-8 pt-24 md:pt-32 overflow-y-auto">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-cyan">
             Registration for Technozion 2025
           </h1>
-          <h1 className="text-lg font-bold mb-4 text-cyan/80">
-            Open to all years and branches from IITs, NITs, IIITs, and leading institutes.
-          </h1>
+         <h1 className="text-lg font-bold mb-4 text-cyan/80">
+  Open to all years and branches from IITs, NITs, IIITs, and leading institutes.
+  <span className="text-cyan/50">
+    {" "}Free registration for NIT Warangal students
+  </span>
+</h1>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 text-sm">
             <div className="px-4 py-2 bg-gray rounded-lg">
               Registration fee: <span className="font-semibold text-cyan">₹500</span>
