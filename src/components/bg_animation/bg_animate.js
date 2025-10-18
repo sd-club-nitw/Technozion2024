@@ -5,7 +5,7 @@ import Galaxy from "./Galaxy";
 export const WebCanvas = () => {
     return (
         <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
-            <Galaxy repulsionStrength={0.5} hueShift={360} density={2} saturation={0.7} />
+            <Galaxy repulsionStrength={0.5} density={2} saturation={0.7} />
         </div>
     );
 };
