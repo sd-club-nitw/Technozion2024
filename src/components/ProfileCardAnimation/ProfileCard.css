@@ -1,0 +1,578 @@
+
+/* ===================== CSS START =====================
+   Put this entire CSS content inside your ProfileCard.css (it's already in the canvas)
+   - The important part is the `.poster` wrapper which you add via className
+   - Change --card-w and --card-h to adjust size for all cards at once
+   ==================================================== */
+
+:root {
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  --pointer-from-center: 0;
+  --pointer-from-top: 0.5;
+  --pointer-from-left: 0.5;
+  --card-opacity: 0;
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  --background-x: 50%;
+  --background-y: 50%;
+  --grain: none;
+  --icon: none;
+  --behind-gradient: none;
+  --inner-gradient: none;
+  --sunpillar-1: hsl(2, 100%, 73%);
+  --sunpillar-2: hsl(53, 100%, 69%);
+  --sunpillar-3: hsl(93, 100%, 69%);
+  --sunpillar-4: hsl(176, 100%, 76%);
+  --sunpillar-5: hsl(228, 100%, 74%);
+  --sunpillar-6: hsl(283, 100%, 73%);
+  --sunpillar-clr-1: var(--sunpillar-1);
+  --sunpillar-clr-2: var(--sunpillar-2);
+  --sunpillar-clr-3: var(--sunpillar-3);
+  --sunpillar-clr-4: var(--sunpillar-4);
+  --sunpillar-clr-5: var(--sunpillar-5);
+  --sunpillar-clr-6: var(--sunpillar-6);
+  --card-radius: 0; /* rectangular cards */
+}
+
+.pc-card-wrapper {
+  perspective: 500px;
+  transform: translate3d(0, 0, 0.1px);
+  position: relative;
+  touch-action: none;
+}
+
+.pc-card-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  background: inherit;
+  background-position: inherit;
+  border-radius: inherit;
+  transition: all 0.5s ease;
+  filter: contrast(2) saturate(2) blur(36px);
+  transform: scale(0.8) translate3d(0, 0, 0.1px);
+  background-size: 100% 100%;
+  background-image: var(--behind-gradient);
+}
+
+.pc-card-wrapper:hover,
+.pc-card-wrapper.active {
+  --card-opacity: 1;
+}
+
+.pc-card-wrapper:hover::before,
+.pc-card-wrapper.active::before {
+  filter: contrast(1) saturate(2) blur(40px) opacity(1);
+  transform: scale(0.9) translate3d(0, 0, 0.1px);
+}
+
+.pc-card {
+  height: 80svh;
+  max-height: 540px;
+  display: grid;
+  aspect-ratio: 0.718;
+  border-radius: var(--card-radius);
+  position: relative;
+  background-blend-mode: color-dodge, normal, normal, normal;
+  animation: glow-bg 12s linear infinite;
+  box-shadow: rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px)
+    calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px;
+  transition: transform 1s ease;
+  transform: translate3d(0, 0, 0.1px) rotateX(0deg) rotateY(0deg);
+  background-size: 100% 100%;
+  background-position:
+    0 0,
+    0 0,
+    50% 50%,
+    0 0;
+  background-image:
+    radial-gradient(
+      farthest-side circle at var(--pointer-x) var(--pointer-y),
+      hsla(266, 100%, 90%, var(--card-opacity)) 4%,
+      hsla(266, 50%, 80%, calc(var(--card-opacity) * 0.75)) 10%,
+      hsla(266, 25%, 70%, calc(var(--card-opacity) * 0.5)) 50%,
+      hsla(266, 0%, 60%, 0) 100%
+    ),
+    radial-gradient(35% 52% at 55% 20%, #00ffaac4 0%, #073aff00 100%),
+    radial-gradient(100% 100% at 50% 50%, #00c1ffff 1%, #073aff00 76%),
+    conic-gradient(from 124deg at 50% 50%, #c137ffff 0%, #07c6ffff 40%, #07c6ffff 60%, #c137ffff 100%);
+  overflow: hidden;
+
+  cursor: pointer;
+  outline: none;
+}
+
+.pc-card:hover,
+.pc-card.active {
+  transition: none;
+  transform: translate3d(0, 0, 0.1px) rotateX(var(--rotate-y)) rotateY(var(--rotate-x));
+}
+
+.pc-card * {
+  display: grid;
+  grid-area: 1/-1;
+  border-radius: var(--card-radius);
+  transform: translate3d(0, 0, 0.1px);
+  pointer-events: none;
+}
+
+.pc-inside {
+  inset: 1px;
+  position: absolute;
+  background-image: var(--inner-gradient);
+  background-color: rgba(0, 0, 0, 0.9);
+  transform: translate3d(0, 0, 0.01px);
+}
+
+/* hide the image overlays so the photo stays clean */
+.pc-shine { display: none; }
+.pc-glare { display: none; }
+
+.pc-avatar-content {
+  mix-blend-mode: normal; /* ensure clean photo */
+  overflow: hidden;
+}
+
+/* make all poster images fill a fixed area and keep same size */
+.poster-card { --card-w: 260px; --card-h: 420px; margin: 12px; display: inline-block; }
+.poster-card .pc-card {
+  width: var(--card-w);
+  height: var(--card-h);
+  max-width: var(--card-w);
+  max-height: var(--card-h);
+  aspect-ratio: auto;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 50px; /* hard rectangular corners */
+}
+
+.poster-card .poster-inside {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  border-radius: 0;
+  overflow: hidden;
+  background-image: var(--inner-gradient);
+}
+
+.poster-image-wrap {
+  position: relative;
+  width: 100%;
+  height: calc(var(--card-h) * 0.72);
+  min-height: 220px;
+  overflow: hidden;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background: transparent; /* keep image natural */
+}
+
+.poster-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* IMPORTANT: keep all images same size and fill the box */
+  display: block;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  transform: none !important;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  opacity: 1 !important;
+}
+
+/* cyan border + glow wrapper that you asked for - use className="poster" */
+.poster {
+  --card-radius: 0;                /* rectangular */
+  --card-w: 260px;                 /* change both to scale all cards */
+  --card-h: 420px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 10px solid #16f6f3;
+  padding: 6px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.9), 0 12px 30px rgba(0,0,0,0.6);
+  text-align: center;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  z-index: 5;
+  display: inline-block;
+  overflow: visible;
+}
+
+.poster:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 34px rgba(0, 255, 255, 1), 0 18px 40px rgba(0,0,0,0.65);
+}
+
+.poster .poster-footer {
+  height: calc(var(--card-h) * 0.28);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  background:#7b00ff;
+  box-sizing: border-box;
+}
+
+.poster .poster-title { color: #16f6f3; margin: 0; font-weight: 700; font-size: 1rem; }
+.poster .poster-sub { color: rgba(22,246,243,0.9); font-size: 0.88rem; }
+
+/* avoid overlap: small horizontal gap between poster components */
+.poster-card + .poster-card { margin-left: 12px; }
+
+@media (max-width: 620px) {
+  .poster { --card-w: 180px; --card-h: 320px; padding: 6px; }
+  .poster .poster-title { font-size: 0.95rem; }
+  .poster .poster-sub { font-size: 0.78rem; }
+}
+
+@keyframes glow-bg { 0% { --bgrotate: 0deg; } 100% { --bgrotate: 360deg; } }
+
+/* ====================== CSS END ====================== */
+
+
+
+/* ===== fixes for responsive grid + no-overlap ===== */
+
+/* let grid control width: poster-card becomes width:100% inside the grid */
+.poster-card {
+  width: 100%;                 /* fill grid column */
+  --card-w: 260px;             /* design reference for aspect-ratio */
+  --card-h: 420px;
+  margin: 0;                   /* grid gap will handle spacing */
+  display: block;
+  border:5px;
+}
+
+/* keep the card responsive using aspect-ratio so images are consistent */
+.poster-card .pc-card {
+  width: 100%;
+  height: auto;                      /* don't force a fixed height */
+  aspect-ratio: 260 / 420;           /* fixed proportion visually consistent */
+  border-radius: 5px;                  /* rectangular */
+  overflow: hidden;
+}
+
+/* Make poster-inside a normal column — avoid the global grid stacking */
+.poster-card .poster-inside {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* IMPORTANT: cancel the blanket rule for poster internals so children don't stack */
+.poster-card .poster-inside * {
+  display: block !important;
+  grid-area: auto !important;
+}
+
+/* image area */
+.poster-image-wrap {
+  position: relative;
+  width: 100%;
+  height: calc(var(--card-h) * 0.72); /* used only for reference sizing, actual height is from aspect-ratio */
+  min-height: 160px;                 /* helps small screens */
+  overflow: hidden;
+  background: transparent;
+  z-index: 4;                         /* place image above the inner gradient background */
+}
+
+/* photo stays clean, fills the area, same size for all cards */
+.poster-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* make all images uniform and avoid weird crops */
+  display: block;
+  border-radius: 0;
+  transform: none !important;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  opacity: 1 !important;
+  z-index: 5;          /* above pc-inside background */
+}
+
+/* ensure the animated background (the gradient) sits behind the poster internals */
+.pc-inside {
+  z-index: 1; /* behind image & footer */
+}
+
+/* footer: placed after the image, allow wrapping, do not overlay image */
+.poster-footer {
+  z-index: 6;
+  height: auto;               /* let content decide height */
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  background:#7b00ff67;
+  box-sizing: border-box;
+ 
+}
+
+/* titles/subtitles: allow multi-line wrapping to avoid merging */
+.poster-title {
+  color:aliceblue;
+  margin: 0;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  white-space: normal;      /* allow wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;    /* clamp to two lines on small widths */
+  -webkit-box-orient: vertical;
+}
+
+.poster-sub {
+  color:beige;
+  font-size: 0.88rem;
+  text-align: center;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+/* wrapper look (cyan border + glow). Use className="poster" on the outer component */
+.poster {
+  --card-radius: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 2px solid #16f6f3;
+  padding: 6px;
+  box-shadow: 0 0 5px #7b00ff,
+            0 0 10px #7b00ff,
+            0 0 20px #7b00ff;
+  text-align: center;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  z-index: 10;
+  display: block;
+  overflow: visible;
+}
+
+.poster:hover {
+  transform: translateY(-8px);
+ box-shadow: 0 0 5px #7b00ff,
+            0 0 10px #7b00ff,
+            0 0 20px #7b00ff;
+}
+
+/* small-screen adjustments */
+@media (max-width: 1024px) {
+  .poster-card .pc-card { aspect-ratio: 220 / 360; }
+  .poster-image-wrap { min-height: 150px; }
+}
+
+@media (max-width: 640px) {
+  .poster-card .pc-card { aspect-ratio: 200 / 320; }
+  .poster-image-wrap { min-height: 120px; }
+  .poster-title { -webkit-line-clamp: 2; font-size: 0.95rem; }
+  .poster-sub { font-size: 0.82rem; }
+}
+
+
+/* Remove animated gradients & holo effects on small screens (<= 730px) */
+@media (max-width: 768px) {
+  /* Remove the animated background from the card and its ::before glow */
+  .pc-card,
+  .poster-card .pc-card,
+  .pc-card-wrapper::before,
+  .pc-card::before {
+    background-image: none !important;
+    background: transparent !important;
+    animation: none !important;
+  }
+
+  /* Hide the blurred backdrop glow pseudo-element completely */
+  .pc-card-wrapper::before {
+    display: none !important;
+  }
+
+  /* Turn off inner gradient / holo layers */
+  .pc-inside,
+  .poster-inside {
+    background-image: none !important;
+    background: transparent !important;
+  }
+
+  /* Ensure shine / glare layers are hidden (defensive) */
+  .pc-shine,
+  .pc-glare,
+  .poster-shine,
+  .poster-glare {
+    display: none !important;
+    opacity: 0 !important;
+  }
+
+  /* Keep the poster wrapper (cyan border/glow) — but reduce heavy shadows if needed */
+  .poster {
+    /* keep border & subtle glow; comment out box-shadow if you want no glow */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5), 0 0 10px rgba(0,255,255,0.35);
+    background-color: rgba(0,0,0,0.6); /* slightly translucent so photos stay visible */
+  }
+
+  /* Ensure the image sits on top and fills the card */
+  .poster-avatar,
+  .avatar {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    z-index: 5 !important;
+  }
+}
+
+
+
+
+/* ... [Existing CSS content above] ... */
+
+/* ====================== CSS END ====================== */
+
+
+/* ===== fixes for responsive grid + no-overlap ===== */
+
+/*
+   Issue: The global .pc-card has 'height: 80svh; max-height: 540px;' and fixed aspect-ratio,
+          which conflicts with the responsive grid.
+
+   Solution: Remove the fixed size from .pc-card and let the wrapper's .poster-card manage it.
+*/
+.pc-card {
+  height: auto; /* Allow the size to be managed by the wrapper */
+  max-height: none;
+  aspect-ratio: auto; /* Remove the global fixed aspect-ratio */
+  /* Keep the other existing styles for background, shadow, etc. */
+}
+
+/*
+   This is the key rule for the grid. It ensures the card's dimensions are relative
+   to the grid column, and all cards maintain the exact same proportion.
+*/
+.poster-card {
+  width: 100%;                  /* fill grid column */
+  --card-w: 260px;              /* design reference for aspect-ratio */
+  --card-h: 420px;
+  margin: 0;                    /* grid gap will handle spacing */
+  display: block;
+  /* Removed border:5px as it was likely a typo for border-radius */
+}
+
+/* keep the card responsive using aspect-ratio so images are consistent */
+.poster-card .pc-card {
+  width: 100%;
+  height: auto;                 /* don't force a fixed height */
+  aspect-ratio: 260 / 420;      /* Fixed proportion (from --card-w / --card-h) */
+  border-radius: 5px;           /* rectangular */
+  overflow: hidden;
+  /* The transition rule for transform on hover/move is still necessary */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* shortened transition */
+}
+
+/* Make poster-inside a normal column — avoid the global grid stacking */
+.poster-card .poster-inside {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* IMPORTANT: cancel the blanket rule for poster internals so children don't stack */
+.poster-card .poster-inside * {
+  display: block !important;
+  grid-area: auto !important;
+  pointer-events: auto; /* Re-enable pointer events for footer content */
+}
+
+/* image area - now takes remaining vertical space until the footer forces itself to fit */
+.poster-image-wrap {
+  position: relative;
+  width: 100%;
+  /* Removed height property so it expands to fill remaining space */
+  flex-grow: 1; /* Key change: make the image wrap take all available space */
+  min-height: 160px;
+  overflow: hidden;
+  background: transparent;
+  z-index: 4;
+}
+
+/* photo stays clean, fills the area, same size for all cards */
+.poster-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  transform: none !important;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  opacity: 1 !important;
+  z-index: 5;
+}
+
+/* footer: fixed height based on content, not a percentage of the card */
+.poster-footer {
+  z-index: 6;
+  height: auto; /* Let content decide height */
+  min-height: 70px; /* Ensure a minimum height for smaller fonts */
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  background:#7b00ff; /* Changed opacity from 67 to fully opaque for better contrast */
+  box-sizing: border-box;
+}
+
+/* wrapper look (cyan border + glow). Use className="poster" on the outer component */
+.poster {
+  --card-radius: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 2px solid #16f6f3;
+  padding: 6px;
+  box-shadow: 0 0 5px #7b00ff,
+              0 0 10px #7b00ff,
+              0 0 20px #7b00ff;
+  text-align: center;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  z-index: 10;
+  display: block;
+  overflow: visible;
+  /* Added margin-bottom to prevent jump when lifting card */
+  margin-bottom: 8px;
+}
+
+/* ... [Existing media queries for glow/animations] ... */
+
+/* Mobile Border and Alignment Fixes (<= 768px) */
+@media (max-width: 768px) {
+  /* Ensure hover effect is turned off for mobile/touch devices */
+  .poster:hover {
+    transform: none;
+    box-shadow: 0 0 5px #7b00ff,
+                0 0 10px #7b00ff,
+                0 0 20px #7b00ff;
+  }
+  
+  /* Make the cyan border/glow a little more pronounced for the mobile theme */
+  .poster {
+    border: 3px solid #6f17eaac;
+    padding: 4px;
+    box-shadow: 0 0 10px rgba(22, 246, 243, 0.5), 0 0 25px #7b00ff;
+    /* Use a dark background to make the photo pop without the hologlow */
+    background-color: #0d0d1a;
+  }
+}

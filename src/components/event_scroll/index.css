@@ -61,7 +61,7 @@
 }
 
 /* Tab style inspired by neon outline in your screenshot */
-.tab-button {
+/* .tab-button {
   border: 2px solid rgba(0, 255, 230, 0.95);
   background: transparent;
   padding: 12px 28px;
@@ -72,23 +72,194 @@
   transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
   box-shadow: 0 0 0 rgba(0, 255, 230, 0);
   z-index: 12;
-}
+} */
 
 /* Active / selected state */
-.tab-button.active {
+/* .tab-button.active {
   background: rgba(29, 193, 174, 0.441);
   box-shadow: 0 6px 18px rgba(0, 255, 230, 0.06),
     inset 0 0 12px rgba(0, 255, 230, 0.05);
   transform: translateY(-2px);
-}
+} */
 
 /* Hover */
-.tab-button:hover {
+/* .tab-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(0, 255, 230, 0.06);
+} */
+
+  
+
+ .tab-button {
+            position: relative;
+            padding: 0.5rem 1rem; /* Default padding */
+            color: white;
+            border-radius: .15rem;
+            text-decoration: none;
+            font-weight: 600;
+            margin: .5rem 1rem;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            display: block;
+            font-weight: 500;
+            font-size: 105%; /* Default font size */
+            white-space: nowrap;
+            /* Added transition for all changes */
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            /* Glassmorphism Effect */
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- TWO OPPOSITE CORNERS ONLY --- */
+
+        /* Shared pseudo-element properties */
+        .tab-button::before,
+        .tab-button::after {
+            content: "";
+            position: absolute;
+            width: 20%;
+            height: 20%;
+            transition: all 0.5s ease;
+        }
+
+        /* Top-Left Corner (::before) - White */
+        .tab-button::before {
+            top: 0;
+            left: 0;
+            border: 2px solid #fff; /* White */
+            border-right: none;
+            border-bottom: none;
+        }
+
+        /* Bottom-Right Corner (::after) - Purple */
+        .tab-button::after {
+            bottom: 0;
+            right: 0;
+            border: 2px solid #9633ff; /* Purple */
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Removed all styles targeting 'span::before' and 'span::after' */
+
+        /* Hover — extend the two opposite corners */
+        .tab-button:hover::before,
+        .tab-button:hover::after {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- ACTIVE STATE STYLING --- */
+
+        /* Active State: Solid fill, scale, and glow */
+        .tab-button.active {
+            /* Make it a solid, vibrant color */
+            background: #9633ff; /* Primary Purple Solid Fill */
+            color: #fff;
+            transform: scale(1.05); /* Slightly larger */
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.9); /* Text glow */
+            box-shadow: 0 0 25px rgba(150, 51, 255, 0.8), 0 0 5px rgba(255, 255, 255, 0.5); /* Outer glow */
+            margin: .5rem 0.5rem; /* Adjust margin slightly for visual pop */
+            border: none; /* Remove any border that might interfere */
+            /* Ensure glassmorphism is gone when active */
+            backdrop-filter: none;
+        }
+
+        /* In the Active State, ensure the two corner borders are fully expanded */
+        .tab-button.active::before,
+        .tab-button.active::after {
+            width: 100%;
+            height: 100%;
+            /* Change both expanded corner borders to bright white for maximum contrast */
+            border-color: #fff;
+        }
+        
+        /* The main content text needs to be on top of the border elements */
+        .tab-button .text-content {
+            position: relative;
+            z-index: 20;
+        }
+
+        /* Hover effect when already active should be subtle */
+        .tab-button.active:hover {
+            cursor: default;
+            transform: scale(1.05); /* Prevent further scaling */
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), 0 0 25px rgba(150, 51, 255, 0.9);
+        }
+
+
+
+/* Two pseudo-elements for top-left & bottom-right */
+/* .tab-button::before,
+.tab-button::after {
+  content: "";
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  border: 2px solid #9633ff;
+  transition: all 0.5s ease;
+
+} */
+
+/* Top-left corner */
+/* .tab-button::before {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+} */
+
+/* Bottom-right corner */
+/* .tab-button::after {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+} */
+
+/* Two more pseudo-elements inside span for other corners */
+/* .tab-button span::before,
+.tab-button span::after {
+  content: "";
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  border: 2px solid #fff;
+  transition: all 0.5s ease;
 }
 
-/* -------------------------
+.tab-button span::before {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+
+.tab-button span::after {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+} */
+
+/* Hover — extend all corners */
+/* .tab-button:hover::before,
+.tab-button:hover::after,
+.tab-button:hover span::before,
+.tab-button:hover span::after {
+  width: 100%;
+  height: 100%;
+} */
+
+ 
+
+ 
+
+
+ /* -------------------------
    Heading image container
    ------------------------- */
 .heading {
@@ -133,6 +304,7 @@ Posters grid
   margin: 20px 0;
   font-size: 1.5rem;
   font-weight: 600;
+  color:azure;
 }
 
 /* Error / no-data messages */
