@@ -29,13 +29,6 @@ const Register = () => {
   const finalData = React.useMemo(() => {
     const map = new Map();
 
-    societies.forEach(soc => {
-      map.set(soc.societyName, {
-        societyName: soc.societyName,
-        events: soc.events.map(ev => ({ ...ev, displayName: ev.title || ev.name }))
-      });
-    });
-
     clubs.forEach(club => {
       if (map.has(club.name)) {
         map.get(club.name).events.push({ ...club, displayName: club.title || club.name });
@@ -43,6 +36,14 @@ const Register = () => {
         map.set(club.name, { societyName: club.name, events: [{ ...club, displayName: club.title || club.name }] });
       }
     });
+    
+    societies.forEach(soc => {
+      map.set(soc.societyName, {
+        societyName: soc.societyName,
+        events: soc.events.map(ev => ({ ...ev, displayName: ev.title || ev.name }))
+      });
+    });
+
 
     return Array.from(map.values());
   }, [societies, clubs]);
