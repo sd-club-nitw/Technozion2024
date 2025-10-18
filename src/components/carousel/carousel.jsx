@@ -36,18 +36,10 @@ const Carousel = ({ data }) => {
         <button onClick={prevCard} className="carousel-button prev">«</button>
         <div className="carousel-content">
           <Card
-          
             title={cards[currentIndex]?.title || cards[currentIndex]?.name}
-
-            
             description={cards[currentIndex]?.description}
 
-           
-            
-
-            
             contact={cards[currentIndex]?.contact}
-
             // Fallback image, if imgSrc is not available, use a default one
             imgSrc={cards[currentIndex]?.imgSrc || imgsrc}
           />
