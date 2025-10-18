@@ -17,16 +17,10 @@ h1 {
 }
 
 /* Hide Scrollbars */
-html,
-body {
-  margin: 0; /* Remove default body margin */
-  max-height: 100vh; 
-  overflow: hidden;
-}
 .about-page{
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  overflow: auto;
   position: relative;
 }
 /* Card Container Styles */
@@ -332,14 +326,5 @@ width: 100%;
 }
 
 /* Canvas Styles for About Page */
-.about-canvas {
-  position: absolute; /* Position the canvas absolutely */
-  top: 0; /* Align to the top */
-  left: 0; /* Align to the left */
-  width: 100vw; /* Full viewport width */
-  height: 100%; /* Full viewport height */
-  z-index: 0; /* Behind content */
-  pointer-events: none; /* Allow interactions through the canvas */
-}
 
 

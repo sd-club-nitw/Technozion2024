@@ -60,9 +60,10 @@ export const Gallery = () => {
     }, [loadedPages]);
 
     return (
-        <div className="centered-container">
+        <div className="relative centered-container">
+            <WebCanvas />
             <div className="gallery-canvas">
-                <WebCanvas />
+                
             </div>
             {loading && <Loader />} {/* Show loader until all PDF pages are loaded */}
             <div 

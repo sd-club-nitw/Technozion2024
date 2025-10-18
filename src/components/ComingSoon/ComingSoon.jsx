@@ -1,13 +1,9 @@
 import React from 'react';
-import { WebCanvas } from '../bg_animation/bg_animate.js';
+import Galaxy from '../bg_animation/Galaxy';
 
 export const ComingSoon = () => {
   return (
     <div className="relative">
-     
-      <div className="about-canvas">
-        <WebCanvas /> 
-      </div>
 
       <div className="about-container w-full z-2 relative p-4 text-white">
          <div className="flex items-center justify-center h-screen bg-gray-900 text-white">

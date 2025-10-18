@@ -7,78 +7,58 @@ import NumCount from "../utils/NumCount";
 import { Link } from "react-router-dom";
 
 // Countdown Component
-import { motion, useAnimation } from "framer-motion";
-
 const CountdownTimer = ({ targetDate }) => {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [isTimeUp, setIsTimeUp] = useState(false);
+    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    const [isTimeUp, setIsTimeUp] = useState(false);
 
-  const controls = useAnimation();
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const now = new Date();
+            const diff = targetDate - now;
+            if (diff < 0) {
+                clearInterval(interval);
+                setIsTimeUp(true);  // Mark timer as finished
+                return;
+            }
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const now = new Date();
-      const diff = targetDate - now;
-      if (diff < 0) {
-        clearInterval(interval);
-        setIsTimeUp(true);
-        return;
-      }
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            setTimeLeft({ days, hours, minutes, seconds });
+        }, 1000);
 
-      setTimeLeft({ days, hours, minutes, seconds });
-    }, 1000);
+        return () => clearInterval(interval);
+    }, [targetDate]);
 
-    return () => clearInterval(interval);
-  }, [targetDate]);
+    if (isTimeUp) {
+        return null; // Hide the entire countdown component when the time is up
+    }
 
-  // 🪀 Scroll attempt effect
-  useEffect(() => {
-    const bounce = () => {
-      controls.start({
-        scaleY: [1, 1.25, 0.9, 1],
-        scaleX: [1, 0.85, 1.1, 1],
-        transition: { duration: 0.6, ease: "easeOut" },
-      });
-    };
-
-    window.addEventListener("wheel", bounce);
-    window.addEventListener("touchmove", bounce);
-
-    return () => {
-      window.removeEventListener("wheel", bounce);
-      window.removeEventListener("touchmove", bounce);
-    };
-  }, [controls]);
-
-  if (isTimeUp) return null;
-
-  const labels = ["Days", "Hours", "Minutes", "Seconds"];
-  const values = [timeLeft.days, timeLeft.hours, timeLeft.minutes, timeLeft.seconds];
-
-  return (
-    <div className="countdown-container">
-      <div className="countdown-clock">
-        {labels.map((label, i) => (
-          <motion.div
-            key={label}
-            className="time-box"
-            animate={controls}
-            transformOrigin="center"
-          >
-            <span className="time-numeric">{values[i]}</span>
-            <span className="time-label">{label}</span>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  );
+    return (
+        <div className="countdown-container">
+            <div className="countdown-clock">
+                <div className="time-box">
+                    <span className="time-numeric">{timeLeft.days}</span>
+                    <span className="time-label">Days</span>
+                </div>
+                <div className="time-box">
+                    <span className="time-numeric">{timeLeft.hours}</span>
+                    <span className="time-label">Hours</span>
+                </div>
+                <div className="time-box">
+                    <span className="time-numeric">{timeLeft.minutes}</span>
+                    <span className="time-label">Minutes</span>
+                </div>
+                <div className="time-box">
+                    <span className="time-numeric">{timeLeft.seconds}</span>
+                    <span className="time-label">Seconds</span>
+                </div>
+            </div>
+        </div>
+    );
 };
-
 
 const Hero = () => {
     // Set the target date and time for IST (Indian Standard Time)
@@ -88,7 +68,6 @@ const Hero = () => {
         <div>
             <div className="relative flex overflow-hidden mx-auto w-full">
                 <WebCanvas />
-                <div className="absolute h-full w-full top-0 left-0 spotlight opacity-95"></div>
 
                 <div className='heading1 flex flex-col justify-center items-center' style={{ 'background': 'transparent' }}>
                     <div className="main-logo">

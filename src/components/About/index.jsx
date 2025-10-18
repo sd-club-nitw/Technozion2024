@@ -6,22 +6,21 @@ import { WebCanvas } from '../bg_animation/bg_animate.js';
 
 export const About = () => {
   return (
-    <div className="relative about-page">
-     
-      <div className="about-canvas">
-        <WebCanvas /> 
-      </div>
+    <div>
+      <div className="relative about-page">
+        <WebCanvas />
+        <WebCanvas />
+        <div className='absolute top-0'>
+          <AboutCard
+            image={logo1}
+            imgToRight={true}
+            title="About"
+            content="Technozion, NIT Warangal's annual technical festival, started as a platform for students to showcase their technical skills and innovations. Now, after many successful editions, it has become one of the most anticipated technical fests in the country, attracting participants from various institutions. Throughout its history, Technozion has hosted renowned speakers and experts, providing valuable insights and inspiration to attendees. The festival features various competitions, workshops, and exhibitions, creating a vibrant atmosphere of learning and collaboration."
+          />
+        </div>
 
-     
-        <AboutCard
-          image={logo1}
-          imgToRight={true}
-          title="About"
-          content="Technozion, NIT Warangal's annual technical festival, started as a platform for students to showcase their technical skills and innovations. Now, after many successful editions, it has become one of the most anticipated technical fests in the country, attracting participants from various institutions. Throughout its history, Technozion has hosted renowned speakers and experts, providing valuable insights and inspiration to attendees. The festival features various competitions, workshops, and exhibitions, creating a vibrant atmosphere of learning and collaboration."
-        />
-      
-      
-    
+
+      </div>
     </div>
   );
 }; 

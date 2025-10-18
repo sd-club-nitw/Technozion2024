@@ -205,18 +205,18 @@ const Register = () => {
   };
 
   return (
-  <div className="h-[100vh] bg-black text-white px-4 md:px-8 pb-4 md:pb-8 pt-24 md:pt-32 overflow-y-auto">
+    <div className="h-[100vh] bg-black text-white px-4 md:px-8 pb-4 md:pb-8 pt-24 md:pt-32 overflow-y-auto">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-cyan">
             Registration for Technozion 2025
           </h1>
-         <h1 className="text-lg font-bold mb-4 text-cyan/80">
-  Open to all years and branches from IITs, NITs, IIITs, and leading institutes.
-  <span className="text-cyan/50">
-    {" "}Free registration for NIT Warangal students
-  </span>
-</h1>
+          <h1 className="text-lg font-bold mb-4 text-cyan/80">
+            Open to all years and branches from IITs, NITs, IIITs, and leading institutes.
+            <span className="text-cyan/50">
+              {" "}Free registration for NIT Warangal students
+            </span>
+          </h1>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 text-sm">
             <div className="px-4 py-2 bg-gray rounded-lg">
               Registration fee: <span className="font-semibold text-cyan">₹500</span>
@@ -434,7 +434,7 @@ const Register = () => {
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium mb-3">Select Events *</label>
-                  
+
                   {errors.events && (
                     <div className="flex items-center gap-2 mb-3 p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
                       <span className="text-red-400 text-sm">⚠</span>
@@ -541,11 +541,11 @@ const Register = () => {
               <p>IFSC: <span className="font-semibold">SBIN0020149</span></p>
               <p>Bank: <span className="font-semibold">SBI</span></p>
             </div>
-             {watchedRegistrationType === "team" && (
-                <p className="text-cyan/80 mt-3 pt-3 border-t border-cyan/30">
-                  ℹ️ One payment covers the entire team
-                </p>
-              )}
+            {watchedRegistrationType === "team" && (
+              <p className="text-cyan/80 mt-3 pt-3 border-t border-cyan/30">
+                ℹ️ One payment covers the entire team
+              </p>
+            )}
 
             <div className="mb-6">
               <label className="block mb-2 font-medium text-white">Upload Payment Screenshot *</label>
