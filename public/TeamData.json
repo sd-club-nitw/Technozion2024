@@ -96,7 +96,7 @@
  {
  "name":"Rishi",
     "contactNo":"",
-    "image":"rishi.jpg",
+    "image":"rishi.jpeg",
     "position":"Developer",
     "email":""
  },
@@ -113,6 +113,13 @@
     "image":"aman.jpg",
     "position":"Developer",
     "email":"ac23ceb0b06@student.nitw.ac.in"
+  },
+  {
+    "name":"Teja Sree Charan",
+    "contactNo":"9014518931",
+    "image":"teja.jpg",
+    "position":"Developer",
+    "email":"vt23csb0a34@student.nitw.ac.in"
   },
   {
     "name":"Bharat Jain",
