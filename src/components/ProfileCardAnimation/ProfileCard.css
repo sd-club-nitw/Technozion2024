@@ -430,3 +430,149 @@
     z-index: 5 !important;
   }
 }
+
+
+
+
+/* ... [Existing CSS content above] ... */
+
+/* ====================== CSS END ====================== */
+
+
+/* ===== fixes for responsive grid + no-overlap ===== */
+
+/*
+   Issue: The global .pc-card has 'height: 80svh; max-height: 540px;' and fixed aspect-ratio,
+          which conflicts with the responsive grid.
+
+   Solution: Remove the fixed size from .pc-card and let the wrapper's .poster-card manage it.
+*/
+.pc-card {
+  height: auto; /* Allow the size to be managed by the wrapper */
+  max-height: none;
+  aspect-ratio: auto; /* Remove the global fixed aspect-ratio */
+  /* Keep the other existing styles for background, shadow, etc. */
+}
+
+/*
+   This is the key rule for the grid. It ensures the card's dimensions are relative
+   to the grid column, and all cards maintain the exact same proportion.
+*/
+.poster-card {
+  width: 100%;                  /* fill grid column */
+  --card-w: 260px;              /* design reference for aspect-ratio */
+  --card-h: 420px;
+  margin: 0;                    /* grid gap will handle spacing */
+  display: block;
+  /* Removed border:5px as it was likely a typo for border-radius */
+}
+
+/* keep the card responsive using aspect-ratio so images are consistent */
+.poster-card .pc-card {
+  width: 100%;
+  height: auto;                 /* don't force a fixed height */
+  aspect-ratio: 260 / 420;      /* Fixed proportion (from --card-w / --card-h) */
+  border-radius: 5px;           /* rectangular */
+  overflow: hidden;
+  /* The transition rule for transform on hover/move is still necessary */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* shortened transition */
+}
+
+/* Make poster-inside a normal column — avoid the global grid stacking */
+.poster-card .poster-inside {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* IMPORTANT: cancel the blanket rule for poster internals so children don't stack */
+.poster-card .poster-inside * {
+  display: block !important;
+  grid-area: auto !important;
+  pointer-events: auto; /* Re-enable pointer events for footer content */
+}
+
+/* image area - now takes remaining vertical space until the footer forces itself to fit */
+.poster-image-wrap {
+  position: relative;
+  width: 100%;
+  /* Removed height property so it expands to fill remaining space */
+  flex-grow: 1; /* Key change: make the image wrap take all available space */
+  min-height: 160px;
+  overflow: hidden;
+  background: transparent;
+  z-index: 4;
+}
+
+/* photo stays clean, fills the area, same size for all cards */
+.poster-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  transform: none !important;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  opacity: 1 !important;
+  z-index: 5;
+}
+
+/* footer: fixed height based on content, not a percentage of the card */
+.poster-footer {
+  z-index: 6;
+  height: auto; /* Let content decide height */
+  min-height: 70px; /* Ensure a minimum height for smaller fonts */
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  background:#7b00ff; /* Changed opacity from 67 to fully opaque for better contrast */
+  box-sizing: border-box;
+}
+
+/* wrapper look (cyan border + glow). Use className="poster" on the outer component */
+.poster {
+  --card-radius: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 2px solid #16f6f3;
+  padding: 6px;
+  box-shadow: 0 0 5px #7b00ff,
+              0 0 10px #7b00ff,
+              0 0 20px #7b00ff;
+  text-align: center;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  z-index: 10;
+  display: block;
+  overflow: visible;
+  /* Added margin-bottom to prevent jump when lifting card */
+  margin-bottom: 8px;
+}
+
+/* ... [Existing media queries for glow/animations] ... */
+
+/* Mobile Border and Alignment Fixes (<= 768px) */
+@media (max-width: 768px) {
+  /* Ensure hover effect is turned off for mobile/touch devices */
+  .poster:hover {
+    transform: none;
+    box-shadow: 0 0 5px #7b00ff,
+                0 0 10px #7b00ff,
+                0 0 20px #7b00ff;
+  }
+  
+  /* Make the cyan border/glow a little more pronounced for the mobile theme */
+  .poster {
+    border: 3px solid #6f17eaac;
+    padding: 4px;
+    box-shadow: 0 0 10px rgba(22, 246, 243, 0.5), 0 0 25px #7b00ff;
+    /* Use a dark background to make the photo pop without the hologlow */
+    background-color: #0d0d1a;
+  }
+}
