@@ -116,7 +116,7 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("user_info", JSON.stringify(data.user));
       localStorage.setItem("token", data.token);
       setUser(data.user);
-      alert("Registration successful! Your ID is "+data?.user?.registrationNum);
+      alert("Registration successful!");
       navigate("/");
     } else {
       console.log("register error", data);
