@@ -5,6 +5,7 @@ import Teams from './Teams.png';
 import { motion } from 'framer-motion';
 import { MdEmail } from "react-icons/md";
 import TeamCrad from "./TeamCrad";
+  import ProfileCard from '../ProfileCardAnimation/ProfileCard'
 
 export const Team = () => {
   const [data, setData] = useState([]);
@@ -95,8 +96,27 @@ export const Team = () => {
       <section className="flex flex-col items-center justify-center mb-10">
       <h1 className="lg:text-5xl sm:text-4xl text-3xl  uppercase font-bold">Web Team</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <ProfileCard
+  name="Javi A. Torres"
+  title="Software Engineer"
+  handle="javicodes"
+  status="Online"
+  contactText="Contact Me"
+  avatarUrl="/path/to/avatar.jpg"
+  showUserInfo={true}
+  enableTilt={true}
+  enableMobileTilt={false}
+  onContactClick={() => console.log('Contact clicked')}
+/>
 
       {data?.web_team?.map((member, index) => (
+         
+           
+       
+  
+
+           
+          
         
         <TeamCrad src={`/teamImages/${member.image}`} name={member.name} position={member.position} />
       ))}
