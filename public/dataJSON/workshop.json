@@ -46,7 +46,7 @@
     "glink": null
   },
   {
-    "title": "Motion Capture",
+    "title": "MoCap Mirror",
     "name": "Painting and Animation Club",
     "total_cost": 0,
     "overview": {
@@ -62,7 +62,9 @@
       ]
     },
     "rules": [
-      "Coming Soon..."
+      "choose your 3d character",
+      "Step into the zone",
+      "see the character copy your movements live on screen for 60-90 seconds"
     ],
     "judging_criteria": "Coming Soon...",
     "imgsrc": "/posters25/workshop_motion.jpg",
