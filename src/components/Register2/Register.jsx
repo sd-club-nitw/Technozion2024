@@ -6,18 +6,22 @@ const Register = () => {
   const { register: authRegister } = useAuth();
   const [societies, setSocieties] = useState([]);
   const [clubs, setClubs] = useState([]);
+  const [workshops, setWorkshops] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const clubsRes = await fetch("/dataJSON/club.json");
         const societiesRes = await fetch("/dataJSON/societyx.json");
+        const workshopRes = await fetch('/dataJSON/workshop.json')
 
         const societiesData = await societiesRes.json();
         const clubsData = await clubsRes.json();
+        const workshopsData = await workshopRes.json()
 
         setSocieties(societiesData);
         setClubs(clubsData);
+        setWorkshops(workshopsData)
       } catch (err) {
         console.error("Failed to fetch JSON:", err);
       }
@@ -44,9 +48,23 @@ const Register = () => {
         events: soc.events.map(ev => ({ ...ev, displayName: ev.title || ev.name }))
       });
     });
+
+    workshops.forEach(wk => {
+      
+     if (map.has(wk.name)) {
+     
+        map.get(wk.name).events.push({ ...wk, displayName: wk.title || wk.name });
+      } else {
+        map.set(wk.name, { societyName: wk.name, events: [{ ...wk, displayName: wk.title || wk.name }] });
+      }
+    })
+
+
     
     return Array.from(map.values());
-  }, [societies, clubs]);
+  }, [societies, clubs, workshops]);
+
+  console.log(finalData)
 
   const {
     register: reactRegister,

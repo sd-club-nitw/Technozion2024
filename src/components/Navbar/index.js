@@ -73,6 +73,7 @@ export default function Navbar() {
             - Added type="button"
             - Added className="nav-button-link" for styling
           */}
+          
           <button 
             onClick={toggleDropdown} 
             className="nav-button-link" 
@@ -128,15 +129,13 @@ export default function Navbar() {
             setMenuOpen(!menuOpen);
           }}
         >
-          {menuOpen ? (
-            <ImCross className='cross' />
-          ) : (
-            <>
-              <span className={menuOpen ? '' : 'ham'}></span>
-              <span className={menuOpen ? '' : 'ham'}></span>
-              <span className={menuOpen ? '' : 'ham'}></span>
-            </>
-          )}
+       
+          
+              <span className={menuOpen ? '' : 'ham bg-white'}></span>
+              <span className={menuOpen ? '' : 'ham bg-lightPurple w-1/2'}></span>
+              <span className={menuOpen ? '' : 'ham bg-white'}></span>
+        
+         
         </div>
         <ul className={menuOpen ? "open" : ""}>{listItems}</ul>
       </nav>

@@ -170,7 +170,7 @@ nav ul li a.active {
 }
 
 nav .menu {
-	display: none;
+	
 	position: absolute;
 	justify-content: flex-end;
 	top: 0.75rem;
@@ -195,9 +195,7 @@ nav .menu {
 
 .ham {
 	height: 0.4rem;
-	width: 100%;
-	background-color: white;
-	border-radius: 1.2rem;
+
 	cursor: pointer;
 }
 
@@ -295,21 +293,29 @@ nav ul li a {
 @media (max-width: 725px) {
 	nav .menu {
 	  display: flex;
+	  background: red;
 	  margin-top: 1.6rem;
 	  margin-right: 1rem;
 	  width: 1.75rem; /* Reduce width of the menu icon */
 	  height: 1.5rem;  /* Reduce height of the menu icon */
-	  z-index: 10;
 	}
   
 	.ham {
-	
-	  height: 0.3rem; /* Reduce the height of the hamburger lines */
-	  width: 100%;    /* Keep the width full relative to .menu */
-	  background-color: white;
-	  border-radius: 1rem;
+	z-index: 10;
+	  height: 0.15rem; /* Reduce the height of the hamburger lines */
+	 /* transition: all 0.4s ease; */
+	  
 	  cursor: pointer;
 	}
+	 .menu.open .ham:nth-child(1) {
+  transform: translateY(0.65rem) rotate(45deg);
+}
+.menu.open .ham:nth-child(2) {
+  opacity: 100;
+}
+.menu.open .ham:nth-child(3) {
+  transform: translateY(-0.65rem) rotate(-45deg);
+}
   
 	.logo img {
 		scale: 1.2;
