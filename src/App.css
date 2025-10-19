@@ -37,3 +37,24 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #d987c3;
 }
+
+.loader {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+}

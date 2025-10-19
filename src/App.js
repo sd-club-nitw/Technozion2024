@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { Loader } from "./components/Loader";
 import Navbar from "./components/Navbar";
 import AuthProvider from "./Context/AuthManager";
 import RoutesManager from "./Context/RoutesManager";
@@ -12,8 +11,12 @@ const App = () => {
     const [fadeOut, setFadeOut] = useState(false);
 
     useEffect(() => {
-        const timer = setTimeout(() => setFadeOut(true), 3000);
-        const removeLoader = setTimeout(() => setLoading(false), 3500);
+        const videoDuration = 13000; // match your video length
+        const fadeDuration = 12000;
+
+        const timer = setTimeout(() => setFadeOut(true), fadeDuration);
+        const removeLoader = setTimeout(() => setLoading(false), videoDuration);
+
         return () => {
             clearTimeout(timer);
             clearTimeout(removeLoader);
@@ -24,12 +27,25 @@ const App = () => {
         <>
             {loading ? (
                 <div className={`loader ${fadeOut ? "fade-out" : ""}`}>
-                    <Loader />
+                    <video
+                        src="/intro.mp4"
+                        autoPlay
+                        muted
+                        playsInline
+                        onEnded={() => {
+                            setFadeOut(true);
+                            setTimeout(() => setLoading(false), 500);
+                        }}
+                        style={{
+                            width: "100vw",
+                            height: "100vh",
+                            objectFit: "cover",
+                        }}
+                    />
                 </div>
             ) : (
                 <div className="relative w-full min-h-screen overflow-hidden">
-
-                    {/* App content on top */}
+                    <Galaxy mouseInteraction={false}/>
                     <div className="relative z-10">
                         <AuthProvider>
                             <Navbar />
