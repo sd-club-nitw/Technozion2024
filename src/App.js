@@ -9,16 +9,19 @@ import Galaxy from "./components/bg_animation/Galaxy";
 const App = () => {
     const [loading, setLoading] = useState(true);
     const [fadeOut, setFadeOut] = useState(false);
+    const [showLogo, setShowLogo] = useState(false);
 
     useEffect(() => {
-        const videoDuration = 13000; // match your video length
+        const videoDuration = 13000;
         const fadeDuration = 12000;
 
-        const timer = setTimeout(() => setFadeOut(true), fadeDuration);
+        const logoTimer = setTimeout(() => setShowLogo(true), 9005);
+        const fadeTimer = setTimeout(() => setFadeOut(true), fadeDuration);
         const removeLoader = setTimeout(() => setLoading(false), videoDuration);
 
         return () => {
-            clearTimeout(timer);
+            clearTimeout(logoTimer);
+            clearTimeout(fadeTimer);
             clearTimeout(removeLoader);
         };
     }, []);
@@ -42,10 +45,16 @@ const App = () => {
                             objectFit: "cover",
                         }}
                     />
+                    {showLogo && (
+                        <div className="logo-overlay">
+                            <img src="/logo-03.png" alt="TZ Logo 1" className="tz-logo small" />
+                            <img src="/main_tz_logo.png" alt="TZ Logo 2" className="tz-logo large" />
+                        </div>
+                    )}
                 </div>
             ) : (
                 <div className="relative w-full min-h-screen overflow-hidden">
-                    <Galaxy mouseInteraction={false}/>
+                    <Galaxy mouseInteraction={false} />
                     <div className="relative z-10">
                         <AuthProvider>
                             <Navbar />
