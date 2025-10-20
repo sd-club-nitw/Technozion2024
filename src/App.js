@@ -18,10 +18,10 @@ const App = () => {
         if (!video) return;
 
         const handleTimeUpdate = () => {
-            if (video.currentTime >= 9.005 && !showLogo) {
+            if (video.currentTime >= 5.67 && !showLogo) {
                 setShowLogo(true);
             }
-            if (video.currentTime >= 12 && !fadeOut) {
+            if (video.currentTime >= 7 && !fadeOut) {
                 setFadeOut(true);
             }
         };
