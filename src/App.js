@@ -5,6 +5,7 @@ import AuthProvider from "./Context/AuthManager";
 import RoutesManager from "./Context/RoutesManager";
 import Footer from "./components/Footer/footer";
 import Galaxy from "./components/bg_animation/Galaxy";
+import FlyingLogo from "./components/IntroLoader/FlyingLogo";
 
 const App = () => {
     const [loading, setLoading] = useState(true);
@@ -55,12 +56,7 @@ const App = () => {
                             objectFit: "cover",
                         }}
                     />
-                    {showLogo && (
-                        <div className="logo-overlay">
-                            <img src="/logo-03.png" alt="TZ Logo 1" className="tz-logo small" />
-                            <img src="/main_tz_logo.png" alt="TZ Logo 2" className="tz-logo large" />
-                        </div>
-                    )}
+                    <FlyingLogo />
                 </div>
             ) : (
                 <div className="relative w-full min-h-screen overflow-hidden">

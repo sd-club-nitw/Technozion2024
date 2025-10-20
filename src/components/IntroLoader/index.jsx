@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import FlyingLogo from "./FlyingLogo";
 
 export default function IntroLoader({ onFinish }) {
     const [show, setShow] = useState(true);
@@ -35,6 +36,7 @@ export default function IntroLoader({ onFinish }) {
                 }}
                 style={{ width: "100vw", height: "100vh", objectFit: "cover" }}
             />
+            <FlyingLogo />
         </div>
     );
 }
