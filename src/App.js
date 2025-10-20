@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import AuthProvider from "./Context/AuthManager";
@@ -10,35 +10,45 @@ const App = () => {
     const [loading, setLoading] = useState(true);
     const [fadeOut, setFadeOut] = useState(false);
     const [showLogo, setShowLogo] = useState(false);
+    const videoRef = useRef(null);
 
     useEffect(() => {
-        const videoDuration = 13000;
-        const fadeDuration = 12000;
+        const video = videoRef.current;
+        if (!video) return;
 
-        const logoTimer = setTimeout(() => setShowLogo(true), 9005);
-        const fadeTimer = setTimeout(() => setFadeOut(true), fadeDuration);
-        const removeLoader = setTimeout(() => setLoading(false), videoDuration);
+        const handleTimeUpdate = () => {
+            if (video.currentTime >= 9.005 && !showLogo) {
+                setShowLogo(true);
+            }
+            if (video.currentTime >= 12 && !fadeOut) {
+                setFadeOut(true);
+            }
+        };
+
+        const handleEnded = () => {
+            setFadeOut(true);
+            setTimeout(() => setLoading(false), 500);
+        };
+
+        video.addEventListener("timeupdate", handleTimeUpdate);
+        video.addEventListener("ended", handleEnded);
 
         return () => {
-            clearTimeout(logoTimer);
-            clearTimeout(fadeTimer);
-            clearTimeout(removeLoader);
+            video.removeEventListener("timeupdate", handleTimeUpdate);
+            video.removeEventListener("ended", handleEnded);
         };
-    }, []);
+    }, [showLogo, fadeOut]);
 
     return (
         <>
             {loading ? (
                 <div className={`loader ${fadeOut ? "fade-out" : ""}`}>
                     <video
+                        ref={videoRef}
                         src="/intro.mp4"
                         autoPlay
                         muted
                         playsInline
-                        onEnded={() => {
-                            setFadeOut(true);
-                            setTimeout(() => setLoading(false), 500);
-                        }}
                         style={{
                             width: "100vw",
                             height: "100vh",
