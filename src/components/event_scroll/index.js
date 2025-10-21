@@ -3,11 +3,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Poster from "./poster.js";
 import { Loader } from "../Loader/index.js";
 import "./index.css";
-import { WebCanvas } from "../bg_animation/bg_animate.js";
 import imgsrc from "./tzcomingsoon.png"; // Fallback image
 import dept from "./dept_poster_page.png";
 import club from "./club_event_page.png";
 import spotlight from "./spot_event_page.png";
+
+import ProfileCard from "../ProfileCardAnimation/ProfileCard.jsx"
 
 const TABS = [
   { key: "societies", label: "DEPARTMENT" },
@@ -126,14 +127,26 @@ function Index() {
             }
           >
             {society.events?.map((event, index) => (
-              <Poster
-                key={index}
-                imageSrc={event.imgsrc}
-                fallbackSrc={imgsrc}
-                title={event.title}
-                content={event.name}
-                onClick={() => handlePosterClick(event)}
-              />
+              // <Poster
+              //   key={index}
+              //   imageSrc={event.imgsrc}
+              //   fallbackSrc={imgsrc}
+              //   title={event.title}
+              //   content={event.name}
+              //   onClick={() => handlePosterClick(event)}
+              // />
+
+<ProfileCard
+
+  imageSrc={event.imgsrc}
+  fallbackSrc={imgsrc}
+  title={event.title}
+  subtitle={event.name}
+  onContactClick={() => handlePosterClick(event)}
+/>
+
+
+
             ))}
           </div>
         </div>
@@ -149,9 +162,7 @@ function Index() {
 
   return (
     <div className="outer-container">
-      <div className="poster-canvas">
-        <WebCanvas />
-      </div>
+     
 
       {/* Tabs row */}
       <div className="tabs-wrapper mt-20 lg:mt-28 sm:mt-28 md:mt-28">
@@ -182,14 +193,22 @@ function Index() {
           "
           >
             {data.map((item, index) => (
-              <Poster
-                key={index}
-                imageSrc={item.imgsrc}
-                fallbackSrc={imgsrc}
-                title={item.title}
-                content={item.name}
-                onClick={() => handlePosterClick(item)}
-              />
+              // <Poster
+              //   key={index}
+              //   imageSrc={item.imgsrc}
+              //   fallbackSrc={imgsrc}
+              //   title={item.title}
+              //   content={item.name}
+              //   onClick={() => handlePosterClick(item)}
+              // />
+              <ProfileCard
+
+  imageSrc={item.imgsrc}
+  fallbackSrc={imgsrc}
+  title={item.title}
+  subtitle={item.name}
+  onContactClick={() => handlePosterClick(item)}
+/>
             ))}
           </div>
         )}

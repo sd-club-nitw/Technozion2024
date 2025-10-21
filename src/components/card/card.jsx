@@ -68,9 +68,7 @@ const Card = () => {
 
   return (
     <div className="card-container">
-      <div className="web-canvas">
-        <WebCanvas />
-      </div>
+     
       <div className={`event_card wrap animate pop active `}>
         <div className="text">
           <div className="logo-cardnav-container">

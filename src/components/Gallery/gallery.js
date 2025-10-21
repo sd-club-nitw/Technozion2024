@@ -60,17 +60,15 @@ export const Gallery = () => {
     }, [loadedPages]);
 
     return (
-        <div className="centered-container">
-            <div className="gallery-canvas">
-                <WebCanvas />
-            </div>
-            {loading && <Loader />} {/* Show loader until all PDF pages are loaded */}
-            <div 
-                className={`pdf-container ${loading ? 'hidden' : ''}`} 
-                ref={pdfRef}
-            >
-                {/* Canvas elements will be appended here */}
+        <div className="relative centered-container">
+       
+
+            {loading && <Loader />}
+
+            <div className="pdf-container" ref={pdfRef}>
+                {/* PDF canvases will be appended here */}
             </div>
         </div>
+
     );
 };

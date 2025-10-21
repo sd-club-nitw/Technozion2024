@@ -1,0 +1,45 @@
+.progress{
+    position: relative;
+    height: 10px;
+    width: 200px;
+    border: 10px solid #f4a261;
+}
+.loader-parent{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2a9d8f;
+}
+
+.bar {
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(90deg, #0ff, #f0f, #0ff);
+  box-shadow: 0 0 5px #0ff, 0 0 10px #f0f;
+}
+
+.bar-one {
+  width: 0;
+  animation: moveRight 2s infinite linear;
+}
+
+.bar-two {
+  width: 0;
+  animation: moveLeft 2s infinite linear;
+  background: linear-gradient(90deg, #f0f, #0ff, #f0f);
+}
+
+
+/* Animations */
+@keyframes moveRight {
+  0% { left: 0; width: 0%; }
+  50% { width: 100%; left: 0; }
+  100% { width: 0%; left: 100%; }
+}
+
+@keyframes moveLeft {
+  0% { left: 100%; width: 0%; }
+  50% { width: 100%; left: 0; }
+  100% { width: 0%; left: 0; }
+}

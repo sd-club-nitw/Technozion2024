@@ -73,6 +73,7 @@ export default function Navbar() {
             - Added type="button"
             - Added className="nav-button-link" for styling
           */}
+          
           <button 
             onClick={toggleDropdown} 
             className="nav-button-link" 
@@ -93,7 +94,7 @@ export default function Navbar() {
           )}
         </div>
       ) : (
-     <NavLink to={menuItem.link} onClick={closeMenu} className="nav-btn">
+     <NavLink to={menuItem.link} onClick={closeMenu} className="nav-btn w-[6rem]">
   <span>{menuItem.name}</span>
 </NavLink>
       )}
@@ -102,7 +103,7 @@ export default function Navbar() {
 
   const rightNavItems = rightNavigation.map((menuItem, index) => (
     <li key={index}>
-       <NavLink to={menuItem.link} onClick={closeMenu} className="nav-btn">
+       <NavLink to={menuItem.link} onClick={closeMenu} className="nav-btn w-[6rem]">
   <span>{menuItem.name}</span>
 </NavLink>
     </li>
@@ -128,15 +129,13 @@ export default function Navbar() {
             setMenuOpen(!menuOpen);
           }}
         >
-          {menuOpen ? (
-            <ImCross className='cross' />
-          ) : (
-            <>
-              <span className={menuOpen ? '' : 'ham'}></span>
-              <span className={menuOpen ? '' : 'ham'}></span>
-              <span className={menuOpen ? '' : 'ham'}></span>
-            </>
-          )}
+       
+          
+              <span className={menuOpen ? '' : 'ham bg-white'}></span>
+              <span className={menuOpen ? '' : 'ham bg-lightPurple w-1/2'}></span>
+              <span className={menuOpen ? '' : 'ham bg-white'}></span>
+        
+         
         </div>
         <ul className={menuOpen ? "open" : ""}>{listItems}</ul>
       </nav>

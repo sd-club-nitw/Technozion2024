@@ -1,21 +1,12 @@
-/* @font-face {
-  font-family: "Aftersick";
-  src: url(../public/fonts/aftersick-font-1706356594-0/aftersickdemo-semibold.otf);
-} */
 
-
-/* #root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-} */
 
 body {
   padding: 0 !important;
   margin: 0 !important;
   max-width: 100vw !important;
   overflow-x: clip !important;
-  background-color: #020928;
+  background-color: #000 !important;
+  color: white;
 }
 
 ::-webkit-scrollbar {
@@ -36,4 +27,63 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #d987c3;
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+}
+
+.logo-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4vw;
+  z-index: 10;
+  animation: fadeIn 1s ease forwards;
+}
+
+.tz-logo {
+  height: auto;
+  opacity: 0.9;
+  transition: transform 0.5s ease;
+}
+
+.tz-logo.small {
+  width: clamp(80px, 10vw, 160px);
+}
+
+.tz-logo.large {
+  width: clamp(320px, 40vw, 640px); /* 4x larger */
+}
+
+.tz-logo:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

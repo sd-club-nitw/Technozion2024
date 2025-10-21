@@ -42,9 +42,7 @@ const Events = () => {
 
   return (
     <>
-      <div className="web-canvas">
-        <WebCanvas />
-      </div>
+  
 
       <div className="events-container">
         {/* top Event logo */}

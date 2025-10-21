@@ -6,11 +6,7 @@
 	background-color: #000000; /* Set background color to black */
 }
 
-/* Body and General Styles */
-body {
-    background-color: #000000; /* Ensure body background is black */
-    color: white; /* Set default text color to white */
-}
+
 
 @keyframes scrollYf {
 	0% {
@@ -75,7 +71,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	color: white;
-	z-index: 1;
+	z-index: 3;
 	padding: 1rem;
 	padding-bottom: 0;
 	transform: translate(-50%, -50%);
@@ -228,8 +224,8 @@ border: 1px solid rgba(255, 255, 255, 0.15);
 flex-shrink: 0;
 transition: transform 0.2s;
 box-shadow: 0 0 5px #7b00ff,
-            0 0 10px #7b00ff,
-            0 0 20px #7b00ff;
+            0 0 5px #7b00ff,
+            0 0 10px #7b00ff;
 
 /* 🟣 Dark transparent glass */
 background: rgba(0, 0, 0, 0.01);
