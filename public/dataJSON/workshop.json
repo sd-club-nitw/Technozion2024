@@ -168,27 +168,6 @@
     "imgsrc": "/posters25/workshop_rocket.jpg",
     "index": 31,
     "glink": null
-  },
-  {
-    "title": "Data Alchemy",
-    "name": "MME Society",
-    "total_cost": 3000,
-    "overview": {
-      "main_title": "Data Alchemy",
-      "description": "A Hands-on session to explore the horizons AI/ML in problem solving .Quiz will be taken after the session on basis of which top 3 will be provided goodies.",
-      "team_size": "Coming Soon...",
-      "contact": [
-        {
-          "name": "Gudimella krishi kumar",
-          "email": "gk23mmb0a12@student.nitw.ac.in",
-          "phone": "7396351458"
-        }
-      ]
-    },
-   
-    "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/workshop_dataAlchemy.jpg",
-    "index": 31,
-    "glink": null
   }
+  
 ]

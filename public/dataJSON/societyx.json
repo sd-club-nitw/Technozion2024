@@ -1,5 +1,210 @@
 [
-  {
+ {
+    "societyName": "Computer Science and Engineering Society",
+    "events": [
+      {
+        "title": "#1 No Bugs Given",
+        "name": "Computer Science and Engineering Society",
+        "total_cost": 7000,
+        "overview": {
+          "main_title": "#1 No Bugs Given",
+          "description": "No Bugs Given is a competitive 1v1 debugging tournament where players race to identify and fix flaws in programs faster than their opponent.",
+          "team_size": "1",
+          "contact": [
+            {
+              "name": "Devashish",
+              "email": "dv22csb0f38@student.nitw.ac.in",
+              "phone": "9987938287"
+            }
+          ]
+        },
+        "rules": [
+          "Participants face knockout rounds and must debug programs for syntax and logic errors",
+          "Strict time limit, with no AI tools permitted"
+        ],
+        "judging_criteria": "Coming Soon....",
+        "imgsrc": "/posters25/society_1_imgsrc.jpg",
+        "index": 10
+      },
+      {
+        "title": "CSES Arcade",
+        "name": "Computer Science and Engineering Society",
+        "total_cost": 0,
+        "overview": {
+          "main_title": "CSES Arcade",
+          "description": "An intense 3D, two-player duel built on suspense, strategy, and quick thinking, enhanced by immersive visuals and sound design.",
+          "team_size": "2",
+          "contact": [
+            {
+              "name": "Neel",
+              "email": "nm23csb0f42@student.nitw.ac.in",
+              "phone": "7022235002"
+            }
+          ]
+        },
+        "rules": [
+          "Players take alternating turns with randomized live or dud shells.",
+          "The round continues until only one player remains."
+        ],
+        "judging_criteria": "Coming Soon....",
+        "imgsrc": "/posters25/society_23_imgsrc.png",
+        "index": 10
+      }
+    ]
+  },
+    {
+    "societyName": "Civil Engineering Association",
+    "events": [
+      {
+        "title": "Kon Banega Civil Engineer",
+        "name": "Civil Engineering Association",
+        "total_cost": 3000,
+        "overview": {
+          "main_title": "Kon Banega Civil Engineer",
+          "description": "'Kon Banega Civil Engineer' is a fast-paced quiz competition testing participants' knowledge in civil engineering. Teams compete through multiple rounds, leading to an exciting 'Hot Seat' finale where the top scorers battle for victory.",
+          "team_size": "Coming Soon...",
+          "contact": [
+            {
+              "name": "Tanmay",
+              "email": "ts23ceb0a04@student.nitw.ac.in",
+              "phone": "7737610206"
+            }
+          ]
+        },
+        "rules": [
+          "Teams compete in multiple quiz rounds to advance.",
+          "Top three teams enter the 'Hot Seat' round to determine the final winners."
+        ],
+        "judging_criteria": "Coming Soon...",
+        "imgsrc": "/posters25/society_19_imgsrc.png",
+        "index": 30
+      },
+      {
+        "title": "Earthquake Resistant Building",
+        "name": "Civil Engineering Association",
+        "total_cost": 5000,
+        "overview": {
+          "main_title": "Earthquake Resistant Building",
+          "description": "'Earthquake Resistant Building Model' challenges teams to design and construct a 4-storey structure using limited materials that can withstand rigorous load and shake tests. It's a test of creativity, engineering skill, and structural strength!",
+          "team_size": "Coming Soon...",
+          "contact": [
+            {
+              "name": "Shristi Singh",
+              "email": "ss23ceb0a09@student.nitw.ac.in",
+              "phone": "9893399933"
+            }
+          ]
+        },
+        "rules": [
+          "Design and build the strongest model possible.",
+          "Models must withstand rigorous load and shake table tests"
+        ],
+        "judging_criteria": "Coming Soon...",
+        "imgsrc": "/posters25/society_20_imgsrc.png",
+        "index": 30
+      }
+    ]
+  },
+   {
+    "societyName": "MMES & IIMSC",
+    "events": [
+      {
+        "title": "MetaRush",
+        "name": "MMES & IIMSC",
+        "total_cost": 1500,
+        "overview": {
+          "main_title": "MetaRush",
+          "description": "“Meta-Rush” is an adventurous race across multiple routes with exciting checkpoints, where teams unlock clues via QR codes, complete challenges, and compete to finish first with the highest score. It’s a perfect mix of strategy, speed, and fun!",
+          "team_size": "Coming Soon...",
+          "contact": [
+            {
+              "name": "Harshitha",
+              "email": "ga22mmb0a44@student.nitw.ac.in",
+              "phone": "9059701704"
+            }
+          ]
+        },
+        "rules": [
+          "Teams race through 6–8 checkpoints, unlocking clues via QR codes.",
+          "Points (+4 correct, -2 wrong, 0 dares) and time decide the winner."
+        ],
+        "judging_criteria": "Coming Soon...",
+        "imgsrc": "/posters25/society_8_imgsrc.png",
+        "index": 25
+      },
+      {
+        "title": "MetaDart",
+        "name": "MMES & IIMSC",
+        "total_cost": 1000,
+        "overview": {
+          "main_title": "MetaDart",
+          "description": "“Meta-Dart” is a fun blend of skill and knowledge where each dart throw decides your challenge. The closer you land to the center, the easier the question; miss wide, and tougher material-based questions await!",
+          "team_size": "Coming Soon...",
+          "contact": [
+            {
+              "name": "Abhiram",
+              "email": "ka23mmb0a47@student.nitw.ac.in",
+              "phone": "9059066629"
+            }
+          ]
+        },
+        "rules": [
+          "Players throw a dart at a 12-section material board.",
+          "Closer to center = easier questions; farther = tougher questions."
+        ],
+        "judging_criteria": "Coming Soon...",
+        "imgsrc": "/posters25/society_17_imgsrc.png",
+        "index": 25
+      },
+      {
+        "title": "Metalusion",
+        "name": "MMES & IIMSC",
+        "total_cost": 0,
+        "overview": {
+          "main_title": "Metalusion",
+          "description": "“Metalusion” brings futuristic materials like self-healing compounds and smart alloys to life, showcasing their fascinating real-world applications. Visitors can explore how these innovations reshape technology.",
+          "team_size": "Coming Soon...",
+          "contact": [
+            {
+              "name": "Harijinder",
+              "email": "sh23mmb0a29@student.nitw.ac.in",
+              "phone": "9000130823"
+            }
+          ]
+        },
+        "rules": [
+          "Present special materials, like self-healing materials, at the stall.",
+          "Explain their interesting applications to the audience."
+        ],
+        "judging_criteria": "Coming Soon...",
+        "imgsrc": "/posters25/society_18_imgsrc.png",
+        "index": 25
+      },
+      {
+    "title": "Data Alchemy",
+    "name": "MME Society",
+    "total_cost": 3000,
+    "overview": {
+      "main_title": "Data Alchemy",
+      "description": "A Hands-on session to explore the horizons AI/ML in problem solving .Quiz will be taken after the session on basis of which top 3 will be provided goodies.",
+      "team_size": "Coming Soon...",
+      "contact": [
+        {
+          "name": "Gudimella krishi kumar",
+          "email": "gk23mmb0a12@student.nitw.ac.in",
+          "phone": "7396351458"
+        }
+      ]
+    },
+   
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/workshop_dataAlchemy.jpg",
+    "index": 31,
+    "glink": null
+  }
+    ]
+  },
+   {
     "societyName": "Chemical Engineering Society",
     "events": [
       {
@@ -75,59 +280,7 @@
       }
     ]
   },
-  {
-    "societyName": "Computer Science and Engineering Society",
-    "events": [
-      {
-        "title": "#1 No Bugs Given",
-        "name": "Computer Science and Engineering Society",
-        "total_cost": 7000,
-        "overview": {
-          "main_title": "#1 No Bugs Given",
-          "description": "No Bugs Given is a competitive 1v1 debugging tournament where players race to identify and fix flaws in programs faster than their opponent.",
-          "team_size": "1",
-          "contact": [
-            {
-              "name": "Devashish",
-              "email": "dv22csb0f38@student.nitw.ac.in",
-              "phone": "9987938287"
-            }
-          ]
-        },
-        "rules": [
-          "Participants face knockout rounds and must debug programs for syntax and logic errors",
-          "Strict time limit, with no AI tools permitted"
-        ],
-        "judging_criteria": "Coming Soon....",
-        "imgsrc": "/posters25/society_1_imgsrc.jpg",
-        "index": 10
-      },
-      {
-        "title": "CSES Arcade",
-        "name": "Computer Science and Engineering Society",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "CSES Arcade",
-          "description": "An intense 3D, two-player duel built on suspense, strategy, and quick thinking, enhanced by immersive visuals and sound design.",
-          "team_size": "2",
-          "contact": [
-            {
-              "name": "Neel",
-              "email": "nm23csb0f42@student.nitw.ac.in",
-              "phone": "7022235002"
-            }
-          ]
-        },
-        "rules": [
-          "Players take alternating turns with randomized live or dud shells.",
-          "The round continues until only one player remains."
-        ],
-        "judging_criteria": "Coming Soon....",
-        "imgsrc": "/posters25/society_23_imgsrc.png",
-        "index": 10
-      }
-    ]
-  },
+ 
   {
     "societyName": "Mathematical Society",
     "events": [
@@ -283,83 +436,7 @@
       }
     ]
   },
-  {
-    "societyName": "MMES & IIMSC",
-    "events": [
-      {
-        "title": "MetaRush",
-        "name": "MMES & IIMSC",
-        "total_cost": 1500,
-        "overview": {
-          "main_title": "MetaRush",
-          "description": "“Meta-Rush” is an adventurous race across multiple routes with exciting checkpoints, where teams unlock clues via QR codes, complete challenges, and compete to finish first with the highest score. It’s a perfect mix of strategy, speed, and fun!",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Harshitha",
-              "email": "ga22mmb0a44@student.nitw.ac.in",
-              "phone": "9059701704"
-            }
-          ]
-        },
-        "rules": [
-          "Teams race through 6–8 checkpoints, unlocking clues via QR codes.",
-          "Points (+4 correct, -2 wrong, 0 dares) and time decide the winner."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_8_imgsrc.png",
-        "index": 25
-      },
-      {
-        "title": "MetaDart",
-        "name": "MMES & IIMSC",
-        "total_cost": 1000,
-        "overview": {
-          "main_title": "MetaDart",
-          "description": "“Meta-Dart” is a fun blend of skill and knowledge where each dart throw decides your challenge. The closer you land to the center, the easier the question; miss wide, and tougher material-based questions await!",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Abhiram",
-              "email": "ka23mmb0a47@student.nitw.ac.in",
-              "phone": "9059066629"
-            }
-          ]
-        },
-        "rules": [
-          "Players throw a dart at a 12-section material board.",
-          "Closer to center = easier questions; farther = tougher questions."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_17_imgsrc.png",
-        "index": 25
-      },
-      {
-        "title": "Metalusion",
-        "name": "MMES & IIMSC",
-        "total_cost": 0,
-        "overview": {
-          "main_title": "Metalusion",
-          "description": "“Metalusion” brings futuristic materials like self-healing compounds and smart alloys to life, showcasing their fascinating real-world applications. Visitors can explore how these innovations reshape technology.",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Harijinder",
-              "email": "sh23mmb0a29@student.nitw.ac.in",
-              "phone": "9000130823"
-            }
-          ]
-        },
-        "rules": [
-          "Present special materials, like self-healing materials, at the stall.",
-          "Explain their interesting applications to the audience."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_18_imgsrc.png",
-        "index": 25
-      }
-    ]
-  },
+  
   {
     "societyName": "Electrical Engineering Society",
     "events": [
@@ -635,59 +712,7 @@
       }
     ]
   },
-  {
-    "societyName": "Civil Engineering Association",
-    "events": [
-      {
-        "title": "Kon Banega Civil Engineer",
-        "name": "Civil Engineering Association",
-        "total_cost": 3000,
-        "overview": {
-          "main_title": "Kon Banega Civil Engineer",
-          "description": "'Kon Banega Civil Engineer' is a fast-paced quiz competition testing participants' knowledge in civil engineering. Teams compete through multiple rounds, leading to an exciting 'Hot Seat' finale where the top scorers battle for victory.",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Tanmay",
-              "email": "ts23ceb0a04@student.nitw.ac.in",
-              "phone": "7737610206"
-            }
-          ]
-        },
-        "rules": [
-          "Teams compete in multiple quiz rounds to advance.",
-          "Top three teams enter the 'Hot Seat' round to determine the final winners."
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_19_imgsrc.png",
-        "index": 30
-      },
-      {
-        "title": "Earthquake Resistant Building",
-        "name": "Civil Engineering Association",
-        "total_cost": 5000,
-        "overview": {
-          "main_title": "Earthquake Resistant Building",
-          "description": "'Earthquake Resistant Building Model' challenges teams to design and construct a 4-storey structure using limited materials that can withstand rigorous load and shake tests. It's a test of creativity, engineering skill, and structural strength!",
-          "team_size": "Coming Soon...",
-          "contact": [
-            {
-              "name": "Shristi Singh",
-              "email": "ss23ceb0a09@student.nitw.ac.in",
-              "phone": "9893399933"
-            }
-          ]
-        },
-        "rules": [
-          "Design and build the strongest model possible.",
-          "Models must withstand rigorous load and shake table tests"
-        ],
-        "judging_criteria": "Coming Soon...",
-        "imgsrc": "/posters25/society_20_imgsrc.png",
-        "index": 30
-      }
-    ]
-  },
+
   {
     "societyName": "Physics Society",
     "events": [
