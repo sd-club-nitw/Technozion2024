@@ -10,9 +10,8 @@ import club from "./club_event_page.png";
 import spotlight from "./spot_event_page.png";
 
 const TABS = [
-  { key: "societies", label: "DEPARTMENT" },
-  { key: "spotlight", label: "SPOTLIGHT" },
   { key: "clubevents", label: "CLUB" },
+  { key: "societies", label: "DEPARTMENT" },
   { key: "projects", label: "PROJECTS EXPO" },
 ];
 
@@ -23,7 +22,7 @@ function Index() {
   // pick initial tab from URL ?tab=..., then location.state?.dataSource, then default to 'societies'
   const getInitialTab = () => {
     const params = new URLSearchParams(location.search);
-    return params.get("tab") || location.state?.dataSource || "societies";
+    return params.get("tab") || location.state?.dataSource || "clubevents";
   };
 
   const [selectedTab, setSelectedTab] = useState(getInitialTab);
