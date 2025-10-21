@@ -94,7 +94,7 @@ export default function Navbar() {
           )}
         </div>
       ) : (
-     <NavLink to={menuItem.link} onClick={closeMenu} className="nav-btn">
+     <NavLink to={menuItem.link} onClick={closeMenu} className="nav-btn w-[6rem]">
   <span>{menuItem.name}</span>
 </NavLink>
       )}
@@ -103,7 +103,7 @@ export default function Navbar() {
 
   const rightNavItems = rightNavigation.map((menuItem, index) => (
     <li key={index}>
-       <NavLink to={menuItem.link} onClick={closeMenu} className="nav-btn">
+       <NavLink to={menuItem.link} onClick={closeMenu} className="nav-btn w-[6rem]">
   <span>{menuItem.name}</span>
 </NavLink>
     </li>

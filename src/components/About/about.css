@@ -2,8 +2,8 @@
 .about-content {
   background-image: url('../../../public/fabric-bg.jpg');
   background-size: cover;
-  background-position: center;
-  width: 50vw;           /* explicitly half the viewport */
+  opacity: 95%;
+  background-position: center;         /* explicitly half the viewport */
   clip-path: polygon(
     0 0,
     95% 0,
@@ -18,16 +18,106 @@
 
 
 
-/* Gradient Background */
-.t-b-grad {
-  background: linear-gradient(
-    to bottom,
-    #232754 0%,
-    #020928 50%,
-    #283994 60%,
-    #283994 100%
-  );
+.link-btn {
+  position: relative;
+
+  overflow: hidden;
+  border: none;
+
 }
+
+
+
+/* Two pseudo-elements for top-left & bottom-right */
+.link-btn::before,
+.link-btn::after {
+  content: "";
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  border: 2px solid #9633ff;
+  transition: all 0.5s ease;
+
+}
+
+/* Top-left corner */
+.link-btn::before {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+/* Bottom-right corner */
+.link-btn::after {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+/* Two more pseudo-elements inside span for other corners */
+.link-btn span::before,
+.link-btn span::after {
+  content: "";
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  border: 2px solid #fff;
+  transition: all 0.5s ease;
+}
+
+.link-btn span::before {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+
+.link-btn span::after {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+}
+
+/* Hover — extend all corners */
+.link-btn:hover::before,
+.link-btn:hover::after,
+.link-btn:hover span::before,
+.link-btn:hover span::after {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+@keyframes riseUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.text-rise {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.text-rise span {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+  animation: riseUp 0.8s ease-out forwards;
+}
+
+
+
+
 
 /* Hide Scrollbars */
 .about-page{
@@ -36,19 +126,7 @@
   overflow: visible;
   position: relative;
 }
-/* Card Container Styles */
-.about-container {
-  padding: 20px; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  /* background: #000; */
-  z-index: 2;
-  max-height: 100%;
-  overflow: auto;
 
-}
 
 .border {
   position: relative; /* Set relative positioning for pseudo-element */
