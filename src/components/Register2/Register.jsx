@@ -535,13 +535,14 @@ const Register = () => {
             </div>
           </div>
 
-          <div className="mt-8 text-center">
+          <div className="mt-8 mb-20 text-center">
             <button
               type="submit"
               className="px-8 py-4 bg-cyan/20 rounded-xl hover:bg-cyan/30 transition font-semibold text-lg shadow-lg hover:shadow-cyan/30 transform hover:-translate-y-0.5"
             >
               Complete Registration
             </button>
+            <br />
           </div>
         </form>
       </div>
