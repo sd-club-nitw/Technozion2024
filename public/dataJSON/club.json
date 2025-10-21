@@ -47,14 +47,15 @@
     "imgsrc": "/posters25/club_01_imgsrc.jpg",
     "index": 31
   },
+  
+
   {
-    "title": "Bomb's Away!",
-    "name": "Robotics Club",
+    "title": "VALUATION WARS",
+    "name": "Entrepreneurship Club",
     "total_cost": 15000,
     "overview": {
-      "main_title": "Bomb's Away!",
-      "description": "Bomb’s Away challenges participants to time the release of a payload from a remotely piloted aircraft onto a ground target. Success depends on judging speed, altitude, and wind for maximum accuracy.",
-      "team_size": "Coming Soon...",
+      "main_title": "VALUATION WARS",
+      "description": "Valuation War is an exciting business auction game where teams act as investors competing to build the most valuable company portfolio. It’s a mix of strategy, business knowledge, and fun!",
       "contact": [
         {
           "name": "Dhanvanth Chandrasekaran",
@@ -64,11 +65,13 @@
       ]
     },
     "rules": [
-      "Pilot announces the approach, participant times the trigger to drop the payload, and marshals record the result.",
-      "No communication or interference with the pilot is allowed during the run."
+      "Form a team of 3–5 members",
+      "Each team gets a virtual money pot.",
+      "Around 30 businesses will be introduced with short descriptions and minimum bid prices. Teams will bid for each business one by one.In between, there will be business quiz rounds for bonus money and power-ups. After the auction, the hidden potential values of businesses will be revealed",
+"The team with the highest total business value wins!"
     ],
     "judging_criteria": "Coming Soon...",
-    "imgsrc": "/posters25/club_2_imgsrc.png",
+    "imgsrc": "/posters/club_32_imgsrc.jpg",
     "index": 31
   },
   {
