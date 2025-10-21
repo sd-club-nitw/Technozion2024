@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Poster from "./poster.js";
 import { Loader } from "../Loader/index.js";
 import "./index.css";
-import { WebCanvas } from "../bg_animation/bg_animate.js";
 import imgsrc from "./tzcomingsoon.png"; // Fallback image
 import dept from "./dept_poster_page.png";
 import club from "./club_event_page.png";
@@ -163,9 +162,7 @@ function Index() {
 
   return (
     <div className="outer-container">
-      <div className="poster-canvas">
-        <WebCanvas />
-      </div>
+     
 
       {/* Tabs row */}
       <div className="tabs-wrapper mt-20 lg:mt-28 sm:mt-28 md:mt-28">

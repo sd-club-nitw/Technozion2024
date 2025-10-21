@@ -72,8 +72,9 @@ const Hero = () => {
                 <div className='heading1 flex flex-col justify-center items-center' style={{ 'background': 'transparent' }}>
                     <div className="main-logo">
 
-                  <span className="lg:text-5xl text-3xl font-bold mb-4 uppercase animate-pulse cursor-pointer">
-          <TypingWords words={['TECHNOZION 2025', 'COMING SOON']} />
+                  <span className="lg:text-5xl text-3xl font-bold mb-4 uppercase cursor-pointer">
+          {/* <TypingWords words={['TECHNOZION 2025', 'COMING SOON']} /> */}
+          <img alt='tz logo' className="w-80% scale-[.7] h-5 aspect-[15/3]" src={'./main_tz_logo.png'} />
         </span>
                     </div>
                     {/* Countdown Clock */}

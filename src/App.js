@@ -8,7 +8,7 @@ import Galaxy from "./components/bg_animation/Galaxy";
 import FlyingLogo from "./components/IntroLoader/FlyingLogo";
 
 const App = () => {
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [fadeOut, setFadeOut] = useState(false);
     const [showLogo, setShowLogo] = useState(false);
     const videoRef = useRef(null);

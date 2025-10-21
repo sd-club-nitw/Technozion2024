@@ -1,9 +1,22 @@
 
-/* Responsive Text and Images */
-h1 {
-  font-size: 2rem;
-  margin: 20px 0;
+.about-content {
+  background-image: url('../../../public/fabric-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 50vw;           /* explicitly half the viewport */
+  clip-path: polygon(
+    0 0,
+    95% 0,
+    95% 20%,
+    calc(100% + 200px) 50%,  /* extrusion outward */
+    95% 80%,
+    95% 100%,
+    0 100%
+  );
 }
+
+
+
 
 /* Gradient Background */
 .t-b-grad {
@@ -20,7 +33,7 @@ h1 {
 .about-page{
   min-height: 100vh;
   width: 100vw;
-  overflow: auto;
+  overflow: visible;
   position: relative;
 }
 /* Card Container Styles */

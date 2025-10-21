@@ -3,11 +3,14 @@ import './about.css';
 import youtubeLogo from './youtube-logo.png';
 import { motion } from "framer-motion";
 import TypingText from "../utils/TypingText";
+import { WebCanvas } from "../bg_animation/bg_animate";
 
 
 function AboutCard({ content, image, imgToRight, title }) {
   return (
-    <div className="about-container lg:mt-32 mt-24">
+    <div className="about-container">
+      <WebCanvas />
+      <WebCanvas />
       <div className={`flex flex-col mx-4 md:mx-10 mt-10 flex-wrap justify-center items-center`}>
         <div className="about_us w-full text-center"></div>
 
@@ -29,39 +32,7 @@ function AboutCard({ content, image, imgToRight, title }) {
         {/* Your motion buttons remain unchanged */}
       </div>
 
-      <section className="w-full z-9 h-full">
-        <h1 className="text-center">Technozion Brochure</h1>
-        <div style={{ height: '800px', width: '100%' }}>
-          <iframe
-            src="/pdf/tz.pdf#toolbar=0&zoom=60&"
-            title="Embedded PDF Document"
-            style={{ border: 'none', width: '80%', margin: 'auto', height: '100%' }}
-          >
-            <div style={{ padding: '20px', textAlign: 'center' }}>
-              <p>
-                **Sorry, your browser doesn't support embedded PDFs on this device.**
-              </p>
-              <a
-                href="/pdf/tz.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                download
-                style={{
-                  display: 'inline-block',
-                  padding: '10px 20px',
-                  backgroundColor: '#007bff',
-                  color: 'white',
-                  textDecoration: 'none',
-                  borderRadius: '5px',
-                  marginTop: '10px',
-                }}
-              >
-                📥 Download PDF
-              </a>
-            </div>
-          </iframe>
-        </div>
-      </section>
+     
     </div>
   );
 }

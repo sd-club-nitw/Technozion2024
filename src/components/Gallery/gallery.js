@@ -61,7 +61,7 @@ export const Gallery = () => {
 
     return (
         <div className="relative centered-container">
-            <WebCanvas />
+       
 
             {loading && <Loader />}
 
