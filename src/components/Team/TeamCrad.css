@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f3e9dc;
+  font-family: Arial, sans-serif;
+}
+
+.teamcard-wrapper {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* === Position label (same as .title) === */
+.teamcard-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 17px;
+  width: 80px;
+  background: #2c0fbe; /* blue header */
+  z-index: 10;
+  clip-path: inset(0.5px round 8px 0);
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+/* === Card shape === */
+.teamcard {
+  position: relative;
+  height: 200px;
+  width: 150px;
+  background: rgba(0, 0, 0, 0.45);
+  clip-path: path(
+    "M 10,20 L 60,20 A 10,10,0,0,0 70,10 L 70,10 A 10,10,0,0,1 80,0 L 140,0 A 10,10,0,0,1 150,10 L 150,190 A 10,10,0,0,1 140,200 L 10,200 A 10,10,0,0,1 0,190 L 0,30 A 10,10,0,0,1 10,20 Z"
+  );
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+/* === Image === */
+.teamcard img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* === Footer (name + email) === */
+.teamcard-info {
+  width: 130px;
+  background: #1e2a78; /* deep blue */
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 8px auto 0;
+  transition: background 0.3s ease;
+}
+
+.teamcard-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.teamcard-email {
+  font-size: 12px;
+  opacity: 0.9;
+  word-break: break-all;
+  margin-top: 3px;
+  color: #cfd9ff;
+}
+
+/* === Hover effects === */
+.teamcard-wrapper:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+.teamcard-wrapper:hover .teamcard img {
+  transform: scale(1.07);
+}
+
+.teamcard-wrapper:hover .teamcard-info {
+  background: #0a0f5e; /* darker navy blue */
+}
+
+.teamcard-wrapper:hover .teamcard-title {
+  background: #1e2a78; /* slightly darker blue on hover */
+}
