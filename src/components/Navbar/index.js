@@ -130,10 +130,13 @@ export default function Navbar() {
           }}
         >
        
-          
-              <span className={menuOpen ? '' : 'ham bg-white'}></span>
-              <span className={menuOpen ? '' : 'ham bg-lightPurple w-1/2'}></span>
-              <span className={menuOpen ? '' : 'ham bg-white'}></span>
+        <span className={`ham bg-white ${menuOpen ? 'open-top' : ''}`}></span>
+
+  {/* Span 2 (Middle Bar) */}
+  <span className={`ham bg-lightPurple w-1/2 ${menuOpen ? 'open-middle' : ''}`}></span>
+
+  {/* Span 3 (Bottom Bar) */}
+  <span className={`ham bg-white ${menuOpen ? 'open-bottom' : ''}`}></span>
         
          
         </div>

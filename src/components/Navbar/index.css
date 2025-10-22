@@ -181,23 +181,13 @@ nav .menu {
 	justify-content: space-between;
 	width: 2.25rem;
 	height: 2rem;
-	flex: 0;
 	z-index: 10;
 	/* margin: 1rem; */
 }
 
-.cross {
-	position: absolute;
-	cursor: pointer;
-	color: #f1f2f2;
-	height: 2rem;
-	width: 2rem;
-	margin-left: 0.8rem;
-}
 
 .ham {
 	height: 0.4rem;
-
 	cursor: pointer;
 }
 
@@ -295,7 +285,6 @@ nav ul li a {
 @media (max-width: 725px) {
 	nav .menu {
 	  display: flex;
-	  background: red;
 	  margin-top: 1.6rem;
 	  margin-right: 1rem;
 	  width: 1.75rem; /* Reduce width of the menu icon */
@@ -303,22 +292,30 @@ nav ul li a {
 	}
   
 	.ham {
-	z-index: 10;
+		
 	  height: 0.15rem; /* Reduce the height of the hamburger lines */
-	 /* transition: all 0.4s ease; */
+	 transition: all 0.4s ease;
 	  
 	  cursor: pointer;
 	}
-	 .menu.open .ham:nth-child(1) {
-  transform: translateY(0.65rem) rotate(45deg);
+	.open-top {
+  /* Move down by half the total height/spacing, then rotate */
+  transform: translateY(11px) rotate(42deg) ; /* Adjust '8px' based on your 'margin' and 'height' */
 }
-.menu.open .ham:nth-child(2) {
-  opacity: 100;
+
+/* 2. Middle Bar disappears */
+.open-middle {
+  opacity: 0;
+  /* Optionally, for a cleaner X, make it full width if it was half */
+  width: 100% !important;
+
 }
-.menu.open .ham:nth-child(3) {
-  transform: translateY(-0.65rem) rotate(-45deg);
+
+/* 3. Bottom Bar becomes top-right to bottom-left line */
+.open-bottom {
+  /* Move up by half the total height/spacing, then rotate */
+  transform: translateY(-11px) rotate(-45deg); /* Adjust '-8px' to match '8px' above */
 }
-  
 	.logo img {
 		scale: 1.2;
 	  width: calc(var(--img-width) + 10vw);
@@ -345,8 +342,7 @@ nav ul li a {
   
 	.menu-open {
 	  background-color: rgba(0,0,0,0.9);
-	  margin-left: 0%;
-	  padding-bottom: 2%;
+	  /* padding-bottom: 2%; */
 	  display: flex;
 	  justify-content: center;
 	  align-items: center;
