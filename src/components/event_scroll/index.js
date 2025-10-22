@@ -9,6 +9,7 @@ import club from "./club_event_page.png";
 import spotlight from "./spot_event_page.png";
 
 import ProfileCard from "../ProfileCardAnimation/ProfileCard.jsx"
+import { WebCanvas } from "../bg_animation/bg_animate.js";
 
 const TABS = [
   { key: "societies", label: "DEPARTMENT" },
@@ -119,8 +120,8 @@ function Index() {
   const renderSocieties = () => {
     return data.map((society) => (
       <div key={society.societyName}>
-        <h2 className="society-heading">{society.societyName}</h2>
-      
+        <h2 className="society-heading pl-10 font-bold">{society.societyName}</h2>
+
           <div
             className={
               "grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1  gap-4 lg:m-10 m-5"
@@ -162,20 +163,24 @@ function Index() {
 
   return (
     <div className="outer-container">
-     
+      {/* <WebCanvas /> */}
+     <section className="overflow-y-scroll  w-full">
+     <section className="text-8xl bg-darkPurple w-full pl-10 py-10  mt-32 lg:mt-24 sm:mt-28 md:mt-28">
+      EVENTS
+     </section>
 
       {/* Tabs row */}
-      <div className="tabs-wrapper mt-20 lg:mt-28 sm:mt-28 md:mt-28">
+      <div className="tabs-wrapper bg-gray py-2">
         <div className="tabs">
           {TABS.map((tab) => (
             <button
-              key={tab.key}
-              type="button"
-              className={`tab-button ${
-                selectedTab === tab.key ? "active" : ""
-              }`}
-              onClick={() => setSelectedTab(tab.key)}
-              aria-pressed={selectedTab === tab.key}
+            key={tab.key}
+            type="button"
+            className={`tab-button ${
+              selectedTab === tab.key ? "active" : ""
+            }`}
+            onClick={() => setSelectedTab(tab.key)}
+            aria-pressed={selectedTab === tab.key}
             >
               {tab.label}
             </button>
@@ -188,7 +193,7 @@ function Index() {
           renderSocieties()
         ) : (
           <div
-            className="grid lg:grid-cols-5 md:grid-cols-3 
+          className="grid lg:grid-cols-5 md:grid-cols-3 
           sm:grid-cols-2 grid-cols-1 gap-4 lg:m-10 m-5 
           "
           >
@@ -202,17 +207,18 @@ function Index() {
               //   onClick={() => handlePosterClick(item)}
               // />
               <ProfileCard
-
-  imageSrc={item.imgsrc}
-  fallbackSrc={imgsrc}
-  title={item.title}
-  subtitle={item.name}
-  onContactClick={() => handlePosterClick(item)}
+              
+              imageSrc={item.imgsrc}
+              fallbackSrc={imgsrc}
+              title={item.title}
+              subtitle={item.name}
+              onContactClick={() => handlePosterClick(item)}
 />
             ))}
           </div>
         )}
       </div>
+        </section>
     </div>
   );
 }

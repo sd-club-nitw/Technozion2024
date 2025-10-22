@@ -116,20 +116,7 @@
 	width: 100%;
 }
 
-.float {
-	position: fixed;
-	width: 60px;
-	height: 60px;
-	bottom: 40px;
-	right: 40px;
-	background-color: #f7ca17; /* This can remain for visibility */
-	color: #fff;
-	border-radius: 50px;
-	border: 1px solid black;
-	text-align: center;
-	z-index: 1000;
-	animation: bot-to-top 2s ease-out;
-}
+
 
 button.float img {
 	margin-top: 4px;

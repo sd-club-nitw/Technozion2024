@@ -110,45 +110,45 @@ export default function Navbar() {
   ));
 
   return (
-    <>
+    <div className='nav-wrapper z-30'>
       {/* 5. Conditional background from previous fix */}
       {!menuOpen && isRegisterPage && <div className="navbar-background"></div>}
 
       {!menuOpen ? (
-        <div className="logo" > 
+        <div className="logo z-40" > 
           <Link to="./" onClick={closeMenu}>
             <img src={chota_logo} alt="logo1" />
           </Link>
         </div> 
       ) : null}
 
-      <nav className={menuOpen ? 'menu-open' : 'menu-closed'}>
+      <nav className={`z-40 ${menuOpen ? 'menu-open' : 'menu-closed'}`}>
         <div
-          className="menu"
+          className="menu z-50"
           onClick={() => {
             setMenuOpen(!menuOpen);
           }}
         >
-       
+       {/* span 1 top bar  */}
         <span className={`ham bg-white ${menuOpen ? 'open-top' : ''}`}></span>
 
-  {/* Span 2 (Middle Bar) */}
-  <span className={`ham bg-lightPurple w-1/2 ${menuOpen ? 'open-middle' : ''}`}></span>
+        {/* Span 2 (Middle Bar) */}
+        <span className={`ham bg-lightPurple w-1/2 ${menuOpen ? 'open-middle' : ''}`}></span>
 
-  {/* Span 3 (Bottom Bar) */}
-  <span className={`ham bg-white ${menuOpen ? 'open-bottom' : ''}`}></span>
+          {/* Span 3 (Bottom Bar) */}
+          <span className={`ham bg-white ${menuOpen ? 'open-bottom' : ''}`}></span>
         
          
         </div>
-        <ul className={menuOpen ? "open" : ""}>{listItems}</ul>
+        <ul className={`z-40 ${menuOpen ? "open" : ""}`}>{listItems}</ul>
       </nav>
 
       {/* Right side navbar only appears on larger screens */}
       {!isMobileView && (
-        <nav className="right-nav">
+        <nav className="z-40 right-nav">
           <ul>{rightNavItems}</ul>
         </nav>
       )}
-    </>
+    </div>
   );
 }

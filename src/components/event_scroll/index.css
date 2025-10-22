@@ -16,14 +16,12 @@
    Layout containers
    ------------------------- */
 .outer-container {
-  position: relative;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  padding: 20px;
   height: 100vh; /* Full viewport height */
-  overflow: hidden; /* No scroll on the outer container */
   width: 100%;
 }
 
@@ -45,7 +43,9 @@
   justify-content: center;
   z-index: 5;
   position: relative;
- 
+
+  
+
 }
 
 /* -------------------------
@@ -284,7 +284,6 @@
   z-index: 1;
   width: 100%;
   height: 100%; /* leave room for heading and tabs */
-  overflow-y: scroll;
   padding-bottom: 2rem;
   box-sizing: border-box;
   scrollbar-width: none; /* For Firefox */
@@ -300,10 +299,7 @@ Posters grid
 ------------------------- */
 
 .society-heading {
-  text-align: center;
-  margin: 20px 0;
   font-size: 1.5rem;
-  font-weight: 600;
   color:azure;
 }
 
