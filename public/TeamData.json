@@ -120,6 +120,13 @@
     "image":"teja.jpg",
     "position":"Developer",
     "email":"vt23csb0a34@student.nitw.ac.in"
+  },
+   {
+    "name":"Abhiraj",
+    "contactNo":"8008645982",
+    "image":"abhiraj.jpg",
+    "position":"Developer",
+    "email":""
   }
 ]
  

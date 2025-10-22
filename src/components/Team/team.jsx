@@ -94,7 +94,7 @@ export const Team = () => {
 {/* web team  */}
       <section className="flex flex-col items-center justify-center mb-10">
       <h1 className="lg:text-5xl sm:text-4xl text-3xl  uppercase font-bold">Web Team</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
 
       {data?.web_team?.map((member, index) => (
         
