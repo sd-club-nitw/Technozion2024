@@ -1,3 +1,15 @@
+:root {
+
+--purple-rgb: 191, 0, 255;  
+--purple: #bf00ff;        
+
+--dark-purple-rgb: 100, 0, 130; 
+--dark-purple: #640082;
+
+--mid-purple: #a000d4; 
+--light-purple: #dcb4f
+}
+
 .event_card {
 margin: 0;
 padding: 0;
@@ -18,7 +30,7 @@ content: '';
 position: absolute;
 width: 100px;
 height: 100px;
-border: 2px solid rgba(191, 0, 255, 0.8);
+border: 2px solid rgba(var(--purple-rgb), 0.8);
 pointer-events: none;
 z-index: 1;
 }
@@ -49,11 +61,12 @@ overflow: hidden;
 background-color: rgba(0, 0, 0, 0.9);
 
 box-shadow:
-0 0 15px rgba(191, 0, 255, 0.9),
-0 0 40px rgba(191, 0, 255, 0.6),
-0 0 90px rgba(191, 0, 255, 0.3),
-inset 0 0 10px rgba(191, 0, 255, 0.5), 
-inset 10px 0 15px rgba(191, 0, 255, 0.4); 
+0 0 15px rgba(var(--purple-rgb), 0.9),
+0 0 40px rgba(var(--purple-rgb), 0.6),
+0 0 90px rgba(var(--purple-rgb), 0.3),
+inset 0 0 10px rgba(var(--purple-rgb), 0.5), 
+inset 8px 0 15px rgba(var(--purple-rgb), 0.6), 
+inset 20px 0 30px rgba(var(--purple-rgb), 0.2); 
 
 clip-path: polygon(
 0 30px,
@@ -70,7 +83,7 @@ calc(100% - 30px) 100%,
 .wrap::before {
 content: '';
 position: absolute;
-background: linear-gradient(135deg, rgba(191, 0, 255, 0.5), transparent);
+background: linear-gradient(135deg, rgba(var(--purple-rgb), 0.5), transparent);
 z-index: 3;
 pointer-events: none;
 top: 0;
@@ -90,8 +103,8 @@ top: 0;
 left: 0;
 width: 100%;
 height: 2px;
-background: linear-gradient(90deg, transparent, #bf00ff, transparent);
-box-shadow: 0 0 10px 1px #bf00ff;
+background: linear-gradient(90deg, transparent, var(--purple), transparent);
+box-shadow: 0 0 10px 1px var(--purple);
 animation: scan 4s ease-in-out infinite;
 }
 
@@ -124,7 +137,7 @@ backdrop-filter: blur(10px);
 .text::after {
 content: '';
 position: absolute;
-background: linear-gradient(315deg, rgba(191, 0, 255, 0.5), transparent);
+background: linear-gradient(315deg, rgba(var(--purple-rgb), 0.5), transparent);
 z-index: 3;
 pointer-events: none;
 bottom: 0;
@@ -139,7 +152,7 @@ position: relative;
 display: flex;
 width: 100%;
 height: 100%;
-background: rgba(100, 0, 130, 0.9);
+background: rgba(var(--dark-purple-rgb), 0.9);
 transition: 0.4s ease-in-out;
 z-index: 1;
 }
@@ -179,7 +192,7 @@ top: 10px;
 right: 10px;
 bottom: 10px;
 left: 10px;
-border: 1px solid rgba(191, 0, 255, 0.5);
+border: 1px solid rgba(var(--purple-rgb), 0.5);
 clip-path: polygon(
 0 10px,
 10px 0,
@@ -206,7 +219,7 @@ calc(100% - 15px) 100%,
 15px 100%,
 0 calc(100% - 15px)
 );
-border: 2px solid rgba(191, 0, 255, 0.7);
+border: 2px solid rgba(var(--purple-rgb), 0.7);
 }
 
 .content-container {
@@ -239,8 +252,8 @@ gap: 0.5rem;
 }
 
 .cardnav button {
-background: linear-gradient(135deg, rgba(191, 0, 255, 0.15), rgba(100, 0, 130, 0.15));
-border: 1px solid rgba(191, 0, 255, 0.4);
+background: linear-gradient(135deg, rgba(var(--purple-rgb), 0.15), rgba(var(--dark-purple-rgb), 0.15));
+border: 1px solid rgba(var(--purple-rgb), 0.4);
 color: white;
 padding: 0.5rem 1rem;
 cursor: pointer;
@@ -269,7 +282,7 @@ top: 0;
 right: 0;
 width: 100%;
 height: 2px;
-background: linear-gradient(90deg, transparent, rgba(191, 0, 255, 0.8));
+background: linear-gradient(90deg, transparent, rgba(var(--purple-rgb), 0.8));
 opacity: 0;
 transition: opacity 0.3s ease;
 }
@@ -279,30 +292,30 @@ opacity: 1;
 }
 
 .cardnav button.active {
-background: linear-gradient(135deg, rgba(191, 0, 255, 0.3), rgba(100, 0, 130, 0.3));
-border: 2px solid #bf00ff;
+background: linear-gradient(135deg, rgba(var(--purple-rgb), 0.3), rgba(var(--dark-purple-rgb), 0.3));
+border: 2px solid var(--purple);
 transform: scale(1.05);
 box-shadow:
-0 0 10px #bf00ff,
-inset 0 0 8px rgba(191, 0, 255, 0.5);
+0 0 10px var(--purple),
+inset 0 0 8px rgba(var(--purple-rgb), 0.5);
 }
 
 .cardnav button:hover {
-background: linear-gradient(135deg, rgba(191, 0, 255, 0.25), rgba(100, 0, 130, 0.25));
+background: linear-gradient(135deg, rgba(var(--purple-rgb), 0.25), rgba(var(--dark-purple-rgb), 0.25));
 transform: scale(1.05) translateY(-2px);
 box-shadow:
 0px 6px 10px rgba(0, 0, 0, 0.2),
-0 0 15px rgba(191, 0, 255, 0.5);
-border-color: #bf00ff;
+0 0 15px rgba(var(--purple-rgb), 0.5);
+border-color: var(--purple);
 }
 
 .back-button {
-background: linear-gradient(135deg, rgba(191, 0, 255, 0.1), rgba(0, 0, 0, 0.3)) !important;
-border: 1px solid rgba(191, 0, 255, 0.3) !important;
+background: linear-gradient(135deg, rgba(var(--purple-rgb), 0.1), rgba(0, 0, 0, 0.3)) !important;
+border: 1px solid rgba(var(--purple-rgb), 0.3) !important;
 }
 
 .back-button:hover {
-border: 1px solid #bf00ff !important;
+border: 1px solid var(--purple) !important;
 }
 
 .content section {
@@ -317,13 +330,13 @@ left: 0;
 top: 0;
 width: 3px;
 height: 100%;
-background: linear-gradient(180deg, #bf00ff, transparent);
+background: linear-gradient(180deg, var(--purple), transparent);
 clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 }
 
 .bg-gray {
 background: rgba(30, 30, 30, 0.8);
-border: 1px solid rgba(191, 0, 255, 0.3);
+border: 1px solid rgba(var(--purple-rgb), 0.3);
 position: relative;
 clip-path: polygon(
 0 0,
@@ -337,8 +350,8 @@ transition: all 0.3s ease;
 }
 
 .bg-gray:hover {
-border-color: #bf00ff;
-box-shadow: 0 0 15px rgba(191, 0, 255, 0.3);
+border-color: var(--purple);
+box-shadow: 0 0 15px rgba(var(--purple-rgb), 0.3);
 transform: translateY(-2px);
 }
 
@@ -349,7 +362,7 @@ top: 0;
 right: 0;
 width: 30px;
 height: 30px;
-background: linear-gradient(135deg, rgba(191, 0, 255, 0.2), transparent);
+background: linear-gradient(135deg, rgba(var(--purple-rgb), 0.2), transparent);
 clip-path: polygon(100% 0, 100% 100%, 0 0);
 pointer-events: none;
 }
@@ -366,7 +379,7 @@ bottom: 0;
 left: 0;
 width: 0;
 height: 2px;
-background: linear-gradient(90deg, #bf00ff, #dcb4ff);
+background: linear-gradient(90deg, var(--purple), var(--light-purple));
 transition: width 0.3s ease;
 }
 
@@ -382,7 +395,7 @@ justify-content: center;
 .register-button {
 position: fixed;
 z-index: 10;
-background-color: #bf00ff;
+background-color: var(--purple);
 color: black !important;
 padding: 10px 20px;
 text-align: center;
@@ -401,9 +414,9 @@ transition: all 0.3s ease;
 }
 
 .register-button:hover {
-background-color: #a000d4;
+background-color: var(--mid-purple);
 transform: scale(1.05);
-box-shadow: 0 0 20px rgba(191, 0, 255, 0.7);
+box-shadow: 0 0 20px rgba(var(--purple-rgb), 0.7);
 }
 
 .footer {
@@ -644,18 +657,18 @@ width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-background: linear-gradient(180deg, rgba(191, 0, 255, 0.9), rgba(100, 0, 130, 0.7));
+background: linear-gradient(180deg, rgba(var(--purple-rgb), 0.9), rgba(var(--dark-purple-rgb), 0.7));
 border-radius: 0;
 clip-path: polygon(0 5px, 5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-background: linear-gradient(180deg, #bf00ff, #a000d4);
+background: linear-gradient(180deg, var(--purple), var(--mid-purple));
 }
 
 ::-webkit-scrollbar-track {
 background-color: rgba(0, 0, 0, 0.3);
-border-left: 1px solid rgba(191, 0, 255, 0.2);
+border-left: 1px solid rgba(var(--purple-rgb), 0.2);
 }
 
 .scroll-container {
