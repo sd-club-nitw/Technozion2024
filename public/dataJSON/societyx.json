@@ -765,5 +765,39 @@
         "index": 30
       }
     ]
+  },
+
+   {
+    "societyName": "Management Studies Society",
+    "events": [
+      {
+        "title": "Vision Lead",
+        "name": "Management Studies Society",
+        "total_cost": 5000,
+        "overview": {
+          "main_title": "Vision Lead",
+          "description": "Vision Lead is a dynamic management competition that tests creativity, strategy, and brand insight. From meme marketing to real-world business decisions and rebranding failed giants, participants showcase true leadership vision.",
+          "team_size": " 2-3 memebers are allowed",
+          "contact": [
+            {
+              "name": "Prabhas",
+              "email": ".",
+              "phone": "7995900850"
+            }
+          ]
+        },
+        "rules": [
+         "Teams of 2-3 memebers are allowed.",
+            "Participants should come with their laptops.",
+"The competition consists of 3 rounds ",
+"Round 1 : Meme Marketing: Create and present innovative brand-focused memes showcasing creative marketing ideas.",
+"Round 2 : Case Simulation: Solve real-world business scenarios through strategic decision-making across management divisions.",
+"Round 3 : Rebrand: Analyze failed brands and pitch a compelling strategy to revive and reposition them for success."
+        ],
+        "judging_criteria": "Coming Soon...",
+        "imgsrc": "/posters25/society_28_imgsrc.jpg",
+        "index": 30
+      }
+    ]
   }
 ]
