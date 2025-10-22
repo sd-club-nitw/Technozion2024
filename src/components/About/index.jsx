@@ -97,8 +97,9 @@ creating a vibrant atmosphere of learning and collaboration.
   ))}
 </section>
 <section className="flex items-start justify-between ">
-
-<button className=" active:bg-slate-300 bg-white text-black w-fit p-5  rounded-md flex gap-x-2 items-center"><span>Download brochure</span> <GrLinkNext /></button>
+<a href="/pdf/tz.pdf" className="active:bg-slate-300 bg-white" download="technozion_2025.pdf">
+<button className="  text-black w-fit p-5  rounded-md flex gap-x-2 items-center"><span>Download brochure</span> <GrLinkNext /></button>
+</a>
 <div className="flex flex-col items-center gap-y-2 justify-center">
 <a href='https://www.youtube.com/watch?v=LJLtHr0kcrA' className="bg-darkPurple text-white flex items-center w-full link-btn p-5 flex gap-x-2 items-center" target='_blank'>
 
