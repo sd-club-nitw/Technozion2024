@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { useAuth } from "../../Context/AuthManager";
+import { useSnackbar } from "../../Context/SnackbarProvider";
 
 const Register = () => {
   const { register: authRegister } = useAuth();
@@ -81,6 +82,8 @@ const Register = () => {
       teamMembers: [],
     }
   });
+
+  const { notify } = useSnackbar();
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -214,12 +217,19 @@ const Register = () => {
       };
 
       console.log("Registering with data", authData);
-      authRegister(authData);
+      // notify && notify('Submitting registration...', { variant: 'info' })
+      try {
+        await authRegister(authData);
+        // notify && notify('Registration submitted successfully', { variant: 'success' })
+      } catch (err) {
+        console.error('Auth register failed', err)
+        notify && notify(err?.message || 'Registration failed', { variant: 'error' })
+      }
 
       setPayModalOpen(false);
     } catch (err) {
       console.error("Register submit error:", err);
-      alert(err.message || "Something went wrong during registration.");
+      notify && notify(err.message || "Something went wrong during registration.", { variant: 'error' });
     }
   };
 
@@ -590,6 +600,7 @@ const Register = () => {
 
             <div className="flex justify-end gap-3 mt-4">
               <button
+
                 onClick={() => setPayModalOpen(false)}
                 className="px-5 py-2 rounded-lg bg-gray/20 hover:bg-gray/30 transition font-medium"
               >

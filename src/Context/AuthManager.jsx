@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Loader } from '../components/Loader'
+import { useSnackbar } from './SnackbarProvider'
 
 const AuthContext = createContext()
 export const useAuth = () => useContext(AuthContext)
@@ -8,8 +9,10 @@ export const useAuth = () => useContext(AuthContext)
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [pendingLogout, setPendingLogout] = useState(false)
   const navigate = useNavigate()
-  const url = window.location.origin // TODO: change this to env variable
+  const url = "http://localhost:5000" // TODO: change this to env variable
+  const { notify } = useSnackbar()
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user_info')
@@ -31,11 +34,12 @@ const AuthProvider = ({ children }) => {
         setUser(data.user)
         navigate('/')
       } else {
-        alert(data.message)
+        // show error snackbar
+        notify(data.message || 'Login failed', { variant: 'error' })
       }
     } catch (err) {
-      console.log(err)
-      alert("Something went wrong")
+  console.log(err)
+  notify('Something went wrong during login', { variant: 'error' })
     }
     finally { setLoading(false) }
   }
@@ -69,7 +73,7 @@ const AuthProvider = ({ children }) => {
         : registrationData.idDocument;
       idDocumentUrl = await uploadToCloudinary(idFile);
     } else {
-      alert("Please upload your College ID/Aadhar.");
+      notify('Please upload your College ID/Aadhar.', { variant: 'error' })
       setLoading(false);
       return;
     }
@@ -84,7 +88,7 @@ const AuthProvider = ({ children }) => {
           : registrationData.paymentScreenshot;
         paymentScreenshotUrl = await uploadToCloudinary(paymentFile);
       } else {
-        alert("Please upload a payment screenshot for non-niw.ac.in emails.");
+        notify('Please upload a payment screenshot for non-nitw emails.', { variant: 'error' })
         setLoading(false);
         return;
       }
@@ -116,15 +120,15 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("user_info", JSON.stringify(data.user));
       localStorage.setItem("token", data.token);
       setUser(data.user);
-      alert("Registration successful!");
+      notify('Registration successful!', { variant: 'success' })
       navigate("/");
     } else {
       console.log("register error", data);
-      alert(data.message || "Registration failed");
+      notify(data.message || "Registration failed", { variant: 'error' })
     }
   } catch (err) {
     console.log(err);
-    alert("Something went wrong during registration.");
+    notify('Something went wrong during registration.', { variant: 'error' })
   } finally {
     setLoading(false);
   }
@@ -132,11 +136,21 @@ const AuthProvider = ({ children }) => {
 
 
   const logout = () => {
-    const ok = window.confirm("Logout?");
-    if(!ok) return;
+    // two-step snackbar-based confirmation: first click asks user to click again within 5s
+    if (!pendingLogout) {
+      setPendingLogout(true)
+      notify('Click logout again to confirm', { variant: 'info', duration: 5000 })
+      // reset pending state after a short window
+      setTimeout(() => setPendingLogout(false), 5000)
+      return
+    }
+
+    // confirmed
     localStorage.removeItem('user_info')
     localStorage.removeItem('token')
     setUser(null)
+    setPendingLogout(false)
+    notify('Logged out', { variant: 'success' })
     navigate('/login')
   }
 

@@ -3,6 +3,7 @@ import './App.css';
 import  {Loader} from './components/Loader'; // Import the Loader component
 import Navbar from './components/Navbar';
 import AuthProvider from './Context/AuthManager';
+import SnackbarProvider from './Context/SnackbarProvider';
 import RoutesManager from './Context/RoutesManager';
 import Footer from './components/Footer/footer';
 
@@ -32,11 +33,13 @@ const App = () => {
                     <Loader />
                 </div>
             ) : (
-                <AuthProvider>
-                    <Navbar />
-                    <RoutesManager />
-                    {/* <Footer /> */}
-                </AuthProvider>
+                <SnackbarProvider>
+                    <AuthProvider>
+                        <Navbar />
+                        <RoutesManager />
+                        {/* <Footer /> */}
+                    </AuthProvider>
+                </SnackbarProvider>
             )}
         </>
     );
