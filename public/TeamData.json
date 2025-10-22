@@ -94,9 +94,9 @@
 
   },
  {
- "name":"Rishi",
+ "name":"Rishi Lad",
     "contactNo":"",
-    "image":"rishi.jpg",
+    "image":"rishi.jpeg",
     "position":"Developer",
     "email":""
  },
@@ -121,12 +121,12 @@
     "position":"Developer",
     "email":"vt23csb0a34@student.nitw.ac.in"
   },
-  {
-    "name":"Abhiraj Dustakar",
+   {
+    "name":"Abhiraj",
     "contactNo":"8008645982",
     "image":"abhiraj.jpg",
     "position":"Developer",
-    "email":"da23csb0a32@student.nitw.ac.in"
+    "email":""
   }
 ]
  
