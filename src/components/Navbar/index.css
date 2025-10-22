@@ -16,10 +16,10 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: 0;
-	background-color: rgba(255, 255, 255, 0.15); /* 15% opaque white */
+	/* background-color: rgba(255, 255, 255, 0.15); */
 
 /* 2. Apply the blur filter to the background *behind* the element */
-backdrop-filter: blur(10px); 
+/* backdrop-filter: blur(10px);  */
 
 /* Optional: Add a subtle border for a more defined glass edge */
 /* border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
@@ -278,20 +278,7 @@ nav ul li a {
 	}
 }
 
-@media (max-width: 725px) {
-	nav ul li {
-		margin: 0.1rem; /* Further decrease margin */
-	}
 
-	nav ul li a {
-		font-size: 90%; /* Further decrease font size */
-		padding: 0.3rem; /* Adjust padding */
-	}
-
-	.right-nav ul li {
-		margin-right: 5px; /* Further decrease margin */
-	}
-}
 
 @media (max-width: 725px) {
 	nav .menu {
@@ -330,7 +317,6 @@ nav ul li a {
 	.logo img {
 		scale: 1.2;
 	  width: calc(var(--img-width) + 10vw);
-	  margin-top: 1rem;
 	}
   
 	nav {
@@ -348,7 +334,7 @@ nav ul li a {
 	  flex-direction: column;
 	  justify-content: center;
 	  width: 100%; /* Make sure the menu box takes full width */
-	  margin-bottom: 0.1rem;
+	
 	}
   
 	.menu-open {
@@ -364,28 +350,23 @@ nav ul li a {
 	  flex-direction: column;
 	  justify-content: center; /* Center content vertically */
 	  align-items: center; /* Center content horizontally */
+	  margin-top: 20rem;
 	}
   
 	nav ul li {
 	  text-align: center;
 	  color: white;
-	  margin-bottom: 0.5rem; /* Add space between menu items */
 	}
   
-	nav ul li a {
-	  font-size: 1.2rem;
-	}
+	
   
-	nav ul li a.active {
-	  color: white;
-	  font-size: large;
-	}
+
   
 	.right-nav ul {
 	  flex-direction: column;
 	  justify-content: center;
 	  align-items: center;
-	  margin-bottom: 1rem;
+	  /* margin-bottom: 1rem; */
 	}
   
 	.right-nav ul li {
@@ -399,8 +380,14 @@ nav ul li a {
     justify-content: flex-start; /* This is the key change to align left */
     width: auto; /* Let the container be only as wide as the logo */
     left: 1rem; /* Add some space from the left edge */
-    margin-top: 2rem; /* A fixed margin often works better on mobile */
+
   }
+.nav-wrapper{
+	height: 4rem;
+}
+.menu-open{
+	height: fit-content;
+}
 }
 
 /* This block provides the solid background */
@@ -409,6 +396,6 @@ nav ul li a {
   top: 0;
   left: 0;
   width: 100%;
-  height: 75px; /* Adjust this height to match your navbar's total height */
+  height: 4rem; /* Adjust this height to match your navbar's total height */
   background-color: #000; /* Solid background color */
 }

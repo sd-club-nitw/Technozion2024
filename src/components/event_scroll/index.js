@@ -12,9 +12,8 @@ import ProfileCard from "../ProfileCardAnimation/ProfileCard.jsx"
 import { WebCanvas } from "../bg_animation/bg_animate.js";
 
 const TABS = [
-  { key: "societies", label: "DEPARTMENT" },
-  { key: "spotlight", label: "SPOTLIGHT" },
   { key: "clubevents", label: "CLUB" },
+  { key: "societies", label: "DEPARTMENT" },
   { key: "projects", label: "PROJECTS EXPO" },
 ];
 
@@ -25,7 +24,7 @@ function Index() {
   // pick initial tab from URL ?tab=..., then location.state?.dataSource, then default to 'societies'
   const getInitialTab = () => {
     const params = new URLSearchParams(location.search);
-    return params.get("tab") || location.state?.dataSource || "societies";
+    return params.get("tab") || location.state?.dataSource || "clubevents";
   };
 
   const [selectedTab, setSelectedTab] = useState(getInitialTab);
@@ -165,18 +164,18 @@ function Index() {
     <div className="outer-container">
       {/* <WebCanvas /> */}
      <section className="overflow-y-scroll  w-full">
-     <section className="text-8xl bg-darkPurple w-full pl-10 py-10  mt-32 lg:mt-24 sm:mt-28 md:mt-28">
+     <section className="lg:text-8xl md:text-6xl text-3xl bg-darkPurple w-full pl-10 lg:py-10 py-5  mt-20 lg:mt-24 sm:mt-28 md:mt-28">
       EVENTS
      </section>
 
       {/* Tabs row */}
-      <div className="tabs-wrapper bg-gray py-2">
-        <div className="tabs">
+      <div className="tabs-wrapper   bg-gray py-2">
+        <div className="tabs px-2 w-1/2 gap-x-2 items-center grid grid-cols-3">
           {TABS.map((tab) => (
             <button
             key={tab.key}
             type="button"
-            className={`tab-button ${
+            className={`tab-button col-span-1 ${
               selectedTab === tab.key ? "active" : ""
             }`}
             onClick={() => setSelectedTab(tab.key)}

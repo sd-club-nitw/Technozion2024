@@ -115,7 +115,7 @@ export default function Navbar() {
       {!menuOpen && isRegisterPage && <div className="navbar-background"></div>}
 
       {!menuOpen ? (
-        <div className="logo z-40" > 
+        <div className="logo z-40 w-fit bg-red-500" > 
           <Link to="./" onClick={closeMenu}>
             <img src={chota_logo} alt="logo1" />
           </Link>
