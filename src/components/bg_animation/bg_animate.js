@@ -59,7 +59,7 @@ import React, { useRef, useEffect, useState } from "react";
                 ctx.beginPath();
                 ctx.moveTo(pointA.x, pointA.y);
                 ctx.lineTo(pointB.x, pointB.y);
-                ctx.strokeStyle = `rgba(22, 246, 243, ${1 - dist / 100})`; // Changed to #16f6f3
+                ctx.strokeStyle = `rgba(123, 0, 255, ${1 - dist / 100})`; // Changed to #16f6f3
                 ctx.lineWidth = 0.5; // Thinner lines
                 ctx.stroke();
             }

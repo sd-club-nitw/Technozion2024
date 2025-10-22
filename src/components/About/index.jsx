@@ -117,15 +117,15 @@ export const About = () => {
                   </button>
                 </a>
 
-                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-4 w-full sm:w-auto">
+               
                   <a
                     href="https://www.youtube.com/watch?v=LJLtHr0kcrA"
                     target="_blank"
-                    className="bg-darkPurple text-white flex items-center justify-center w-full sm:w-auto p-3 sm:p-5 gap-x-2 rounded-md"
+                    className="bg-darkPurple text-white flex items-center justify-center w-full sm:w-auto p-3 sm:p-5 "
                   >
                     <FaYoutube /> What is technozion
                   </a>
-                </div>
+             
               </section>
             </section>
 
