@@ -1,8 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './about.css';
-// import logo1 from './logo1.png'; // Not used
-// import AboutCard from './AboutCard'; // Not used
-// import { WebCanvas } from "../bg_animation/bg_animate"; // Commented out in original
+import { WebCanvas } from "../bg_animation/bg_animate";
 import { GrLinkNext } from "react-icons/gr";
 import { FaYoutube } from "react-icons/fa";
 
@@ -88,43 +86,49 @@ export const About = () => {
   return (
     <div>
       <div className="relative about-page">
-        {/* <WebCanvas /> */}
-        <div className='absolute overflow-visible top-0 w-screen m-0 p-0 grid lg:grid-cols-6 grid-cols-1'>
-          
-          {/* === LEFT COLUMN (CONTENT) === */}
-          {/* === LEFT COLUMN (CONTENT) === */}
-<section className="flex pt-24 px-6 pb-6 sm:pt-24 sm:px-12 sm:pb-12 lg:pl-20 lg:pr-36 lg:py-24 justify-center flex-col col-span-3 bg-slate-950 overflow-visible min-h-screen about-content">
-            
-            {/* Title: Responsive Font Size */}
-            <div className="text-5xl sm:text-6xl lg:text-8xl mb-10 text-rise">
-              {"ABOUT".split("").map((ch, i) => (
-                <span key={i} style={{ animationDelay: `${i * 0.1}s` }}>{ch}</span>
-              ))}
-            </div>
+       <WebCanvas />
+        <div className='absolute overflow-visible  top-0 w-screen m-0 p-0  grid lg:grid-cols-6 grid-cols-1'>
+          <section className="flex pr-36 py-24 pl-20 justify-center flex-col col-span-3 bg-slate-950 overflow-visible h-screen  about-content">
+<div className="text-8xl mb-10 text-rise">
 
-            {/* Text: Using AnimatedText component for responsiveness */}
-            <div className="flex-1 my-6"> {/* Wrapper to allow text to fill space */}
-              <AnimatedText text={aboutText} />
-            </div>
+  {"ABOUT".split("").map((ch, i) => (
+    <span key={i} style={{ animationDelay: `${i * 0.1}s` }}>{ch}</span>
+  ))}
+</div>
+<section className="text-md text-rise flex-1">
+{`
+Technozion, NIT Warangal's annual technical festival, started 
+as a platform for students to showcase their technical skills and 
+innovations. Now, after many successful editions, it has become one 
+of the most anticipated technical fests in the country, attracting 
+participants from various institutions. Throughout its history, 
+Technozion has hosted renowned speakers and experts, providing 
+valuable insights and inspiration to attendees. The festival 
+features various competitions, workshops, and exhibitions, 
+creating a vibrant atmosphere of learning and collaboration.
+`.split(" ").map((ch, i) => (
+    <span key={i} style={{ animationDelay: `${i * 0.01}s` }}>{ch}</span>
+  ))}
+</section>
+<section className="flex items-start justify-between ">
+<a href="/pdf/tz.pdf" className="active:bg-slate-300 bg-white" download="technozion_2025.pdf">
+<button className="  text-black w-fit p-5  rounded-md flex gap-x-2 items-center"><span>Download brochure</span> <GrLinkNext /></button>
+</a>
+<div className="flex flex-col items-center gap-y-2 justify-center">
+<a href='https://www.youtube.com/watch?v=LJLtHr0kcrA' className="bg-darkPurple text-white flex items-center w-full link-btn p-5 flex gap-x-2 items-center" target='_blank'>
 
-            {/* Buttons: Responsive layout (stacking) */}
-            <section className="flex flex-col lg:flex-row items-stretch lg:items-start justify-between gap-4 mt-6">
-              
-              <button className="active:bg-slate-300 bg-white text-black w-full lg:w-fit p-5 rounded-md flex gap-x-2 items-center justify-center lg:justify-start">
-                <span>Download brochure</span> <GrLinkNext />
-              </button>
+  <span><FaYoutube /></span>
+What is technozion
 
-              <div className="flex flex-col items-center gap-y-2 justify-center">
-                <a href='https://www.youtube.com/watch?v=LJLtHr0kcrA' className="bg-darkPurple text-white flex items-center w-full link-btn p-5 flex gap-x-2 items-center" target='_blank' rel="noopener noreferrer">
-                  <span><FaYoutube /></span>
-                  What is technozion
-                </a>
-                <a href='https://www.youtube.com/watch?v=1T_d1YoCWuA' className="bg-darkPurple text-white flex items-center w-full link-btn p-5 flex gap-x-2 items-center" target='_blank' rel="noopener noreferrer">
-                  <span><FaYoutube /></span>
-                  What is technozion
-                </a>
-              </div>
-            </section>
+</a>
+<a href='https://www.youtube.com/watch?v=1T_d1YoCWuA' className="bg-darkPurple text-white flex items-center w-full link-btn p-5 flex gap-x-2 items-center" target='_blank'>
+
+  <span><FaYoutube /></span>
+What is technozion
+
+</a>
+</div>
+</section>
           </section>
 
           {/* === RIGHT COLUMN (PDF) === */}

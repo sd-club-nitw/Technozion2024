@@ -4,7 +4,7 @@
     height: 100vh;
     width: 100vw;
     background-color: black;
-    overflow: hidden;
+    
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -12,16 +12,7 @@
     align-items: center;
 }
 
-/* Styling for the WebCanvas background */
-.web-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0; /* Behind all other content */
-    overflow: hidden;
-}
+
 
 /* Styling for Teams image */
 .mainteams {
@@ -40,7 +31,6 @@
     width: 100%;
  
     z-index: 2;
-    overflow-y: auto;
     margin-bottom: 3%;
 } 
 

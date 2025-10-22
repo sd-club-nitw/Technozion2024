@@ -34,6 +34,44 @@ export default function Navbar() {
   // 2. GET CURRENT LOCATION
   const location = useLocation();
   const isRegisterPage = location.pathname === '/auth/register';
+const SCROLL_THRESHOLD = 5;
+  useEffect(() => {
+        const navbar = document.getElementById('mainNavbar');
+        
+        if (!navbar) {
+            // Log an error if the navbar element isn't found
+            console.error("Navbar element with ID 'mainNavbar' not found.");
+            return;
+        }
+
+        // --- 1. Define the Scroll Handler Function ---
+        const handleScroll = () => {
+            // window.scrollY is used to get the vertical scroll position
+            if (window.scrollY > SCROLL_THRESHOLD) {
+              console.log('crossed threshold')
+                // Add the 'scrolled' class if the scroll position is past the threshold
+                navbar.classList.add('scrolled');
+            } else {
+              console.log('didnt reach')
+                // Remove the 'scrolled' class if the user scrolls back up
+                navbar.classList.remove('scrolled');
+            }
+        };
+
+        // --- 2. Attach the Listener on Mount ---
+        window.addEventListener('scroll', handleScroll);
+        
+        // Run the check once immediately on mount to handle reloads
+        handleScroll();
+
+        // --- 3. Clean Up the Listener on Unmount ---
+        // The return function runs when the component unmounts (cleanup)
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+        
+    // The empty dependency array (`[]`) ensures this effect runs only once after the initial render.
+    }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -110,42 +148,45 @@ export default function Navbar() {
   ));
 
   return (
-    <>
+    <div id="mainNavbar" className='nav-wrapper z-30'>
       {/* 5. Conditional background from previous fix */}
       {!menuOpen && isRegisterPage && <div className="navbar-background"></div>}
 
       {!menuOpen ? (
-        <div className="logo" > 
+        <div className="logo z-40 w-fit bg-red-500" > 
           <Link to="./" onClick={closeMenu}>
             <img src={chota_logo} alt="logo1" />
           </Link>
         </div> 
       ) : null}
 
-      <nav className={menuOpen ? 'menu-open' : 'menu-closed'}>
+      <nav className={`z-40 ${menuOpen ? 'menu-open' : 'menu-closed'}`}>
         <div
-          className="menu"
+          className="menu z-50"
           onClick={() => {
             setMenuOpen(!menuOpen);
           }}
         >
-       
-          
-              <span className={menuOpen ? '' : 'ham bg-white'}></span>
-              <span className={menuOpen ? '' : 'ham bg-lightPurple w-1/2'}></span>
-              <span className={menuOpen ? '' : 'ham bg-white'}></span>
+       {/* span 1 top bar  */}
+        <span className={`ham bg-white ${menuOpen ? 'open-top' : ''}`}></span>
+
+        {/* Span 2 (Middle Bar) */}
+        <span className={`ham bg-lightPurple w-1/2 ${menuOpen ? 'open-middle' : ''}`}></span>
+
+          {/* Span 3 (Bottom Bar) */}
+          <span className={`ham bg-white ${menuOpen ? 'open-bottom' : ''}`}></span>
         
          
         </div>
-        <ul className={menuOpen ? "open" : ""}>{listItems}</ul>
+        <ul className={`z-40 ${menuOpen ? "open" : ""}`}>{listItems}</ul>
       </nav>
 
       {/* Right side navbar only appears on larger screens */}
       {!isMobileView && (
-        <nav className="right-nav">
+        <nav className="z-40 right-nav">
           <ul>{rightNavItems}</ul>
         </nav>
       )}
-    </>
+    </div>
   );
 }

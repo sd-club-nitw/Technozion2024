@@ -46,17 +46,23 @@ export const Team = () => {
 
   return (
     <div className="Teams">
-      <div className="web-canvas">
+
         <WebCanvas />
-      </div>
-      <img src={Teams} alt="teams" className='mainteams lg:mt-36 mt-24 lg:scale-100 scale-90 sm:mt-28'/>
+     <section className="absolute top-0 overflow-y-scroll h-screen">
+
+      {/* <img src={Teams} alt="teams" className='mainteams lg:mt-36 mt-24 lg:scale-100 scale-90 sm:mt-28'/> */}
+       <section className="lg:text-8xl  text-center text-rise event-heading md:text-6xl text-5xl  w-full  lg:py-10 py-5  mt-20 lg:mt-24 sm:mt-28 md:mt-28">
+      {"TEAM".split("").map((ch, i) => (
+        <span key={i} style={{ animationDelay: `${i * 0.1}s` }}>{ch}</span>
+      ))}
+     </section>
        
       <div className="list">
      <section className="flex flex-col items-center justify-center mb-10">
       <h1 className="lg:text-5xl sm:text-4xl text-3xl  uppercase font-bold">Chief Patron</h1>
       {data?.chief_patrons?.map((member, index) => (
-
-      <TeamCrad src={`/teamImages/${member.image}`} key={index} name={member.name} position={member.position} />
+        
+        <TeamCrad src={`/teamImages/${member.image}`} key={index} name={member.name} position={member.position} />
       ))}
      </section>
       <section className="flex flex-col items-center justify-center mb-10">
@@ -95,17 +101,17 @@ export const Team = () => {
 {/* web team  */}
       <section className="flex flex-col items-center justify-center mb-10">
       <h1 className="lg:text-5xl sm:text-4xl text-3xl  uppercase font-bold">Web Team</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
     
 
       {data?.web_team?.map((member, index) => (
-         
-           
-       
-  
-
-           
-          
+        
+        
+        
+        
+        
+        
+        
         
         <TeamCrad src={`/teamImages/${member.image}`} name={member.name} position={member.position} />
       ))}
@@ -114,6 +120,7 @@ export const Team = () => {
 
        
       </div>
+      </section>
     </div>
   );
 };

@@ -6,6 +6,7 @@ import RoutesManager from "./Context/RoutesManager";
 import Footer from "./components/Footer/footer";
 import Galaxy from "./components/bg_animation/Galaxy";
 import FlyingLogo from "./components/IntroLoader/FlyingLogo";
+import { WebCanvas } from "./components/bg_animation/bg_animate";
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -60,7 +61,8 @@ const App = () => {
                 </div>
             ) : (
                 <div className="relative w-full min-h-screen overflow-hidden">
-                    <Galaxy mouseInteraction={false} />
+                    {/* <Galaxy mouseInteraction={false} /> */}
+                    {/* <WebCanvas /> */}
                     <div className="relative z-10">
                         <AuthProvider>
                             <Navbar />
