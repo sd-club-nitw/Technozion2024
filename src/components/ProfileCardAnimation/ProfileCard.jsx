@@ -43,8 +43,12 @@ const PosterCard = ({
   const wrapRef = useRef(null);
   const cardRef = useRef(null);
 
+  const isTouchDevice =
+    typeof window !== "undefined" && "ontouchstart" in window;
+
+
   const handlers = useMemo(() => {
-    if (!enableTilt) return null;
+    if (!enableTilt || isTouchDevice) return null;
     let rafId = null;
     const update = (offsetX, offsetY, card, wrap) => {
       const w = card.clientWidth, h = card.clientHeight;
@@ -84,7 +88,7 @@ const PosterCard = ({
       update, smooth,
       cancel: () => { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
     };
-  }, [enableTilt]);
+  }, [enableTilt,isTouchDevice]);
 
   const onMove = useCallback(e => {
     const card = cardRef.current, wrap = wrapRef.current;
@@ -110,26 +114,37 @@ const PosterCard = ({
   }, [handlers]);
 
   useEffect(() => {
-    if (!handlers) return;
-    const card = cardRef.current, wrap = wrapRef.current;
+    const card = cardRef.current;
+    const wrap = wrapRef.current;
     if (!card || !wrap) return;
-    card.addEventListener('pointerenter', onEnter);
-    card.addEventListener('pointermove', onMove);
-    card.addEventListener('pointerleave', onLeave);
 
-    // initial subtle animation
-    const ix = wrap.clientWidth - 40;
-    const iy = 40;
-    handlers.update(ix, iy, card, wrap);
-    handlers.smooth(1000, ix, iy, card, wrap);
+    const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+    if (handlers && !isTouch) {
+      card.addEventListener("pointerenter", onEnter);
+      card.addEventListener("pointermove", onMove);
+      card.addEventListener("pointerleave", onLeave);
+
+      // initial subtle animation
+      const ix = wrap.clientWidth - 40;
+      const iy = 40;
+      handlers.update(ix, iy, card, wrap);
+      handlers.smooth(1000, ix, iy, card, wrap);
+    }
+
+    // 👇 This line is key — it tells browser to keep scroll gestures
+    card.style.touchAction = "auto";
 
     return () => {
-      card.removeEventListener('pointerenter', onEnter);
-      card.removeEventListener('pointermove', onMove);
-      card.removeEventListener('pointerleave', onLeave);
-      handlers.cancel();
+      if (handlers && !isTouch) {
+        card.removeEventListener("pointerenter", onEnter);
+        card.removeEventListener("pointermove", onMove);
+        card.removeEventListener("pointerleave", onLeave);
+        handlers.cancel();
+      }
     };
   }, [handlers, onEnter, onLeave, onMove]);
+
 
   const style = useMemo(() => ({
     '--grain': grainUrl ? `url(${grainUrl})` : 'none',
