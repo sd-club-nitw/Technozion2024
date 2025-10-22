@@ -34,6 +34,44 @@ export default function Navbar() {
   // 2. GET CURRENT LOCATION
   const location = useLocation();
   const isRegisterPage = location.pathname === '/auth/register';
+const SCROLL_THRESHOLD = 5;
+  useEffect(() => {
+        const navbar = document.getElementById('mainNavbar');
+        
+        if (!navbar) {
+            // Log an error if the navbar element isn't found
+            console.error("Navbar element with ID 'mainNavbar' not found.");
+            return;
+        }
+
+        // --- 1. Define the Scroll Handler Function ---
+        const handleScroll = () => {
+            // window.scrollY is used to get the vertical scroll position
+            if (window.scrollY > SCROLL_THRESHOLD) {
+              console.log('crossed threshold')
+                // Add the 'scrolled' class if the scroll position is past the threshold
+                navbar.classList.add('scrolled');
+            } else {
+              console.log('didnt reach')
+                // Remove the 'scrolled' class if the user scrolls back up
+                navbar.classList.remove('scrolled');
+            }
+        };
+
+        // --- 2. Attach the Listener on Mount ---
+        window.addEventListener('scroll', handleScroll);
+        
+        // Run the check once immediately on mount to handle reloads
+        handleScroll();
+
+        // --- 3. Clean Up the Listener on Unmount ---
+        // The return function runs when the component unmounts (cleanup)
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+        
+    // The empty dependency array (`[]`) ensures this effect runs only once after the initial render.
+    }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -110,7 +148,7 @@ export default function Navbar() {
   ));
 
   return (
-    <div className='nav-wrapper z-30'>
+    <div id="mainNavbar" className='nav-wrapper z-30'>
       {/* 5. Conditional background from previous fix */}
       {!menuOpen && isRegisterPage && <div className="navbar-background"></div>}
 

@@ -162,14 +162,16 @@ function Index() {
 
   return (
     <div className="outer-container">
-      {/* <WebCanvas /> */}
-     <section className="overflow-y-scroll  w-full">
-     <section className="lg:text-8xl md:text-6xl text-3xl bg-darkPurple w-full pl-10 lg:py-10 py-5  mt-20 lg:mt-24 sm:mt-28 md:mt-28">
-      EVENTS
+      <WebCanvas />
+     <section className="overflow-y-scroll absolute top-0 h-screen w-full">
+     <section className="lg:text-8xl  text-center text-rise event-heading md:text-6xl text-3xl  w-full lg:py-10 py-5  mt-20 lg:mt-24 sm:mt-28 md:mt-28">
+      {"EVENTS".split("").map((ch, i) => (
+    <span key={i} style={{ animationDelay: `${i * 0.1}s` }}>{ch}</span>
+  ))}
      </section>
 
       {/* Tabs row */}
-      <div className="tabs-wrapper   bg-gray py-2">
+      <div className="tabs-wrapper   py-2">
         <div className="tabs px-2 w-1/2 gap-x-2 items-center grid grid-cols-3">
           {TABS.map((tab) => (
             <button

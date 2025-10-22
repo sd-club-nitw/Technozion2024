@@ -16,13 +16,16 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: 0;
-	/* background-color: rgba(255, 255, 255, 0.15); */
-
-/* 2. Apply the blur filter to the background *behind* the element */
-/* backdrop-filter: blur(10px);  */
-
-/* Optional: Add a subtle border for a more defined glass edge */
-/* border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
+}
+.nav-wrapper  {
+    /* Set a semi-transparent background */
+    background-color: rgba(255, 255, 255, 0.15); 
+    
+    /* Apply the blur filter to the background *behind* the navbar */
+    backdrop-filter: blur(10px); 
+    
+    /* Optional: Subtle border for a cleaner glass edge */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
 }
 
 .nav-btn {
@@ -397,5 +400,5 @@ nav ul li a {
   left: 0;
   width: 100%;
   height: 4rem; /* Adjust this height to match your navbar's total height */
-  background-color: #000; /* Solid background color */
+  /* background-color: #000; Solid background color */
 }

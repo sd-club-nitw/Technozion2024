@@ -1,7 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react';
 import './about.css';
-import logo1 from './logo1.png';
-import AboutCard from './AboutCard';
 import { WebCanvas } from "../bg_animation/bg_animate";
 import { GrLinkNext } from "react-icons/gr";
 import { FaYoutube } from "react-icons/fa";
@@ -72,7 +70,7 @@ export const About = () => {
   return (
     <div>
       <div className="relative about-page">
-       {/* <WebCanvas /> */}
+       <WebCanvas />
         <div className='absolute overflow-visible  top-0 w-screen m-0 p-0  grid lg:grid-cols-6 grid-cols-1'>
           <section className="flex pr-36 py-24 pl-20 justify-center flex-col col-span-3 bg-slate-950 overflow-visible h-screen  about-content">
 <div className="text-8xl mb-10 text-rise">
