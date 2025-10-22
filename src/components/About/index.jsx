@@ -92,7 +92,8 @@ export const About = () => {
         <div className='absolute overflow-visible top-0 w-screen m-0 p-0 grid lg:grid-cols-6 grid-cols-1'>
           
           {/* === LEFT COLUMN (CONTENT) === */}
-          <section className="flex p-6 sm:p-12 lg:pl-20 lg:pr-36 lg:py-24 justify-center flex-col col-span-3 bg-slate-950 overflow-visible min-h-screen about-content">
+          {/* === LEFT COLUMN (CONTENT) === */}
+<section className="flex pt-24 px-6 pb-6 sm:pt-24 sm:px-12 sm:pb-12 lg:pl-20 lg:pr-36 lg:py-24 justify-center flex-col col-span-3 bg-slate-950 overflow-visible min-h-screen about-content">
             
             {/* Title: Responsive Font Size */}
             <div className="text-5xl sm:text-6xl lg:text-8xl mb-10 text-rise">
