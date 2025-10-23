@@ -66,7 +66,7 @@ const TeamCard = ({ src, name, position, email = "" }) => {
             
             {/* Name with different hover effect */}
             <h3 className="text-2xl font-black text-[#f9f9f9] mb-2 relative overflow-hidden group-hover:tracking-wider transition-all duration-500">
-              <span className="relative inline-block group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#00ffff] group-hover:via-[#9633ff] group-hover:to-[#00ffff] transition-all duration-500">
+              <span className="relative inline-block group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#008da9] group-hover:via-[#00a8c9] group-hover:to-[#008da9] transition-all duration-500">
                 {name}
               </span>
               {/* Underline that appears on hover */}
