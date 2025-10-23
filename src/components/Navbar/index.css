@@ -15,7 +15,7 @@
 	/* background: red; */
 	align-items: center;
 	justify-content: space-between;
-	padding: 0;
+	padding: 0 0;
 }
 .nav-wrapper  {
     /* Set a semi-transparent background */
@@ -174,7 +174,7 @@ nav ul li a.active {
 
 
 .logo img {
-	scale: 1.2;
+	scale: 1;
 	width: var(--img-width);
 }
 
