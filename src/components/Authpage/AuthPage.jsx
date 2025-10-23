@@ -10,7 +10,7 @@ const AuthPage = () => {
 	}
 
 	return (
-		<div className="flex min-h-screen flex-col justify-center items-center bg-black relative">
+		<div className="flex h-screen flex-col justify-center items-center bg-black relative">
 			{/* Top Rasengan Image */}
 			<img
 				className="rasenganIMG absolute top-5 z-10"

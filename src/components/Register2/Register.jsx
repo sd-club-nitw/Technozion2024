@@ -224,7 +224,7 @@ const Register = () => {
   };
 
   return (
-    <div className="h-[100vh] bg-black text-white px-4 md:px-8 pb-4 md:pb-8 pt-24 md:pt-32 overflow-y-auto">
+    <div className="h-screen py-10 bg-black text-white px-4 md:px-8 pb-4 md:pb-8 pt-24 md:pt-32 overflow-y-auto">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-cyan">
@@ -535,7 +535,7 @@ const Register = () => {
             </div>
           </div>
 
-          <div className="mt-8 text-center">
+          <div className="mt-8 mb-12 text-center">
             <button
               type="submit"
               className="px-8 py-4 bg-cyan/20 rounded-xl hover:bg-cyan/30 transition font-semibold text-lg shadow-lg hover:shadow-cyan/30 transform hover:-translate-y-0.5"

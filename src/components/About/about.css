@@ -119,14 +119,10 @@
 
 
 
-/* Hide Scrollbars */
 .about-page{
-  min-height: 100vh;
-  width: 100vw;
-  overflow: visible;
-  position: relative;
+  margin: 0;
+  max-height: 100vh;
 }
-
 
 .border {
   position: relative; /* Set relative positioning for pseudo-element */
