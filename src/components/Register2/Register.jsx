@@ -213,8 +213,7 @@ const Register = () => {
         paymentScreenshot: payFile || undefined,
       };
 
-      console.log("Registering with data", authData);
-      authRegister(authData);
+      // authRegister(authData);
 
       setPayModalOpen(false);
     } catch (err) {
@@ -224,7 +223,14 @@ const Register = () => {
   };
 
   return (
-    <div className="h-[100vh] bg-black text-white px-4 md:px-8 pb-4 md:pb-8 pt-24 md:pt-32 overflow-y-auto">
+    <div className="h-screen py-10 bg-black text-white px-4 md:px-8 pb-4 md:pb-8 pt-24 md:pt-32 overflow-y-auto">
+        <div  className="absolute top-0 bg-black bg-opacity-85 m-0 left-0 w-screen h-screen z-10">
+          <div className="flex flex-col px-3 text-center items-center justify-center h-full">
+
+          <h1 className="text-3xl">Registrations are closed for this year</h1>
+          <h2 className="text-slate-400">Don't worry, Registration desk is live in the campus.</h2>
+          </div>
+        </div>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-cyan">
@@ -535,10 +541,11 @@ const Register = () => {
             </div>
           </div>
 
-          <div className="mt-8 text-center">
+          <div className="mt-8 mb-12 text-center">
             <button
+            disabled
               type="submit"
-              className="px-8 py-4 bg-cyan/20 rounded-xl hover:bg-cyan/30 transition font-semibold text-lg shadow-lg hover:shadow-cyan/30 transform hover:-translate-y-0.5"
+              className="px-8 disabled:bg-slate-600 py-4 bg-cyan/20 rounded-xl hover:bg-cyan/30 transition font-semibold text-lg shadow-lg hover:shadow-cyan/30 transform hover:-translate-y-0.5"
             >
               Complete Registration
             </button>
@@ -562,7 +569,7 @@ const Register = () => {
             </div>
             {watchedRegistrationType === "team" && (
               <p className="text-cyan/80 mt-3 pt-3 border-t border-cyan/30">
-                ℹ️ One payment covers the entire team
+               ℹ️ One payment covers the entire team
               </p>
             )}
 
