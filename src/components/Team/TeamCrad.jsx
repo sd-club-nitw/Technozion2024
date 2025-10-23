@@ -2,10 +2,12 @@ import React from "react";
 
 const TeamCard = ({ src, name, position, email = "" }) => {
   return (
-    <div className="relative group p-4">
+    <div className="relative group  ">
       
       {/* Container for the whole card with padding to prevent overlap */}
-      <div className="relative w-full">
+      <div style={{
+        transform: 'translateZ(0)'
+      }} className="relative bg-red-500 h-full lg:w-80 w-full">
         
         {/* Top-left colored corner (appears on hover) */}
         <div 
@@ -21,7 +23,7 @@ const TeamCard = ({ src, name, position, email = "" }) => {
         
         {/* Main card */}
         <div 
-          className="relative bg-[#121212] overflow-hidden transition-all duration-500 group-hover:scale-95"
+          className="relative h-full bg-[#121212] overflow-hidden transition-all duration-500 group-hover:scale-95"
           style={{
             clipPath: 'polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px)'
           }}
@@ -29,13 +31,13 @@ const TeamCard = ({ src, name, position, email = "" }) => {
           
           {/* Gold corner - top left */}
           <div 
-            className="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-[#ffd700] to-[#b8860b] z-10"
+            className="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br bg-darkPurple z-10"
             style={{ clipPath: 'polygon(0 0, 100% 0, 0 100%)' }}
           ></div>
           
           {/* Gold corner - bottom right */}
           <div 
-            className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-[#ffd700] to-[#b8860b] z-10"
+            className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl bg-cyanDark z-10"
             style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }}
           ></div>
           
@@ -44,7 +46,8 @@ const TeamCard = ({ src, name, position, email = "" }) => {
             <img
               src={src}
               alt={name}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              style={{ transform: 'translateZ(0)' }}
+              className="w-full will-change-transform h-full object-contain group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
           </div>

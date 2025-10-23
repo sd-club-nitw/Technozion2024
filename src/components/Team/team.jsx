@@ -48,7 +48,7 @@ export const Team = () => {
     <div className="Teams">
 
         <WebCanvas />
-     <section className="absolute top-0 overflow-y-scroll h-screen">
+     <section className="absolute top-0 overflow-y-scroll w-full h-screen">
 
       {/* <img src={Teams} alt="teams" className='mainteams lg:mt-36 mt-24 lg:scale-100 scale-90 sm:mt-28'/> */}
        <section className="lg:text-8xl  text-center text-rise event-heading md:text-6xl text-5xl  w-full  lg:py-10 py-5  mt-20 lg:mt-24 sm:mt-28 md:mt-28">
@@ -101,7 +101,7 @@ export const Team = () => {
 {/* web team  */}
       <section className="flex flex-col items-center justify-center mb-10">
       <h1 className="lg:text-5xl sm:text-4xl text-3xl  uppercase font-bold">Web Team</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     
 
       {data?.web_team?.map((member, index) => (
