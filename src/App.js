@@ -7,70 +7,34 @@ import Footer from "./components/Footer/footer";
 import Galaxy from "./components/bg_animation/Galaxy";
 import FlyingLogo from "./components/IntroLoader/FlyingLogo";
 import { WebCanvas } from "./components/bg_animation/bg_animate";
+import { Loader } from "./components/Loader";
 
 const App = () => {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [fadeOut, setFadeOut] = useState(false);
     const [showLogo, setShowLogo] = useState(false);
-    const videoRef = useRef(null);
 
     useEffect(() => {
-        const video = videoRef.current;
-        if (!video) return;
+        
+        setTimeout(() => setLoading(false), 5000);
 
-        const handleTimeUpdate = () => {
-            if (video.currentTime >= 5.67 && !showLogo) {
-                setShowLogo(true);
-            }
-            if (video.currentTime >= 7 && !fadeOut) {
-                setFadeOut(true);
-            }
-        };
-
-        const handleEnded = () => {
-            setFadeOut(true);
-            setTimeout(() => setLoading(false), 500);
-        };
-
-        video.addEventListener("timeupdate", handleTimeUpdate);
-        video.addEventListener("ended", handleEnded);
-
-        return () => {
-            video.removeEventListener("timeupdate", handleTimeUpdate);
-            video.removeEventListener("ended", handleEnded);
-        };
+      
     }, [showLogo, fadeOut]);
 
     return (
         <>
             {loading ? (
-                <div className={`loader ${fadeOut ? "fade-out" : ""}`}>
-                    <video
-                        ref={videoRef}
-                        src="/intro.mp4"
-                        autoPlay
-                        muted
-                        playsInline
-                        style={{
-                            width: "100vw",
-                            height: "100vh",
-                            objectFit: "cover",
-                        }}
-                    />
-                    <FlyingLogo />
+                <div className={`loader ${fadeOut ? 'fade-out' : ''}`}>
+                    <Loader />
                 </div>
             ) : (
-                <div className="relative w-full min-h-screen overflow-hidden">
-                    {/* <Galaxy mouseInteraction={false} /> */}
-                    {/* <WebCanvas /> */}
-                    <div className="relative z-10">
-                        <AuthProvider>
-                            <Navbar />
-                            <RoutesManager />
-                            {/* <Footer /> */}
-                        </AuthProvider>
-                    </div>
-                </div>
+                // <SnackbarProvider>
+                    <AuthProvider>
+                        <Navbar />
+                        <RoutesManager />
+                        {/* <Footer /> */}
+                    </AuthProvider>
+                // </SnackbarProvider>
             )}
         </>
     );
