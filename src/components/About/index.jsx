@@ -85,13 +85,14 @@ export const About = () => {
 
   return (
     <div>
+      <div className="relative about-page">
         <WebCanvas />
-        <div className="absolute h-screen top-0 w-screen m-0 p-0  grid">
-          <div className="absolute top-0 w-screen m-0 p-0 grid lg:grid-cols-6 grid-cols-1">
+        <div className="absolute overflow-visible  top-0 w-screen m-0 p-0  grid lg:grid-cols-6 grid-cols-1">
+          <div className="absolute top-0 w-screen m-0 p-0 grid lg:grid-cols-6 grid-cols-1 overflow-visible">
             {/* LEFT COLUMN */}
             <section
-              className="flex flex-col justify-center col-span-3 bg-slate-950  
-     pr-4 pl-4 py-12 pt-20 sm:pr-8 sm:pl-8 sm:py-16 lg:pr-36 lg:pl-20 lg:py-24"
+              className="flex flex-col justify-center col-span-3 bg-slate-950 overflow-visible 
+    h-screen pr-4 pl-4 py-12 pt-20 sm:pr-8 sm:pl-8 sm:py-16 lg:pr-36 lg:pl-20 lg:py-24"
             >
               <div className="text-5xl sm:text-6xl lg:text-8xl mb-10 sm:mb-6 text-rise flex flex-wrap">
                 {"ABOUT".split("").map((ch, i) => (
@@ -101,11 +102,11 @@ export const About = () => {
                 ))}
               </div>
 
-              <section className="text-md sm:text-xl text-rise flex-1 overflow-scroll">
+              <section className="text-md sm:text-xl text-rise flex-1">
                 <AnimatedText text={aboutText} />
               </section>
 
-              <section className="flex flex-col  sm:flex-row items-start sm:items-center justify-between mt-6 sm:mt-8 gap-3 sm:gap-6">
+              <section className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-6 sm:mt-8 gap-3 sm:gap-6">
                 <a
                   href="/pdf/tz.pdf"
                   className="active:bg-slate-300 bg-white"
@@ -129,7 +130,7 @@ export const About = () => {
             </section>
 
             {/* RIGHT COLUMN */}
-            <section className="backdrop-blur-md col-span-3 w-full h-[500px] sm:h-[600px] lg:h-screen  mt-4 lg:mt-10 overflow-auto">
+            <section className="backdrop-blur-md col-span-3 w-full h-[500px] sm:h-[600px] lg:h-screen mt-4 lg:mt-10 overflow-auto">
               <iframe
                 src="/pdf/tz.pdf#toolbar=0&zoom=30&"
                 title="Embedded PDF Document"
@@ -140,6 +141,6 @@ export const About = () => {
           </div>
         </div>
       </div>
-
+    </div>
   );
 };
