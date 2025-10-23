@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Stark';
-  src: url('../public/fonts/Stark.otf') format('opentype');
-  font-weight: lighter;
-}
 
 @font-face {
   font-family: 'tecknaf';
