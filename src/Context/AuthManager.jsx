@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false)
   const [pendingLogout, setPendingLogout] = useState(false)
   const navigate = useNavigate()
-  const url = "http://localhost:5000" // TODO: change this to env variable
+  const url = window.location.origin // TODO: change this to env variable
   const { notify } = useSnackbar()
 
   useEffect(() => {
@@ -160,5 +160,6 @@ const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   )
 }
+
 
 export default AuthProvider
