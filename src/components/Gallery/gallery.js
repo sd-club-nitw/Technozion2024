@@ -99,7 +99,7 @@ export const Gallery = () => {
               You can hide the iframe if you don't want it visible on desktop. */}
           <section className="pdf-iframe-section">
             <iframe
-              src="/pdf/Technozion-2025_Event_Schedule.pdf#toolbar=0&zoom=page-width"
+              src="/pdf/Technozion-2025_Event_Schedule.pdf#toolbar=0&zoom=100"
               title="Embedded PDF Document"
               className="pdf-iframe"
               style={{ border: "none" }}
