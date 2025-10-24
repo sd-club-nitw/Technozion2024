@@ -62,7 +62,7 @@ const CountdownTimer = ({ targetDate }) => {
 
 const Hero = () => {
     // Set the target date and time for IST (Indian Standard Time)
-    const targetDate = new Date("2025-10-24T10:30:00Z"); // This is 4:00 PM IST on October 24th , 2025
+    const targetDate = new Date("2025-10-24T06:00:00Z"); // This is 11:30 PM IST on October 24th , 2025
 
     return (
         <div>

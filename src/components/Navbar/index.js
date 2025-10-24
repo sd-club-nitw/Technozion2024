@@ -14,7 +14,7 @@ const oldNavigation = [
 ];
 
 const rightNavigation = [
-  { name: "GALLERY", link: "/gallery" },
+  { name: "SCHEDULE", link: "/gallery" },
   { name: "TEAM", link: "/team" },
   { name: "REGISTER", link: "/auth/register" },
 ];

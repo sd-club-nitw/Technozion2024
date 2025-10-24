@@ -43,14 +43,14 @@ const RoutesManager = () => {
 			
 
 			{/* Catch all */}
-			<Route path="*" element={<ComingSoon />} />
+			{/* <Route path="*" element={<ComingSoon />} /> */}
 			<Route path="/about" element={<About />} />
 			{/* <Route path="/sponsors" element={<Sponsors />} /> */}
 			<Route path="/events" element={<Index />} />
 			{/* <Route path="/displayevents" element={<Displayevents />} /> */}
 			<Route path="/team" element={<Team />} />
 			{/* <Route path="/register" element={<Register />} /> */}
-			{/* <Route path="/gallery" element={<Gallery />} /> */}
+			<Route path="/gallery" element={<Gallery />} />
 			{/* <Route path="/index" element={<Index />} /> */}
 			<Route path="/card" element={<Card />} /> Route for the card component
 
