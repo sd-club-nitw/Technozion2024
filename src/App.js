@@ -14,11 +14,11 @@ const App = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setFadeOut(true); 
-        }, 3000); 
+        }, 800); 
 
         const removeLoader = setTimeout(() => {
             setLoading(false); 
-        }, 3500); 
+        }, 1100); 
 
         return () => {
             clearTimeout(timer);

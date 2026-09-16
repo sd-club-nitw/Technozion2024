@@ -71,23 +71,31 @@
 
 /* tab buttons styled like your neon screenshot */
 .tab-btn{
-  background: rgba(0,0,0,0.45);
-  color: var(--neon-cyan);
-  border: 2px solid rgba(0,255,230,0.85);
-  padding: 10px 22px;
-  border-radius: 8px;
-  font-weight: 700;
+  background: rgba(7,32,38,0.9);
+  color: #ffffff;
+  border: 2px solid rgba(0,255,230,0.9);
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-weight: 800;
   font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-  transition: transform .16s ease, background .12s ease, color .12s ease;
+  box-shadow: 0 0 18px rgba(22,246,243,0.3);
+  transition: transform .16s ease, background .12s ease, color .12s ease, box-shadow .16s ease;
 }
-.tab-btn:hover{ transform: translateY(-3px); }
+.tab-btn:hover{
+  background: linear-gradient(135deg, #16f6f3 0%, #00b3ff 100%);
+  color: #031318;
+  border-color: #16f6f3;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(22,246,243,0.55), inset 0 0 0 2px rgba(3,19,24,0.15);
+}
 .tab-btn.active{
-  background: var(--neon-dim);
-  color: #041617; /* dark text inside neon filled */
-  border-color: rgba(0,200,200,0.98);
-  box-shadow: 0 10px 30px rgba(0,255,240,0.14);
+  background: linear-gradient(135deg, #16f6f3 0%, #00b3ff 100%);
+  color: #031318;
+  border-color: #16f6f3;
+  box-shadow: 0 8px 26px rgba(22,246,243,0.5), inset 0 0 0 2px rgba(3,19,24,0.15);
 }
 
 /* main panel (replaces cards) */
@@ -130,16 +138,24 @@
 /* Enter button */
 .panel-actions{ margin-top: 1.2rem; }
 .enter-btn{
-  background: transparent;
-  border: 2px solid var(--neon-cyan);
-  color: var(--neon-cyan);
-  padding: 0.7rem 1.1rem;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #16f6f3 0%, #00b3ff 100%);
+  border: 2px solid #16f6f3;
+  color: #031318;
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
   cursor: pointer;
   font-weight: 800;
-  transition: background .15s ease, color .15s ease;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 1rem;
+  box-shadow: 0 8px 26px rgba(22,246,243,0.5);
+  transition: transform .15s ease, background .15s ease, color .15s ease, box-shadow .15s ease;
 }
-.enter-btn:hover{ background: var(--neon-cyan); color: #041617; }
+.enter-btn:hover{
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #3dfff5 0%, #2dc7ff 100%);
+  box-shadow: 0 12px 32px rgba(22,246,243,0.6);
+}
 
 /* portal and flame (bottom centered) */
 .Portal{

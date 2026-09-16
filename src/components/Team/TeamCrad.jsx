@@ -7,6 +7,8 @@ function TeamCrad({src, name, position, email=""}) {
         <img
           src={src}
           alt={name}
+          loading="lazy"
+          decoding="async"
           className="w-full object-cover aspect-[11/12] rounded-lg"
         />
       </div>

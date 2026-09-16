@@ -71,7 +71,7 @@ const Card = () => {
       <div className="web-canvas">
         <WebCanvas />
       </div>
-      <div className={`event_card wrap animate pop active `}>
+      <div className={`event_card wrap active `}>
         <div className="text">
           <div className="logo-cardnav-container">
             <div className="logo-container p-5 ">

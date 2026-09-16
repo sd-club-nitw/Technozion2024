@@ -34,7 +34,7 @@ function AboutCard({ content, image, imgToRight, title }) {
             <img src={youtubeLogo} alt="YouTube" className="youtube-icon" /> &nbsp;What is Technozion ?
           </a>
           <a href="https://www.youtube.com/watch?v=1T_d1YoCWuA" target="_blank" rel="noopener noreferrer" className="youtube-link">
-            <img src={youtubeLogo} alt="YouTube" className="youtube-icon" /> &nbsp;Events Technozion'24
+            <img src={youtubeLogo} alt="YouTube" className="youtube-icon" /> &nbsp;Technozion Highlights
           </a>
         </div>
         <section className="w-full z-10 h-full">

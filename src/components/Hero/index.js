@@ -3,8 +3,6 @@ import './index.css';
 import { WebCanvas } from "../bg_animation/bg_animate";
 import tzlogo_with_date from "./tzlogo_with_date.png";
 import TypingWords from "./TypingWords";
-import NumCount from "../utils/NumCount";
-import { Link } from "react-router-dom";
 
 // Countdown Component
 const CountdownTimer = ({ targetDate }) => {
@@ -62,7 +60,7 @@ const CountdownTimer = ({ targetDate }) => {
 
 const Hero = () => {
     // Set the target date and time for IST (Indian Standard Time)
-    const targetDate = new Date("2025-10-24T10:30:00Z"); // This is 4:00 PM IST on October 24th , 2025
+    const targetDate = new Date("2026-10-30T10:30:00Z"); // This is 4:00 PM IST on October 30th, 2026
 
     return (
         <div>
@@ -74,14 +72,11 @@ const Hero = () => {
                     <div className="main-logo">
 
                   <span className="lg:text-5xl text-3xl font-bold mb-4 uppercase animate-pulse cursor-pointer">
-          <TypingWords words={['TECHNOZION 2025', 'COMING SOON']} />
+          <TypingWords words={['TECHNOZION 2026', 'COMING SOON']} />
         </span>
                     </div>
                     {/* Countdown Clock */}
                     <CountdownTimer targetDate={targetDate} />
-                    <section className="text-center uppercase mt-4 lg:text-3xl text-xl font-bold">
-                         Prize pool worth ₹ <Link to='/events'><NumCount num={243000} className='hover:opacity-70 duration-100 cursor-pointer' /> /-</Link>
-                    </section>
                     <section className="text-center mt-4 text-xl font-bold">
                     </section>
                 </div>

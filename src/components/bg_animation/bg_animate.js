@@ -1,119 +1,144 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 
-    export const WebCanvas = () => {
-        const canvasRef = useRef(null);
-        const mousePos = useRef({ x: 0, y: 0 });
-        const [ctx, setCtx] = useState(null);
-        const [points, setPoints] = useState([]);
+const MAX_POINTS = 180;
+const LINK_DIST = 130;
+const LINK_DIST_SQ = LINK_DIST * LINK_DIST;
+const MOUSE_RADIUS = 110;
+const MOUSE_RADIUS_SQ = MOUSE_RADIUS * MOUSE_RADIUS;
 
-        useEffect(() => {
-            const canvas = canvasRef.current;
-            if (!canvas) return;
+export const WebCanvas = () => {
+  const canvasRef = useRef(null);
+  const pointsRef = useRef([]);
+  const mouseRef = useRef({ x: -9999, y: -9999, active: false });
 
-            const context = canvas.getContext('2d');
-            setCtx(context);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
 
-            // Set canvas dimensions
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+    let rafId = null;
+    let visible = false;
+    let resizeTimer = null;
 
-            const handleResize = () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-                setPoints([]); // Clear points
-                initPoints(); // Reinitialize points
-            };
+    const resize = () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + "px";
+      canvas.style.height = h + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-            const initPoints = () => {
-                const screenWidth = window.innerWidth;
-                const screenHeight = window.innerHeight;
-                const screenArea = screenWidth * screenHeight;
-                const baseArea = 1000000;  // Set a base area, e.g., 1000000 pixels (1000x1000)
-                const numPoints = Math.floor((screenArea / baseArea) * 500);
-                const newPoints = [];
-                for (let i = 0; i < numPoints; i++) {
-                    newPoints.push({
-                        x: Math.random() * canvas.width,
-                        y: Math.random() * canvas.height,
-                        vx: (Math.random() - 0.5) * 1.5, // Random speed
-                        vy: (Math.random() - 0.5) * 1.5,
-                        isFollowing: false, // Flag to track if the point is following the cursor
-                    });
-                }
-                setPoints(newPoints);
-            };
+      const area = w * h;
+      let count = Math.round((area / 1000000) * 250);
+      if (count > MAX_POINTS) count = MAX_POINTS;
+      if (count < 40) count = 40;
 
-            window.addEventListener('resize', handleResize);
-            initPoints();
+      pointsRef.current = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 1.2,
+        vy: (Math.random() - 0.5) * 1.2,
+      }));
 
-            return () => {
-                window.removeEventListener('resize', handleResize);
-            };
-        }, []);
-
-        const drawLines = (pointA, pointB) => {
-            const dist = Math.sqrt(
-                Math.pow(pointA.x - pointB.x, 2) + Math.pow(pointA.y - pointB.y, 2)
-            );
-            if (dist < 100) {  // Distance threshold for drawing lines
-                ctx.beginPath();
-                ctx.moveTo(pointA.x, pointA.y);
-                ctx.lineTo(pointB.x, pointB.y);
-                ctx.strokeStyle = `rgba(22, 246, 243, ${1 - dist / 100})`; // Changed to #16f6f3
-                ctx.lineWidth = 0.5; // Thinner lines
-                ctx.stroke();
-            }
-        };
-
-        const movePoints = () => {
-            points.forEach(point => {
-                if (point.isFollowing) {
-                    // Move point towards the cursor with increased speed
-                    point.x += (mousePos.current.x - point.x) * 0.15;
-                    point.y += (mousePos.current.y - point.y) * 0.15;
-                } else {
-                    point.x += point.vx;
-                    point.y += point.vy;
-
-                    // Bounce off edges
-                    if (point.x > canvasRef.current.width || point.x < 0) point.vx *= -1;
-                    if (point.y > canvasRef.current.height || point.y < 0) point.vy *= -1;
-                }
-            });
-        };
-
-        useEffect(() => {
-            const animate = () => {
-                const canvas = canvasRef.current;
-                if (ctx && points.length > 0 && canvas) { // Check for null
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    movePoints();
-
-                    // Draw lines between nearby points
-                    points.forEach((pointA, index) => {
-                        points.forEach((pointB, i) => {
-                            if (i > index) {
-                                drawLines(pointA, pointB);
-                            }
-                        });
-                    });
-                    window.requestAnimationFrame(animate);
-                }
-            };
-            window.requestAnimationFrame(animate);
-        }, [ctx, points]);
-
-        // Track mouse movement
-        const handleMouseMove = (e) => {
-            mousePos.current.x = e.clientX;
-            mousePos.current.y = e.clientY;
-            points.forEach(point => {
-                const dist = Math.sqrt(
-                    Math.pow(point.x - mousePos.current.x, 2) + Math.pow(point.y - mousePos.current.y, 2)
-                );
-                point.isFollowing = dist < 50; // Set isFollowing to true if cursor is close
-            });
-        };
-
-        return <canvas ref={canvasRef} onMouseMove={handleMouseMove}></canvas>;
+      ctx.clearRect(0, 0, w, h);
     };
+
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resize, 150);
+    };
+
+    const onMouseMove = (e) => {
+      mouseRef.current.x = e.clientX;
+      mouseRef.current.y = e.clientY;
+      mouseRef.current.active = true;
+    };
+
+    const onMouseLeave = () => {
+      mouseRef.current.active = false;
+      mouseRef.current.x = -9999;
+      mouseRef.current.y = -9999;
+    };
+
+    const frame = () => {
+      rafId = requestAnimationFrame(frame);
+      if (!visible || document.hidden) return;
+
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      if (!w || !h) return;
+
+      const pts = pointsRef.current;
+      const mouse = mouseRef.current;
+      const mActive = mouse.active;
+
+      ctx.clearRect(0, 0, w, h);
+
+      for (let i = 0; i < pts.length; i++) {
+        const p = pts[i];
+
+        if (mActive) {
+          const dx = mouse.x - p.x;
+          const dy = mouse.y - p.y;
+          if (dx * dx + dy * dy < MOUSE_RADIUS_SQ) {
+            p.x += dx * 0.12;
+            p.y += dy * 0.12;
+            continue;
+          }
+        }
+
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x > w || p.x < 0) p.vx *= -1;
+        if (p.y > h || p.y < 0) p.vy *= -1;
+      }
+
+      ctx.lineWidth = 0.6;
+      for (let i = 0; i < pts.length; i++) {
+        const a = pts[i];
+        for (let j = i + 1; j < pts.length; j++) {
+          const b = pts[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < LINK_DIST_SQ) {
+            const alpha = 1 - Math.sqrt(d2) / LINK_DIST;
+            ctx.strokeStyle = "rgba(22,246,243," + (0.55 * alpha).toFixed(3) + ")";
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        visible = entries.some((entry) => entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+
+    resize();
+    observer.observe(canvas);
+    window.addEventListener("resize", onResize);
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+    window.addEventListener("mouseout", onMouseLeave, { passive: true });
+    visible = true;
+    rafId = requestAnimationFrame(frame);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      clearTimeout(resizeTimer);
+      observer.disconnect();
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseout", onMouseLeave);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} />;
+};

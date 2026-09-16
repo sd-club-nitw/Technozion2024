@@ -13,29 +13,32 @@
 
 /* Buttons to navigate through the carousel */
 .carousel-button {
-  width: 6%;
-  background: rgba(0, 0, 0, 0.6);
-  border: none;
-  font-size: 2rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 30, 36, 0.75);
+  border: 2px solid rgba(0, 255, 230, 0.85);
+  font-size: 1.5rem;
+  line-height: 1;
   cursor: pointer;
   z-index: 2;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  /* transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; */
-  position: absolute;
-  top: 50%;
-  /* transform: translateY(-50%); */
-  color: white;
-  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6), 0 0 45px rgba(0, 255, 255, 0.4);
+  padding: 0;
+  border-radius: 999px;
+  color: #eafffb;
+  text-shadow: none;
+  box-shadow: 0 0 14px rgba(22, 246, 243, 0.35);
   box-sizing: border-box;
+  transition: transform 150ms ease, background 150ms ease, box-shadow 150ms ease;
 }
 
 /* Neon glow hover effect */
 .carousel-button:hover {
-  opacity: 1;
-  /* transform: scale(1.5); */
-  box-shadow: 0 0 20px rgba(0, 255, 255, 1), 0 0 40px rgba(0, 255, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.6);
+  background: linear-gradient(135deg, #16f6f3 0%, #00b3ff 100%);
+  color: #031318;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(22, 246, 243, 0.5);
 }
 
 .carousel-button.prev {
@@ -116,10 +119,11 @@
   }
 
   .carousel-button {
-    background: rgba(0, 0, 0, 0.3);
-    width: 6%;
-    font-size: 1.5rem;
-    opacity: 0.8;
+    background: rgba(2, 30, 36, 0.75);
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+    opacity: 1;
   }
 }
 
@@ -130,9 +134,10 @@
   }
 
   .carousel-button {
-    font-size: 0.8rem;
-    padding: 0.2rem;
-    width: 6%;
+    font-size: 1rem;
+    padding: 0;
+    width: 36px;
+    height: 36px;
   }
 
 

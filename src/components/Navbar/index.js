@@ -8,7 +8,7 @@ import './index.css';
 const oldNavigation = [
   { name: "HOME", link: "/" },
   { name: "ABOUT", link: "/about" },
-  { name: "EVENTS", link: "/events" },
+  { name: "PAST EVENTS", link: "/events" },
   // If you want the dropdown to appear, add:
   // { name: "REVENTS", link: "#" } 
 ];

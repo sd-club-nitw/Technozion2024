@@ -14,11 +14,12 @@ function PosterSkeleton({ src, alt, className = "", ...props }) {
         {...props}
         src={src}
         alt={alt}
+        loading="lazy"
+        decoding="async"
         onLoad={() => setLoaded(true)}
-        className={
-          (" w-full aspect-[4/5] object-cover transition-opacity duration-500",
-          loaded ? "opacity-100" : "opacity-0 ") + className // merge user-provided classes
-        }
+        className={`block w-full aspect-[4/5] object-cover transition-opacity duration-300 ${
+          loaded ? "opacity-100" : "opacity-0"
+        } ${className}`}
       />
     </div>
   );

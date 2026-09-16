@@ -238,7 +238,7 @@ const Register = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-cyan">
-            Registration for Technozion 2025
+            Registration for Technozion 2026
           </h1>
           <h1 className="text-lg font-bold mb-4 text-cyan/80">
             Open to all years and branches from IITs, NITs, IIITs, and leading institutes.
