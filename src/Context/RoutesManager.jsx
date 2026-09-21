@@ -9,6 +9,7 @@ import { Gallery } from '../components/Gallery/gallery.js';
 import { Team } from '../components/Team/team.jsx';
 import Card from '../components/card/card.jsx';
 import Index from '../components/event_scroll/index.js';
+import PastEvents from '../components/PastEvents/PastEvents.jsx';
 import { ComingSoon } from "../components/ComingSoon/ComingSoon.jsx";
 
 const RoutesManager = () => {
@@ -32,15 +33,16 @@ const RoutesManager = () => {
 
 			{/* Registration coming soon */}
 			<Route path="/register" element={<ComingSoon />} />
-			<Route path="*" element={<ComingSoon />} />
 			<Route path="/about" element={<About />} />
 			{/* <Route path="/sponsors" element={<Sponsors />} /> */}
-			<Route path="/events" element={<Index />} />
+			<Route path="/events" element={<PastEvents />} />
+			<Route path="/events/:year" element={<PastEvents />} />
 			{/* <Route path="/displayevents" element={<Displayevents />} /> */}
 			<Route path="/team" element={<Team />} />
 			{/* <Route path="/gallery" element={<Gallery />} /> */}
 			{/* <Route path="/index" element={<Index />} /> */}
 			<Route path="/card" element={<Card />} />
+			<Route path="*" element={<ComingSoon />} />
 
 		</Routes>
 	);

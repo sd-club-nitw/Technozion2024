@@ -6,17 +6,15 @@ import { motion } from 'framer-motion';
 import { MdEmail } from "react-icons/md";
 import TeamCrad from "./TeamCrad";
 
-export const Team = () => {
+export const TeamContent = () => {
   const [data, setData] = useState([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [hoverStates, setHoverStates] = useState([]);
 
   useEffect(() => {
-    fetch('./TeamData.json')
+    fetch('/TeamData.json')
       .then((response) => response.json())
       .then((data) => {
         setData(data);
-        setHoverStates(new Array(data.length).fill(false));
       }) 
       .catch((error) => console.error('Error fetching JSON:', error));
     
@@ -25,86 +23,64 @@ export const Team = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const getGridTemplate = (data) => { 
-    let rows = []; 
-    let index = 0; 
-    const isMobile = windowWidth < 786;
+  return (
+    <div className="list">
+      <section className="flex flex-col items-center justify-center mb-10">
+        <h1 className="lg:text-5xl sm:text-4xl text-3xl uppercase font-bold">Chief Patron</h1>
+        {data?.chief_patrons?.map((member, index) => (
+          <TeamCrad src={`/teamImages/${member.image}`} key={index} name={member.name} position={member.position} />
+        ))}
+      </section>
 
-    while (index < data.length) { 
-      if (isMobile) { 
-        rows.push([data[index]]); 
-        index += 1; 
-      } else { 
-        rows.push([data[index], data[index + 1]]); 
-        index += 2; 
-      } 
-    } 
-    return rows; 
-  }; 
+      <section className="flex flex-col items-center justify-center mb-10">
+        <h1 className="lg:text-5xl sm:text-4xl text-3xl uppercase font-bold">Patrons</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {data?.patrons?.map((member, index) => (
+            <TeamCrad src={`/teamImages/${member.image}`} key={index} email={member.email} name={member.name} position={member.position} />
+          ))}
+        </div>
+      </section>
 
+      <section className="flex flex-col items-center justify-center mb-10">
+        <h1 className="lg:text-5xl sm:text-4xl text-3xl uppercase font-bold">Student Council</h1>
+        <h2 className="lg:text-3xl text-xl uppercase lg:my-5 xs:my-3">General Secretaries</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {data?.student_council?.general_secretaries?.map((member, index) => (
+            <TeamCrad key={index} src={`/teamImages/${member.image}`} name={member.name} position={member.position} />
+          ))}
+        </div>
+        <br />
+        <h2 className="lg:text-3xl text-xl uppercase lg:my-5 xs:my-3">Joint Secretaries</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {data?.student_council?.joint_secretaries?.map((member, index) => (
+            <TeamCrad key={index} src={`/teamImages/${member.image}`} name={member.name} position={member.position} />
+          ))}
+        </div>
+      </section>
 
+      <section className="flex flex-col items-center justify-center mb-10">
+        <h1 className="lg:text-5xl sm:text-4xl text-3xl uppercase font-bold">Web Team</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
+          {data?.web_team?.map((member, index) => (
+            <TeamCrad key={index} src={`/teamImages/${member.image}`} name={member.name} position={member.position} />
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export const Team = () => {
   return (
     <div className="Teams">
       <div className="web-canvas">
         <WebCanvas />
       </div>
       <img src={Teams} alt="teams" className='mainteams lg:mt-36 mt-24 lg:scale-100 scale-90 sm:mt-28'/>
-       
-      <div className="list">
-     <section className="flex flex-col items-center justify-center mb-10">
-      <h1 className="lg:text-5xl sm:text-4xl text-3xl  uppercase font-bold">Chief Patron</h1>
-      {data?.chief_patrons?.map((member, index) => (
-
-      <TeamCrad src={`/teamImages/${member.image}`} key={index} name={member.name} position={member.position} />
-      ))}
-     </section>
-      <section className="flex flex-col items-center justify-center mb-10">
-      <h1 className="lg:text-5xl sm:text-4xl text-3xl  uppercase font-bold">Patrons</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      {data?.patrons?.map((member, index) => (
-        
-        <TeamCrad src={`/teamImages/${member.image}`} key={index} email={member.email} name={member.name} position={member.position} />
-      ))}
-      </div>
-     </section>
-     <section className="flex flex-col items-center justify-center mb-10">
-      <h1 className="lg:text-5xl sm:text-4xl text-3xl  uppercase font-bold">Student Council</h1>
-    <h2 className="lg:text-3xl text-xl uppercase lg:my-5 xs:my-3">General Secretaries</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      
-      {data?.student_council?.general_secretaries?.map((member, index) => (
-        
-        <TeamCrad src={`/teamImages/${member.image}`} name={member.name} position={member.position} />
-      ))}
-      </div>
-      <br />
-    <h2 className="lg:text-3xl text-xl uppercase lg:my-5 xs:my-3">Joint Secretaries</h2>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      {data?.student_council?.joint_secretaries?.map((member, index) => (
-        
-        <TeamCrad src={`/teamImages/${member.image}`} name={member.name} position={member.position} />
-      ))}
-      </div>
-     </section>
-
-
-{/* web team  */}
-      <section className="flex flex-col items-center justify-center mb-10">
-      <h1 className="lg:text-5xl sm:text-4xl text-3xl  uppercase font-bold">Web Team</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
-
-      {data?.web_team?.map((member, index) => (
-        
-        <TeamCrad src={`/teamImages/${member.image}`} name={member.name} position={member.position} />
-      ))}
-      </div>
-     </section>
-
-       
-      </div>
+      <TeamContent />
     </div>
   );
 };
+
+export default Team;
+

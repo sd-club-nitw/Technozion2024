@@ -28,3 +28,12 @@ yarn-error.log*
 
 #package-lock.json
 package-lock.json
+
+# playwright & testing logs
+.playwright-mcp/
+playwright-report/
+test-results/
+
+# gemini & agent configs/rules
+.agents/
+.gemini/

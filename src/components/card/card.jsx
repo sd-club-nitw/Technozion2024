@@ -1,258 +1,261 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./card.css";
-import ResizeObserver from "resize-observer-polyfill";
 import { WebCanvas } from "../bg_animation/bg_animate";
-import fallbackImg from "./tzcomingsoon.png"; // Fallback image
+import fallbackImg from "./tzcomingsoon.png";
 import PosterSkeleton from "../Skeleton/PosterSkeleton";
-import { IoMdArrowRoundBack, IoMdPerson } from "react-icons/io";
-import { a, span } from "framer-motion/client";
+import { IoMdArrowRoundBack } from "react-icons/io";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import { FaPhoneFlip } from "react-icons/fa6";
-import { MdContentCopy, MdEmail } from "react-icons/md";
+import { MdContentCopy } from "react-icons/md";
 import CopyWrapper from "../utils/CopyWrapper";
 
 const Card = () => {
-  const location = useLocation(); // Extract data from navigation
-  const navigate = useNavigate(); // For navigating back
-  const { title, overview, rules, judging_criteria, imgsrc, glink, total_cost } =
-    location.state || {}; // Extract state data
+  const location = useLocation();
+  const navigate = useNavigate();
+  const {
+    title,
+    name,
+    overview,
+    rules,
+    judging_criteria,
+    imgsrc,
+    glink,
+    total_cost,
+  } = location.state || {};
 
-  const [activeTab, setActiveTab] = useState("overview"); // Track the active tab
-  const [imageSrc, setImageSrc] = useState(imgsrc); // State for image source
+  const [imageSrc, setImageSrc] = useState(imgsrc);
+  const cardRef = useRef(null);
 
-  const contentRef = useRef(null); // Ref to the content container
-  console.log(judging_criteria);
-  // Handles navigation back to the previous view
-  const handleBack = () => {
-    navigate(-1); // Navigate back in browser history
+  // Handles navigation back
+  const handleBack = React.useCallback(() => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/events");
+    }
+  }, [navigate]);
+
+  // Handles clicking outside the card
+  const handleContainerClick = (e) => {
+    if (cardRef.current && !cardRef.current.contains(e.target)) {
+      handleBack();
+    }
   };
+
+  // Close on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        handleBack();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleBack]);
 
   // Handles image load error
   const handleImageError = () => {
-    setImageSrc(fallbackImg); // Set to fallback image on error
+    setImageSrc(fallbackImg);
   };
 
-  // Scroll to the top of the content container when the active tab changes
-  useEffect(() => {
-    if (contentRef.current) {
-      contentRef.current.scrollTop = 0; // Scroll the content container to the top
-    }
-  }, [activeTab]); // Runs whenever activeTab changes
-
-  // Effect to set the logo height CSS variable
-  useEffect(() => {
-    const logoContainer = document.querySelector(".logo-container");
-
-    const setLogoHeight = (entries) => {
-      for (let entry of entries) {
-        const logoHeight = entry.contentRect.height; // Get the new height of the logo container
-        document.documentElement.style.setProperty(
-          "--logo-height",
-          `${logoHeight}px`
-        ); // Set the variable
-      }
-    };
-
-    const resizeObserver = new ResizeObserver(setLogoHeight); // Initialize ResizeObserver
-
-    if (logoContainer) {
-      resizeObserver.observe(logoContainer); // Start observing the logo container
-    }
-
-    // Clean up on unmount
-    return () => {
-      resizeObserver.disconnect(); // Stop observing when component unmounts
-    };
-  }, []);
-
   return (
-    <div className="card-container">
+    <div className="card-container" onClick={handleContainerClick}>
       <div className="web-canvas">
         <WebCanvas />
       </div>
-      <div className={`event_card wrap active `}>
+
+      <div
+        ref={cardRef}
+        className="event_card wrap active"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="text">
-          <div className="logo-cardnav-container">
-            <div className="logo-container p-5 ">
-              <PosterSkeleton
-                src={imageSrc}
-                alt="Logo"
-                className="cnt-logo rounded-md"
-                onError={handleImageError}
-              />
+          {/* Card Header with single Back button */}
+          <div className="cardnav p-4 lg:px-6 z-10">
+            <div className="flex items-center gap-2">
+              {name && (
+                <span className="text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-cyan-400/40 bg-cyan-950/40 text-cyan-300 font-semibold">
+                  {name}
+                </span>
+              )}
             </div>
-            <div className="content-container">
-              <div className="cardnav p-5 z-10">
-                <button
-                  onClick={() => setActiveTab("overview")}
-                  className={activeTab === "overview" ? "active" : ""}
-                >
-                  Overview
-                </button>
-                {rules && (
-                  <button
-                    onClick={() => setActiveTab("rules")}
-                    className={activeTab === "rules" ? "active" : ""}
+            <button
+              className="back-button flex items-center gap-x-2"
+              onClick={handleBack}
+            >
+              <span>
+                <IoMdArrowRoundBack />
+              </span>
+              Back
+            </button>
+          </div>
+
+          {/* Three Sections: Image, Overview, Rules */}
+          <div className="card-sections-container">
+            {/* Section 1: Image */}
+            <div className="card-section card-section-image">
+              <div className="poster-frame">
+                <PosterSkeleton
+                  src={imageSrc}
+                  alt={title || "Event Poster"}
+                  className="cnt-logo rounded-xl"
+                  onError={handleImageError}
+                />
+              </div>
+            </div>
+
+            {/* Section 2: Overview */}
+            <div className="card-section card-section-overview custom-scrollbar">
+              <div className="font-bold text-2xl lg:text-3xl uppercase tracking-wide text-cyan-300 mb-4">
+                {overview?.main_title || title}
+              </div>
+
+              {glink && (
+                <div className="mb-5">
+                  <a
+                    href={glink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="register-btn inline-flex items-center gap-x-2.5 px-4 py-2.5 rounded-lg border border-cyan-400 text-cyan-300 bg-cyan-950/40 hover:bg-cyan-500/20 hover:scale-105 duration-200 transition-all text-sm font-semibold"
                   >
-                    Rules
-                  </button>
-                )}
-                {/* {judging_criteria && (
-                  <button
-                    onClick={() => setActiveTab('judging_criteria')}
-                    className={activeTab === 'judging_criteria' ? 'active' : ''}
-                  >
-                    Judging Criteria
-                  </button>
-                )} */}
-                <button
-                  className="back-button flex items-center gap-x-2"
-                  onClick={handleBack}
-                >
-                  <span>
-                    <IoMdArrowRoundBack />
+                    <FaExternalLinkAlt className="text-xs" />
+                    <span>Register Now</span>
+                  </a>
+                </div>
+              )}
+
+              {overview?.description && (
+                <section className="overview-item mb-5 flex flex-col gap-y-1">
+                  <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase">
+                    Description
                   </span>
-                  Back
-                </button>
-              </div>
-              <div
-                className="content p-5 lg:gap-y-10 gap-y-5"
-                ref={contentRef}
-                key={activeTab}
-              >
-                {" "}
-                {/* Key ensures content re-renders on tab change */}
-                {activeTab === "overview" ? (
-                  <>
-                    <div className="font-bold text-2xl uppercase w-full ">
-                      {overview?.main_title}
-                    </div>
-                    {glink && (
-                      <span className="opacity-70 text-[1rem]">
-                        <a
-                          href={glink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-500 flex hover:bg-[#16f6f256] hover:scale-110 duration-150 hover:text-white items-center gap-x-3 uno-underline px-3 py-3 bg-gray rounded-md border-blue-500"
-                        >
-                          <span>
-                            <FaExternalLinkAlt />
+                  <div className="section-text text-sm lg:text-[1.05rem] leading-relaxed">
+                    {overview.description}
+                  </div>
+                </section>
+              )}
+
+              {total_cost ? (
+                <section className="overview-item mb-5 flex flex-col gap-y-1">
+                  <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase">
+                    Prizes worth
+                  </span>
+                  <span className="text-xl lg:text-2xl font-bold text-cyan-300">
+                    ₹ {total_cost}
+                    <sup>*</sup>
+                  </span>
+                </section>
+              ) : null}
+
+              {overview?.cash_prize && (
+                <section className="overview-item mb-5 flex flex-col gap-y-1">
+                  <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase">
+                    Cash Prize
+                  </span>
+                  <span className="text-xl lg:text-2xl font-bold text-cyan-300">
+                    ₹ {overview.cash_prize}
+                  </span>
+                </section>
+              )}
+
+              {overview?.team_size && (
+                <section className="overview-item mb-5 flex flex-col gap-y-1">
+                  <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase">
+                    Participation
+                  </span>
+                  <div className="font-bold text-sm lg:text-base">
+                    {String(overview.team_size) === "1"
+                      ? "Individual"
+                      : overview.team_size}
+                  </div>
+                </section>
+              )}
+
+              {overview?.contact && overview.contact.length > 0 && (
+                <section className="overview-item mb-4 flex flex-col gap-y-1">
+                  <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase mb-1">
+                    Contact
+                  </span>
+                  <div className="flex flex-col gap-3">
+                    {overview.contact.map((contact, index) => (
+                      <div
+                        key={index}
+                        className="contact-card p-3 rounded-lg bg-black/40 border border-cyan-500/20 flex flex-col gap-y-1"
+                      >
+                        {contact?.name && (
+                          <span className="text-xs lg:text-sm opacity-70 font-medium">
+                            {contact.name}
                           </span>
-                          Register Now
-                        </a>
-                      </span>
-                    )}
-                    <section className="flex flex-col gap-y-1 items-start justify-start">
-                      <span className="opacity-70 text-[1rem]">
-                        Description
-                      </span>
-
-                      <div className="lg:text-[1.1rem]">{overview?.description}</div>
-                    </section>
-                    {total_cost ? (
-                       <section className="flex flex-col gap-y-1 items-start justify-start">
-                        <span className="opacity-70 text-[1rem]">
-                          Prizes worth
-                        </span>
-                        <span className="text-[1.2rem]">₹ <strong>{total_cost}<sup>*</sup></strong></span>
-                    
-                        
-                      </section>
-                    ) : null}
-                    {overview?.cash_prize && (
-                      <section className="flex flex-col gap-y-1 items-start justify-start">
-                        <span className="opacity-70 text-[1rem]">
-                          Cash Prize
-                        </span>
-                        <span className="text-[1.2rem]">₹ <strong>{overview.cash_prize}</strong></span>
-
-                       
-                      </section>
-                    )}
-                    <section className="flex flex-col gap-y-1 items-start justify-start">
-                      <span className="opacity-70 text-[1rem]">
-                        Participation
-                      </span>
-                      <div className="font-bold">
-                        {overview?.team_size == 1
-                          ? `Individual`
-                          : overview.team_size}
-                      </div>
-                    </section>
-                    
-                    <section className="flex flex-col gap-y-1 items-start justify-start">
-                      <span className="opacity-70 text-[1rem]">Contact</span>
-                      <div className="flex lg:flex-row flex-col gap-x-5 text-[1rem] gap-y-1">
-                        {overview?.contact?.map((contact, index) => (
-                          <div key={index} className="flex flex-col mb-5 bg-gray p-3 rounded-md lg:min-w-[15em]">
-                            {contact?.name && (
-
-                              <span className="flex gap-x-3 opacity-50 text-[.8rem] lg:text-[.9rem] items-center">{contact.name}</span>
-                            )}
-{contact?.phone && (
-
-  <span className="flex justify-between gap-x-3 items-center cursor-pointer text-[.9rem] lg:text-[1rem]">
-                              <span  className="flex gap-x-3 items-center">
-
-                             +91 {contact.phone}
-                              </span>
+                        )}
+                        {contact?.phone && (
+                          <div className="flex justify-between items-center text-sm">
+                            <span className="text-cyan-300 font-medium">
+                              +91 {contact.phone}
+                            </span>
                             <CopyWrapper text={contact.phone}>
-                              <MdContentCopy />
+                              <MdContentCopy className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity" />
                             </CopyWrapper>
-                            </span>
-                            )}
-                            {contact?.email && (
-                            <span className="flex justify-between gap-x-3 items-center cursor-pointer text-[.9rem] lg:text-[1rem]">
-                              <span  className="">
-
+                          </div>
+                        )}
+                        {contact?.email && (
+                          <div className="flex justify-between items-center text-sm">
+                            <span className="text-cyan-300 truncate mr-2 font-medium">
                               {contact.email}
-                              
-                              </span>
-                              <CopyWrapper text={contact.email}>
-                              <MdContentCopy />
-                                </CopyWrapper>
                             </span>
-                            )}
+                            <CopyWrapper text={contact.email}>
+                              <MdContentCopy className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity" />
+                            </CopyWrapper>
                           </div>
-                        ))}
+                        )}
                       </div>
-                      <small className="opacity-60">
-                          *cash prize will be given based on judging criteria
-                        </small>
-                    </section>
-                  </>
-                ) : (
-                  <>
-                    {activeTab === "rules" ? (
-                      <>
-                        <div>
-                          <div className="font-bold text-2xl uppercase w-full ">
-                            Rules
-                          </div>
-                          <div className="flex flex-col gap-y-3 mt-5">
-                            {rules?.map((rule, index) => (
-                              <div
-                                key={index}
-                                className="flex items-start gap-x-3"
-                              >
-                                <span className="font-bold">{index + 1}.</span>
-                                <span>{rule}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </>
-                    ) : (
-                      <>Invalid Tab</>
-                    )}
-                  </>
-                )}
-                {/* {renderContent()} */}
+                    ))}
+                  </div>
+                  <small className="opacity-60 text-xs mt-2 block">
+                    *cash prize will be given based on judging criteria
+                  </small>
+                </section>
+              )}
+            </div>
+
+            {/* Section 3: Rules */}
+            <div className="card-section card-section-rules custom-scrollbar">
+              <div className="font-bold text-2xl lg:text-3xl uppercase tracking-wide text-cyan-300 mb-4">
+                Rules
               </div>
-              {/* <div className="register">
-                                <button className="register-button" onClick={handleRegister}>Register</button>
-                            </div> */}
+
+              {rules && rules.length > 0 ? (
+                <div className="flex flex-col gap-3">
+                  {rules.map((rule, index) => (
+                    <div
+                      key={index}
+                      className="rule-item flex items-start gap-3 p-3.5 rounded-lg bg-black/40 border border-cyan-500/20"
+                    >
+                      <span className="font-bold text-cyan-300 min-w-[22px]">
+                        {index + 1}.
+                      </span>
+                      <span className="text-sm lg:text-[0.95rem] leading-relaxed">
+                        {rule}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="p-4 rounded-lg bg-black/30 border border-cyan-500/20 text-sm opacity-70">
+                  No specific rules provided for this event. Follow general fest
+                  guidelines.
+                </div>
+              )}
+
+              {judging_criteria && judging_criteria !== "Coming Soon..." && (
+                <div className="mt-6">
+                  <div className="font-bold text-lg uppercase tracking-wide text-cyan-300 mb-2">
+                    Judging Criteria
+                  </div>
+                  <div className="p-3.5 rounded-lg bg-black/40 border border-cyan-500/20 text-sm lg:text-[0.95rem] leading-relaxed">
+                    {judging_criteria}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

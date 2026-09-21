@@ -1,548 +1,311 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
-/* Global reset (scoped to the card page so colors don't leak elsewhere) */
+
+/* Global reset scoped to the card component */
 .event_card,
 .event_card * {
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
-  
   font-optical-sizing: auto;
   font-style: normal;
   color: #16f6f3 !important;
 }
 
-/* General container for the card */
-.event_card {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  padding: 5rem;
-  /* bottom: 5%; */
-}
-
-.card-container {
-  padding-top: 10rem;
-  padding: 10rem;
-  /* margin: 5rem; */
-  width: 100%;
-}
-
-/* Wrapper for the main content */
-
-
-/* h1 {
-    font-size: 5.25vmin;
-    text-align: center;
-    color: #ffffff;
-}
-
-p {
-    font-size: max(10pt, 2.5vmin);
-    line-height: 1.4;
-    color: #ffffff; 
-    margin-bottom: 1.5rem;
-} */
-
-/* Main card container */
-.wrap {
-  display: flex;
-  flex-direction: column; /* Change to column layout */
-  width: 70vmin;
-  height: 70vmin;
-  
-  border: 3px solid;
-  transition: 0.3s ease-in-out;
-  position: relative;
-  border-radius: 1rem;
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.8);
-  box-shadow: 0px 0px 20px rgba(22, 246, 243, 0.75),
-    0px 0px 40px rgba(22, 246, 243, 0.5);
-  /* margin-left: 5rem; */
-  /* right: 5rem; */
-}
-
-/* Updated glassy effect for .text */
-.text {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(
-    0,
-    0,
-    0,
-    0.5
-  ); /* Light semi-transparent background for glassy effect */
-  /* backdrop-filter: blur(3px);  */
-  box-shadow: inset 1px 1px 15px rgba(0, 0, 0, 0.4); /* Optional shadow for depth */
-  color: white; /* Change text color to white */
-  z-index: 2;
-  backdrop-filter: blur(10px); /* Blur effect for glassy appearance */
-  /* padding: 7rem; */
-}
-
-/* Removed the dark background overlay */
-/* Optional: Adding a glassy effect instead */
-.text:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.05); /* Lighter glassy background for contrast */
-  z-index: 1;
-  backdrop-filter: blur(10px); /* Blur effect for glassy appearance */
-}
-
-/* Overlay style for images/text */
-.overlay {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  /* padding: 1rem 0.75rem; */
-  background: rgba(0, 153, 167, 0.9); /* Slightly transparent overlay */
-  transition: 0.4s ease-in-out;
-  z-index: 1;
-}
-
-/* Image content */
-.image-content {
-  position: relative;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  transition: 0.3s ease-in-out;
-}
-
-/* read indicating clickable content */
-.read {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  width: 10vmin;
-  height: 3vmin;
-  transition: 0.3s ease-in-out 0.3s;
-  font-size: 0.2rem;
-}
-
-/* .dot {
-    width: 14px;
-    height: 14px;
-    background: #ffffff;
-    border: 1px solid #16f6f3;
-    transition: 0.3s ease-in-out 0.3s;
-} */
-
-/* Style of button */
-.read button {
-  background-color: #16f6f3; /* Cyan background */
-  border: none; /* Remove default borders */
-  /* border-radius: 50%; */
-  width: 10vmin;
-  height: 3vmin;
-  cursor: pointer; /* Pointer on hover */
-  color: black; /* White text color */
-  font-size: 2vmin; /* Adjust font size */
-  font-weight: bold;
-  outline: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-}
-
-/* Card navigation */
-.logo-cardnav-container {
-  display: flex; /* Flex container for logo and content */
-  width: 100%;
-  /* background-color: black; */
-  height: 100%;
-  box-sizing: border-box;
-  z-index: 5;
-}
-
-/* Sticky logo-container */
-.logo-container {
-  flex: 1; /* Logo takes 1 part */
-  display: flex;
-  justify-content: center; /* Center the logo */
-  align-items: center; /* Center the logo vertically */
-  width: 40%;
-  /* position: sticky; */
-  top: 0; /* Stick the logo at the top */
-  z-index: 10; /* Ensure it stays on top of other content */
-}
-
-
-
-
-/* Sticky content-container */
-.content-container {
-  flex: 3; /* Content takes 3 parts */
-  /* padding: 0.6rem; */
-  /* padding-top: ; */
-  width: 60%;
-  overflow-y: auto; /* Allow scrolling of content */
-  z-index: 5;
-}
-
-.content {
-  /* margin-top:1.8rem; */
-  z-index: 0;
-  width: 100%;
-  height: fit-content;
-  /* padding-bottom: 5rem; */
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
-}
-
-/* Sticky cardnav */
-.cardnav {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  background: #000;
-}
-
-/* Navigation buttons */
-.cardnav button {
-  background: linear-gradient(135deg, #16f6f3 0%, #00b3ff 100%);
-  border: none;
+/* Ensure Back button and its child elements keep high-contrast dark text */
+.back-button,
+.back-button * {
   color: #031318 !important;
-  padding: 0.65rem 1.4rem;
-  border-radius: 999px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  cursor: pointer;
-  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
-  font-size: 1rem;
-  min-width: 96px;
-  box-shadow: 0 6px 18px rgba(22, 246, 243, 0.35);
-  font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
 }
 
-/* Active button style */
-.cardnav button.active {
-  box-shadow: 0 6px 24px rgba(22, 246, 243, 0.6), inset 0 0 0 2px #031318;
-  transform: scale(1.03);
-}
-
-.cardnav button:hover {
-  filter: brightness(1.08);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(22, 246, 243, 0.5);
-}
-
-.register {
+/* Outer Backdrop Container */
+.card-container {
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
-}
-
-.register-button {
-  position: fixed;
-  /* bottom: 0; */
-  /* left: 50%; */
-  /* transform: translateX(-20%);
-    transform: translateY(500%); */
-  z-index: 10;
-  background-color: #16f6f3;
-  color: black !important;
-  padding: 12px 22px;
-  border-radius: 999px;
-  font-weight: 700;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  text-align: center;
+  align-items: center;
+  padding: 3rem 1.5rem;
+  position: relative;
+  box-sizing: border-box;
   cursor: pointer;
-  font-size: 16px;
-  /* color: #fff !important; */
+  z-index: 10;
 }
 
-.register-button:hover {
-  background-color: #13e1d9;
-}
-
-.footer {
-  background-color: #282c34;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  width: 100%;
-}
-
-/* Hover effect */
-.wrap.active .overlay {
-  transform: translateX(-1000vmin);
-}
-
-.wrap.active .image-content {
-  width: 0vmin;
-}
-
-/* .wrap.active .read {
-    transform: translateX(1rem);
-} */
-
-.wrap.active .read .dot {
-  background: #16f6f3; /* Change dot color on hover */
-}
-
-.wrap.active {
-  width: 100%;
-}
-
-/* Animations */
-.animate {
-  animation-duration: 0.25s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: backwards;
-}
-
-.pop {
-  animation-name: pop;
-}
-
-/* Styling for the WebCanvas background */
+/* Background Canvas */
 .web-canvas {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  z-index: 1; /* WebCanvas should be the lowest layer */
+  z-index: 1;
+  pointer-events: none; /* Allows clicks to pass through to card-container */
 }
 
-@keyframes pop {
-  0% {
-    opacity: 0;
-    transform: scale(0.96, 0.96);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1, 1);
-  }
+/* Main Card Modal */
+.event_card {
+  cursor: default;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 5;
 }
 
-.slide {
-  animation-name: slide;
+.wrap {
+  display: flex;
+  flex-direction: column;
+  width: 94vw;
+  max-width: 1350px;
+  height: 82vh;
+  max-height: 840px;
+  min-height: 560px;
+  border: 2.5px solid #16f6f3;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background-color: rgba(5, 10, 16, 0.88);
+  box-shadow: 0px 0px 25px rgba(22, 246, 243, 0.6),
+    0px 0px 50px rgba(22, 246, 243, 0.35);
+  transition: box-shadow 0.3s ease-in-out;
 }
 
-@keyframes slide {
-  0% {
-    opacity: 0;
-    transform: translate(4em, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
+.wrap.active {
+  width: 94vw;
+  max-width: 1350px;
 }
 
-/* Delay animations */
-.delay-1 {
-  animation-delay: 0.3s;
-}
-.delay-2 {
-  animation-delay: 0.6s;
-}
-.delay-3 {
-  animation-delay: 0.9s;
-}
-.delay-4 {
-  animation-delay: 1.2s;
-}
-.delay-5 {
-  animation-delay: 1.5s;
-}
-.delay-6 {
-  animation-delay: 1.8s;
-}
-.delay-7 {
-  animation-delay: 2.1s;
-}
-.delay-8 {
-  animation-delay: 2.4s;
+/* Inner Glassy Text Wrapper */
+.text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.45);
+  box-shadow: inset 1px 1px 20px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 2;
 }
 
-/* Responsive design */
-@media (max-width: 1440px) {
-  .wrap {
-    width: 75vmin;
-    height: 75vmin;
-  }
-  h1 {
-    font-size: 4.5vmin;
-  }
-  p {
-    font-size: max(9pt, 2.2vmin);
-  }
-  
-  /* .image-content {
-        width: 55vmin;
-    } */
+/* Card Header Navigation */
+.cardnav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  background: rgba(0, 5, 12, 0.7);
+  border-bottom: 1px solid rgba(22, 246, 243, 0.2);
+  padding: 0.85rem 1.5rem;
 }
 
+/* The Single Back Button */
+.back-button {
+  background: linear-gradient(135deg, #16f6f3 0%, #00b3ff 100%);
+  border: none;
+  color: #031318 !important;
+  padding: 0.6rem 1.35rem;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+  font-size: 0.95rem;
+  min-width: 96px;
+  box-shadow: 0 4px 18px rgba(22, 246, 243, 0.4);
+  font-family: "Raleway", sans-serif;
+  margin-left: auto;
+}
+
+.back-button:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(22, 246, 243, 0.6);
+}
+
+.back-button:active {
+  transform: translateY(0);
+}
+
+/* Three-Section Grid Container */
+.card-sections-container {
+  display: grid;
+  grid-template-columns: 28% 40% 32%;
+  width: 100%;
+  height: calc(100% - 62px);
+  overflow: hidden;
+}
+
+/* Individual Sections */
+.card-section {
+  padding: 1.5rem;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+/* Section 1: Poster Image */
+.card-section-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid rgba(22, 246, 243, 0.15);
+  overflow: hidden;
+}
+
+.poster-frame {
+  width: 100%;
+  max-width: 310px;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poster-frame img,
+.poster-frame .cnt-logo {
+  max-height: 62vh;
+  width: auto;
+  border-radius: 0.85rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(22, 246, 243, 0.25);
+  border: 1px solid rgba(22, 246, 243, 0.3);
+  object-fit: cover;
+}
+
+/* Section 2: Overview */
+.card-section-overview {
+  overflow-y: auto;
+  border-right: 1px solid rgba(22, 246, 243, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Section 3: Rules */
+.card-section-rules {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.rule-item {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.rule-item:hover {
+  background-color: rgba(22, 246, 243, 0.08);
+  border-color: rgba(22, 246, 243, 0.4);
+}
+
+.contact-card {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-card:hover {
+  background-color: rgba(22, 246, 243, 0.08);
+  border-color: rgba(22, 246, 243, 0.4);
+}
+
+/* Custom Cyan Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(22, 246, 243, 0.4);
+  border-radius: 999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(22, 246, 243, 0.8);
+}
+
+/* Responsive Styles */
 @media (max-width: 1024px) {
- 
-  .wrap {
-    flex-direction: column;
-    height: 70vmin;
-    width: 75vmin;
+  .wrap,
+  .wrap.active {
+    width: 95vw;
+    height: 88vh;
+    max-height: 900px;
   }
-  .image-content {
-    width: 100%;
-    height: 70vmin;
+
+  .card-sections-container {
+    grid-template-columns: 35% 65%;
+    overflow-y: auto;
   }
-  .overlay-content {
-    width: 100%;
-    padding: 1rem;
+
+  .card-section-image {
+    border-right: 1px solid rgba(22, 246, 243, 0.15);
+    border-bottom: none;
   }
-    .logo-container {
-    display: none;
-    z-index: 0;
+
+  .card-section-overview {
+    border-right: none;
+    border-bottom: 1px solid rgba(22, 246, 243, 0.15);
+    height: auto;
+    overflow-y: visible;
   }
-  
+
+  .card-section-rules {
+    grid-column: span 2;
+    height: auto;
+    overflow-y: visible;
+  }
 }
 
-
-
-@media (max-width: 510px) {
+@media (max-width: 768px) {
   .card-container {
-    padding: 2rem;
-    padding-top: 8rem;
+    padding: 5rem 0.75rem 2rem 0.75rem;
+    align-items: flex-start;
   }
 
-  .wrap {
-    flex-direction: column;
+  .wrap,
+  .wrap.active {
     width: 100%;
-    height: 100%;
-    bottom: 2rem;
-    min-height: 65vh;
-  }
-  /* .overlay-content {
-        width: 100%;
-        padding: 1rem;
-        aspect-ratio: 1;
-    } */
-  /* .event_card {
-        height: 53%;
-        width: 90%;
-    } */
-  .image-content {
-    height: 80vmin;
+    height: auto;
+    min-height: auto;
+    max-height: none;
   }
 
-  /* Apply overflow hidden to .text */
   .text {
-  
-    height: 100%; /* Ensure it takes full height */
-    width: 100%;
+    height: auto;
   }
 
-  /* Allow the content container to be scrollable */
-  .content-container {
-    overflow-y: auto; /* Enable scrolling for content only */
-  }
-
-  /* Additional changes for small devices */
-  .logo-cardnav-container {
-    /* display: block;  */
+  .card-sections-container {
     display: flex;
- 
-    box-sizing: border-box;
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
   }
 
-  .logo-container,
-  .content-container {
-    width: 100%; /* Make each container take full width */
-    /* height: auto;  */
-    margin: 0; /* Remove any margin */
+  .card-section {
+    padding: 1.2rem 1rem;
+    height: auto;
   }
 
-
-
-  .content-container {
-    /* margin-top: 48%; */
-    height: 100%; /* Allow the content to take the remaining height of the viewport */
-    /* margin-left: 1rem;
-        margin-right: 1rem; */
-    overflow-y: auto; /* Allow scrolling only for content */
-    padding: 0px;
-    width: 100%;
+  .card-section-image {
+    border-right: none;
+    border-bottom: 1px solid rgba(22, 246, 243, 0.15);
   }
 
-  .cardnav {
-    /* position: fixed;  */
-    width: 100%; /* Ensure full width for navigation */
-    display: flex; /* Flexbox for horizontal layout */
-    left: 0;
-    top: 0;
-    /* margin-top: 48%; */
+  .poster-frame {
+    max-width: 240px;
+  }
+
+  .card-section-overview {
+    border-right: none;
+    border-bottom: 1px solid rgba(22, 246, 243, 0.15);
+    overflow-y: visible;
+  }
+
+  .card-section-rules {
+    overflow-y: visible;
   }
 
   .cardnav button {
-    /* padding: 0.4rem 0.8rem; */
-    font-size: 0.8rem; /* Smaller font size */
-    min-width: 3rem; /* Set a minimum width for buttons */
-    margin: 0 0.2rem; /* Add some margin between buttons */
-    text-align: center; /* Center the text in buttons */
-    border-radius: 5px; /* Add rounded corners for buttons */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transition effects */
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    min-width: 80px;
   }
-
-  .cardnav button:hover {
-    background-color: rgba(0, 156, 186, 0.3); /* Darker cyan on hover */
-    transform: scale(1.05); /* Slightly enlarge button on hover */
-  }
-
-  .content {
-  
-    height: 100%;
-    min-height: 80vh;
-    margin: 0;
-  }
-
-  
-
-}
-
-/*Scrollbar*/
-/* Custom scrollbar for WebKit browsers (Chrome, Safari, Edge) */
-::-webkit-scrollbar {
-  width: 8px; /* Change the width of the scrollbar */
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgba(20, 225, 247, 0.7); /* White color for the scrollbar */
-  border-radius: 10px; /* Rounded edges for the scrollbar */
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.9); /* Slightly darker on hover */
-}
-
-::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.2); /* Dark track for contrast */
-}
-
-/* Custom scrollbar for Firefox */
-.scroll-container {
-  scrollbar-width: thin; /* Reduces the scrollbar width */
-  scrollbar-color: rgba(255, 255, 255, 0.7) rgba(0, 0, 0, 0.2); /* White scrollbar and dark track */
 }
