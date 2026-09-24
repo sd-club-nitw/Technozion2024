@@ -1,0 +1,86 @@
+[
+  {
+    "Timestamp": "9/23/2026 17:40:33",
+    "Email Address": "dp24eeb0a16@student.nitw.ac.in",
+    "Club Name": "Robotics Club",
+    "Event Name": "Smash Karts",
+    "Event Description mention clearly and elaborately": "The competition is split into 2 categories:\n• People who come with their own cars\n   - The participants will be provided with a document having a set of rules and constraints under which they will have to make their car.\n   - Based on number of people who register for the competition with their own cars a knockout bracket will be made to determine who is the winner\n• People who would like to learn even without their own car\n    - Each person can participate in this event only once.\n    - An exploded view of the car will be presented at the beginning of each start of a match to teach them about the engineering that went inside the car.\n    - the tracking system of the cars will also be explained at the beginning of the event to the people interested in the technology behind it.\n    - Round 1: they will be given the C++ code of the microcontroller with errors embedded in them. They will also be provided with the pre requisite knowledge needed to correct the code (i.e. how the function works, how do you input/output data to the pins). Once they are done with correcting the code a supervisor will check if the code is correct and allow them to go to the next round.\n    - Round 2: they will be provided with the microcontroller and the sensors in the car. They will be required to connect the sensors to the correct pins of the microcontroller according to the schematic diagram provided. Once they are done connecting a supervisor will check if the connections are correct and allow them to proceed to the next round.\n    - Round 3: they will have to race laps around the track. During the race they will get to pickup power ups. These power ups can be used to sabotage others or save themselves from others sabotages. Round 1 and 2 will affect how they will start Round 3, people solving round 1 and 2 fastest will start the race sooner. The person who comes first in this race will win the match.\nOnly people who come with their own cars can compete for the prize pool\nPeople who can’t afford to make their own cars can still learn about the coding and making of the car\n",
+    "Event Type": "Competition",
+    "Team size (write 1 if individual participation)": "4 for people making their own cars, 1 for people competing without their own car",
+    "Approx time it takes for one student to complete the event": "20 mins",
+    "Rules of the Event, include how many rounds, any procedure to follow, etc.": "Bracket system for people who bring their own cars, number of rounds depends on number of registrations\n3 rounds for people who can’t afford to make the car\nRound 1 - Microcontroller code correction\nRound 2 - Wiring Sensors to the microcontroller using schematic diagram\nRound 3 - Race the car on the track",
+    "POC for doubts - name and phone number": "Krishnanarayanan M +91 98460 32569\nKallavi Sree Sathya Sivani +91 7396292887 "
+  },
+  {
+    "Timestamp": "9/23/2026 21:49:54",
+    "Email Address": "sb25ecb1a47@student.nitw.ac.in",
+    "Club Name": "Innovation Garage",
+    "Event Name": "Impact Tank",
+    "Event Description mention clearly and elaborately": "IMPACT TANK is a structured student startup challenge taking participants from problem identification through prototype building, market validation, and go-to-market planning, culminating in an offline finale at NIT Warangal with a 30K prize pool. TZ Day consists of the two-day Technozion finale where shortlisted teams first showcase interactive, live demonstrations of their prototypes to visitors and judges at the Impact Expo, followed by a final pitch presentation and Q&A session before an expert panel evaluating their complete solution and market roadmap.",
+    "Event Type": "Demonstration",
+    "Team size (write 1 if individual participation)": "2-4",
+    "Approx time it takes for one student to complete the event": "On expo, depends on how long each student spends at a team. On pitch day, each team will pitch for 10-20 minutes",
+    "Rules of the Event, include how many rounds, any procedure to follow, etc.": "None",
+    "POC for doubts - name and phone number": "Dhrithi - 6303078358 | Sanjana - 8885354347"
+  },
+  {
+    "Timestamp": "9/23/2026 22:03:24",
+    "Email Address": "as24ecb0a02@student.nitw.ac.in",
+    "Club Name": "Quiz Club",
+    "Event Name": "KBC - Kaun Banega Crorepati",
+    "Event Description mention clearly and elaborately": "KBC (Kaun Banega Crorepati) is a knowledge quiz event modelled on the iconic TV game show. It tests participants' trivia knowledge, quick thinking, and composure under pressure as they climb through progressively tougher questions on the \"\"Hot Seat\"\"—just like the real show, complete with a Quizmaster, lifelines, and rising stakes with every correct answer. It's open to all branches and years; solo participation only. The top three scorers walk away with prizes, making it a high-energy, competitive spin on technical and general knowledge for the whole college.",
+    "Event Type": "Fun Event",
+    "Team size (write 1 if individual participation)": "1",
+    "Approx time it takes for one student to complete the event": "15-20 minutes",
+    "Rules of the Event, include how many rounds, any procedure to follow, etc.": "-Format:  Two rounds - Fastest Fingers First, then the Hot Seat.\n-Round 1 (Fastest Fingers First): 5 numbered options given per question, to be arranged in the correct order (e.g., planets by distance from the Sun). Participants SMS their 5-digit answer sequence to a designated number; the fastest correct entry wins a shot at the Hot Seat.\n- Round 2 (Hot Seat): Standard KBC-style MCQs, one participant at a time vs. the Quizmaster. Difficulty and points increase with each question, under a strict time limit per question.\n- Dropping out: Participants can walk away at any point and keep their current score.\n- Elimination: A wrong answer eliminates the participant; their score locks at the last safe milestone reached.\n- Lifelines: 50:50, Audience Poll, Phone a Friend, Double Dip — one lifeline per question, and each can only be used once.\n- Fair play: Any phone or external help outside the lifelines = immediate disqualification.\n- Ranking: Decided by highest tier reached → total score → speed (tiebreaker).\n- Prizes: Top 3 finishers win prizes.",
+    "POC for doubts - name and phone number": "Karthik - 9705724689\nSahasra - 9392351069"
+  },
+  {
+    "Timestamp": "9/23/2026 22:37:07",
+    "Email Address": "ns24ecb0b39@student.nitw.ac.in",
+    "Club Name": "Satellite and electronics amateur club ",
+    "Event Name": "MUSIC CORNER",
+    "Event Description mention clearly and elaborately": "Participants move through the three stations and create a short musical performance by combining guitar, drums, and piano sounds. The focus is on creativity, coordination, rhythm, and technology rather than traditional musical instruments.\nThe Air Guitar prototype can use an Arduino UNO + MPU6050 motion sensor, while the synthesizer section can use a 555 timer, LDR, push button, and LM386 amplifier.\nThe Air Drum is a wearable, motion-controlled electronic drum kit in which the player uses drumsticks and foot \nmovements without requiring physical drum surfaces. Motion sensors measure acceleration and angular \nvelocity, while an ESP32 processes the motion, detects drum strikes, identifies the virtual instrument being \nplayed and triggers the corresponding sound.",
+    "Event Type": "Fun Event",
+    "Team size (write 1 if individual participation)": "1",
+    "Approx time it takes for one student to complete the event": "10-20",
+    "Rules of the Event, include how many rounds, any procedure to follow, etc.": "It is an event conducted to entertain the participants.",
+    "POC for doubts - name and phone number": "Meghana\n6301970768"
+  },
+  {
+    "Timestamp": "9/23/2026 23:24:15",
+    "Email Address": "kb24chb0b28@student.nitw.ac.in",
+    "Club Name": "ChES & IIChE - SC",
+    "Event Name": " 60 Seconds: Chemical Apocalypse",
+    "Event Description mention clearly and elaborately": "Event Title: 60 Seconds: Chemical Apocalypse\nTheme: Chemical Safety, Emergency Response, and Industrial Filtration\nEvent Overview\n60 Seconds: Chemical Apocalypse is an intense, hands-on simulation where students step into the shoes of an emergency disaster response team. Following a sudden chemical leak at a plant, teams must think fast, manage limited resources, and solve real-world engineering problems under tight time pressure.\nStarting with a fast-paced, 60-second material scramble, teams must build functional protection gear, stop chemical leaks, trade resources with rival teams, and spot fraudulent safety credentials—all using only the tools they manage to scavenge.\nCore Engineering Concepts Covered\nChemical Adsorption & Filtration: Students learn why basic cloth fails against chemical vapors, seeing firsthand how activated charcoal actively traps toxic fumes at a microscopic level.\nAirflow & Filter Design: Teams learn to balance filter density—making sure a mask is thick enough to catch toxins, but breathable enough for air to pass through.\nProcess Control & Isolation: Teams must identify and operate emergency shutdown valves to isolate leaking pipe sections, balancing system pressure changes to safely stop chemical releases at the source.\nIndustrial Safety Protocols: Solutions are judged on real industrial safety standards, teaching participants how real chemical engineers handle dangerous spills, toxic gases, and emergency gear ratings.",
+    "Event Type": "Competition",
+    "Team size (write 1 if individual participation)": "2-5",
+    "Approx time it takes for one student to complete the event": "10-15 minutes",
+    "Rules of the Event, include how many rounds, any procedure to follow, etc.": "Team Setup & Rules\nTeam Size: 2 to 5 participants per team.\nThe Designated Runner: Each team nominates one designated runner to enter the supply zone during the scramble.\nCarrying Capacity Rule: The runner can carry a maximum of two items at a time (one in each hand). No bags, pockets, or extra containers may be used during the scramble.\nProperty Lock: Once the 60-second scramble ends, all collected items become the permanent property of that team for the remainder of the event, forming their sole survival inventory.\nPhase-by-Phase Gameplay\nPhase 1: The 60-Second Scramble\nThe Setup: A shared central table contains a limited pool of safety gear, laboratory tools, raw materials, and structural items.\nThe Action: At the sound of the emergency siren, the designated runner from each team enters the supply zone simultaneously.\nThe Scramble: The runner has 60 seconds to inspect the available inventory, select up to two items, run back to their team station to drop them off, and dash back to collect more. Teams must continuously communicate from their stations to tell their runner which specific items to prioritize before time expires.\nPhase 2: Crisis Management & Problem Solving (Rounds 1–4)\nTeams face sequential emergency scenario rounds representing escalating challenges within a breached chemical facility (e.g., acid spills, volatile gas leaks, structural breaches, or toxic runoff).\nTeams must formulate and write down practical engineering solutions or fabricate physical functional setups using only the items in their inventory.\nPhase 3: Internal Trading Window (Stage 5)\nDuration: Exactly 60 seconds.\nMechanic: Teams enter an open negotiation market where they can barter and trade items directly with rival teams. A team lacking charcoal for gas filtration might trade excess duct tape or plastic equipment to another team in need of structural materials.\nPhase 4: Advanced Scenarios & The External Visitor (Rounds 6–8+)\nCrisis Progression: Scenarios become more complex, requiring multi-layered solutions (e.g., combined filtration, neutralization, and structural sealing).\nThe External Visitor Event (After Round 8): An unknown outside survivor/trader arrives at the facility offering a high-value trade proposition (e.g., trading rare filtration components for vital safety gear).\nThe Verification Challenge: Teams must analyze the visitor’s technical pitch, credentials, and offered materials to determine if they are genuine or a fraudulent imposter. Making a trade with a fake visitor results in losing valuable inventory for useless or compromised materials",
+    "POC for doubts - name and phone number": "Bhavya - 8247546302\nHarini - 6304106717"
+  },
+  {
+    "Timestamp": "9/23/2026 23:48:19",
+    "Email Address": "ss24meb0b60@student.nitw.ac.in",
+    "Club Name": "Mechanical Engineering Society",
+    "Event Name": "RUBE WARS",
+    "Event Description mention clearly and elaborately": "Rube Wars is a team-based engineering challenge that tests creativity, mechanical thinking, teamwork, and problem-solving. Teams of 2–4 members will be given a specific target to accomplish along with a list of 15 available mechanisms.\nThe challenge is to design and build a working chain-reaction machine that achieves the given target using at least 6 and a maximum of 9 mechanisms from the provided list of 15  mechanisms. Teams will have limited time to plan, build, test, troubleshoot, and refine their machines.\nThe machine must successfully connect the selected mechanisms into a continuous sequence, where the completion of one mechanism triggers the next, ultimately achieving the given target.\n",
+    "Event Type": "Competition, Fun Event",
+    "Team size (write 1 if individual participation)": "2-4 members",
+    "Approx time it takes for one student to complete the event": "45-60 mins per team",
+    "Rules of the Event, include how many rounds, any procedure to follow, etc.": "RULES OF THE EVENT:\n1. The event will consist of a single round.\n2. Each team must consist of 2–4 members.\n3. This is Fun Competition event.\n4. Teams will be given a specific target that their chain-reaction machine must accomplish.\n5. A common set of materials will be provided to all teams.\n6. Teams will also be provided with a list of 15 mechanisms.\n7. Each team must use a minimum of 6 and a maximum of 9 mechanisms from the given list.\n8. We will provide materials for the teams from NITW, also they can too bring their own materials if necessary.\n9. Teams from other colleges need to bring their own materials.\n10. The machine must form a continuous chain reaction, starting from a single initial trigger and ending by successfully achieving the given target.\n11. Teams will be given 45-60 minutes to plan, build, test, and refine their machines.\n12. During the final evaluation, the chain reaction must be initiated from the designated starting point and should proceed without manual intervention.\n13. The use of reusable and resettable materials will be encouraged and may earn additional points.\n14. The repeatability of the complete chain reaction will be considered during evaluation. Machines that successfully complete the sequence consistently across multiple attempts will receive higher marks.\n15. Any team using fewer than 6 or more than 9 mechanisms from the given list will not be eligible for the final evaluation.\n16. The judges' decision regarding target completion, mechanism usage, repeatability, and scoring will be final.\nEVALUATION CRITERIA:\n1. Target Completion – 30 Marks\n2. Reliability & Repeatability – 25 Marks\n3. Creativity & Innovation – 15 Marks\n4. Mechanism Integration & Sequencing – 15 Marks\n5. Material Efficiency & Reusability – 10 Marks\n6. Build Quality & Stability – 5 Marks\nTOTAL – 100 MARKS",
+    "POC for doubts - name and phone number": "Surya Kashyap: 8143602826\nHimavi N: 8712803898"
+  },
+  {
+    "Timestamp": "9/24/2026 7:33:15",
+    "Email Address": "ky24meb0a69@student.nitw.ac.in",
+    "Club Name": "Mechanical Engineering Society ",
+    "Event Name": "Vehicle Demonstration ",
+    "Event Description mention clearly and elaborately": "Vehicle Demonstration by the 4 collegiate vehicle development teams of NITW",
+    "Event Type": "Demonstration",
+    "Team size (write 1 if individual participation)": "Not Applicable ",
+    "Approx time it takes for one student to complete the event": "Not Applicable ",
+    "Rules of the Event, include how many rounds, any procedure to follow, etc.": "Not Applicable ",
+    "POC for doubts - name and phone number": "Yash Karve 7620478818 and Vivek Mishra 9569716840"
+  }
+]

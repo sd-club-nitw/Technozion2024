@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { About } from '../components/About';
-import Events from '../components/Events';
+import EventsPage from '../components/Events/EventsPage';
 import { Displayevents } from '../components/DisplayEvents';
 import Home from '../components/Home';
 import Sponsors from '../components/Sponsors/Sponsors';
@@ -35,7 +35,11 @@ const RoutesManager = () => {
 			<Route path="/register" element={<ComingSoon />} />
 			<Route path="/about" element={<About />} />
 			{/* <Route path="/sponsors" element={<Sponsors />} /> */}
-			<Route path="/events" element={<PastEvents />} />
+			<Route path="/events" element={<EventsPage />} />
+			<Route path="/past-events" element={<PastEvents />} />
+			<Route path="/past-events/:year" element={<PastEvents />} />
+			<Route path="/pastevents" element={<PastEvents />} />
+			<Route path="/pastevents/:year" element={<PastEvents />} />
 			<Route path="/events/:year" element={<PastEvents />} />
 			{/* <Route path="/displayevents" element={<Displayevents />} /> */}
 			<Route path="/team" element={<Team />} />

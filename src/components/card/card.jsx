@@ -28,12 +28,14 @@ const Card = () => {
 
   // Handles navigation back
   const handleBack = React.useCallback(() => {
-    if (window.history.length > 1) {
+    if (location.state?.returnPath) {
+      navigate(location.state.returnPath);
+    } else if (window.history.length > 1) {
       navigate(-1);
     } else {
       navigate("/events");
     }
-  }, [navigate]);
+  }, [navigate, location.state]);
 
   // Handles clicking outside the card
   const handleContainerClick = (e) => {

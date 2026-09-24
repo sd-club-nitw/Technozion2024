@@ -7,8 +7,8 @@ import './index.css';
 
 const oldNavigation = [
   { name: "HOME", link: "/" },
-  { name: "ABOUT", link: "/about" },
-  { name: "PAST EVENTS", link: "/events" },
+  { name: "EVENTS", link: "/events" },
+  { name: "PAST EVENTS", link: "/past-events" },
   // If you want the dropdown to appear, add:
   // { name: "REVENTS", link: "#" } 
 ];
@@ -93,7 +93,7 @@ export default function Navbar() {
           )}
         </div>
       ) : (
-        <NavLink to={menuItem.link} onClick={closeMenu}>
+        <NavLink to={menuItem.link} onClick={closeMenu} end={menuItem.link === "/"}>
           {menuItem.name}
         </NavLink>
       )}
@@ -102,7 +102,7 @@ export default function Navbar() {
 
   const rightNavItems = rightNavigation.map((menuItem, index) => (
     <li key={index}>
-      <NavLink to={menuItem.link} onClick={closeMenu}>
+      <NavLink to={menuItem.link} onClick={closeMenu} end={menuItem.link === "/"}>
         {menuItem.name}
       </NavLink>
     </li>

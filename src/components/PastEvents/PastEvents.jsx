@@ -14,11 +14,11 @@ export const PastEvents = () => {
   }, [year]);
 
   const handleSelectYear = (selectedYear) => {
-    navigate(`/events/${selectedYear}`);
+    navigate(`/past-events/${selectedYear}`);
   };
 
   const handleBackToYears = () => {
-    navigate("/events");
+    navigate("/past-events");
   };
 
   return (

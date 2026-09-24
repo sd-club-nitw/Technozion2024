@@ -6,7 +6,7 @@ import { WebCanvas } from '../bg_animation/bg_animate.js';
 
 export const About = () => {
   return (
-    <div className="relative about-page">
+    <div className="relative about-page" id="about">
      
       <div className="about-canvas">
         <WebCanvas /> 
@@ -25,3 +25,5 @@ export const About = () => {
     </div>
   );
 }; 
+
+export default About; 
