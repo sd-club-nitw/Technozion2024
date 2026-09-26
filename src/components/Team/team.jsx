@@ -51,7 +51,7 @@ export const TeamContent = () => {
         </div>
         <br />
         <h2 className="lg:text-3xl text-xl uppercase lg:my-5 xs:my-3">Joint Secretaries</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {data?.student_council?.joint_secretaries?.map((member, index) => (
             <TeamCrad key={index} src={`/teamImages/${member.image}`} name={member.name} position={member.position} />
           ))}

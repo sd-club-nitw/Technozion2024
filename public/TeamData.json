@@ -25,63 +25,64 @@
   }],
   "student_council": {
     "general_secretaries": [
- {
-    "name": "G. V. Sai Vamsi",
-    "position": "SAC Secretary Technical",
-    "email": "sec_technical@nitw.ac.in",
-     "image":"technical_secretary.jpg"
-    
-  },
-  {
-    "name": "R. Karthikeya Reddy",
-    "email": "sec_sports@nitw.ac.in",
-    "position": "SAC Secretary Sports",
-     "image":"sports_secretary.jpg"
-   
-  },
- 
-  {
-    "name": "B Y S Harsha",
-    "email": "sec_fms@nitw.ac.in",
-    "position": "SAC Secretary Film and Music",
-    "image":"films_secretary.jpg"
-    
-  },
-  {
-    "name": "Samanvith Reddy",
-    "contactNo": "",
-    "position": "SAC Secretary Cultural",
-   "email": "sec_cultural@nitw.ac.in",
-   "image":"cultural_secretary.jpg"
-    
-  }
+      {
+        "name": "Dheeraj Bhasuru",
+        "position": "Secretary Technical Society SAC",
+        "contactNo": "9392873015",
+        "email": "sec_technical@nitw.ac.in",
+        "image": "dheeraj.jpeg"
+      },
+      {
+        "name": "Ashish Biswas",
+        "position": "SAC Film and Music Secretary",
+        "contactNo": "8757714914",
+        "email": "sec_fms@nitw.ac.in",
+        "image": "ashish.jpeg"
+      },
+      {
+        "name": "Lalitha Sarika",
+        "position": "SAC Secretary Athletics Society",
+        "contactNo": "+91 95739 63910",
+        "email": "sec_sports@nitw.ac.in",
+        "image": "lalitha.jpeg"
+      },
+      {
+        "name": "Amey Rao",
+        "position": "SAC Cultural Secretary",
+        "contactNo": "+91 62810 15559",
+        "email": "sec_cultural@nitw.ac.in",
+        "image": "amey.jpeg"
+      }
     ],
     "joint_secretaries": [
-        {
-    "name":"Dheeraj Bhasaru",
-    "contactNo": "9826078917",
-    "position": "Joint Secretary Technical",
-   "email": "",
-   "image":"technical_joint_secretary.jpg"
-    
-  },
- {
-    "name":"Sai Pavan Godasu",
-    "position": "Joint Secretary Cultural",
-   "email": "",
-   "image":"cultural_joint.jpg"
-   
-  },
-  {
-    "name":"Abhiram Gudivenuka",
-     
-    "position": "Joint Secretary Film and music",
-   "email": "",
-   "image":"fms_joint_secretary.jpg"
-    
-  }
-  
-
+      {
+        "name": "Vishnu Vardhan",
+        "position": "SAC Technical Joint Secretary",
+        "contactNo": "9959313508",
+        "email": "",
+        "image": "vishnu.png"
+      },
+      {
+        "name": "Tanuj Kulkarni",
+        "position": "SAC Film and Music Joint Secretary",
+        "contactNo": "8830098463",
+        "email": "",
+        "image": "tanuj.jpeg"
+      },
+      {
+        "name": "Anushka",
+        "position": "SAC Athletics Joint Secretary",
+        "contactNo": "8016776109",
+        "email": "",
+        "image": "anushka.jpeg"
+      },
+      {
+        "name": "Ganesh Aviti",
+        "position": "SAC Cultural Joint Secretary",
+        "contactNo": "9059636937",
+        "email": "",
+        "image": "ganesh.jpeg"
+      }
     ]
   },
   "web_team":[
