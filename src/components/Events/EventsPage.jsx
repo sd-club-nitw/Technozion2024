@@ -11,6 +11,7 @@ const CATEGORY_TABS = [
   { key: "competition", label: "COMPETITIONS" },
   { key: "funevent", label: "FUN EVENTS" },
   { key: "demonstration", label: "DEMONSTRATIONS" },
+  { key: "workshop", label: "WORKSHOPS" },
 ];
 
 export const EventsPage = () => {
@@ -28,6 +29,9 @@ export const EventsPage = () => {
     }
     if (selectedCategory === "demonstration") {
       return typeLower.includes("demonstration");
+    }
+    if (selectedCategory === "workshop") {
+      return typeLower.includes("workshop");
     }
     return true;
   });
@@ -55,11 +59,11 @@ export const EventsPage = () => {
           <div className="edition-topbar-row">
             <div className="edition-badge-container">
               <h1 className="edition-title-badge">Technozion 2026</h1>
-              <span className="edition-year-pill">EVENTS</span>
+              <span className="edition-year-pill">{filteredEvents.length} EVENTS</span>
             </div>
 
             {/* Category Filter Tabs */}
-            <div className="tabs my-0">
+            <div className="tabs my-0 flex-wrap">
               {CATEGORY_TABS.map((tab) => (
                 <button
                   key={tab.key}
@@ -80,16 +84,24 @@ export const EventsPage = () => {
         {/* Events Grid */}
         <div className="edition-content-body">
           <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-4 gap-y-8 lg:gap-y-10 lg:m-6 m-3">
-            {filteredEvents.map((item, index) => (
-              <Poster
-                key={item.index || index}
-                imageSrc={item.imgsrc || ""}
-                fallbackSrc=""
-                title={item.title}
-                content={item.name}
-                onClick={() => handlePosterClick(item)}
-              />
-            ))}
+            {filteredEvents.map((item, index) => {
+              const prizeText = item.total_cost
+                ? `₹ ${item.total_cost}`
+                : (item.overview?.cash_prize && /^\d/.test(item.overview.cash_prize)
+                  ? `₹ ${item.overview.cash_prize}`
+                  : (item.overview?.cash_prize ? item.overview.cash_prize : null));
+              return (
+                <Poster
+                  key={item.index || index}
+                  imageSrc={item.imgsrc || ""}
+                  fallbackSrc=""
+                  title={item.title}
+                  content={item.name}
+                  prize={prizeText}
+                  onClick={() => handlePosterClick(item)}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

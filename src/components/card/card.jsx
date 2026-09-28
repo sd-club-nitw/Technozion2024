@@ -74,10 +74,15 @@ const Card = () => {
         <div className="text">
           {/* Card Header with single Back button */}
           <div className="cardnav p-4 lg:px-6 z-10">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               {name && (
                 <span className="text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-cyan-400/40 bg-cyan-950/40 text-cyan-300 font-semibold">
                   {name}
+                </span>
+              )}
+              {(overview?.event_type || location.state?.event_type) && (
+                <span className="text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-cyan-500/30 bg-black/40 text-cyan-400 font-semibold">
+                  {overview?.event_type || location.state?.event_type}
                 </span>
               )}
             </div>
@@ -121,7 +126,7 @@ const Card = () => {
                     className="register-btn inline-flex items-center gap-x-2.5 px-4 py-2.5 rounded-lg border border-cyan-400 text-cyan-300 bg-cyan-950/40 hover:bg-cyan-500/20 hover:scale-105 duration-200 transition-all text-sm font-semibold"
                   >
                     <FaExternalLinkAlt className="text-xs" />
-                    <span>Register Now</span>
+                    <span>Register / Guidelines</span>
                   </a>
                 </div>
               )}
@@ -131,19 +136,19 @@ const Card = () => {
                   <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase">
                     Description
                   </span>
-                  <div className="section-text text-sm lg:text-[1.05rem] leading-relaxed">
+                  <div className="section-text text-sm lg:text-[1.05rem] leading-relaxed whitespace-pre-line">
                     {overview.description}
                   </div>
                 </section>
               )}
 
-              {total_cost ? (
+              {total_cost && (!overview?.cash_prize || String(total_cost) !== String(overview.cash_prize)) ? (
                 <section className="overview-item mb-5 flex flex-col gap-y-1">
                   <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase">
                     Prizes worth
                   </span>
                   <span className="text-xl lg:text-2xl font-bold text-cyan-300">
-                    ₹ {total_cost}
+                    {String(total_cost).startsWith("₹") ? total_cost : `₹ ${total_cost}`}
                     <sup>*</sup>
                   </span>
                 </section>
@@ -155,7 +160,9 @@ const Card = () => {
                     Cash Prize
                   </span>
                   <span className="text-xl lg:text-2xl font-bold text-cyan-300">
-                    ₹ {overview.cash_prize}
+                    {String(overview.cash_prize).startsWith("₹") || !/^\d/.test(String(overview.cash_prize).trim())
+                      ? overview.cash_prize
+                      : `₹ ${overview.cash_prize}`}
                   </span>
                 </section>
               )}
@@ -163,12 +170,23 @@ const Card = () => {
               {overview?.team_size && (
                 <section className="overview-item mb-5 flex flex-col gap-y-1">
                   <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase">
-                    Participation
+                    Participation / Team Size
                   </span>
                   <div className="font-bold text-sm lg:text-base">
                     {String(overview.team_size) === "1"
                       ? "Individual"
                       : overview.team_size}
+                  </div>
+                </section>
+              )}
+
+              {overview?.duration && overview.duration.trim() !== "" && overview.duration.toLowerCase() !== "not applicable" && (
+                <section className="overview-item mb-5 flex flex-col gap-y-1">
+                  <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase">
+                    Estimated Duration
+                  </span>
+                  <div className="font-bold text-sm lg:text-base">
+                    {overview.duration}
                   </div>
                 </section>
               )}
@@ -192,7 +210,7 @@ const Card = () => {
                         {contact?.phone && (
                           <div className="flex justify-between items-center text-sm">
                             <span className="text-cyan-300 font-medium">
-                              +91 {contact.phone}
+                              {contact.phone.startsWith("+91") ? contact.phone : `+91 ${contact.phone}`}
                             </span>
                             <CopyWrapper text={contact.phone}>
                               <MdContentCopy className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity" />
@@ -212,9 +230,11 @@ const Card = () => {
                       </div>
                     ))}
                   </div>
-                  <small className="opacity-60 text-xs mt-2 block">
-                    *cash prize will be given based on judging criteria
-                  </small>
+                  {(total_cost || overview?.cash_prize) && (
+                    <small className="opacity-60 text-xs mt-2 block">
+                      *cash prize will be given based on judging criteria
+                    </small>
+                  )}
                 </section>
               )}
             </div>
@@ -222,24 +242,40 @@ const Card = () => {
             {/* Section 3: Rules */}
             <div className="card-section card-section-rules custom-scrollbar">
               <div className="font-bold text-2xl lg:text-3xl uppercase tracking-wide text-cyan-300 mb-4">
-                Rules
+                Rules & Structure
               </div>
 
               {rules && rules.length > 0 ? (
                 <div className="flex flex-col gap-3">
-                  {rules.map((rule, index) => (
-                    <div
-                      key={index}
-                      className="rule-item flex items-start gap-3 p-3.5 rounded-lg bg-black/40 border border-cyan-500/20"
-                    >
-                      <span className="font-bold text-cyan-300 min-w-[22px]">
-                        {index + 1}.
-                      </span>
-                      <span className="text-sm lg:text-[0.95rem] leading-relaxed">
-                        {rule}
-                      </span>
-                    </div>
-                  ))}
+                  {rules.map((rule, index) => {
+                    const isUrl = /^https?:\/\//i.test(rule.trim());
+                    const ruleClean = rule.replace(/^\d+[.)]\s*/, "").trim();
+                    return (
+                      <div
+                        key={index}
+                        className="rule-item flex items-start gap-3 p-3.5 rounded-lg bg-black/40 border border-cyan-500/20"
+                      >
+                        <span className="font-bold text-cyan-300 min-w-[22px]">
+                          {index + 1}.
+                        </span>
+                        {isUrl ? (
+                          <a
+                            href={rule.trim()}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-cyan-300 underline hover:text-cyan-200 text-sm lg:text-[0.95rem] leading-relaxed break-all inline-flex items-center gap-1.5"
+                          >
+                            <span>Open Detailed Document</span>
+                            <FaExternalLinkAlt className="text-xs shrink-0" />
+                          </a>
+                        ) : (
+                          <span className="text-sm lg:text-[0.95rem] leading-relaxed whitespace-pre-line">
+                            {ruleClean || rule}
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               ) : (
                 <div className="p-4 rounded-lg bg-black/30 border border-cyan-500/20 text-sm opacity-70">
