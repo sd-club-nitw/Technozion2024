@@ -1,0 +1,141 @@
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { WebCanvas } from "../bg_animation/bg_animate";
+import Poster from "../event_scroll/poster";
+import { fetchEvents } from "./eventsData";
+import "../PastEvents/PastEvents.css";
+import "../event_scroll/index.css";
+
+const CATEGORY_TABS = [
+  { key: "all", label: "ALL" },
+  { key: "competition", label: "COMPETITIONS" },
+  { key: "funevent", label: "FUN EVENTS" },
+  { key: "demonstration", label: "DEMONSTRATIONS" },
+  { key: "workshop", label: "WORKSHOPS" },
+];
+
+const prizeLine = (ev) => {
+  if (typeof ev.cashPrize === "string" && ev.cashPrize.trim()) return ev.cashPrize.trim();
+  const amount = Number(ev.totalCost);
+  return amount > 0 ? `₹ ${amount.toLocaleString("en-IN")}` : "";
+};
+
+export const EventsPage = () => {
+  const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [events, setEvents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    let isMounted = true;
+    fetchEvents()
+      .then((data) => {
+        if (isMounted) setEvents(data);
+      })
+      .catch((err) => {
+        console.error("Error loading events:", err);
+        if (isMounted) setError(err.message || "Failed to load events");
+      })
+      .finally(() => {
+        if (isMounted) setIsLoading(false);
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+  const filteredEvents = events.filter((ev) => {
+    if (selectedCategory === "all") return true;
+    const typeLower = (ev.eventType || "").toLowerCase();
+    if (selectedCategory === "competition") {
+      return typeLower.includes("competition");
+    }
+    if (selectedCategory === "funevent") {
+      return typeLower.includes("fun");
+    }
+    if (selectedCategory === "demonstration") {
+      return typeLower.includes("demonstration");
+    }
+    if (selectedCategory === "workshop") {
+      return typeLower.includes("workshop");
+    }
+    return true;
+  });
+
+  const eventCount = filteredEvents.length;
+  const countLabel =
+    isLoading || error ? "EVENTS" : `${eventCount} ${eventCount === 1 ? "EVENT" : "EVENTS"}`;
+
+  const handlePosterClick = (item) => {
+    navigate("/card", {
+      state: {
+        ...item,
+        imgsrc: item.imgsrc || "",
+        glink: item.glink || "",
+        returnPath: "/events",
+      },
+    });
+  };
+  
+  return (
+    <div className="past-events-root">
+      <div className="past-events-canvas">
+        <WebCanvas />
+      </div>
+
+      <div className="edition-view-container">
+        {/* Top Header Bar */}
+        <div className="edition-topbar">
+          <div className="edition-topbar-row">
+            <div className="edition-badge-container">
+              <h1 className="edition-title-badge">Technozion 2026</h1>
+              <span className="edition-year-pill">{countLabel}</span>
+            </div>
+
+            {/* Category Filter Tabs */}
+            <div className="tabs my-0">
+              {CATEGORY_TABS.map((tab) => (
+                <button
+                  key={tab.key}
+                  type="button"
+                  className={`tab-button ${
+                    selectedCategory === tab.key ? "active" : ""
+                  }`}
+                  onClick={() => setSelectedCategory(tab.key)}
+                  aria-pressed={selectedCategory === tab.key}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Events Grid */}
+        <div className="edition-content-body">
+          <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-4 gap-y-8 lg:gap-y-10 lg:m-6 m-3">
+            {filteredEvents.map((item, index) => (
+              <Poster
+                key={item._id || item.slug || index}
+                imageSrc={item.imgsrc || ""}
+                fallbackSrc=""
+                title={item.name}
+                content={item.club}
+                footer={prizeLine(item)}
+                onClick={() => handlePosterClick(item)}
+              />
+            ))}
+          </div>
+          {isLoading && <p className="text-center opacity-70 my-8">Loading events...</p>}
+          {!isLoading && error && (
+            <p className="text-center text-red-400 my-8">Error: {error}</p>
+          )}
+          {!isLoading && !error && filteredEvents.length === 0 && (
+            <p className="text-center opacity-70 my-8">No events available</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default EventsPage;

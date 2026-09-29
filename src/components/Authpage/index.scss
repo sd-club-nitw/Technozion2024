@@ -1,0 +1,67 @@
+/* changed */
+.rasengan {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 180px;
+	height: 180px;
+	perspective: 1000px;
+	background: radial-gradient(#fff 5%, #ca85b8 40%);
+	border-radius: 50%;
+	animation: twinkling 1.5s infinite linear;
+}
+
+.rasengan .line {
+	position: absolute;
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	border-radius: 50%;
+	box-shadow: 0 0 2px #fff;
+}
+
+@for $i from 1 through 100 {
+	.line#{$i} {
+		$size: random(85) + 3 + px;
+		top: $size;
+		left: $size;
+		bottom: $size;
+		right: $size;
+		animation: rotating $i * .1s infinite linear;
+	}
+}
+
+@keyframes rotating {
+	0% {
+		transform: rotateY(0);
+	}
+
+	100% {
+		transform: rotateZ(360deg) rotateX(360deg) rotateY(360deg);
+	}
+}
+
+@keyframes twinkling {
+
+	0%,
+	100% {
+		box-shadow: 0 0 3px 0px #fff, 0 0 30px 15px #ca85b8;
+	}
+
+	20% {
+		box-shadow: 0 0 3px 1px #fff, 0 0 30px 10px #ca85b8;
+	}
+
+	40% {
+		box-shadow: 0 0 5px 0px #fff, 0 0 20px 15px #ca85b8;
+	}
+
+	60% {
+		box-shadow: 0 0 3px 1px #fff, 0 0 30px 15px #ca85b8;
+	}
+
+	80% {
+		box-shadow: 0 0 5px 0px #fff, 0 0 25px 10px #ca85b8;
+	}
+}
+
+/*# sourceMappingURL=index.css.map */

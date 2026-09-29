@@ -1,0 +1,121 @@
+.btn35 {
+    position: relative;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    width: 20%;
+    height: 2.5rem;
+    /* font-weight: 800;
+    opacity: 1; */
+    background-color: transparent;
+    border: 1.5px solid #f4d4d8;
+    margin-top: 20px;
+    /* font-size: 20px; */
+    z-index: 100;
+}
+
+.btn35 span {
+    color: #f4d4d8;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.9px;
+}
+
+.btn35:hover:before {
+    animation: ripple 2s ease-out infinite;
+    border: solid 2px #f4d4d8;
+    border-radius: 1em;
+    bottom: 0;
+    box-sizing: border-box;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.btn35:hover:after {
+    animation: ripple 2s 1s ease-out infinite;
+    border: solid 2px #f4d4d8;
+    border-radius: 1em;
+    bottom: 0;
+    box-sizing: border-box;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    animation-delay: 1s;
+}
+
+.btn35:hover {
+    -webkit-box-shadow: 0 0 30px #f4d4d8;
+    box-shadow: 0 0 30px #f4d4d8;
+}
+
+.btn35:hover span {
+    /* animation: ripple 0.7s ease-in-out both; */
+    animation-delay: 0.06s;
+}
+
+
+@keyframes ripple {
+    0% {
+        opacity: .25;
+    }
+
+    100% {
+        border-radius: 2em;
+        opacity: 0;
+        transform: scale(2.5);
+    }
+}
+
+#R {
+    margin-top: 1.5%;
+}
+
+@media (max-width: 426px) {
+    #regi {
+        margin-top: 30%;
+    }
+
+    #R {
+        margin-top: 10%;
+        height: 100px;
+        width: 100px;
+    }
+
+    .rasenganIMG {
+        /* display: none; */
+        margin-top: 35%;
+    }
+
+    .btn35 {
+        width: 30%;
+    }
+}
+
+@media (max-width: 376px) {
+    .rasenganIMG {
+        /* display: none; */
+        margin-top: 41%;
+    }
+}
+
+@media (max-width: 376px) {
+    .rasenganIMG {
+        /* display: none; */
+        margin-top: 41%;
+    }
+}
+
+@media (max-width: 321px) {
+    .rasenganIMG {
+        /* display: none; */
+        margin-top: 51%;
+    }
+}

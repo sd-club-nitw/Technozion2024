@@ -1,0 +1,38 @@
+.centered-container {
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      height: 100vh; 
+      background-color: rgba(0, 0, 0, 0.8); 
+      color: #16f6f3; 
+      font-size: 2rem; 
+      text-align: center; 
+      position: relative; 
+  }
+  
+  .register-canvas {
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100vw; 
+      height: 100vh; 
+      z-index: 1; 
+      pointer-events: none; 
+  }
+  
+  .image-container {
+      z-index: 2; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      width: 100%; 
+      height:50%;
+  }
+  
+  .image-container img {
+      max-width: 90%; 
+      max-height: 90%; 
+      height: auto; 
+      object-fit: contain; 
+  }
+  

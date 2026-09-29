@@ -1,0 +1,340 @@
+[
+  {
+    "title": "SDC GAMES",
+    "name": "Software Development Club",
+    "total_cost": 25000,
+    "overview": {
+      "main_title": "SDC GAMES",
+      "description": "SDC Games is a thrilling survival themed event inspired by Squid game and Alice in Borderland. Players face intense. brain-bending challenges that test strategy,teamwork and quick decisions - delivering non stop excitement and adrenaline. ",
+      "team_size": "Coming Soon...",
+      "contact": [
+        {
+          "name": "Prakhar Gupta",
+          "email": "pg23csb0b24@student.nitw.ac.in",
+          "phone": "9555298015"
+        }
+      ]
+    },
+    "rules": [
+      "Players must strictly follow the instructions of each game , any voilation will lead to disqualification",
+      "Teamwork and fairplay are essential , no external help is allowed"
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_sdc_games.png",
+    "index": 31
+  },
+  {
+    "title": "SharkTank 2.0",
+    "name": "Research and Development Club",
+    "total_cost": 10000,
+    "overview": {
+      "main_title": "SharkTank 2.0",
+      "description": "A premier pitching competition where participants present innovative ideas, projects, or prototypes to “Sharks,” fostering entrepreneurship by linking academic research with real world commercialization.",
+      "team_size": "2-4 (individuals allowed)",
+      "contact": [
+        {
+          "name": "Jaishankar Janardhan",
+          "email": "jj22ceb0a58@student.nitw.ac.in",
+          "phone": "9660997997"
+        }
+      ]
+    },
+    "rules": [
+      "Teams of 2–4 (individuals allowed) present original, non-commercialized ideas.",
+      "Presentations must be in professional/business casual attire and last 8 minutes including Q&A."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_01_imgsrc.jpg",
+    "index": 31
+  },
+  
+
+  {
+    "title": "VALUATION WARS",
+    "name": "Entrepreneurship Club",
+    "total_cost": 15000,
+    "overview": {
+      "main_title": "VALUATION WARS",
+      "description": "Valuation War is an exciting business auction game where teams act as investors competing to build the most valuable company portfolio. It’s a mix of strategy, business knowledge, and fun!",
+      "contact": [
+        {
+          "name": "Dhanvanth Chandrasekaran",
+          "email": "dc23meb0b36@student.nitw.ac.in",
+          "phone": "7418056603"
+        }
+      ]
+    },
+    "rules": [
+      "Form a team of 3–5 members",
+      "Each team gets a virtual money pot.",
+      "Around 30 businesses will be introduced with short descriptions and minimum bid prices. Teams will bid for each business one by one.In between, there will be business quiz rounds for bonus money and power-ups. After the auction, the hidden potential values of businesses will be revealed",
+"The team with the highest total business value wins!"
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters/club_32_imgsrc.jpg",
+    "index": 31
+  },
+  {
+    "title": "Blaze",
+    "name": "Robotics Club",
+    "total_cost": 10000,
+    "overview": {
+      "main_title": "Blaze",
+      "description": "BLAZE is a laser Tag experience featuring a custom-built arena and DIY technology, challenging two teams to a 15-minute survivor match.",
+      "team_size": "4 per team",
+      "contact": [
+        {
+          "name": "Soumilya Dwivedi",
+          "email": "sd24meb0b61@student.nitw.ac.in",
+          "phone": "8448644855"
+        }
+      ]
+    },
+    "rules": [
+      "Two teams of four compete for 15 minutes; winners are decided by points or full elimination.",
+      "Players have 3 lives and register via RFID or manually; scores are tracked live."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_3_imgsrc.png",
+    "index": 31
+  },
+  {
+    "title": "Sumo War",
+    "name": "Robotics Club",
+    "total_cost": 0,
+    "overview": {
+      "main_title": "Sumo War",
+      "description": "Enter the arena for an electrifying Sumo bot battle where teams fight to dominate the warzone. Push, punch, and strategize to outsmart opponents and claim victory!",
+      "team_size": "1",
+      "contact": [
+        {
+          "name": "Srijoy Mukherjee",
+          "email": "sm24eeb0a60@student.nitw.ac.in",
+          "phone": "7569498783"
+        }
+      ]
+    },
+    "rules": [
+      "Two teams with 2 Sumobots each compete for 5 minutes, winning by pushing opponents out.",
+      "If time ends, points (+10 Danger Zone, +5 punch) determine the winner."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_4_imgsrc.png",
+    "index": 31
+  },
+  {
+    "title": "Cross The Rope", 
+    "name": "SEA Club",
+    "total_cost": 8000,
+    "overview": {
+      "main_title": "Cross The Rope",
+      "description": "'CROSS THE ROPE' challenges participants to design and build an efficient rope-climbing robot using a basic chassis and selected components.",
+      "team_size": "Coming Soon...",
+      "contact": [
+        {
+          "name": "Utkarsh Prabhat",
+          "email": "up23eeb0b56@student.nitw.ac.in",
+          "phone": "8225850228"
+        }
+      ]
+    },
+    "rules": [
+      "Use provided components to customize gripping mechanisms and control algorithms.",
+      "Complete assembly and programming within time and pass all safety checks."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_6_imgsrc.jpg",
+    "index": 4
+  },
+  {
+    "title": "Project Showcase",
+    "name": "SEA Club",
+    "total_cost": 0,
+    "overview": {
+      "main_title": "Project Showcase",
+      "description": "Project Showcase invites teams to present an AI-driven smart car prototype featuring road detection, traffic light recognition, and obstacle avoidance. The event highlights innovation in real-time intelligent systems, sensor integration.",
+      "team_size": "Coming Soon...",
+      "contact": [
+        {
+          "name": "Thisura Damsith",
+          "email": "ma24ecb0b68@student.nitw.ac.in",
+          "phone": "9030620467"
+        }
+      ]
+    },
+    "rules": [
+      "Each team must present their own original prototype and demonstrate its features live.",
+      "Teams must complete their demo within the allotted time and clearly explain the AI logic, sensor setup, and functionality."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_7_imgsrc.jpg",
+    "index": 5
+  },
+  {
+    "title": "Warangal Trading Ring",
+    "name": "FinWiz Club",
+    "total_cost": 5000,
+    "overview": {
+      "main_title": "Warangal Trading Ring",
+      "description": "Step into the world of high-stakes trading and test your financial instincts. Compete in a simulated stock market environment and prove your strategy under pressure.",
+      "team_size": "1",
+      "contact": [
+        {
+          "name": "Sudipa Ghosh",
+          "email": "sg23chb0b12@student.nitw.ac.in",
+          "phone": "8638975223"
+        }
+      ]
+    },
+    "rules": [
+      "Each one will be allotted virtual stock of currency to trade.",
+      "The person with the highest portfolio value at the end will be declared the winner."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_8_imgsrc.jpg",
+    "index": 2
+  },
+  {
+    "title": "Startup Simulation Game",
+    "name": "Innovation Garage",
+    "total_cost": 6000,
+    "overview": {
+      "main_title": "Startup Simulation Game",
+      "description": "Teams of startup founders begin with a random idea and compete by adapting to challenges across four 10-minute rounds. They conclude the simulation by delivering a 3-minute pitch on their evolved business concept.",
+      "team_size": "3-5 members per team",
+      "contact": [
+        {
+          "name": "Naitik Lunkad",
+          "email": "nl23chb0a01@student.nitw.ac.in",
+          "phone": "9907209000"
+        }
+      ]
+    },
+    "rules": [
+      "Teams must adapt their product idea within 10 mins per round."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_9_imgsrc.jpg",
+    "index": 7
+  },
+  {
+    "title": "Project Expo",
+    "name": "Model and Prototype Club",
+    "total_cost": 6000,
+    "overview": {
+      "main_title": "Project Expo",
+      "description": "Project Expo is a platform for participants to showcase their innovative models and projects to an expert jury, gaining evaluation, recognition, and the visibility their work deserves",
+      "team_size": "Coming Soon...",
+      "contact": [
+        {
+          "name": "Akhil",
+          "email": "da23ceb0b14@student.nitw.ac.in",
+          "phone": "9059422616"
+        }
+      ]
+    },
+    "rules": [
+      "Only original, participant-created projects are allowed; plagiarism will lead to disqualification.",
+      "Each team must present their project within the allotted time and answer the jury’s questions clearly."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_13_imgsrc.jpg",
+    "index": 7
+  },
+  {
+    "title": "StockFischer AI Chess Engine",
+    "name": "Chess Committee",
+    "total_cost": 0,
+    "overview": {
+      "main_title": "StockFischer AI Chess Engine",
+      "description": "The StockFischer AI Chess Engine event is a chess competition where participants challenge an AI chess engine. The event will last approximately 2-3 hours, including an introduction and technical overview of the AI",
+      "team_size": "1",
+      "contact": [
+        {
+          "name": "Chivukula Vydik",
+          "email": "cv23mab0f02@student.nitw.ac.in",
+          "phone": "8008750604"
+        }
+      ]
+    },
+    "rules": [
+      "Each player gets a set amount of time for their moves; once a player's time runs out, they lose the game.",
+      "Participants will get a single chance to play a game against the Stock Fischer AI. The player who lasts the longest or wins will be the champion."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_10_imgsrc.jpg",
+    "index": 7
+  },
+  {
+    "title": "Code Red",
+    "name": "HAM ARC Club",
+    "total_cost": 3000,
+    "overview": {
+      "main_title": "Code Red",
+      "description": "Bomb Defusal Challenge, teams collaborate to solve riddles, decode messages, and defuse a 'bomb' within a time limit. It tests problem-solving, communication, and strategy skills.",
+      "team_size": "Coming Soon...",
+      "contact": [
+        {
+          "name": "Vedant Nair",
+          "email": "sv23meb0a43@student.nitw.ac.in",
+          "phone": "8130839268"
+        }
+      ]
+    },
+    "rules": [
+      "Teams must use only provided materials, no external help or devices allowed.",
+      "Bypassing stages leads to disqualification, judge’s decisions are final."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_11_imgsrc.jpg",
+    "index": 31
+  },
+  {
+    "title": "The Quick-Think Challenge",
+    "name": "Model and Prototype Club",
+    "total_cost": 8000,
+    "overview": {
+      "main_title": "The Quick-Think Challenge",
+      "description": "Solve real-world problems specific to your branch, selected randomly, and craft a winning pitch within 30-45 minutes with access to full resources.",
+      "team_size": "Coming Soon...",
+      "contact": [
+        {
+          "name": "Arjun",
+          "email": "da23ceb0b14@student.nitw.ac.in",
+          "phone": "9491299269"
+        }
+      ]
+    },
+    "rules": [
+      "Tackle branch-specific real-world problems selected randomly.",
+      "You have 30-45 minutes with full resources to craft your pitch."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_14_imgsrc.jpg",
+    "index": 31
+  },
+  {
+    "title": "SKY SCOUT",
+    "name": "Science & Astronomy Club",
+    "total_cost": 6000,
+    "overview": {
+      "main_title": "SKY SCOUT: Telescope Making",
+      "description": "Build a functional telescope using a standardized DIY kit, promoting the practical understanding of optics and scientific curiosity. Creativity and accuracy will be evaluated.",
+      "team_size": "Coming Soon...",
+      "contact": [
+        {
+          "name": "Vijay Sadula",
+          "email": "sv23meb0a43@student.nitw.ac.in",
+          "phone": "8500886548"
+        }
+      ]
+    },
+    "rules": [
+      "Participants must use only the provided DIY kits.",
+      "Telescopes must be completed within the allotted time without external tools or materials."
+    ],
+    "judging_criteria": "Coming Soon...",
+    "imgsrc": "/posters25/club_sky_scout.jpg",
+    "index": 31
+  }
+]

@@ -1,0 +1,37 @@
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: transparent; /* Transparent background */
+    color: #16f6f3; /* Change entire text color to #16f6f3 */
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    font-size: 1.2rem;
+    z-index: 10; /* Ensure the footer stays on top of other elements */
+}
+
+.footer p {
+    color:#16f6f3;
+}
+
+.heart {
+    color: red; /* Color for the heart emoji */
+}
+
+.bold-text {
+    font-weight: bold; /* Make the text bold */   
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer {
+        font-size: 1rem; /* Adjust font size for medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        font-size: 0.9rem; /* Adjust font size for small screens */
+    }
+}

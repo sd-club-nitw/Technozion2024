@@ -1,0 +1,379 @@
+/* ANIMATION */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+:root {
+	--mar: 10px;
+	--imsz: 264px;
+	background-color: #000000; /* Set background color to black */
+}
+
+/* Body and General Styles */
+body {
+    background-color: #000000; /* Ensure body background is black */
+    color: white; /* Set default text color to white */
+}
+
+@keyframes scrollYf {
+	0% {
+		transform: translateY(0%);
+	}
+	100% {
+		transform: translateY(calc(-50% - var(--mar) / 2));
+	}
+}
+
+@keyframes scrollYb {
+	from {
+		transform: translateY(calc(-50% - var(--mar) / 2));
+	}
+	to {
+		transform: translateY(0%);
+	}
+}
+
+.heroi {
+	margin-top: 5rem;
+}
+
+.image-wrapper,
+.image-wrapper>img {
+	margin-top: var(--mar);
+	margin-bottom: var(--mar);
+	width: var(--imsz);
+	height: var(--imsz);
+}
+
+.hero {
+	padding-left: var(--mar);
+}
+
+.marquee-forward {
+	animation: scrollYf 15s linear infinite;
+}
+
+.marquee-backward {
+	animation: scrollYb 15s linear infinite;
+}
+
+.spotlight {
+	background: var(--circle);
+	transition: --circle 2s;
+}
+
+.eat {
+	position: absolute;
+	width: 100vw;
+	height: 10vh;
+	bottom: 0px;
+	background: linear-gradient(to bottom, transparent 0%, #01010e 100%);
+	z-index: 1;
+}
+
+.heading1 {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	z-index: 1;
+	padding: 1rem;
+	padding-bottom: 0;
+	transform: translate(-50%, -50%);
+}
+
+.heading1 .i2 {
+	transform: translate(-50%, -50%);
+}
+
+.heading1 img {
+	min-width: 320px;
+	max-width: 768px;
+	width: 100%;
+	height: auto;
+	display: inline-block;
+}
+
+.main-logo{
+	/* height:70vh; */
+	display: flex;
+	justify-content: center;
+}
+
+.heading1 .i1 {
+	min-width: 75px;
+	max-width: 235px;
+	width: 50%;
+	height: auto;
+	display: inline-block;
+}
+
+.spree-title img {
+	min-width: 140px;
+	max-width: 500px;
+	width: 100%;
+	height: auto;
+	display: inline-block;
+	z-index: 1;
+}
+
+.main {
+	width: 100%;
+}
+
+.float {
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	bottom: 40px;
+	right: 40px;
+	background-color: #f7ca17; /* This can remain for visibility */
+	color: #fff;
+	border-radius: 50px;
+	border: 1px solid black;
+	text-align: center;
+	z-index: 1000;
+	animation: bot-to-top 2s ease-out;
+}
+
+button.float img {
+	margin-top: 4px;
+	margin-left: 10px;
+	animation: rotate-in 2s;
+	height: 35px;
+}
+
+button.float:hover>img {
+	animation: rotate-out 0.5s;
+}
+
+@keyframes bot-to-top {
+	0% {
+		bottom: -60px;
+	}
+	50% {
+		bottom: 40px;
+	}
+}
+
+@keyframes scale-in {
+	from {
+		transform: scale(0);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes rotate-in {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes rotate-out {
+	from {
+		transform: rotate(360deg);
+	}
+	to {
+		transform: rotate(0deg);
+	}
+}
+
+.mystyle1 {
+	display: none;
+}
+
+.mystyle2 {
+	display: none;
+}
+
+/* Clock Styling */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+.countdown-container {
+	/* margin-top: 6rem; */
+	display: flex;
+	text-align: end;
+	font-family: "Chakra Petch", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+
+.countdown-clock {
+	display: flex;
+	flex-wrap: nowrap; /* Ensures the time boxes stay on one line */
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 5px;
+}
+
+.time-box {
+	display: flex;
+	border-radius: .7rem;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #000000; /* Adjusted to dark for visibility */
+	color: white;
+	padding: 20px; 
+	margin: 10px;
+	/* border-radius: 10px; */
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+	text-align: center;
+	width: 130px; /* Increased width for larger text */
+	transition: transform 0.2s;
+	border: 2px solid white; /* Base border color */
+	flex-shrink: 0; /* Prevent shrinking of boxes */
+	/* Glow effect for the border */
+	height: 9rem;
+	box-shadow: 0 0 5px #16f6f3, /* Inner glow */
+			0 0 10px #16f6f3, /* Outer glow */
+			0 0 5px #16f6f3; /* Strong outer glow */
+  }
+
+  .time-box{
+	height: 9rem;
+  }
+  .time-numeric{
+	font-size: 1.7em;
+  }
+
+.time-box span {
+	display: block;
+
+}
+
+.time-label {
+	font-size: 1.2em;
+	opacity: 60%;
+
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+	.heading1 img {
+		max-width: 600px;
+	}
+	.time-box {
+		width: 120px;
+		padding: 20px;
+	}
+}
+
+@media (max-width: 992px) {
+	.heading1 img {
+		max-width: 500px;
+	}
+	.countdown-clock {
+		justify-content: space-between;
+	}
+	.time-box {
+		width: 110px;
+		margin: 8px;
+	}
+}
+
+@media (max-width: 768px) {
+	.heading1 img {
+		max-width: 400px;
+	}
+	.stay-tuned {
+		font-size: 1.4em;
+	}
+	.time-box {
+		width: 100px;
+		padding: 15px;
+	}
+	.time-box{
+		height: 7.5rem;
+	}
+}
+
+@media (max-width: 576px) {
+	.heading1 img {
+		max-width: 350px;
+	}
+	.stay-tuned {
+		font-size: 1.3em;
+	}
+	.countdown-clock {
+		justify-content: flex-start;
+		overflow-x: hidden;
+	}
+	.time-box {
+		width: 80px; /* Ensured the boxes stay large enough for small screens */
+		padding: 5px;
+		margin: 3px;
+	}
+	.time-box span{
+		font-size:1rem;
+	}
+	.time-label {
+		font-size: 0.75em;
+	}
+	.time-box{
+		height: 6rem;
+	}
+}
+
+/* Rotate */
+/* Container for Rotating Images */
+.rotating-logo-container {
+	position: relative; /* Relative container for stacking images */
+	width: 400px; /* Adjust based on the size of your images */
+	height: 400px; /* Same as the image size */
+	margin: 0 auto; /* Center the container horizontally */
+	overflow: hidden; /* Ensures no part of image goes out of bounds */
+  }
+  
+  /* Stacking and Centering Images */
+  .rotating-logo-container img {
+	position: absolute; /* Stack images on top of each other */
+	top: 50%; /* Align vertically at the center */
+	left: 50%; /* Align horizontally at the center */
+	transform: translate(-50%, -50%); /* Center the image perfectly */
+	width: 100%; /* Ensure image fits within container */
+	height: 100%; /* Ensure image fits within container */
+	object-fit: cover; /* Ensure image doesn't stretch */
+	transform-origin: center; /* Rotate from the center of each image */
+  }
+  
+  /* Clockwise Rotation */
+  .rotate-clockwise img {
+	animation: rotateClockwise 1s linear infinite;
+  }
+  
+  /* Counterclockwise Rotation */
+  .rotate-counterclockwise img {
+	animation: rotateCounterclockwise 1s linear infinite;
+  }
+  
+  /* Keyframes for Clockwise Rotation */
+  @keyframes rotateClockwise {
+	from {
+	    transform: translate(-50%, -50%) rotate(0deg);
+	}
+	to {
+	    transform: translate(-50%, -50%) rotate(360deg);
+	}
+  }
+  
+  /* Keyframes for Counterclockwise Rotation */
+  @keyframes rotateCounterclockwise {
+	from {
+	    transform: translate(-50%, -50%) rotate(0deg);
+	}
+	to {
+	    transform: translate(-50%, -50%) rotate(-360deg);
+	}
+  }
+
+  
+  
+  

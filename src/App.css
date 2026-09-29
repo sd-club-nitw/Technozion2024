@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "Aftersick";
+  src: url(../public/fonts/aftersick-font-1706356594-0/aftersickdemo-semibold.otf);
+}
+
+h1 {
+  font-family: "Aftersick";
+}
+/* #root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+} */
+
+body {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100vw !important;
+  overflow-x: clip !important;
+  background-color: #020928;
+}
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f4d4d8;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ca85b8;
+  border-radius: 1rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #d987c3;
+}
