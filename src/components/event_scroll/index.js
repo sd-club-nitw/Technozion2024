@@ -8,6 +8,7 @@ import imgsrc from "./tzcomingsoon.png"; // Fallback image
 import dept from "./dept_poster_page.png";
 import club from "./club_event_page.png";
 import spotlight from "./spot_event_page.png";
+import { legacyToFlat } from "../utils/eventShape";
 
 const TABS = [
   { key: "clubevents", label: "CLUB" },
@@ -110,7 +111,7 @@ function Index() {
   // click to card page
   const handlePosterClick = (item) => {
     navigate("/card", {
-      state: { ...item, imgsrc: item.imgsrc || imgsrc, glink: item.glink },
+      state: { ...legacyToFlat(item), imgsrc: item.imgsrc || imgsrc, glink: item.glink },
     });
   };
 

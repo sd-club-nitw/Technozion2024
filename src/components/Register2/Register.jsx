@@ -1,28 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
+import { API_URL } from "../../config";
 import { useAuth } from "../../Context/AuthManager";
 import { useSnackbar } from "../../Context/SnackbarProvider";
+import { isNitwEmail } from "../utils/registrationChecks";
 
-const Register = () => {
+export const Register = () => {
   const { register: authRegister } = useAuth();
-  const [societies, setSocieties] = useState([]);
-  const [clubs, setClubs] = useState([]);
-  const [workshops, setWorkshops] = useState([])
-
+  // const [societies, setSocieties] = useState([]);
+  // const [clubs, setClubs] = useState([]);
+  // const [workshops, setWorkshops] = useState([])
+  const [events, setEvents] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const clubsRes = await fetch("/dataJSON/club.json");
-        const societiesRes = await fetch("/dataJSON/societyx.json");
-        const workshopRes = await fetch('/dataJSON/workshop.json')
+        // const clubsRes = await fetch("/dataJSON/club.json");
+        // const societiesRes = await fetch("/dataJSON/societyx.json");
+        // const workshopRes = await fetch('/dataJSON/workshop.json')
 
-        const societiesData = await societiesRes.json();
-        const clubsData = await clubsRes.json();
-        const workshopsData = await workshopRes.json()
+        // const societiesData = await societiesRes.json();
+        // const clubsData = await clubsRes.json();
+        // const workshopsData = await workshopRes.json()
 
-        setSocieties(societiesData);
-        setClubs(clubsData);
-        setWorkshops(workshopsData)
+        // setSocieties(societiesData);
+        // setClubs(clubsData);
+        // setWorkshops(workshopsData)
+        const res = await fetch(`${API_URL}/api/events`);
+        const data = await res.json();
+        setEvents(data.events || []);
       } catch (err) {
         console.error("Failed to fetch JSON:", err);
       }
@@ -31,42 +36,57 @@ const Register = () => {
     fetchData();
   }, []);
 
+  // const finalData = React.useMemo(() => {
+  //   const map = new Map();
+
+    
+  //   clubs.forEach(club => {
+  //     if (map.has(club.name)) {
+  //       map.get(club.name).events.push({ ...club, displayName: club.title || club.name });
+  //     } else {
+  //       map.set(club.name, { societyName: club.name, events: [{ ...club, displayName: club.title || club.name }] });
+  //     }
+  //   });
+    
+  //   societies.forEach(soc => {
+  //     map.set(soc.societyName, {
+  //       societyName: soc.societyName,
+  //       events: soc.events.map(ev => ({ ...ev, displayName: ev.title || ev.name }))
+  //     });
+  //   });
+
+  //   workshops.forEach(wk => {
+      
+  //    if (map.has(wk.name)) {
+     
+  //       map.get(wk.name).events.push({ ...wk, displayName: wk.title || wk.name });
+  //     } else {
+  //       map.set(wk.name, { societyName: wk.name, events: [{ ...wk, displayName: wk.title || wk.name }] });
+  //     }
+  //   })
+
+
+    
+  //   return Array.from(map.values());
+  // }, [societies, clubs, workshops]);
   const finalData = React.useMemo(() => {
     const map = new Map();
-
-    
-    clubs.forEach(club => {
-      if (map.has(club.name)) {
-        map.get(club.name).events.push({ ...club, displayName: club.title || club.name });
+    events.forEach(ev => {
+      const groupName = ev.club || "Other";
+      const eventWithDisplay = { ...ev, displayName: ev.name };
+      if (map.has(groupName)) {
+        map.get(groupName).events.push(eventWithDisplay);
       } else {
-        map.set(club.name, { societyName: club.name, events: [{ ...club, displayName: club.title || club.name }] });
+        map.set(groupName, { societyName: groupName, events: [eventWithDisplay] });
       }
     });
-    
-    societies.forEach(soc => {
-      map.set(soc.societyName, {
-        societyName: soc.societyName,
-        events: soc.events.map(ev => ({ ...ev, displayName: ev.title || ev.name }))
-      });
-    });
-
-    workshops.forEach(wk => {
-      
-     if (map.has(wk.name)) {
-     
-        map.get(wk.name).events.push({ ...wk, displayName: wk.title || wk.name });
-      } else {
-        map.set(wk.name, { societyName: wk.name, events: [{ ...wk, displayName: wk.title || wk.name }] });
-      }
-    })
-
-
-    
     return Array.from(map.values());
-  }, [societies, clubs, workshops]);
-
-  console.log(finalData)
-
+  }, [events]);
+  // console.log(finalData)
+  const eventNameById = React.useMemo(
+    () => Object.fromEntries(events.map((e) => [e._id, e.name])),
+    [events]
+  );
   const {
     register: reactRegister,
     handleSubmit,
@@ -129,7 +149,7 @@ const Register = () => {
   };
 
   const computeAmount = () => {
-    if (watchedEmail && !watchedEmail.includes("nitw.ac.in")) return 500;
+    if (watchedEmail && !isNitwEmail(watchedEmail)) return 500;
     return 0;
   };
 
@@ -140,22 +160,22 @@ const Register = () => {
     return undefined;
   };
 
-  const uploadToCloudinary = async (file) => {
-    const cloudName = "dpjrslhwg";
-    const uploadPreset = "technozian_upload";
+  // const uploadToCloudinary = async (file) => {
+  //   const cloudName = "dpjrslhwg";
+  //   const uploadPreset = "technozian_upload";
 
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", uploadPreset);
+  //   const formData = new FormData();
+  //   formData.append("file", file);
+  //   formData.append("upload_preset", uploadPreset);
 
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/upload`, {
-      method: "POST",
-      body: formData,
-    });
+  //   const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/upload`, {
+  //     method: "POST",
+  //     body: formData,
+  //   });
 
-    const data = await res.json();
-    return data.secure_url;
-  };
+  //   const data = await res.json();
+  //   return data.secure_url;
+  // };
 
   const onSubmit = async (formData) => {
     try {
@@ -194,7 +214,7 @@ const Register = () => {
       }
 
       // Payment screenshot required if email not nitw.ac.in
-      const needsPayment = isValidEmail(watchedEmail) && !watchedEmail.includes("nitw.ac.in");
+      const needsPayment = isValidEmail(watchedEmail) && !isNitwEmail(watchedEmail);
       const payFile = normalizeFirstFile(paymentScreenshot);
       if (needsPayment && !payFile) {
         setPaymentError("Please upload payment screenshot before registering.");
@@ -203,20 +223,19 @@ const Register = () => {
       }
 
       // Generate password
-      const rand8 = Math.floor(10000000 + Math.random() * 90000000);
-      const password = String(rand8);
+      // const rand8 = Math.floor(10000000 + Math.random() * 90000000);
+      // const password = String(rand8);
 
 
 
       // Preserve original behavior
       const authData = {
         ...formData,
-        password,
         idDocument: idFile,
         paymentScreenshot: payFile || undefined,
       };
 
-      console.log("Registering with data", authData);
+      // console.log("Registering with data", authData);
       // notify && notify('Submitting registration...', { variant: 'info' })
       try {
         await authRegister(authData);
@@ -321,7 +340,25 @@ const Register = () => {
                     </div>
                   )}
                 </div>
-
+                <div>
+                  <label className="block text-sm font-medium mb-2">Password *</label>
+                  <input
+                    type="password"
+                    autoComplete="new-password"
+                    placeholder="At least 8 characters"
+                    {...reactRegister("password", {
+                      required: "Password is required",
+                      minLength: { value: 8, message: "Use at least 8 characters" },
+                    })}
+                    className="w-full px-4 py-3 bg-gray rounded-lg text-white placeholder-grayishWhite/50 focus:outline-none focus:ring-2 focus:ring-cyan transition"
+                  />
+                  {errors.password && (
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="text-red-400 text-sm">⚠</span>
+                      <p className="text-red-400 text-sm">{errors.password.message}</p>
+                    </div>
+                  )}
+                </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">College *</label>
                   <input
@@ -430,7 +467,7 @@ const Register = () => {
                   )}
                 </div>
 
-                {(isValidEmail(watchedEmail) && !watchedEmail.includes("nitw.ac.in")) && (
+                {(isValidEmail(watchedEmail) && !isNitwEmail(watchedEmail)) && (
                   <div className="pt-6">
                     <div className="bg-gray rounded-lg p-4 mb-4">
                       <div className="flex justify-between items-center mb-3">
@@ -479,7 +516,7 @@ const Register = () => {
                             key={i}
                             className="inline-flex items-center px-3 py-1 bg-cyan/20 text-sm rounded-full"
                           >
-                            {event}
+                            {eventNameById[event] || event}
                             <button
                               type="button"
                               onClick={() => {
@@ -508,16 +545,16 @@ const Register = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                           {item.events.map((ev, i) => {
                             const eventName = ev.displayName || "Unnamed Event";
-                            const isSelected = selectedEventsState.includes(eventName);
+                            const isSelected = selectedEventsState.includes(ev._id);
 
                             return (
                               <label
-                                key={i}
+                                key={ev._id || i}
                                 onClick={(e) => {
                                   e.preventDefault();
                                   const next = !isSelected
-                                    ? [...selectedEventsState, eventName]
-                                    : selectedEventsState.filter((x) => x !== eventName);
+                                    ? [...selectedEventsState, ev._id]
+                                    : selectedEventsState.filter((x) => x !== ev._id);
                                   setSelectedEventsState(next);
                                   setValue("events", next, { shouldValidate: true });
                                   if (next.length > 0) {

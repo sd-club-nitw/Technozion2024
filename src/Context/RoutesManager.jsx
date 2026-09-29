@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { About } from '../components/About';
 import EventsPage from '../components/Events/EventsPage';
 import { Displayevents } from '../components/DisplayEvents';
@@ -11,15 +11,15 @@ import Card from '../components/card/card.jsx';
 import Index from '../components/event_scroll/index.js';
 import PastEvents from '../components/PastEvents/PastEvents.jsx';
 import { ComingSoon } from "../components/ComingSoon/ComingSoon.jsx";
-
+import {Register} from '../components/Register2/Register.jsx'
+import {Login} from "../components/Login/Login.jsx";
 const RoutesManager = () => {
 	const location = useLocation();
 	window.scroll(0, 0);
 
 	return (
 		<Routes>
-			<Route path="/auth" element={<ComingSoon />} />
-
+			<Route path="/auth" element={<Navigate to="/login" replace />} />
 			<Route path="/" element={<Home />} />
 
 			{/* Example of protected routes */}
@@ -27,12 +27,19 @@ const RoutesManager = () => {
 			<Route
 				path="/auth/register"
 				element={
-						<ComingSoon />
+						<Register/>
+				}
+			/>
+			<Route
+				path="/auth/login"
+				element={
+						<Login/>
 				}
 			/>
 
 			{/* Registration coming soon */}
-			<Route path="/register" element={<ComingSoon />} />
+			<Route path="/register" element={<Register />} />
+			<Route path="/login" element={<Login />} />
 			<Route path="/about" element={<About />} />
 			{/* <Route path="/sponsors" element={<Sponsors />} /> */}
 			<Route path="/events" element={<EventsPage />} />

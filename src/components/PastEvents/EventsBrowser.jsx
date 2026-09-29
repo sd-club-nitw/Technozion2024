@@ -4,6 +4,7 @@ import Poster from "../event_scroll/poster.js";
 import { Loader } from "../Loader/index.js";
 import "../event_scroll/index.css";
 import imgsrc from "../event_scroll/tzcomingsoon.png";
+import { legacyToFlat } from "../utils/eventShape";
 
 const TABS = [
   { key: "clubevents", label: "CLUB" },
@@ -93,7 +94,7 @@ export const EventsBrowser = () => {
 
   const handlePosterClick = (item) => {
     navigate("/card", {
-      state: { ...item, imgsrc: item.imgsrc || imgsrc, glink: item.glink },
+      state: { ...legacyToFlat(item), imgsrc: item.imgsrc || imgsrc, glink: item.glink }
     });
   };
 

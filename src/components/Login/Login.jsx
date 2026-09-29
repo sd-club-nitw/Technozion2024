@@ -1,0 +1,88 @@
+import React from "react";
+import { useForm } from "react-hook-form";
+import { Link, Navigate } from "react-router-dom";
+import { useAuth } from "../../Context/AuthManager";
+const inputClass =
+  "w-full px-4 py-3 bg-gray rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan transition";
+
+const FieldError = ({ error }) =>
+  error ? (
+    <div className="flex items-center gap-2 mt-2">
+      <span className="text-red-400 text-sm">⚠</span>
+      <p className="text-red-400 text-sm">{error.message}</p>
+    </div>
+  ) : null;
+
+export const Login = () => {
+  const { user, login, loading } = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  if (user) return <Navigate to="/" replace />;
+  const onSubmit = ({ email, password }) => login(email.trim(), password);
+  return (
+    <div className="min-h-screen bg-black text-white px-4 pt-28 pb-12 flex flex-col items-center">
+      <div className="w-full max-w-md">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold mb-3 text-cyan">Login</h1>
+          <p className="text-cyan/70 text-sm">
+            Sign in with the email and password you registered with.
+          </p>
+        </div>
+
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+          className="bg-darkGray rounded-xl p-6 md:p-8 shadow-lg shadow-cyan/10 space-y-6"
+        >
+          <div>
+            <label htmlFor="login-email" className="block text-sm font-medium mb-2">
+              Email
+            </label>
+            <input
+              id="login-email"
+              type="email"
+              autoComplete="email"
+              placeholder="your.email@domain.com"
+              {...register("email", { required: "Email is required" })}
+              className={inputClass}
+            />
+            <FieldError error={errors.email} />
+          </div>
+
+          <div>
+            <label htmlFor="login-password" className="block text-sm font-medium mb-2">
+              Password
+            </label>
+            <input
+              id="login-password"
+              type="password"
+              autoComplete="current-password"
+              placeholder="Your password"
+              {...register("password", { required: "Password is required" })}
+              className={inputClass}
+            />
+            <FieldError error={errors.password} />
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full px-8 py-3 bg-cyan/20 rounded-xl hover:bg-cyan/30 transition font-semibold text-lg disabled:opacity-50"
+           >
+            {loading ? "Signing in..." : "Login"}
+          </button>
+        </form>
+
+        <p className="text-center text-sm mt-6 text-white/70">
+          Not registered yet?{" "}
+          <Link to="/register" className="text-cyan hover:underline">
+            Register here
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
+};

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // 1. IMPORT useLocation
 import { NavLink, Link, useLocation } from "react-router-dom";
+import { useAuth } from "../../Context/AuthManager";
 import { ImCross } from "react-icons/im";
 import chota_logo from "./logo-03.png";
 import './index.css';
@@ -13,11 +14,15 @@ const oldNavigation = [
   // { name: "REVENTS", link: "#" } 
 ];
 
-const rightNavigation = [
-  { name: "GALLERY", link: "/gallery" },
-  { name: "TEAM", link: "/team" },
-  { name: "REGISTER", link: "/auth/register" },
+const commonRightNavigation = [
+   { name: "GALLERY", link: "/gallery" },
+   { name: "TEAM", link: "/team" },
 ];
+const guestNavigation = [
+  { name: "LOGIN", link: "/login" },
+   { name: "REGISTER", link: "/auth/register" },
+ ];
+const memberNavigation = [{ name: "LOGOUT", link: "/login", action: "logout" }];
 
 const dropList = [
   { name: "List1", link: "/l1" },
@@ -26,14 +31,18 @@ const dropList = [
 ];
 
 export default function Navbar() {
-  const [navigation, setNavigation] = useState(oldNavigation);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 725);
   const [showDropdown, setShowDropdown] = useState(false);
+  const { user, logout } = useAuth();
+  const rightNavigation = [
+    ...commonRightNavigation,
+    ...(user ? memberNavigation : guestNavigation),
+  ];
 
   // 2. GET CURRENT LOCATION
   const location = useLocation();
-  const isRegisterPage = location.pathname === '/auth/register';
+  const isRegisterPage = ['/auth/register', '/register', '/login'].includes(location.pathname);
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,20 +54,30 @@ export default function Navbar() {
     };
   }, []);
 
-  useEffect(() => {
-    if (isMobileView) {
+  // useEffect(() => {
+  //   if (isMobileView) {
       
-      setNavigation([...oldNavigation, ...rightNavigation]);
-    } else {
+  //     setNavigation([...oldNavigation, ...rightNavigation]);
+  //   } else {
      
-      setNavigation(oldNavigation);
-    }
-  }, [isMobileView]);
-
+  //     setNavigation(oldNavigation);
+  //   }
+  // }, [isMobileView]);
+  const navigation = isMobileView ? [...oldNavigation, ...rightNavigation] : oldNavigation;
   const closeMenu = () => {
     setMenuOpen(false);
     setShowDropdown(false);
   };
+  const renderLink = (menuItem) =>
+    menuItem.action === "logout" ? (
+      <Link to={menuItem.link} onClick={(e) => { e.preventDefault(); logout(); }}>
+        {menuItem.name}
+      </Link>
+    ) : (
+      <NavLink to={menuItem.link} onClick={closeMenu} end={menuItem.link === "/"}>
+        {menuItem.name}
+      </NavLink>
+    );
 
   // 3. (FIX) REMOVED 'e' and 'e.preventDefault()'
   const toggleDropdown = () => {
@@ -93,18 +112,14 @@ export default function Navbar() {
           )}
         </div>
       ) : (
-        <NavLink to={menuItem.link} onClick={closeMenu} end={menuItem.link === "/"}>
-          {menuItem.name}
-        </NavLink>
+        renderLink(menuItem)
       )}
     </li>
   ));
 
   const rightNavItems = rightNavigation.map((menuItem, index) => (
     <li key={index}>
-      <NavLink to={menuItem.link} onClick={closeMenu} end={menuItem.link === "/"}>
-        {menuItem.name}
-      </NavLink>
+      {renderLink(menuItem)}
     </li>
   ));
 

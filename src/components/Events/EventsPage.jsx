@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { WebCanvas } from "../bg_animation/bg_animate";
 import Poster from "../event_scroll/poster";
-import { events2026 } from "./eventsData";
+import { fetchEvents } from "./eventsData";
 import "../PastEvents/PastEvents.css";
 import "../event_scroll/index.css";
 
@@ -14,13 +14,38 @@ const CATEGORY_TABS = [
   { key: "workshop", label: "WORKSHOPS" },
 ];
 
+const prizeLine = (ev) => {
+  if (typeof ev.cashPrize === "string" && ev.cashPrize.trim()) return ev.cashPrize.trim();
+  const amount = Number(ev.totalCost);
+  return amount > 0 ? `₹ ${amount.toLocaleString("en-IN")}` : "";
+};
+
 export const EventsPage = () => {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("all");
-
-  const filteredEvents = events2026.filter((ev) => {
+  const [events, setEvents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    let isMounted = true;
+    fetchEvents()
+      .then((data) => {
+        if (isMounted) setEvents(data);
+      })
+      .catch((err) => {
+        console.error("Error loading events:", err);
+        if (isMounted) setError(err.message || "Failed to load events");
+      })
+      .finally(() => {
+        if (isMounted) setIsLoading(false);
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+  const filteredEvents = events.filter((ev) => {
     if (selectedCategory === "all") return true;
-    const typeLower = (ev.event_type || "").toLowerCase();
+    const typeLower = (ev.eventType || "").toLowerCase();
     if (selectedCategory === "competition") {
       return typeLower.includes("competition");
     }
@@ -36,6 +61,10 @@ export const EventsPage = () => {
     return true;
   });
 
+  const eventCount = filteredEvents.length;
+  const countLabel =
+    isLoading || error ? "EVENTS" : `${eventCount} ${eventCount === 1 ? "EVENT" : "EVENTS"}`;
+
   const handlePosterClick = (item) => {
     navigate("/card", {
       state: {
@@ -46,7 +75,7 @@ export const EventsPage = () => {
       },
     });
   };
-
+  
   return (
     <div className="past-events-root">
       <div className="past-events-canvas">
@@ -59,11 +88,11 @@ export const EventsPage = () => {
           <div className="edition-topbar-row">
             <div className="edition-badge-container">
               <h1 className="edition-title-badge">Technozion 2026</h1>
-              <span className="edition-year-pill">{filteredEvents.length} EVENTS</span>
+              <span className="edition-year-pill">{countLabel}</span>
             </div>
 
             {/* Category Filter Tabs */}
-            <div className="tabs my-0 flex-wrap">
+            <div className="tabs my-0">
               {CATEGORY_TABS.map((tab) => (
                 <button
                   key={tab.key}
@@ -84,25 +113,25 @@ export const EventsPage = () => {
         {/* Events Grid */}
         <div className="edition-content-body">
           <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-4 gap-y-8 lg:gap-y-10 lg:m-6 m-3">
-            {filteredEvents.map((item, index) => {
-              const prizeText = item.total_cost
-                ? `₹ ${item.total_cost}`
-                : (item.overview?.cash_prize && /^\d/.test(item.overview.cash_prize)
-                  ? `₹ ${item.overview.cash_prize}`
-                  : (item.overview?.cash_prize ? item.overview.cash_prize : null));
-              return (
-                <Poster
-                  key={item.index || index}
-                  imageSrc={item.imgsrc || ""}
-                  fallbackSrc=""
-                  title={item.title}
-                  content={item.name}
-                  prize={prizeText}
-                  onClick={() => handlePosterClick(item)}
-                />
-              );
-            })}
+            {filteredEvents.map((item, index) => (
+              <Poster
+                key={item._id || item.slug || index}
+                imageSrc={item.imgsrc || ""}
+                fallbackSrc=""
+                title={item.name}
+                content={item.club}
+                footer={prizeLine(item)}
+                onClick={() => handlePosterClick(item)}
+              />
+            ))}
           </div>
+          {isLoading && <p className="text-center opacity-70 my-8">Loading events...</p>}
+          {!isLoading && error && (
+            <p className="text-center text-red-400 my-8">Error: {error}</p>
+          )}
+          {!isLoading && !error && filteredEvents.length === 0 && (
+            <p className="text-center opacity-70 my-8">No events available</p>
+          )}
         </div>
       </div>
     </div>

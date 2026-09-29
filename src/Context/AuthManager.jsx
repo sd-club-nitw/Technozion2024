@@ -2,23 +2,29 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Loader } from '../components/Loader'
 import { useSnackbar } from './SnackbarProvider'
+import {API_URL} from '../config'
+import { isNitwEmail } from '../components/utils/registrationChecks'
 
 const AuthContext = createContext()
 export const useAuth = () => useContext(AuthContext)
 
+const readStoredUser = () => {
+  try {
+    const raw = localStorage.getItem('user_info')
+    if (!raw) return null
+    const parsed = JSON.parse(raw)
+    if (parsed && typeof parsed === 'object') return parsed
+  } catch {}
+  try { localStorage.removeItem('user_info') } catch {}
+  return null
+}
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(readStoredUser)
   const [loading, setLoading] = useState(false)
   const [pendingLogout, setPendingLogout] = useState(false)
   const navigate = useNavigate()
-  const url = window.location.origin // TODO: change this to env variable
+  const url = API_URL;
   const { notify } = useSnackbar()
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user_info')
-    if (storedUser) setUser(JSON.parse(storedUser))
-  }, [])
-
   const login = async (email, password) => {
     setLoading(true)
     try {
@@ -47,6 +53,7 @@ const AuthProvider = ({ children }) => {
   // register accepts a single object with fields used by the frontend form.
   // It supports File, FileList or array for idDocument and paymentScreenshot.
   const register = async (registrationData) => {
+  if(loading) return;
   setLoading(true);
   try {
     // Helper: upload a file to Cloudinary and return the URL
@@ -62,6 +69,11 @@ const AuthProvider = ({ children }) => {
         body: formData,
       });
       const data = await res.json();
+      if (!res.ok || !data.secure_url) {
+        const err = new Error('File upload failed. Please try again.');
+        err.isUpload = true;
+        throw err;
+      }
       return data.secure_url; // return the uploaded file URL
     };
 
@@ -80,8 +92,13 @@ const AuthProvider = ({ children }) => {
 
     // Upload Payment Screenshot if needed
     let paymentScreenshotUrl = null;
-    const emailDomain = registrationData.email?.trim().toLowerCase().split("@")[1];
-    if (!emailDomain.endsWith("nitw.ac.in")) {
+    const emailDomain = (registrationData.email || "").trim().toLowerCase().split("@")[1];
+    if (!emailDomain) {
+      notify('Please enter a valid email address.', { variant: 'error' })
+      setLoading(false);
+      return;
+    }
+    if (!isNitwEmail(registrationData.email)) {
       if (registrationData.paymentScreenshot) {
         const paymentFile = Array.isArray(registrationData.paymentScreenshot)
           ? registrationData.paymentScreenshot[0]
@@ -156,7 +173,9 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ user, login, register, logout, loading, setLoading }}>
-      {loading ? <Loader /> : children}
+      {/* {loading ? <Loader /> : children} */}
+      {loading && <Loader />}
+      {children}    
     </AuthContext.Provider>
   )
 }

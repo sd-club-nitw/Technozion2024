@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import "./card.css";
 import { WebCanvas } from "../bg_animation/bg_animate";
 import fallbackImg from "./tzcomingsoon.png";
@@ -8,21 +7,41 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { MdContentCopy } from "react-icons/md";
 import CopyWrapper from "../utils/CopyWrapper";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+
+const toRuleList = (value) => {
+  if (Array.isArray(value)) {
+    return value.filter((v) => typeof v === "string" || typeof v === "number");
+  }
+  if (typeof value === "string" && value.trim()) return [value];
+  return [];
+};
+const toContactList = (value) => {
+  return Array.isArray(value)
+    ? value.filter((c) => c && typeof c === "object")
+    : [];
+}
 
 const Card = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const {
-    title,
-    name,
-    overview,
+    name : title,
+    club,
+    description,
+    teamSize,
+    contact,
     rules,
-    judging_criteria,
+    judgingCriteria,
     imgsrc,
     glink,
-    total_cost,
+    totalCost,
+    cashPrize,
+    duration,
+    eventType
   } = location.state || {};
-
+  const contactList = toContactList(contact);
+  const ruleList = toRuleList(rules);
   const [imageSrc, setImageSrc] = useState(imgsrc);
   const cardRef = useRef(null);
 
@@ -57,10 +76,26 @@ const Card = () => {
 
   // Handles image load error
   const handleImageError = () => {
-    setImageSrc(fallbackImg);
+    setImageSrc((current) => (current === fallbackImg ? "" : fallbackImg));
   };
 
-  return (
+  if (!location.state) {
+    return <Navigate to="/events" replace />;
+  }
+
+  const prizeText =
+  typeof cashPrize === "string" && cashPrize.trim()
+    ? cashPrize.trim()
+    : Number(totalCost) > 0
+    ? `₹ ${Number(totalCost).toLocaleString("en-IN")}`
+    : "";
+  
+    const showDuration =
+    typeof duration === "string" &&
+    duration.trim() !== "" &&
+    duration.toLowerCase() !== "not applicable";
+  
+    return (
     <div className="card-container" onClick={handleContainerClick}>
       <div className="web-canvas">
         <WebCanvas />
@@ -75,14 +110,14 @@ const Card = () => {
           {/* Card Header with single Back button */}
           <div className="cardnav p-4 lg:px-6 z-10">
             <div className="flex items-center gap-2 flex-wrap">
-              {name && (
+              {club && (
                 <span className="text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-cyan-400/40 bg-cyan-950/40 text-cyan-300 font-semibold">
-                  {name}
+                  {club}
                 </span>
               )}
-              {(overview?.event_type || location.state?.event_type) && (
+              {eventType && (
                 <span className="text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-cyan-500/30 bg-black/40 text-cyan-400 font-semibold">
-                  {overview?.event_type || location.state?.event_type}
+                  {eventType}
                 </span>
               )}
             </div>
@@ -114,7 +149,7 @@ const Card = () => {
             {/* Section 2: Overview */}
             <div className="card-section card-section-overview custom-scrollbar">
               <div className="font-bold text-2xl lg:text-3xl uppercase tracking-wide text-cyan-300 mb-4">
-                {overview?.main_title || title}
+                {title}
               </div>
 
               {glink && (
@@ -126,78 +161,62 @@ const Card = () => {
                     className="register-btn inline-flex items-center gap-x-2.5 px-4 py-2.5 rounded-lg border border-cyan-400 text-cyan-300 bg-cyan-950/40 hover:bg-cyan-500/20 hover:scale-105 duration-200 transition-all text-sm font-semibold"
                   >
                     <FaExternalLinkAlt className="text-xs" />
-                    <span>Register / Guidelines</span>
+                    <span>Register Now</span>
                   </a>
                 </div>
               )}
 
-              {overview?.description && (
+              {description && (
                 <section className="overview-item mb-5 flex flex-col gap-y-1">
                   <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase">
                     Description
                   </span>
                   <div className="section-text text-sm lg:text-[1.05rem] leading-relaxed whitespace-pre-line">
-                    {overview.description}
+                    {description}
                   </div>
                 </section>
               )}
 
-              {total_cost && (!overview?.cash_prize || String(total_cost) !== String(overview.cash_prize)) ? (
+              {prizeText && (
                 <section className="overview-item mb-5 flex flex-col gap-y-1">
                   <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase">
                     Prizes worth
                   </span>
                   <span className="text-xl lg:text-2xl font-bold text-cyan-300">
-                    {String(total_cost).startsWith("₹") ? total_cost : `₹ ${total_cost}`}
-                    <sup>*</sup>
-                  </span>
-                </section>
-              ) : null}
-
-              {overview?.cash_prize && (
-                <section className="overview-item mb-5 flex flex-col gap-y-1">
-                  <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase">
-                    Cash Prize
-                  </span>
-                  <span className="text-xl lg:text-2xl font-bold text-cyan-300">
-                    {String(overview.cash_prize).startsWith("₹") || !/^\d/.test(String(overview.cash_prize).trim())
-                      ? overview.cash_prize
-                      : `₹ ${overview.cash_prize}`}
+                    {prizeText}
                   </span>
                 </section>
               )}
 
-              {overview?.team_size && (
+              {teamSize&& (
                 <section className="overview-item mb-5 flex flex-col gap-y-1">
                   <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase">
-                    Participation / Team Size
+                    Participation
                   </span>
                   <div className="font-bold text-sm lg:text-base">
-                    {String(overview.team_size) === "1"
+                    {String(teamSize) === "1"
                       ? "Individual"
-                      : overview.team_size}
+                      : teamSize}
                   </div>
                 </section>
               )}
 
-              {overview?.duration && overview.duration.trim() !== "" && overview.duration.toLowerCase() !== "not applicable" && (
+              {showDuration && (
                 <section className="overview-item mb-5 flex flex-col gap-y-1">
                   <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase">
                     Estimated Duration
                   </span>
-                  <div className="font-bold text-sm lg:text-base">
-                    {overview.duration}
-                  </div>
+                  <div className="font-bold text-sm lg:text-base">{duration}</div>
                 </section>
               )}
 
-              {overview?.contact && overview.contact.length > 0 && (
+              {contactList.length > 0 && (
                 <section className="overview-item mb-4 flex flex-col gap-y-1">
                   <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase mb-1">
                     Contact
                   </span>
                   <div className="flex flex-col gap-3">
-                    {overview.contact.map((contact, index) => (
+                    {contactList.map((contact, index) => (
                       <div
                         key={index}
                         className="contact-card p-3 rounded-lg bg-black/40 border border-cyan-500/20 flex flex-col gap-y-1"
@@ -210,7 +229,7 @@ const Card = () => {
                         {contact?.phone && (
                           <div className="flex justify-between items-center text-sm">
                             <span className="text-cyan-300 font-medium">
-                              {contact.phone.startsWith("+91") ? contact.phone : `+91 ${contact.phone}`}
+                              {String(contact.phone).startsWith("+91") ? contact.phone : `+91 ${contact.phone}`}
                             </span>
                             <CopyWrapper text={contact.phone}>
                               <MdContentCopy className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity" />
@@ -230,11 +249,9 @@ const Card = () => {
                       </div>
                     ))}
                   </div>
-                  {(total_cost || overview?.cash_prize) && (
-                    <small className="opacity-60 text-xs mt-2 block">
-                      *cash prize will be given based on judging criteria
-                    </small>
-                  )}
+                  {prizeText&&(<small className="opacity-60 text-xs mt-2 block">
+                    *cash prize will be given based on judging criteria
+                  </small>)}
                 </section>
               )}
             </div>
@@ -245,19 +262,15 @@ const Card = () => {
                 Rules & Structure
               </div>
 
-              {rules && rules.length > 0 ? (
+              {ruleList.length > 0 ? (
                 <div className="flex flex-col gap-3">
-                  {rules.map((rule, index) => {
+                  {ruleList.map((rawRule, index) => (
+                    const rule = String(rawRule);
                     const isUrl = /^https?:\/\//i.test(rule.trim());
                     const ruleClean = rule.replace(/^\d+[.)]\s*/, "").trim();
                     return (
-                      <div
-                        key={index}
-                        className="rule-item flex items-start gap-3 p-3.5 rounded-lg bg-black/40 border border-cyan-500/20"
-                      >
-                        <span className="font-bold text-cyan-300 min-w-[22px]">
-                          {index + 1}.
-                        </span>
+                      <div key={index} className="rule-item flex items-start gap-3 p-3.5 rounded-lg bg-black/40 border border-cyan-500/20">
+                        <span className="font-bold text-cyan-300 min-w-[22px]">{index + 1}.</span>
                         {isUrl ? (
                           <a
                             href={rule.trim()}
@@ -275,7 +288,7 @@ const Card = () => {
                         )}
                       </div>
                     );
-                  })}
+                  ))}
                 </div>
               ) : (
                 <div className="p-4 rounded-lg bg-black/30 border border-cyan-500/20 text-sm opacity-70">
@@ -284,13 +297,13 @@ const Card = () => {
                 </div>
               )}
 
-              {judging_criteria && judging_criteria !== "Coming Soon..." && (
+              {judgingCriteria && judgingCriteria !== "Coming Soon..." && (
                 <div className="mt-6">
                   <div className="font-bold text-lg uppercase tracking-wide text-cyan-300 mb-2">
                     Judging Criteria
                   </div>
                   <div className="p-3.5 rounded-lg bg-black/40 border border-cyan-500/20 text-sm lg:text-[0.95rem] leading-relaxed">
-                    {judging_criteria}
+                    {judgingCriteria}
                   </div>
                 </div>
               )}
