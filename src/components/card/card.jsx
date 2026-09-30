@@ -288,7 +288,7 @@ const Card = () => {
                         )}
                       </div>
                     );
-                  ))}
+                  })}
                 </div>
               ) : (
                 <div className="p-4 rounded-lg bg-black/30 border border-cyan-500/20 text-sm opacity-70">
