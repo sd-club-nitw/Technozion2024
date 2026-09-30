@@ -264,7 +264,7 @@ const Card = () => {
 
               {ruleList.length > 0 ? (
                 <div className="flex flex-col gap-3">
-                  {ruleList.map((rawRule, index) => (
+                  {ruleList.map((rawRule, index) => {
                     const rule = String(rawRule);
                     const isUrl = /^https?:\/\//i.test(rule.trim());
                     const ruleClean = rule.replace(/^\d+[.)]\s*/, "").trim();
