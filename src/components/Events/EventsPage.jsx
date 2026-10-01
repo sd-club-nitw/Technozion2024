@@ -125,7 +125,7 @@ export const EventsPage = () => {
               />
             ))}
           </div>
-          {isLoading && {Loader}}
+          {isLoading && <Loader/>}
           {!isLoading && error && (
             <p className="text-center text-red-400 my-8">Error: {error}</p>
           )}
