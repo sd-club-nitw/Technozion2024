@@ -5,6 +5,17 @@ import { useAuth } from "../../Context/AuthManager";
 import { useSnackbar } from "../../Context/SnackbarProvider";
 import { isNitwEmail } from "../utils/registrationChecks";
 const MAX_UPLOAD_BYTES = 5 * 1024 * 1024;
+const FEE_PER_COMPETITION = 350;
+const MAX_FEE = 2000;
+const categories = [
+  { key: "competition", title: "Competitions" },
+  { key: "demonstration", title: "Demonstrations" },
+  { key: "game", title: "Games" },
+];
+const computeFee = (competitionCount) =>
+  competitionCount === 0
+    ? FEE_PER_COMPETITION
+    : Math.min(MAX_FEE, FEE_PER_COMPETITION * competitionCount);
 const validateUpload = (file) => {
   if (!file) return "";
   const okType = (file.type || "").startsWith("image/") || file.type === "application/pdf";
@@ -74,28 +85,28 @@ export const Register = () => {
   //     } else {
   //       map.set(wk.name, { societyName: wk.name, events: [{ ...wk, displayName: wk.title || wk.name }] });
   //     }
-  //   })
-
-
-    
+  //   })    
   //   return Array.from(map.values());
   // }, [societies, clubs, workshops]);
-  const finalData = React.useMemo(() => {
-    const map = new Map();
-    events.forEach(ev => {
-      const groupName = ev.club || "Other";
-      const eventWithDisplay = { ...ev, displayName: ev.name };
-      if (map.has(groupName)) {
-        map.get(groupName).events.push(eventWithDisplay);
-      } else {
-        map.set(groupName, { societyName: groupName, events: [eventWithDisplay] });
-      }
+  const getCategory = (ev) => {
+  const raw = String(ev.eventType || ev.category || ev.type || "").toLowerCase();
+  if (raw.startsWith("comp")) return "competition";
+  if (raw.startsWith("demo")) return "demonstration";
+  if (raw.startsWith("game")) return "game";
+  return null; 
+  };
+  const eventsByCategory = React.useMemo(() => {
+  const groups = { competition: [], demonstration: [], game: [] };
+  events.forEach((ev) => {
+    const cat = getCategory(ev);
+    if (cat) groups[cat].push(ev);
+    else console.warn("Event without valid category:", ev.name);
     });
-    return Array.from(map.values());
+    return groups;
   }, [events]);
-  // console.log(finalData)
-  const eventNameById = React.useMemo(
-    () => Object.fromEntries(events.map((e) => [e._id, e.name])),
+
+  const eventById = React.useMemo(
+    () => Object.fromEntries(events.map((e) => [e._id, e])),
     [events]
   );
   const {
@@ -138,7 +149,10 @@ export const Register = () => {
   const [idDocument, setIdDocument] = useState(null);
   const [idDocumentError, setIdDocumentError] = useState("");
   const [teamSizeError, setTeamSizeError] = useState("");
-
+  const competitionCount = selectedEventsState.filter(
+  (id) => eventById[id] && getCategory(eventById[id]) === "competition"
+  ).length;
+  const registrationFee = computeFee(competitionCount);
   useEffect(() => {
     try {
       reactRegister("events");
@@ -159,7 +173,7 @@ export const Register = () => {
   };
 
   const computeAmount = () => {
-    if (watchedEmail && !isNitwEmail(watchedEmail)) return 500;
+    if (watchedEmail && !isNitwEmail(watchedEmail)) return registrationFee;
     return 0;
   };
 
@@ -277,7 +291,7 @@ export const Register = () => {
           </h1>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 text-sm">
             <div className="px-4 py-2 bg-gray rounded-lg">
-              Registration fee: <span className="font-semibold text-cyan">₹500</span>
+              Registration fee: <span className="font-semibold text-cyan">₹{registrationFee}</span>
             </div>
             <div className="px-4 py-2 bg-gray rounded-lg">
               Team size: <span className="font-semibold text-cyan">Up to 5 members</span>
@@ -534,16 +548,16 @@ export const Register = () => {
                   <div className="min-h-[120px] p-4 bg-gray rounded-lg mb-4">
                     {selectedEventsState.length > 0 ? (
                       <div className="flex flex-wrap gap-2">
-                        {selectedEventsState.map((event, i) => (
+                        {selectedEventsState.map((id) => (
                           <span
-                            key={i}
+                            key={id}
                             className="inline-flex items-center px-3 py-1 bg-cyan/20 text-sm rounded-full"
                           >
-                            {eventNameById[event] || event}
+                            {eventById[id]?.name || id}
                             <button
                               type="button"
                               onClick={() => {
-                                const next = selectedEventsState.filter((e) => e !== event);
+                                const next = selectedEventsState.filter((e) => e !== id);
                                 setSelectedEventsState(next);
                                 setValue("events", next, { shouldValidate: true });
                               }}
@@ -562,17 +576,25 @@ export const Register = () => {
                   </div>
 
                   <div className="space-y-6 max-h-[500px] overflow-y-auto">
-                    {finalData.map((item) => (
-                      <div key={item.societyName} className="mb-4">
-                        <h3 className="text-lg font-semibold mb-2 border-b border-cyan/30 pb-1">{item.societyName}</h3>
+                    {categories.map(({key,title}) => (
+                      <div key={key} className="mb-4">
+                        <h3 className="text-lg font-semibold mb-2 border-b border-cyan/30 pb-1">
+                          {title}
+                          {key === "competition" && (
+                            <span className="ml-2 text-xs font-normal text-cyan/70">
+                              ₹{FEE_PER_COMPETITION} each, max ₹{MAX_FEE}
+                            </span>
+                          )}
+                        </h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                          {item.events.map((ev, i) => {
-                            const eventName = ev.displayName || "Unnamed Event";
+                          {eventsByCategory[key].length === 0 && (
+                            <p className="text-sm text-grayishWhite/50">No events available</p>
+                          )}
+                          {eventsByCategory[key].map((ev) => {
                             const isSelected = selectedEventsState.includes(ev._id);
-
                             return (
                               <label
-                                key={ev._id || i}
+                                key={ev._id}
                                 onClick={(e) => {
                                   e.preventDefault();
                                   const next = !isSelected
@@ -580,9 +602,7 @@ export const Register = () => {
                                     : selectedEventsState.filter((x) => x !== ev._id);
                                   setSelectedEventsState(next);
                                   setValue("events", next, { shouldValidate: true });
-                                  if (next.length > 0) {
-                                    clearErrors("events");
-                                  }
+                                  if (next.length > 0) clearErrors("events");
                                 }}
                                 className={`flex items-center p-2 rounded-lg cursor-pointer transition hover:bg-gray ${isSelected ? "bg-cyan/20" : "bg-black/10"}`}
                               >
@@ -592,7 +612,7 @@ export const Register = () => {
                                   readOnly
                                   className="sr-only"
                                 />
-                                <span className="text-sm font-medium">{eventName}</span>
+                                <span className="text-sm font-medium">{ev.name || ev.title || "Unnamed Event"}</span>
                               </label>
                             );
                           })}
