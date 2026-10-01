@@ -4,8 +4,17 @@ const clean = (v) => (typeof v === "string" ? v.replace(/\s+/g, " ").trim() : ""
 const slugify = (s) =>
   clean(s).toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 
-function parseContacts(raw) {
-  if (typeof raw !== "string" || !raw.trim()) return [];
+function parseContacts(raw, email) {
+  const emailClean = typeof email === "string" ? email.trim() : "";
+  if (Array.isArray(raw)) {
+    if (emailClean && raw.length > 0 && !raw[0].email) {
+      raw[0].email = emailClean;
+    }
+    return raw;
+  }
+  if (typeof raw !== "string" || !raw.trim()) {
+    return emailClean ? [{ name: "Event POC", email: emailClean }] : [];
+  }
   const segments = raw.split(/[\n|;,]+|\s+and\s+/i).map((s) => s.trim()).filter(Boolean);
   const contacts = [];
   const stripName = (t) =>
@@ -21,10 +30,16 @@ function parseContacts(raw) {
       i++;
     }
   }
+  if (emailClean && contacts.length > 0) {
+    contacts[0].email = emailClean;
+  } else if (emailClean && contacts.length === 0) {
+    contacts.push({ name: "Event POC", email: emailClean });
+  }
   return contacts;
 }
 
 function parseRules(raw) {
+  if (Array.isArray(raw)) return raw;
   if (typeof raw !== "string") return [];
   const text = raw.trim();
   if (!text || EMPTY_VALUES.test(text)) return [];
@@ -40,25 +55,43 @@ function parsePrize(description) {
 }
 
 function normalizeEvent(raw, index = 0) {
-  const name = clean(raw["Event Name"]);
-  const description = (raw["Event Description mention clearly and elaborately"] || "").toString().trim();
-  const teamRaw = clean(raw["Team size (write 1 if individual participation)"]);
+  const name = clean(raw["Event Name"] || raw.name || raw.title);
+  const description = (
+    raw["Event Description mention clearly and elaborately"] ||
+    raw.description ||
+    (raw.overview && raw.overview.description) ||
+    ""
+  ).toString().trim();
+  const teamRaw = clean(
+    raw["Team size (write 1 if individual participation)"] ||
+    raw.teamSize ||
+    (raw.overview && raw.overview.team_size)
+  );
+  const email = clean(raw["Email Address"] || raw.email);
   return {
     slug: slugify(name) || `event-${index + 1}`,
     name,
-    club: clean(raw["Club Name"]),
+    club: clean(raw["Club Name"] || raw.club || raw.name),
     description,
-    eventType: clean(raw["Event Type"]),
+    eventType: clean(raw["Event Type"] || raw.eventType || raw.event_type),
     teamSize: EMPTY_VALUES.test(teamRaw) ? "" : teamRaw,
-    duration: clean(raw["Approx time it takes for one student to complete the event"]),
-    rules: parseRules(raw["Rules of the Event, include how many rounds, any procedure to follow, etc."]),
-    contact: parseContacts(raw["POC for doubts - name and phone number"]),
-    totalCost: parsePrize(description),
-    judgingCriteria: "Coming Soon...",
-    imgsrc: "",
-    glink: "",
-    venue: "",
-    registrationOpen: true,
+    duration: clean(
+      raw["Approx time it takes for one student to complete the event"] ||
+      raw.duration ||
+      (raw.overview && raw.overview.duration)
+    ),
+    rules: parseRules(
+      raw["Rules of the Event, include how many rounds, any procedure to follow, etc."] ||
+      raw.rules
+    ),
+    contact: parseContacts(raw["POC for doubts - name and phone number"] || raw.contact, email),
+    totalCost: raw.totalCost !== undefined ? raw.totalCost : parsePrize(description),
+    cashPrize: raw.cashPrize || raw.cash_prize || "",
+    judgingCriteria: raw.judgingCriteria || (raw.overview && raw.overview.judging_criteria) || "Coming Soon...",
+    imgsrc: raw.imgsrc || "",
+    glink: raw.glink || "",
+    venue: raw.venue || "",
+    registrationOpen: raw.registrationOpen !== false,
   };
 }
 

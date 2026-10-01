@@ -9,9 +9,8 @@ import "../event_scroll/index.css";
 const CATEGORY_TABS = [
   { key: "all", label: "ALL" },
   { key: "competition", label: "COMPETITIONS" },
-  { key: "funevent", label: "FUN EVENTS" },
+  { key: "game", label: "GAMES" },
   { key: "demonstration", label: "DEMONSTRATIONS" },
-  { key: "workshop", label: "WORKSHOPS" },
 ];
 
 const prizeLine = (ev) => {
@@ -49,11 +48,11 @@ export const EventsPage = () => {
     if (selectedCategory === "competition") {
       return typeLower.includes("competition");
     }
-    if (selectedCategory === "funevent") {
-      return typeLower.includes("fun");
+    if (selectedCategory === "game" || selectedCategory === "funevent") {
+      return typeLower.includes("game") || typeLower.includes("fun");
     }
     if (selectedCategory === "demonstration") {
-      return typeLower.includes("demonstration");
+      return typeLower.includes("demonstration") || typeLower.includes("demo");
     }
     if (selectedCategory === "workshop") {
       return typeLower.includes("workshop");
