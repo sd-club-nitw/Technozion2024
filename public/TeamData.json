@@ -102,33 +102,36 @@
     "email":""
  },
  {
- "name":"Sai Rushith",
+ "name":"Shardool Kolhe",
     "contactNo":"",
-    "image":"rushith.jpg",
+    "image":"placeholder.jpg",
     "position":"Developer",
     "email":""
  },
   {
-    "name":"Aman Chaubey",
-    "contactNo":"8328352932",
-    "image":"aman.jpg",
+    "name":"Jeevan Pawar",
+    "contactNo":"",
+    "image":"placeholder.jpg",
     "position":"Developer",
-    "email":"ac23ceb0b06@student.nitw.ac.in"
+    "email":""
   },
   {
-    "name":"Teja Sree Charan",
-    "contactNo":"9014518931",
-    "image":"teja.jpg",
+    "name":"Anush Kamble",
+    "contactNo":"",
+    "image":"placeholder.jpg",
     "position":"Developer",
-    "email":"vt23csb0a34@student.nitw.ac.in"
+    "email":""
   },
    {
-    "name":"Abhiraj",
-    "contactNo":"8008645982",
-    "image":"abhiraj.jpg",
+    "name":"Aayush Dutta",
+    "contactNo":"",
+    "image":"placeholder.jpg",
     "position":"Developer",
     "email":""
   }
+   
+
+
 ]
  
  
