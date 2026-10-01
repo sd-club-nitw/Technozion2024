@@ -46,13 +46,6 @@ function parseRules(raw) {
   return text.split("\n").map((r) => r.trim()).filter(Boolean);
 }
 
-function parsePrize(description) {
-  const m = String(description || "").match(/(\d[\d,]*)\s*(k)?\s*prize\s*pool/i);
-  if (!m) return null;
-  const n = Number(m[1].replace(/,/g, ""));
-  if (!Number.isFinite(n) || n <= 0) return null;
-  return m[2] ? n * 1000 : n;
-}
 
 function normalizeEvent(raw, index = 0) {
   const name = clean(raw["Event Name"] || raw.name || raw.title);
@@ -68,12 +61,13 @@ function normalizeEvent(raw, index = 0) {
     (raw.overview && raw.overview.team_size)
   );
   const email = clean(raw["Email Address"] || raw.email);
+  const eventType = clean(raw["Event Type"] || raw.eventType || raw.event_type);
   return {
     slug: slugify(name) || `event-${index + 1}`,
     name,
     club: clean(raw["Club Name"] || raw.club || raw.name),
     description,
-    eventType: clean(raw["Event Type"] || raw.eventType || raw.event_type),
+    eventType,
     teamSize: EMPTY_VALUES.test(teamRaw) ? "" : teamRaw,
     duration: clean(
       raw["Approx time it takes for one student to complete the event"] ||
@@ -85,7 +79,13 @@ function normalizeEvent(raw, index = 0) {
       raw.rules
     ),
     contact: parseContacts(raw["POC for doubts - name and phone number"] || raw.contact, email),
-    totalCost: raw.totalCost !== undefined ? raw.totalCost : parsePrize(description),
+    hasPrizes: Boolean(
+      raw.hasPrizes ||
+      raw.cashPrize ||
+      eventType.toLowerCase() === "competition" ||
+      /prize/i.test(description)
+    ),
+    totalCost: raw.totalCost !== undefined ? raw.totalCost : null,
     cashPrize: raw.cashPrize || raw.cash_prize || "",
     judgingCriteria: raw.judgingCriteria || (raw.overview && raw.overview.judging_criteria) || "Coming Soon...",
     imgsrc: raw.imgsrc || "",

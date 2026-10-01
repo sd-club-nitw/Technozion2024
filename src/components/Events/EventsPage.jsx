@@ -14,12 +14,6 @@ const CATEGORY_TABS = [
   { key: "demonstration", label: "DEMONSTRATIONS" },
 ];
 
-const prizeLine = (ev) => {
-  if (typeof ev.cashPrize === "string" && ev.cashPrize.trim()) return ev.cashPrize.trim();
-  const amount = Number(ev.totalCost);
-  return amount > 0 ? `₹ ${amount.toLocaleString("en-IN")}` : "";
-};
-
 export const EventsPage = () => {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -120,7 +114,6 @@ export const EventsPage = () => {
                 fallbackSrc=""
                 title={item.name}
                 content={item.club}
-                footer={prizeLine(item)}
                 onClick={() => handlePosterClick(item)}
               />
             ))}

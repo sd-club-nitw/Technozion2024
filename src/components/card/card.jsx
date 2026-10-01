@@ -83,12 +83,13 @@ const Card = () => {
     return <Navigate to="/events" replace />;
   }
 
-  const prizeText =
-  typeof cashPrize === "string" && cashPrize.trim()
-    ? cashPrize.trim()
-    : Number(totalCost) > 0
-    ? `₹ ${Number(totalCost).toLocaleString("en-IN")}`
-    : "";
+  const hasPrizes = Boolean(
+    location.state?.hasPrizes ||
+    (typeof cashPrize === "string" && cashPrize.trim()) ||
+    Number(totalCost) > 0 ||
+    eventType?.toLowerCase() === "competition" ||
+    /prize/i.test(description || "")
+  );
   
     const showDuration =
     typeof duration === "string" &&
@@ -177,13 +178,13 @@ const Card = () => {
                 </section>
               )}
 
-              {prizeText && (
+              {hasPrizes && (
                 <section className="overview-item mb-5 flex flex-col gap-y-1">
                   <span className="section-label opacity-70 text-[0.95rem] tracking-wider uppercase">
-                    Prizes worth
+                    Prizes
                   </span>
                   <span className="text-xl lg:text-2xl font-bold text-cyan-300">
-                    {prizeText}
+                    Exciting prizes are available!
                   </span>
                 </section>
               )}
@@ -249,9 +250,11 @@ const Card = () => {
                       </div>
                     ))}
                   </div>
-                  {prizeText&&(<small className="opacity-60 text-xs mt-2 block">
-                    *cash prize will be given based on judging criteria
-                  </small>)}
+                  {hasPrizes && (
+                    <small className="opacity-60 text-xs mt-2 block">
+                      *Prizes will be awarded based on judging criteria
+                    </small>
+                  )}
                 </section>
               )}
             </div>
