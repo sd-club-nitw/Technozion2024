@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { WebCanvas } from "../bg_animation/bg_animate";
 import Poster from "../event_scroll/poster";
+import {Loader} from "../Loader/index"
 import { fetchEvents } from "./eventsData";
 import "../PastEvents/PastEvents.css";
 import "../event_scroll/index.css";
@@ -124,7 +125,7 @@ export const EventsPage = () => {
               />
             ))}
           </div>
-          {isLoading && <p className="text-center opacity-70 my-8">Loading events...</p>}
+          {isLoading && {Loader}}
           {!isLoading && error && (
             <p className="text-center text-red-400 my-8">Error: {error}</p>
           )}
