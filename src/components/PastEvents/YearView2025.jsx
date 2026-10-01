@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { FaCalendarAlt, FaUsers } from "react-icons/fa";
 import EventsBrowser from "./EventsBrowser";
-import { TeamContent } from "../Team/team";
+import { TeamContent } from "../Team/PastTeamContent";
 import TeamsBanner from "../Team/Teams.png";
 
 export const YearView2025 = ({ onBack }) => {

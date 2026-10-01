@@ -1,3 +1,4 @@
+
 {
   "chief_patrons": [{
     "name": "Professor Bidyadhar Subudhi",
@@ -12,10 +13,10 @@
     "email": "dean_sa@nitw.ac.in",
     "image": "dean-sw.jpeg"
   } ,{
-    "name": "Prof. Velagapudi Vasu",
+    "name": "Prof. P. Hari Prasad Reddy",
     "position": "SAC President",
-    "email": "sac_president@nitw.ac.in",
-    "image": "sac_president.jpeg"
+    "email": "hari@nitw.ac.in",
+    "image": "sac-president.jpg"
 
   }, {
     "name": "Prof. Venkanna Udutalapally",
@@ -102,36 +103,33 @@
     "email":""
  },
  {
- "name":"Shardool Kolhe",
+ "name":"Sai Rushith",
     "contactNo":"",
-    "image":"placeholder.jpg",
+    "image":"rushith.jpg",
     "position":"Developer",
     "email":""
  },
   {
-    "name":"Jeevan Pawar",
-    "contactNo":"",
-    "image":"placeholder.jpg",
+    "name":"Aman Chaubey",
+    "contactNo":"8328352932",
+    "image":"aman.jpg",
     "position":"Developer",
-    "email":""
+    "email":"ac23ceb0b06@student.nitw.ac.in"
   },
   {
-    "name":"Anush Kamble",
-    "contactNo":"",
-    "image":"placeholder.jpg",
+    "name":"Teja Sree Charan",
+    "contactNo":"9014518931",
+    "image":"teja.jpg",
     "position":"Developer",
-    "email":""
+    "email":"vt23csb0a34@student.nitw.ac.in"
   },
    {
-    "name":"Ayush Dutta",
-    "contactNo":"",
-    "image":"placeholder.jpg",
+    "name":"Abhiraj",
+    "contactNo":"8008645982",
+    "image":"abhiraj.jpg",
     "position":"Developer",
     "email":""
   }
-   
-
-
 ]
  
  
@@ -143,3 +141,4 @@
   
 
 }
+
