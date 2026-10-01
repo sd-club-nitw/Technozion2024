@@ -290,9 +290,9 @@ export const Register = () => {
             </span>
           </h1>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 text-sm">
-            <div className="px-4 py-2 bg-gray rounded-lg">
+            {!(watchedEmail && isNitwEmail(watchedEmail))&&(<div className="px-4 py-2 bg-gray rounded-lg">
               Registration fee: <span className="font-semibold text-cyan">₹{registrationFee}</span>
-            </div>
+            </div>)}
             <div className="px-4 py-2 bg-gray rounded-lg">
               Team size: <span className="font-semibold text-cyan">Up to 5 members</span>
             </div>
