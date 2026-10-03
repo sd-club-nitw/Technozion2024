@@ -94,6 +94,7 @@ function normalizeEvent(raw, index = 0) {
       raw.cashPrize ||
       eventType.toLowerCase() === "competition" ||
       /prize/i.test(description)
+      
     ),
     totalCost: raw.totalCost !== undefined ? raw.totalCost : null,
     cashPrize: raw.cashPrize || raw.cash_prize || "",
